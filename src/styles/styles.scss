@@ -1,0 +1,19 @@
+@import "variables";
+
+@import "scrollbar";
+@import "navbar";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $pf-primary-font;
+  height: 100vh;
+  transition: all 0.4s;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}

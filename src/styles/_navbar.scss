@@ -1,0 +1,19 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  a {
+    padding: 2.0rem;
+
+    font-size: 1.0rem;
+
+    color: $pf-sub-nav-link-color;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $pf-primary-color;
+  }
+}
