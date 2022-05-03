@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 const Layout = ({ children }) => {
 
     return (
-        <>
+        <div className="content">
             <div className="navbar">
                 <Link className="active" to="/">Home</Link>
                 <Link to="/publications">Publications</Link>
@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
             <main>
                 {children}
             </main>
-        </>
+        </div>
     )
 }
 

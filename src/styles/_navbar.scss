@@ -1,11 +1,11 @@
 .navbar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: flex-start;
 
   a {
-    padding: 2.0rem;
+    padding: 1.0rem;
 
     font-size: 1.0rem;
 
