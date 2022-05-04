@@ -1,0 +1,30 @@
+.projectsLayout {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 1rem;
+
+    div {
+      display: flex;
+      flex-direction: row;
+
+      p {
+        line-height: 0.1rem;
+
+        padding-right: 0.5rem;
+      }
+
+      .projectTitle{
+        font-weight: bold;
+      }
+    }
+
+    p {
+      line-height: 0.1rem;
+    }
+  }
+}

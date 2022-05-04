@@ -1,0 +1,12 @@
+.publicationsLayout {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    padding-bottom: 1rem;
+
+    p {
+      word-break: break-word;
+    }
+  }
+}

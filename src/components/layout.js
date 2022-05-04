@@ -9,9 +9,14 @@ const Layout = ({ children }) => {
             <div className="navbar">
                 <Link className="active" to="/">Home</Link>
                 <Link to="/publications">Publications</Link>
+                <Link to="/experience">Experience</Link>
                 <Link to="/projects">Projects</Link>
+                <Link to="/certifications">Certifications</Link>
                 <Link to="/achievements">Achievements</Link>
+                <Link to="/workshops">Workshops</Link>
+                <Link to="/presentations">Presentations</Link>
                 <Link to="/volunteering">Volunteering</Link>
+                <Link to="/people">People</Link>
                 <Link to="/about">About</Link>
             </div>
             <main>

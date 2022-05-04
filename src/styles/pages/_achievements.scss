@@ -1,0 +1,15 @@
+.achievementsLayout {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    display: flex;
+    flex-direction: row;
+
+    height: 2rem;
+
+    p {
+      padding-right: 0.5rem;
+    }
+  }
+}

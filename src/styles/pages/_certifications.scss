@@ -1,0 +1,28 @@
+.certificationsLayout {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    div {
+      display: flex;
+      flex-direction: row;
+
+      height: 2rem;
+
+      p {
+        padding-right: 0.5rem;
+      }
+    }
+
+    li {
+      display: flex;
+      flex-direction: row;
+
+      height: 2rem;
+
+      p {
+        padding-right: 0.5rem;
+      }
+    }
+  }
+}
