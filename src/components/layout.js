@@ -5,10 +5,10 @@ import { Link } from "gatsby"
 const Layout = ({ children }) => {
 
     return (
-        
+
         <div className="content">
             <div className="header">
-            <h2>Oshan Ivantha Mudannayake</h2>
+            <h2>Oshan Mudannayake</h2>
             </div>
             <div className="container">
                 <div className="navbar">
@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
                 <main>
                     {children}
                 </main>
-            </div>            
+            </div>
         </div>
     )
 }

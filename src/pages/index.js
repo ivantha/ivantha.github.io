@@ -12,9 +12,9 @@ const IndexPage = () => {
                     <h1>Home</h1>
                 </div>
                 <div className="section-items">
-                    Oshan is crazy busy
+                    This website is a work in progress!
                 </div>
-            </div>            
+            </div>
         </Layout>
     )
 }

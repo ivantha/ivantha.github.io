@@ -1,3 +1,9 @@
 .peopleLayout {
+  display: flex;
+  flex-direction: column;
 
+  li {
+    display: flex;
+    flex-direction: row;
+  }
 }

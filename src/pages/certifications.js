@@ -79,9 +79,6 @@ const CertificationsPage = () => (
                             </ul>
                         </li>
                         <li>
-                            <div><p>2020</p><p>-</p><p>AI for Everyone</p><p>-</p><p>Coursera</p><p><a href="https://www.coursera.org/account/accomplishments/certificate/4W29T5BW55UZ">[Certificate]</a></p></div>
-                        </li>
-                        <li>
                             <div><p>2020</p><p>-</p><p>Qwicklabs quests on ML and Data Science</p><p>-</p><p>Qwicklabs</p><p><a href="https://www.qwiklabs.com/public_profiles/a3117be0-5025-4aea-a423-07b1c7bfc75a">[Certificate]</a></p></div>
                         </li>
                     </ul>
