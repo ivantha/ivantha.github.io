@@ -7,7 +7,14 @@ import Layout from "../components/layout"
 const IndexPage = () => {
     return (
         <Layout>
-            <h1>Home</h1>
+            <div className="section-wrapper">
+                <div className="section-title">
+                    <h1>Home</h1>
+                </div>
+                <div className="section-items">
+                    Oshan is crazy busy
+                </div>
+            </div>            
         </Layout>
     )
 }

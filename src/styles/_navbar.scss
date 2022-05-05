@@ -5,17 +5,23 @@
   justify-content: flex-start;
 
   a {
+    
+    color: $pf-sub-nav-link-color;
+    font-size: 1.0rem;
+    
+    
+    padding: 1.0rem;
+    text-decoration: none;
     width: 10rem;
 
-    padding: 1.0rem;
+    &:hover {
+      color: $pf-primary-color;
+    }
 
-    font-size: 1.0rem;
-
-    color: $pf-sub-nav-link-color;
-    text-decoration: none;
+    &.active {
+      color: $pf-primary-color;
+      font-weight: 500;
+    }
   }
-
-  a:hover {
-    color: $pf-primary-color;
-  }
+  
 }

@@ -5,23 +5,29 @@ import { Link } from "gatsby"
 const Layout = ({ children }) => {
 
     return (
+        
         <div className="content">
-            <div className="navbar">
-                <Link className="active" to="/">Home</Link>
-                <Link to="/publications">Publications</Link>
-                <Link to="/experience">Experience</Link>
-                <Link to="/projects">Projects</Link>
-                <Link to="/certifications">Certifications</Link>
-                <Link to="/achievements">Achievements</Link>
-                <Link to="/workshops">Workshops</Link>
-                <Link to="/presentations">Presentations</Link>
-                <Link to="/volunteering">Volunteering</Link>
-                <Link to="/people">People</Link>
-                <Link to="/about">About</Link>
+            <div className="header">
+            <h2>Oshan Ivantha Mudannayake</h2>
             </div>
-            <main>
-                {children}
-            </main>
+            <div className="container">
+                <div className="navbar">
+                    <Link to="/">Home</Link>
+                    <Link to="/publications">Publications</Link>
+                    <Link to="/experience">Experience</Link>
+                    <Link to="/projects">Projects</Link>
+                    <Link to="/certifications">Certifications</Link>
+                    <Link to="/achievements">Achievements</Link>
+                    <Link to="/workshops">Workshops</Link>
+                    <Link to="/presentations">Presentations</Link>
+                    <Link to="/volunteering">Volunteering</Link>
+                    <Link to="/people">People</Link>
+                    <Link to="/about">About</Link>
+                </div>
+                <main>
+                    {children}
+                </main>
+            </div>            
         </div>
     )
 }

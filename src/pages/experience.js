@@ -4,9 +4,11 @@ import Layout from "../components/layout"
 
 const ExperiencePage = () => (
     <Layout>
-        <div className="experienceLayout">
-            <h1>Experience</h1>
-            <div>
+        <div className="experienceLayout section-wrapper">
+            <div className="section-title">
+                <h1>Experience</h1>
+            </div>
+            <div className="section-items">
                 <h2>Research Experience</h2>
                 <ul>
                     <li>
