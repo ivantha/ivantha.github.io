@@ -11,7 +11,7 @@ module.exports = {
                 link: '/publications'
             }
         ],
-        siteUrl: `https://ivantha.github.io`,
+        siteUrl: `https://ivantha.com`,
     },
     plugins: ["gatsby-plugin-sass", {
         resolve: "gatsby-plugin-google-analytics",
