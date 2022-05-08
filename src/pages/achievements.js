@@ -10,50 +10,80 @@ const AchievementsPage = () => (
             </div>
             <div className="section-items">
                 <ul>
-                    <li>
-                        <p>2019</p><p>-</p><p>Merit Award</p><p>-</p><p>Datathon (SLIIT Codefest) by Sri Lanka Institute of Information Technology</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2019 | Merit Award</span>
+                        <h3>Datathon (SLIIT Codefest) by Sri Lanka Institute of Information Technology</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2018</p><p>-</p><p>1st place</p><p>-</p><p>Codezilla by Mozilla Campus Club of Uva Wellassa University</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2018 | 1st place</span>
+                        <h3>Codezilla by Mozilla Campus Club of Uva Wellassa University</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2018</p><p>-</p><p>1st place</p><p>-</p><p>LetMeHack by Sabaragamuwa University</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2018 | 1st place</span>
+                        <h3>LetMeHack by Sabaragamuwa University</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2019</p><p>-</p><p>Participant</p><p>-</p><p>HackZurich by Digital Festival</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2019 | Participant</span>
+                        <h3>HackZurich by Digital Festival</h3>
+                        <span className="institute-text country">Switzerland</span>
                     </li>
-                    <li>
-                        <p>2018</p><p>-</p><p>Participant</p><p>-</p><p>Hack The North by University of Waterloo</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2018 | Participant</span>
+                        <h3>Hack The North by University of Waterloo</h3>
+                        <span className="institute-text country">Canada</span>
                     </li>
-                    <li>
-                        <p>2017</p><p>-</p><p>2nd place</p><p>-</p><p>Presistent Hackathon by Persistent Systems Lanka</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2017 | 2nd place</span>
+                        <h3>Presistent Hackathon by Persistent Systems Lanka</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2017</p><p>-</p><p>2nd place</p><p>-</p><p>HACKiNTRA by University of Jaffna</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2017 | 2nd place</span>
+                        <h3>HACKiNTRA by University of Jaffna</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2017</p><p>-</p><p>Finalist</p><p>-</p><p>CodeFest Designathon by Sri Lanka Institute of Information Technology</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2017 | Finalist</span>
+                        <h3>CodeFest Designathon by Sri Lanka Institute of Information Technology</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2017</p><p>-</p><p>Finalist</p><p>-</p><p>SS12 Asia by IEEE</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2017 | Finalist</span>
+                        <h3>SS12 Asia by IEEE</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2017</p><p>-</p><p>3rd place</p><p>-</p><p>Dialog Game Dev Hackathon by Dialog Axiata</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2017 | 3rd place</span>
+                        <h3>Dialog Game Dev Hackathon by Dialog Axiata</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2016</p><p>-</p><p>1st place</p><p>-</p><p>Mozilla Web Maker Party by Mozilla Club of University of Colombo School of Computing</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2016 | 1st place</span>
+                        <h3>Mozilla Web Maker Party by Mozilla Club of University of Colombo School of Computing</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2016</p><p>-</p><p>2nd place</p><p>-</p><p>CodeFest Tertiary Hackathon by Sri Lanka Institute of Information Technology</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2016 | 2nd place</span>
+                        <h3>CodeFest Tertiary Hackathon by Sri Lanka Institute of Information Technology</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2016</p><p>-</p><p>1st place</p><p>-</p><p>IEEE preXtreme 1.0 by IEEE Student Branch of University of Colombo School of Computing</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2016 | 1st place</span>
+                        <h3>IEEE preXtreme 1.0 by IEEE Student Branch of University of Colombo School of Computing</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2016</p><p>-</p><p>6th place</p><p>-</p><p>ACES Coders by University of Peradeniya</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2016 | 6th place</span>
+                        <h3>ACES Coders by University of Peradeniya</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
-                    <li>
-                        <p>2016</p><p>-</p><p>5th place</p><p>-</p><p>Code Expertz by University of Moratuwa</p>
+                    <li className="achievements-wrapper">
+                        <span className="institute-text">2016 | 5th place</span>
+                        <h3>Code Expertz by University of Moratuwa</h3>
+                        <span className="institute-text country">Sri Lanka</span>
                     </li>
                 </ul>
             </div>

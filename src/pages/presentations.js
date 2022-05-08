@@ -12,28 +12,34 @@ const PresentationsPage = () => (
                 <div>
                     <h2>Mentoring</h2>
                     <ul>
-                        <li>
-                            <p>Jul. 2021</p><p>-</p><p>[Conference] kMatrix: A Space Efficient Streaming Graph Summarization Technique</p><p>-</p><p>IEEE International Conference on Information and Automation for Sustainability 2021</p>
+                        <li className="presentation-wrapper">
+                            <h3>Jul. 2021 | [Conference] kMatrix: A Space Efficient Streaming Graph Summarization Technique</h3>
+                            <span className="content-text">IEEE International Conference on Information and Automation for Sustainability 2021</span>
                         </li>
-                        <li>
-                            <p>Dec. 2018</p><p>-</p><p>[Poster] Machine Learning over Encrypted Data</p><p>-</p><p>Sri Lanka Association for the Advancement of Science (SLAAS) Exhibition 2018</p>
+                        <li className="presentation-wrapper">
+                            <h3>Dec. 2018 | [Poster] Machine Learning over Encrypted Data</h3>
+                            <span className="content-text">Sri Lanka Association for the Advancement of Science (SLAAS) Exhibition 2018</span>
                         </li>
                     </ul>
                 </div>
                 <div>
-                    <h2>Seminars</h2>
+                    <h2 className="presentation-subtitle">Seminars</h2>
                     <ul>
-                        <li>
-                            <p>May. 2021</p><p>-</p><p>Career guidance for undergraduates</p><p>-</p><p>UCSC ACM Student Chapter - Colombo, Sri Lanka</p>
+                        <li className="presentation-wrapper">
+                            <h3>May. 2021 | Career guidance for undergraduates</h3>
+                            <span className="content-text">UCSC ACM Student Chapter | Colombo, Sri Lanka</span>
                         </li>
-                        <li>
-                            <p>Dec. 2020</p><p>-</p><p>A new CORS Valve for the WSO2 Identity Server</p><p>-</p><p>IAM Community Call by WSO2 - Colombo, Sri Lanka</p>
+                        <li className="presentation-wrapper">
+                            <h3>Dec. 2020 | A new CORS Valve for the WSO2 Identity Server</h3>
+                            <span className="content-text">IAM Community Call by WSO2 | Colombo, Sri Lanka</span>
                         </li>
-                        <li>
-                            <p>Oct. 2019</p><p>-</p><p>Rust 101</p><p>-</p><p>Hacktoberfest 2019 by Mozilla Club of UCSC - Colombo, Sri Lanka</p>
+                        <li className="presentation-wrapper">
+                            <h3>Oct. 2019 | Rust 101</h3>
+                            <span className="content-text">Hacktoberfest 2019 by Mozilla Club of UCSC | Colombo, Sri Lanka</span>
                         </li>
-                        <li>
-                            <p>Sep. 2018</p><p>-</p><p>Lightning talk on Phoenix</p><p>-</p><p>ownCloud Conference 2018 - Nuremberg, Germany</p>
+                        <li className="presentation-wrapper">
+                            <h3>Sep. 2018 | Lightning talk on Phoenix</h3>
+                            <span className="content-text">ownCloud Conference 2018 | Nuremberg, Germany</span>
                         </li>
                     </ul>
                 </div>

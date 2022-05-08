@@ -10,17 +10,52 @@ const PeoplePage = () => (
             </div>
             <div className="section-items">
                 <h2>Advisors</h2>
-                <ul>
-                    <li><p>Dr. Nalin Ranasinghe</p><p>-</p><p>Senior Lecturer at University of Colombo</p></li>
-                    <li><p>Dr. Mohammad Nabeel</p><p>-</p><p>Research Scientist at Qatar Computing Research Institute (QCRI)</p></li>
-                    <li><p>Mr. Gihan Seneviratne</p><p>-</p><p>Senior Lecturer at University of Colombo</p></li>
-                    <li><p>Dr. Noel Fernando</p><p>-</p><p>Senior Lecturer at University of Colombo</p></li>
+                <ul className="people-wrapper">
+                    <li className="content-text">
+                        Dr. Nalin Ranasinghe <br />
+                        <span className="institute-text">
+                            Senior Lecturer | University of Colombo
+                        </span>
+                    </li>
+                    <li className="content-text">
+                        Dr. Mohammad Nabeel <br />
+                        <span className="institute-text">
+                            Research Scientist | Qatar Computing Research Institute (QCRI)
+                        </span>
+                    </li>
+                    <li className="content-text">
+                        Mr. Gihan Seneviratne <br />
+                        <span className="institute-text">
+                            Senior Lecturer | University of Colombo
+                        </span>
+                    </li>
+                    <li className="content-text">
+                        Dr. Noel Fernando <br />
+                        <span className="institute-text">
+                            Senior Lecturer | University of Colombo
+                        </span>
+                    </li>
                 </ul>
-                <h2>Colleagues</h2>
-                <ul>
-                    <li><p>Ms. Disni Rathnayake</p><p>-</p><p>Research Assistant at University of Colombo</p></li>
-                    <li><p>Mr. Amila Indika</p><p>-</p><p>Lecturer (On contract) at University of Peradeniya</p></li>
-                    <li><p>Mr. Indrajith Ekanayake</p><p>-</p><p>Visiting Lecturer at Open University of Sri Lanka</p></li>
+                <h2 className="people-subtitle">Colleagues</h2>
+                <ul className="people-wrapper">
+                    <li className="content-text">
+                        Ms. Disni Rathnayake <br />
+                        <span className="institute-text">
+                        Research Assistant | University of Colombo
+                        </span>
+                    </li>
+                    <li className="content-text">
+                        Mr. Amila Indika <br />
+                        <span className="institute-text">
+                        Lecturer (On contract) | University of Peradeniya
+                        </span>
+                    </li>
+                    <li className="content-text">
+                        Mr. Indrajith Ekanayake <br />
+                        <span className="institute-text">
+                        Visiting Lecturer | Open University of Sri Lanka
+                        </span>
+                    </li>
                 </ul>
             </div>
          </div>

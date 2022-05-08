@@ -2,29 +2,22 @@
   display: flex;
   flex-direction: column;
 
-  li {
-    display: flex;
-    flex-direction: column;
+  .projects-wrapper {
+    line-height: 1.25;
+    margin-top: 2rem;
+  }
 
-    padding-bottom: 1rem;
+  .date-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
 
-    div {
-      display: flex;
-      flex-direction: row;
+  .tools-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
 
-      p {
-        line-height: 0.1rem;
-
-        padding-right: 0.5rem;
-      }
-
-      .projectTitle{
-        font-weight: bold;
-      }
-    }
-
-    p {
-      line-height: 0.1rem;
-    }
+  .content-text {
+    font-size: 0.96rem;
   }
 }

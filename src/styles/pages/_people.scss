@@ -2,8 +2,23 @@
   display: flex;
   flex-direction: column;
 
-  li {
-    display: flex;
-    flex-direction: row;
+  .people-subtitle {
+    margin-top: 3.5rem;
+  }
+
+  .people-wrapper {
+    line-height: 1.25;
+    margin-top: 2rem;    
+
+    .content-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0.4rem 0;
+
+      .institute-text {
+        font-size: 0.9rem;
+        font-weight: 100;
+      }
+    }
   }
 }

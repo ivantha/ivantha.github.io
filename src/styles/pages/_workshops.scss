@@ -2,14 +2,12 @@
   display: flex;
   flex-direction: column;
 
-  li {
-    display: flex;
-    flex-direction: row;
-
-    height: 2rem;
-
-    p {
-      padding-right: 0.5rem;
+  .workshops-wrapper {
+    line-height: 1.25;
+    margin-top: 2rem; 
+    
+    .content-text {
+      font-size: 0.96rem;
     }
   }
 }

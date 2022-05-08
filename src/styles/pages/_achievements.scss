@@ -2,14 +2,22 @@
   display: flex;
   flex-direction: column;
 
-  li {
-    display: flex;
-    flex-direction: row;
+  .achievements-wrapper {
+    line-height: 1.25;
+    margin-top: 2rem;    
 
-    height: 2rem;
+    h3 {
+      margin-top: 0;
+    }
+    
+    .institute-text {
+      font-size: 0.9rem;
+      font-weight: 700;
 
-    p {
-      padding-right: 0.5rem;
+      &.country {
+        font-weight: 100;
+      }
     }
   }
+
 }
