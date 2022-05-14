@@ -11,7 +11,10 @@ const PublicationsPage = () => (
             <div className="section-items">
                 <ul>
                     <li>
-                        <p>[Conference] <b>Oshan Mudannayake</b>, Nalin Ranasinghe, "kMatrix: A Space Efficient Streaming Graph Summarization Technique", in 10th IEEE International Conference on Information and Automation for Sustainability (ICIAfS) 2021  Colombo, Sri Lanka, Aug. 2021. <a href="https://ieeexplore.ieee.org/document/9606137">DOI: 10.1109/ICIAfS52090.2021.9606137</a></p>
+                        <span>[Conference] <b>Oshan Mudannayake</b>, Nalin Ranasinghe, "kMatrix: A Space Efficient Streaming Graph Summarization Technique", in 10th IEEE International Conference on Information and Automation for Sustainability (ICIAfS) 2021  Colombo, Sri Lanka, Aug. 2021. <a
+                            className="link" href="https://ieeexplore.ieee.org/document/9606137">DOI: 10.1109/ICIAfS52090.2021.9606137</a></span>
+                        <br/>
+                        <span><a className="link" href="/2021_kmatrix_a_space_efficient_streaming_graph_summarization_technique.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a></span>
                     </li>
                 </ul>
             </div>
