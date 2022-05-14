@@ -22,6 +22,7 @@ const Layout = ({ children }) => {
                     <Link to="/presentations">Presentations</Link>
                     <Link to="/volunteering">Volunteering</Link>
                     <Link to="/people">People</Link>
+                    <Link to="/articles">Articles</Link>
                     <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
                     <Link to="/about">About</Link>
                 </div>

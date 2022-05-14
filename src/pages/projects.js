@@ -14,9 +14,10 @@ const ProjectsPage = () => (
                         <h3>Realtime Property Evaluation of Large Streaming Graphs</h3>
                         <span className="tools-text">Graphs | Graph Summarization | Python</span><br />
                         <span className="content-text">Final year research project carried on the area of massive streaming graph summarization.</span><br />
-                        <span className="date-text">Jan. 2019 - Jan. 2020</span>
+                        <span className="date-text">Jan. 2019 - Jan. 2020</span><br />
+                        <span><a className="link" href="https://github.com/ivantha/rpelsg" target="_blank" rel="noopener noreferrer">[Source]</a></span>
                     </li>
-                    <li className="projects-wrapper">                        
+                    <li className="projects-wrapper">
                         <h3>TessTA</h3>
                         <span className="tools-text">ML | OCR | React | Java | Spring Boot | Hibernate | Tesseract | AWS</span><br />
                         <span className="content-text">OCR Solution for Sinhala language using Tesseract OCR Engine.</span><br />
