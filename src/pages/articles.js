@@ -11,7 +11,7 @@ const ArticlesPage = () => (
             <div className="section-items">
                 <uli>
                     <li>
-                        
+
                     </li>
                 </uli>
             </div>
