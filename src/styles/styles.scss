@@ -109,10 +109,10 @@ h3 {
 }
 
 .link {
-  color: #1772d0;
+  color: $pf-link-color;
   font-weight: bold;
   text-decoration: none;
 }
 .link:hover {
-  color: #F9A825;
+  color: $pf-link-hover-color;
 }
