@@ -3,6 +3,94 @@
     .profile-img {
         height: 200px;
         margin-bottom: 1rem;
-        width: auto;        
+        width: auto;
+    }
+
+    .section-items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    
+        .about-me {
+            flex: 2;
+            height: fit-content;
+            margin-right: 1.5rem;
+            min-width: 500px;            
+            padding-right: 1.5rem;            
+    
+            .profile-card {
+                display: flex;
+                margin-bottom: 3rem;
+    
+                .img-container {
+                    align-items: flex-end;
+                    background-color: $pf-scrollbar-track-bg;
+                    display: flex;
+                    max-width: 250px;
+                    min-width: 250px;
+                    
+                }
+    
+                .profile-description {
+                    align-self: flex-end;
+                    margin-left: 1rem;
+    
+                    h3 {
+                        margin-top: 0;
+                    }
+    
+                    .content-text {
+                        font-size: 0.96rem;
+                    }
+                }
+            }
+    
+            .contact-details {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-bottom: 2rem;
+    
+                .contact-section {
+                    min-width: 310px;
+    
+                    .contact-item {
+                        align-items: center;
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 0.8rem;    
+    
+                        span {
+                            margin-left: 1.5rem;
+                        }
+                    }
+                }
+            }
+    
+            .research-interests {
+                margin-bottom: 3rem;
+            }
+        }
+    
+        .news-section {
+            flex: 1;
+            min-width: 250px;
+    
+            .news-content {
+                align-self: center;
+                margin-bottom: 1rem;
+    
+               .date-text {
+                    font-size: 0.9rem;
+                    font-weight: 700;
+                }
+    
+                .content-text {
+                    font-size: 0.96rem;
+                }
+            }
+        }
+    
     }
 }
+
