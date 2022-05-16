@@ -4,6 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import news from "../data/news"
+import orgs from "../data/orgs"
 
 const IndexPage = () => {
     return (
@@ -22,15 +23,12 @@ const IndexPage = () => {
                                 />
                             </div>
                             <div className="profile-description">
-                                <h2>Hello world</h2>
+                                <h2>Hello world!</h2>
                                 <span className="content-text">
-                                    I am a Senior Data Science Engineer at WSO2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Nunc mattis enim ut tellus elementum. Tincidunt augue interdum
-                                    velit euismod. Id velit ut tortor pretium viverra.
+                                    I am a Senior Data Science Engineer at {orgs.wso2.anchor}. I graduated from {orgs.ucsc.anchor} with an honours degree in Computer Science. I am currently engaged in research projects at {orgs.ucsc.anchor} and {orgs.score.anchor}.
                                     <br/>
-                                    Volutpat blandit aliquam etiam erat velit scelerisque in dictum. Ut tristique et egestas quis ipsum suspendisse ultrices.
-                                    Aliquam eleifend mi in nulla. Proin sed libero enim sed faucibus. Iaculis at erat pellentesque adipiscing commodo elit
-                                    at imperdiet dui. Ornare suspendisse sed nisi lacus sed viverra tellus in.
+                                    My research interests lie in the intersection of reinforcement learning and computer games.
+                                    {/*I am particularly interested in studying about intelligent agents that improve with experience.*/}
                                 </span>
                             </div>
                         </div>
