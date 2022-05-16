@@ -3,7 +3,6 @@ import "../styles/styles.scss"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
-import { Link } from "gatsby"
 
 const IndexPage = () => {
     return (
