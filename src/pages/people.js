@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import people from "../data/people"
 
 const PeoplePage = () => (
     <Layout>
@@ -12,56 +13,42 @@ const PeoplePage = () => (
                 <h2>Advisors</h2>
                 <ul className="people-wrapper">
                     <li className="content-text">
-                        <a className="link" href="https://ucsc.cmb.ac.lk/profile/dnr/" target="_blank" rel="noopener noreferrer">Dr. Nalin Ranasinghe</a>
+                        {people.nalinranasinghe.anchor}
                         <br/>
-                        <span className="institute-text">
-                            Senior Lecturer | University of Colombo
-                        </span>
+                        <span className="institute-text">{people.nalinranasinghe.position}</span>
                     </li>
                     <li className="content-text">
-                        <a className="link" href="https://www.hbku.edu.qa/en/staff/dr-mohamed-nabeel" target="_blank" rel="noopener noreferrer">Dr. Mohammad Nabeel</a>
+                        {people.mohammadnabeel.anchor}
                         <br/>
-                        <span className="institute-text">
-                            Research Scientist | Qatar Computing Research Institute (QCRI)
-                        </span>
+                        <span className="institute-text">{people.mohammadnabeel.position}</span>
                     </li>
                     <li className="content-text">
-                        <a className="link" href="https://ucsc.cmb.ac.lk/profile/gps/" target="_blank" rel="noopener noreferrer">Mr. Gihan Seneviratne</a>
+                        {people.gihanseneviratne.anchor}
                         <br/>
-                        <span className="institute-text">
-                            Senior Lecturer | University of Colombo
-                        </span>
+                        <span className="institute-text">{people.gihanseneviratne.position}</span>
                     </li>
                     <li className="content-text">
-                        <a className="link" href="https://ucsc.cmb.ac.lk/profile/nas/" target="_blank" rel="noopener noreferrer">Dr. Noel Fernando</a>
+                        {people.noelfernando.anchor}
                         <br/>
-                        <span className="institute-text">
-                            Senior Lecturer | University of Colombo
-                        </span>
+                        <span className="institute-text">{people.noelfernando.position}</span>
                     </li>
                 </ul>
                 <h2 className="people-subtitle">Colleagues</h2>
                 <ul className="people-wrapper">
                     <li className="content-text">
-                        <a className="link" href="https://www.linkedin.com/in/disni-rathnayake-3178b210b/" target="_blank" rel="noopener noreferrer">Ms. Disni Rathnayake</a>
+                        {people.disnirathnayake.anchor}
                         <br/>
-                        <span className="institute-text">
-                            Research Assistant | University of Colombo
-                        </span>
+                        <span className="institute-text">{people.disnirathnayake.position}</span>
                     </li>
                     <li className="content-text">
-                        <a className="link" href="https://www.linkedin.com/in/amila-indika/" target="_blank" rel="noopener noreferrer">Mr. Amila Indika</a>
+                        {people.amilaindika.anchor}
                         <br/>
-                        <span className="institute-text">
-                            Lecturer (On contract) | University of Peradeniya
-                        </span>
+                        <span className="institute-text">{people.amilaindika.position}</span>
                     </li>
                     <li className="content-text">
-                        <a className="link" href="https://www.linkedin.com/in/indrajithek/" target="_blank" rel="noopener noreferrer">Mr. Indrajith Ekanayake</a>
+                        {people.indrajithekanayake.anchor}
                         <br/>
-                        <span className="institute-text">
-                            Visiting Lecturer | Open University of Sri Lanka
-                        </span>
+                        <span className="institute-text">{people.indrajithekanayake.position}</span>
                     </li>
                 </ul>
             </div>
