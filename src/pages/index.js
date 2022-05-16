@@ -11,6 +11,7 @@ const IndexPage = () => {
         <Layout>
             <div className="homeLayout section-wrapper">
                 <div className="section-items">
+
                     <div className="about-me">
                         <div className="profile-card">
                             <div className="img-container">
@@ -32,98 +33,100 @@ const IndexPage = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="research-interests">
-                            <h2>Research Interests</h2>
-                            <span>Reinforcement Learning | Machine Learning | Artificial Intelligence</span><br />
-                            <span>Game Theory | Computer Games</span>
-                        </div>
-                        <h2>Contact Details</h2>
-                        <div className="contact-details">
-                            <div className="contact-section">
-                                <div className="contact-item">
-                                    <StaticImage
-                                        src="../images/phone.png"
-                                        alt="Phone"
-                                        placeholder="blurred"
-                                        height={14}
-                                        layout="fixed"
-                                    />
-                                    <span>(+94) 71 908 4020</span>
+                        <div className="contact-details-section">
+                            <div className="contact-details">
+                                <div className="contact-section">
+                                    <div className="contact-item">
+                                        <StaticImage
+                                            src="../images/phone.png"
+                                            alt="Phone"
+                                            placeholder="blurred"
+                                            height={14}
+                                            layout="fixed"
+                                        />
+                                        <span>(+94) 71 908 4020</span>
+                                    </div>
+                                    <div className="contact-item">
+                                        <StaticImage
+                                            src="../images/email.png"
+                                            alt="email"
+                                            placeholder="blurred"
+                                            height={11}
+                                            layout="fixed"
+                                        />
+                                        <span>oshan.ivantha@gmail.com</span>
+                                    </div>
+                                    <div className="contact-item">
+                                        <StaticImage
+                                            src="../images/google-scholar.png"
+                                            alt="google scholar"
+                                            placeholder="blurred"
+                                            height={16}
+                                            layout="fixed"
+                                        />
+                                        <span><a className="link" href="https://scholar.google.com/citations?user=2FA0RngAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></span>
+                                    </div>
+                                    <div className="contact-item">
+                                        <StaticImage
+                                            src="../images/research-gate.png"
+                                            alt="research gate"
+                                            placeholder="blurred"
+                                            height={16}
+                                            layout="fixed"
+                                        />
+                                        <span><a className="link" href="https://www.researchgate.net/profile/Oshan-Mudannayake" target="_blank" rel="noopener noreferrer">ResearchGate</a></span>
+                                    </div>
                                 </div>
-                                <div className="contact-item">
-                                    <StaticImage
-                                        src="../images/email.png"
-                                        alt="email"
-                                        placeholder="blurred"
-                                        height={11}
-                                        layout="fixed"
-                                    />
-                                    <span>oshan.ivantha@gmail.com</span>
-                                </div>
-                                <div className="contact-item">
-                                    <StaticImage
-                                        src="../images/google-scholar.png"
-                                        alt="google scholar"
-                                        placeholder="blurred"
-                                        height={16}
-                                        layout="fixed"
-                                    />
-                                    <span><a className="link" href="https://scholar.google.com/citations?user=2FA0RngAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></span>
-                                </div>
-                                <div className="contact-item">
-                                    <StaticImage
-                                        src="../images/research-gate.png"
-                                        alt="research gate"
-                                        placeholder="blurred"
-                                        height={16}
-                                        layout="fixed"
-                                    />
-                                    <span><a className="link" href="https://www.researchgate.net/profile/Oshan-Mudannayake" target="_blank" rel="noopener noreferrer">ResearchGate</a></span>
-                                </div>
-                            </div>
-                            <div className="contact-section">
-                                <div className="contact-item">
-                                    <StaticImage
-                                        src="../images/arxiv.png"
-                                        alt="arXiv"
-                                        placeholder="blurred"
-                                        height={16}
-                                        layout="fixed"
-                                    />
-                                    <span><a className="link" href="https://arxiv.org/search/cs?searchtype=author&query=Mudannayake%2C+O" target="_blank" rel="noopener noreferrer">arXiv</a></span>
-                                </div>
-                                <div className="contact-item">
-                                    <StaticImage
-                                        src="../images/twitter.png"
-                                        alt="twitter"
-                                        placeholder="blurred"
-                                        height={13}
-                                        layout="fixed"
-                                    />
-                                    <span><a className="link" href="https://twitter.com/_ivantha" target="_blank" rel="noopener noreferrer">_ivantha</a></span>
-                                </div>
-                                <div className="contact-item">
-                                    <StaticImage
-                                        src="../images/linkedin-in.png"
-                                        alt="linkedin-in"
-                                        placeholder="blurred"
-                                        height={15}
-                                        layout="fixed"
-                                    />
-                                    <span><a className="link" href="https://www.linkedin.com/in/ivantha/" target="_blank" rel="noopener noreferrer">ivantha</a></span>
-                                </div>
-                                <div className="contact-item">
-                                    <StaticImage
-                                        src="../images/github.png"
-                                        alt="github"
-                                        placeholder="blurred"
-                                        height={15}
-                                        layout="fixed"
-                                    />
-                                    <span><a className="link" href="https://github.com/ivantha" target="_blank" rel="noopener noreferrer">ivantha</a></span>
+                                <div className="contact-section">
+                                    <div className="contact-item">
+                                        <StaticImage
+                                            src="../images/arxiv.png"
+                                            alt="arXiv"
+                                            placeholder="blurred"
+                                            height={16}
+                                            layout="fixed"
+                                        />
+                                        <span><a className="link" href="https://arxiv.org/search/cs?searchtype=author&query=Mudannayake%2C+O" target="_blank" rel="noopener noreferrer">arXiv</a></span>
+                                    </div>
+                                    <div className="contact-item">
+                                        <StaticImage
+                                            src="../images/twitter.png"
+                                            alt="twitter"
+                                            placeholder="blurred"
+                                            height={13}
+                                            layout="fixed"
+                                        />
+                                        <span><a className="link" href="https://twitter.com/_ivantha" target="_blank" rel="noopener noreferrer">_ivantha</a></span>
+                                    </div>
+                                    <div className="contact-item">
+                                        <StaticImage
+                                            src="../images/linkedin-in.png"
+                                            alt="linkedin-in"
+                                            placeholder="blurred"
+                                            height={15}
+                                            layout="fixed"
+                                        />
+                                        <span><a className="link" href="https://www.linkedin.com/in/ivantha/" target="_blank" rel="noopener noreferrer">ivantha</a></span>
+                                    </div>
+                                    <div className="contact-item">
+                                        <StaticImage
+                                            src="../images/github.png"
+                                            alt="github"
+                                            placeholder="blurred"
+                                            height={15}
+                                            layout="fixed"
+                                        />
+                                        <span><a className="link" href="https://github.com/ivantha" target="_blank" rel="noopener noreferrer">ivantha</a></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="research-interests">
+                        <h2>Research Interests</h2>
+                        <span>Reinforcement Learning | Machine Learning | Artificial Intelligence</span><br />
+                        <span>Game Theory | Computer Games</span>
                     </div>
                     <div className="news-section">
                         <h2>News</h2>
@@ -138,6 +141,7 @@ const IndexPage = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
         </Layout>
     )

@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 
+  h1 {
+    white-space: nowrap;
+  }
+
   .projects-wrapper {
     line-height: 1.25;
     margin-top: 2rem;
