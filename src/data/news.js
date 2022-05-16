@@ -9,7 +9,7 @@ export default [
     },
     {
         date: "May 01, 2021",
-        content: <>I joined {orgs.ucsc.anchor} as a part time Research Assistant to work on predicting the solid waste generation in Sri Lanka. This project is supervised by {people.noelfernando.anchor}.</>
+        content: <>I joined {orgs.ucsc.anchor} as a part time Research Assistant to work on predicting the solid waste generation in Sri Lanka. This project is supervised by {people.noelfernando.anchorithhonorifics}.</>
     },
     {
         date: "Sep 29, 2020",

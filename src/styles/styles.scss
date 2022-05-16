@@ -28,11 +28,13 @@ html {
 
 body,html {
 
-  font-family: $pf-primary-font;
-  font-size: 15px;
   margin: 0;
   padding: 0;
   transition: all 0.4s;
+
+  font-family: $pf-primary-font;
+  font-size: 14px;
+  color: $pf-primary-color;
 }
 
 * {
