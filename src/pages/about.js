@@ -65,10 +65,11 @@ const AboutPage = () => (
                 <div>
                     <h2>Hobbies and Interests</h2>
                     <ul>
-                        <li>Some hobby 1</li>
-                        <li>My hobby 2</li>
-                        <li>Extra hobby 3</li>
-                        <li>Random activity I like to do 4</li>
+                        <li>Avid reader</li>
+                        <li>Gamer</li>
+                        <li>Dreams about traveling</li>
+                        <li>Likes food(can cook)</li>
+                        <li>Borderline otaku</li>
                     </ul>
                 </div>
             </div>
