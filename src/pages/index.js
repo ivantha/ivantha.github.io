@@ -126,7 +126,7 @@ const IndexPage = () => {
                     </div>
                     <div className="news-section">
                         <h2>News</h2>
-                        {news.slice(0, 10).map(newsItem => (
+                        {news.slice(0, 5).map(newsItem => (
                             <div className="news-content">
                                 <span className="date-text">{newsItem.date}</span><br />
                                 <span className="content-text">{newsItem.content}</span>
