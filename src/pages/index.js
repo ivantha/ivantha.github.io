@@ -22,7 +22,7 @@ const IndexPage = () => {
                                 />
                             </div>
                             <div className="profile-description">
-                                <h2>Hello there,</h2>
+                                <h2>Hello world</h2>
                                 <span className="content-text">
                                     I am a Senior Data Science Engineer at WSO2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua. Nunc mattis enim ut tellus elementum. Tincidunt augue interdum
