@@ -3,6 +3,7 @@ import "../styles/styles.scss"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
+import { Link } from "gatsby"
 
 const IndexPage = () => {
     return (
@@ -36,9 +37,6 @@ const IndexPage = () => {
                             <span>Reinforcement Learning | Machine Learning | Artificial Intelligence</span><br />
                             <span>Game Theory | Computer Games</span>
                         </div>
-                        {/* <div>
-                            <p className="note">Can we have a collection (somewhere in this site) of logos of the places/orgs/companies that I've been involved in?</p>
-                        </div> */}
                         <h2>Contact Details</h2>
                         <div className="contact-details">
                             <div className="contact-section">
@@ -156,6 +154,10 @@ const IndexPage = () => {
                         <div className="news-content">
                             <span className="date-text">March 18, 2022</span><br />
                             <span className="content-text">Viverra suspendisse potenti nullam ac. Augue ut lectus arcu bibendum at varius.</span>
+                        </div>
+                        <div className="news-content">
+                            {/*<span><Link className="link" to="/news">[See more]</Link></span>*/}
+                            <span><a className="link" href="/news">[See more]</a></span>
                         </div>
                     </div>
                 </div>
