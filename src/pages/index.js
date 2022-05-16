@@ -3,6 +3,7 @@ import "../styles/styles.scss"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
+import news from "../data/news"
 
 const IndexPage = () => {
     return (
@@ -128,36 +129,13 @@ const IndexPage = () => {
                     </div>
                     <div className="news-section">
                         <h2>News</h2>
+                        {news.slice(0, 10).map(newsItem => (
+                            <div className="news-content">
+                                <span className="date-text">{newsItem.date}</span><br />
+                                <span className="content-text">{newsItem.content}</span>
+                            </div>
+                        ))}
                         <div className="news-content">
-                            <span className="date-text">April 17, 2022</span><br />
-                            <span className="content-text">Faucibus et molestie ac feugiat sed lectus.</span>
-                        </div>
-                        <div className="news-content">
-                            <span className="date-text">March 18, 2022</span><br />
-                            <span className="content-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                        </div>
-                        <div className="news-content">
-                            <span className="date-text">March 18, 2022</span><br />
-                            <span className="content-text">Ut tristique et egestas quis. Cursus turpis massa tincidunt dui.</span>
-                        </div>
-                        <div className="news-content">
-                            <span className="date-text">March 18, 2022</span><br />
-                            <span className="content-text">Sapien faucibus et molestie ac feugiat sed lectus vestibulum.</span>
-                        </div>
-                        <div className="news-content">
-                            <span className="date-text">March 18, 2022</span><br />
-                            <span className="content-text">Integer quis auctor elit sed vulputate mi sit. Facilisis volutpat est velit egestas dui id. In hac habitasse platea dictumst vestibulum rhoncus.</span>
-                        </div>
-                        <div className="news-content">
-                            <span className="date-text">March 18, 2022</span><br />
-                            <span className="content-text">At imperdiet dui accumsan sit amet.</span>
-                        </div>
-                        <div className="news-content">
-                            <span className="date-text">March 18, 2022</span><br />
-                            <span className="content-text">Viverra suspendisse potenti nullam ac. Augue ut lectus arcu bibendum at varius.</span>
-                        </div>
-                        <div className="news-content">
-                            {/*<span><Link className="link" to="/news">[See more]</Link></span>*/}
                             <span><a className="link" href="/news">[See more]</a></span>
                         </div>
                     </div>

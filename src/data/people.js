@@ -34,6 +34,14 @@ export default {
         anchor: <a className="link" href="https://www.hbku.edu.qa/en/staff/dr-mohamed-nabeel" target="_blank" rel="noopener noreferrer">Mohammad Nabeel</a>,
         anchorithhonorifics: <a className="link" href="https://www.hbku.edu.qa/en/staff/dr-mohamed-nabeel" target="_blank" rel="noopener noreferrer">Dr. Mohammad Nabeel</a>,
     },
+    leoniesolomons: {
+        name: "Leonie Solomons",
+        namewithhonorifics: "Dr. Leonie Solomons",
+        position: "Executive Director at Consulting Systems Pty Ltd, Language Matters",
+        url: "https://www.linkedin.com/in/leonie-solomons-2aa5b31a?originalSubdomain=lk",
+        anchor: <a className="link" href="https://www.linkedin.com/in/leonie-solomons-2aa5b31a/?originalSubdomain=lk" target="_blank" rel="noopener noreferrer">Leonie Solomons</a>,
+        anchorithhonorifics: <a className="link" href="https://www.linkedin.com/in/leonie-solomons-2aa5b31a?originalSubdomain=lk" target="_blank" rel="noopener noreferrer">Dr. Leonie Solomons</a>,
+    },
 
     disnirathnayake: {
         name: "Disni Rathnayake",
