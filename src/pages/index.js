@@ -25,10 +25,12 @@ const IndexPage = () => {
                                 <span className="content-text">
                                     I am a Senior Data Science Engineer at WSO2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua. Nunc mattis enim ut tellus elementum. Tincidunt augue interdum
-                                    velit euismod. Id velit ut tortor pretium viverra.<br />
+                                    velit euismod. Id velit ut tortor pretium viverra.
+                                    <br/>
                                     Volutpat blandit aliquam etiam erat velit scelerisque in dictum. Ut tristique et egestas quis ipsum suspendisse ultrices.
                                     Aliquam eleifend mi in nulla. Proin sed libero enim sed faucibus. Iaculis at erat pellentesque adipiscing commodo elit
-                                    at imperdiet dui. Ornare suspendisse sed nisi lacus sed viverra tellus in.</span>
+                                    at imperdiet dui. Ornare suspendisse sed nisi lacus sed viverra tellus in.
+                                </span>
                             </div>
                         </div>
                         <div className="research-interests">
@@ -128,7 +130,7 @@ const IndexPage = () => {
                         <h2>News</h2>
                         <div className="news-content">
                             <span className="date-text">April 17, 2022</span><br />
-                            <span className="content-text">Started working on 'Sinhala OCR' with Indrajith Ekanayake.</span>
+                            <span className="content-text">Faucibus et molestie ac feugiat sed lectus.</span>
                         </div>
                         <div className="news-content">
                             <span className="date-text">March 18, 2022</span><br />
