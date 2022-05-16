@@ -3,17 +3,20 @@
   flex-direction: column;
 
   .volunteering-subtitle {
-    margin-top: 3.5rem;
+  }
+
+  .volunteering-divider {
+    height: 0.5rem;
   }
 
   .volunteering-wrapper {
     line-height: 1.25;
-    margin-top: 2rem;    
+    margin-top: 2rem;
 
     h3 {
       margin-top: 0;
     }
-    
+
     .institute-text {
       font-size: 0.9rem;
       font-weight: 700;

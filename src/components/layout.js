@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
             <div className="container">
                 <div className="navbar">
                     <Link to="/">Home</Link>
+                    <Link to="/research">Research</Link>
                     <Link to="/publications">Publications</Link>
                     <Link to="/experience">Experience</Link>
                     <Link to="/projects">Projects</Link>

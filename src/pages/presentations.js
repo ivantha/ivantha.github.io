@@ -10,7 +10,7 @@ const PresentationsPage = () => (
             </div>
             <div className="section-items">
                 <div>
-                    <h2>Mentoring</h2>
+                    <h2 className="presentation-subtitle">Conferences</h2>
                     <ul>
                         <li className="presentation-wrapper">
                             <h3>Jul. 2021 | [Conference] kMatrix: A Space Efficient Streaming Graph Summarization Technique</h3>
@@ -22,6 +22,7 @@ const PresentationsPage = () => (
                         </li>
                     </ul>
                 </div>
+                <div className="presentation-divider"></div>
                 <div>
                     <h2 className="presentation-subtitle">Seminars</h2>
                     <ul>

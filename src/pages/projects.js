@@ -11,23 +11,10 @@ const ProjectsPage = () => (
             <div className="section-items">
                 <ul>
                     <li className="projects-wrapper">
-                        <h3>Realtime Property Evaluation of Large Streaming Graphs</h3>
-                        <span className="tools-text">Graphs | Graph Summarization | Python</span><br />
-                        <span className="content-text">Final year research project carried on the area of massive streaming graph summarization.</span><br />
-                        <span className="date-text">Jan. 2019 - Jan. 2020</span><br />
-                        <span><a className="link" href="https://github.com/ivantha/rpelsg" target="_blank" rel="noopener noreferrer">[Source]</a></span>
-                    </li>
-                    <li className="projects-wrapper">
                         <h3>TessTA</h3>
                         <span className="tools-text">ML | OCR | React | Java | Spring Boot | Hibernate | Tesseract | AWS</span><br />
                         <span className="content-text">OCR Solution for Sinhala language using Tesseract OCR Engine.</span><br />
                         <span className="date-text">Jan. 2018 - Mar. 2020</span>
-                    </li>
-                    <li className="projects-wrapper">
-                        <h3>Machine Learning over Encrypted Data</h3>
-                        <span className="tools-text">ML | Encryption | Tensorflow | Python | Google Cloud Platform</span><br />
-                        <span className="content-text">I worked on adding a layer over Tensorflow to facilitate machine learning on encrypted data over a distributed network of machines.</span><br />
-                        <span className="date-text">Jul. 2018 - Jan. 2019</span>
                     </li>
                     <li className="projects-wrapper">
                         <h3>Intelligent Traffic Light System</h3>

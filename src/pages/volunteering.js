@@ -10,7 +10,7 @@ const VolunteeringPage = () => (
             </div>
             <div className="section-items">
                 <div>
-                    <h2>Mentoring</h2>
+                    <h2 className="research-subtitle">Mentoring</h2>
                     <ul>
                         <li className="volunteering-wrapper">
                             <span className="institute-text">2021 | Mentor</span>
@@ -62,6 +62,7 @@ const VolunteeringPage = () => (
                         </li>
                     </ul>
                 </div>
+                <div className="volunteering-divider"></div>
                 <div>
                     <h2 className="volunteering-subtitle">Committee Positions</h2>
                     <ul>

@@ -3,12 +3,15 @@
   flex-direction: column;
 
   .people-subtitle {
-    margin-top: 3.5rem;
+  }
+
+  .people-divider {
+    height: 0.5rem;
   }
 
   .people-wrapper {
     line-height: 1.25;
-    margin-top: 2rem;    
+    margin-top: 2rem;
 
     .content-text {
       font-size: 1.1rem;

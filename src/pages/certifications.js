@@ -107,6 +107,7 @@ const CertificationsPage = () => (
                         </li>
                     </ul>
                 </div>
+                <div className="certification-divider"></div>
                 <div>
                     <h2 className="certification-subtitle">Professional Certifications</h2>
                     <ul>

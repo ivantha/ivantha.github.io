@@ -3,13 +3,16 @@
   flex-direction: column;
 
   .presentation-subtitle {
-    margin-top: 3.5rem;
+  }
+
+  .presentation-divider {
+    height: 0.5rem;
   }
 
   .presentation-wrapper {
     line-height: 1.25;
-    margin-top: 2rem; 
-    
+    margin-top: 2rem;
+
     .content-text {
       font-size: 0.96rem;
     }
