@@ -8,11 +8,11 @@
             flex-wrap: wrap;
 
             .profile-card {
-                margin-right: 1.5rem;
-                padding-right: 1.5rem;
                 display: flex;
                 margin-bottom: 3rem;
+                margin-right: 1.5rem;
                 max-width: 80%;
+                padding-right: 1.5rem;           
 
                 .img-container {
                     align-items: flex-end;
@@ -20,7 +20,6 @@
                     display: flex;
                     max-width: 250px;
                     min-width: 100px;
-
                 }
 
                 .profile-description {
