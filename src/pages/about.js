@@ -1,4 +1,5 @@
 import React from "react"
+import "../styles/pages/about.scss"
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 

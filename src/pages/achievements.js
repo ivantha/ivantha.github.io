@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../styles/pages/achievements.scss"
 import Layout from "../components/layout"
 import achievements from "../data/achievements"
 

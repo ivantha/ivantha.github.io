@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../styles/pages/workshops.scss"
 import Layout from "../components/layout"
 
 const WorkshopsPage = () => (
@@ -35,7 +35,7 @@ const WorkshopsPage = () => (
                     </li>
                 </ul>
             </div>
-        </div> 
+        </div>
     </Layout>
 )
 

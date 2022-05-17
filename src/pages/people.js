@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../styles/pages/people.scss"
 import Layout from "../components/layout"
 import people from "../data/people"
 

@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../styles/pages/experience.scss"
 import Layout from "../components/layout"
 
 const ExperiencePage = () => (

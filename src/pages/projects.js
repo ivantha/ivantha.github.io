@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../styles/pages/projects.scss"
 import Layout from "../components/layout"
 
 const ProjectsPage = () => (

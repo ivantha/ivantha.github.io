@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../styles/pages/certifications.scss"
 import Layout from "../components/layout"
 
 const CertificationsPage = () => (

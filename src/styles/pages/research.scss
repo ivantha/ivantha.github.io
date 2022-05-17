@@ -1,12 +1,17 @@
-.projectsLayout {
+@import "../variables";
+
+.researchLayout {
   display: flex;
   flex-direction: column;
 
-  h1 {
-    white-space: nowrap;
+  .research-subtitle {
   }
 
-  .projects-wrapper {
+  .research-divider {
+    height: 0.5rem;
+  }
+
+  .research-wrapper {
     line-height: 1.25;
     margin-top: 2rem;
   }

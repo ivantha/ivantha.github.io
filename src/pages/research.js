@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../styles/pages/research.scss"
 import Layout from "../components/layout"
 
 const ResearchPage = () => (
