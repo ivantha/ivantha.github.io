@@ -47,7 +47,7 @@ const ResearchPage = () => (
                             <span className="tools-text">Graphs | Graph Summarization | Python</span><br />
                             <span className="content-text">Final year research project carried on the area of massive streaming graph summarization.</span><br />
                             <span className="date-text">Jan. 2019 - Jan. 2020</span><br />
-                            <span><a className="link" href="https://github.com/ivantha/rpelsg" target="_blank" rel="noopener noreferrer">[Source]</a></span>
+                            <span><a className="link" href="https://docs.google.com/presentation/d/1HQr98OLbt1QBcVf28NeYp1ws2XV7admlYiCcRN5dnHA/edit?usp=sharing" target="_blank" rel="noopener noreferrer">[Presentation]</a> <a className="link" href="https://github.com/ivantha/rpelsg" target="_blank" rel="noopener noreferrer">[Source]</a> <a className="link" href="/2021_kmatrix_a_space_efficient_streaming_graph_summarization_technique.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a></span>
                         </li>
                         <li className="projects-wrapper">
                             <h3>Machine Learning over Encrypted Data</h3>
