@@ -53,7 +53,7 @@ const IndexPage = () => {
                                         height={11}
                                         layout="fixed"
                                     />
-                                    <span>oshan.ivantha@gmail.com</span>
+                                    <span>oshan [DOT] ivantha [AT] gmail [DOT] com</span>
                                 </div>
                                 <div className="contact-item">
                                     <StaticImage
