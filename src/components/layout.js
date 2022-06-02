@@ -27,6 +27,7 @@ const Layout = ({ children }) => {
                     <Link to="/articles">Articles</Link>
                     <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
                     <Link to="/about">About</Link>
+                    <Link className="officeHours" to="/officehours">Office Hours</Link>
                 </div>
                 <main>
                     {children}
