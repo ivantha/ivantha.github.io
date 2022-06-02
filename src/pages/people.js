@@ -71,7 +71,10 @@ const PeoplePage = () => (
             <div className="section-items">
                 <ul className="people-wrapper">
                     <li className="content-text">
-                        <span className="institute-text">asdasdasdasd</span>
+                        <span className="institute-text">I am currently supervised by <a className="link" href={people.noelfernando.link} target="_blank" rel="noopener noreferrer">{people.noelfernando.namewithhonorifics}</a> and <a className="link" href={people.mohammadnabeel.link} target="_blank" rel="noopener noreferrer">{people.mohammadnabeel.namewithhonorifics}</a> on multiple research work.</span>
+                    </li>
+                    <li className="content-text">
+                        <span className="institute-text">I was advised by <a className="link" href={people.nalinranasinghe.link} target="_blank" rel="noopener noreferrer">{people.nalinranasinghe.namewithhonorifics}</a> in my bachelor's thesis at UCSC.</span>
                     </li>
                 </ul>
                 <div className="people-divider"></div>
