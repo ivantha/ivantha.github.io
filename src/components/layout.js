@@ -8,8 +8,8 @@ const Layout = ({ children }) => {
 
     return (
         <>
-            <Helmet htmlAttributes={{lang: 'en'}}>
-                <meta charSet="utf-8"/>
+            <Helmet htmlAttributes={{ lang: "en" }}>
+                <meta charSet="utf-8" name="Oshan Mudannayake | AI Researcher"/>
                 <title>Ivantha</title>
                 <link rel="canonical" href="https://ivantha.github.io/"/>
             </Helmet>
