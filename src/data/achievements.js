@@ -1,6 +1,4 @@
-import React from "react"
-
-export default [
+const achievements = [
     {
         place: "Merit Award",
         event: "Datathon (SLIIT Codefest) by Sri Lanka Institute of Information Technology",
@@ -92,3 +90,5 @@ export default [
         country: "Sri Lanka"
     },
 ]
+
+export default achievements

@@ -12,7 +12,7 @@ const OfficeHoursPage = () => (
             </div>
             <div className="section-items">
                 <span>Inspired by <a className="link" href="https://blog.evjang.com/2020/06/free-office-hours-for-non-traditional.html" target="_blank" rel="noopener noreferrer">Eric Jang.</a></span>
-                <p>This part of the site is under construction. Please reach me through my email for office hours.</p>
+
             </div>
         </div>
     </Layout>

@@ -1,6 +1,4 @@
-import React from "react"
-
-export default {
+const people = {
     nalinranasinghe: {
         name: "Nalin Ranasinghe",
         namewithhonorifics: "Dr. Nalin Ranasinghe",
@@ -82,3 +80,5 @@ export default {
         researchgate: undefined,
     },
 }
+
+export default people

@@ -2,7 +2,7 @@ import people from "./people"
 import orgs from "./orgs"
 import React from "react"
 
-export default [
+const news = [
     {
         date: "Apr 17, 2022",
         content: <>Started working towards an improved Sinhala OCR solution with <a className="link" href={people.indrajithekanayake.link} target="_blank" rel="noopener noreferrer">{people.indrajithekanayake.name}</a>.</>
@@ -47,8 +47,6 @@ export default [
         date: "Apr 23, 2018",
         content: <>I got selected as for the GSoC 2018 under {orgs.cernhsf.anchor}|{orgs.owncloud.anchor}|{orgs.aarnet.anchor} to carry out the project <a className="link" href="https://summerofcode.withgoogle.com/archive/2018/projects/5334913901395968" target="_blank" rel="noopener noreferrer">Petabyte-Scale Cloud Storage File Manager</a>.</>
     },
-    // {
-    //     date: "",
-    //     content: <></>
-    // },
 ]
+
+export default news

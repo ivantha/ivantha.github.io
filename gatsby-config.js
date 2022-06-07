@@ -15,12 +15,6 @@ module.exports = {
     },
     plugins: [
         "gatsby-plugin-sass",
-        {
-            resolve: "gatsby-plugin-google-analytics",
-            options: {
-                "trackingId": "G-9BMKFHVG74",
-            },
-        },
         "gatsby-plugin-image",
         {
             resolve: "gatsby-plugin-manifest",
@@ -60,5 +54,6 @@ module.exports = {
                 },
             },
         },
+        "gatsby-plugin-react-helmet",
     ],
 }

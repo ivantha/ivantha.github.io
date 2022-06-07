@@ -1,6 +1,6 @@
 import React from "react"
 
-export default {
+const orgs = {
     dreamteam: {
         fullname: "Dreamteam IT Solutions",
         shortname: "Dreamteam IT Solutions",
@@ -53,3 +53,5 @@ export default {
         anchor: <a className="link" href="https://wso2.com/" target="_blank" rel="noopener noreferrer">WSO2</a>,
     },
 }
+
+export default orgs
