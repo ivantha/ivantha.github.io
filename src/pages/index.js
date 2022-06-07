@@ -34,7 +34,7 @@ const IndexPage = () => {
                                 </div>
                                 <div className="contact-item">
                                     <StaticImage src="../images/email.png" alt="email" placeholder="blurred" height={11} layout="fixed"/>
-                                    <span>oshan [DOT] ivantha [AT] gmail [DOT] com</span>
+                                    <span>oshan [DOT] ivantha [AT] g**** [DOT] com</span>
                                 </div>
                                 <div className="contact-item">
                                     <StaticImage src="../images/google-scholar.png" alt="google scholar" placeholder="blurred" height={16} layout="fixed"/>
@@ -72,7 +72,7 @@ const IndexPage = () => {
                     <div className="news-section">
                         <h2>News</h2>
                         {news.slice(0, 5).map(newsItem => (
-                            <div className="news-content">
+                            <div key={newsItem.date} className="news-content">
                                 <span className="date-text">{newsItem.date}</span><br />
                                 <span className="content-text">{newsItem.content}</span>
                             </div>

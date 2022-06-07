@@ -81,7 +81,7 @@ const PeoplePage = () => (
                 <h2 className="people-subtitle">Alphabetical list</h2>
                 <ul className="people-wrapper">
                     {alphabeticalList.map(person => (
-                        <li className="content-text">
+                        <li key={person.name} className="content-text">
                             {person.name}<br/>
                             <span className="institute-text">{person.position}</span><br/>
                             <span className="institute-text">
