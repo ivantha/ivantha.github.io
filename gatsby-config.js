@@ -44,5 +44,21 @@ module.exports = {
                 icon: 'src/images/favicon.png',
             },
         },
+        {
+            resolve: `gatsby-plugin-google-gtag`,
+            options: {
+                trackingIds: [
+                    'G-9YY9CJLD5V',
+                ],
+                pluginConfig: {
+                    // Puts tracking script in the head instead of the body
+                    head: false,
+                    // Setting this parameter is also optional
+                    respectDNT: false,
+                    // Avoids sending pageview hits from custom paths
+                    exclude: ['/preview/**', '/do-not-track/me/too/'],
+                },
+            },
+        },
     ],
 }
