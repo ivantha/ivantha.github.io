@@ -53,7 +53,8 @@ const ResearchPage = () => (
                             <h3>Machine Learning over Encrypted Data</h3>
                             <span className="tools-text">ML | Encryption | Tensorflow | Python | Google Cloud Platform</span><br />
                             <span className="content-text">I worked on adding a layer over Tensorflow to facilitate machine learning on encrypted data over a distributed network of machines.</span><br />
-                            <span className="date-text">Jul. 2018 - Jan. 2019</span>
+                            <span className="date-text">Jul. 2018 - Jan. 2019</span><br />
+                            <span><a className="link" href="/mloed_slasscom_poster.png" target="_blank" rel="noopener noreferrer">[Poster]</a></span>
                         </li>
                     </ul>
                 </div>
