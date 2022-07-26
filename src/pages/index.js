@@ -21,8 +21,9 @@ const IndexPage = () => {
                                 <span className="content-text">
                                     I am a Senior Data Science Engineer at {orgs.wso2.anchor}. I graduated from {orgs.ucsc.anchor} with an honours degree in Computer Science. I am currently engaged in research projects at {orgs.ucsc.anchor} and {orgs.score.anchor}.
                                     <br />
-                                    My research interests lie in the intersection of reinforcement learning and computer games.
-                                    {/*I am particularly interested in studying about intelligent agents that improve with experience.*/}
+                                    My research interests primarily lie in the intersection of reinforcement learning and computer games. I am particularly interested in studying about intelligent agents that improve with experience.
+                                    <br />
+                                    In a much broader sense, I like to work on theoretical and application research topics involving in artificial intelligence.
                                 </span>
                             </div>
                         </div>
