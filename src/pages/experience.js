@@ -67,19 +67,19 @@ const ExperiencePage = () => (
                 <ul>
                     <li className="research-wrapper">
                         <h3>Senior Data Science Engineer (Full-time)</h3>
-                        <span className="institute-text">WSO2</span>
-                        <ul className="research-content-text">
-                            <li></li>
-                        </ul>
+                        <span className="institute-text">WSO2</span><br />
+                        {/*<ul className="research-content-text">*/}
+                        {/*    <li></li>*/}
+                        {/*</ul>*/}
                         <span className="date-country-text">Nov. 2021 - Present</span><br />
                         <span className="date-country-text">Sri Lanka</span>
                     </li>
                     <li className="research-wrapper">
                         <h3>Data Science Engineer (Full-time)</h3>
-                        <span className="institute-text">WSO2</span>
-                        <ul className="research-content-text">
-                            <li>Improved the HR aspects of the company by introducing a model to predict the workforce requirement in the coming years.</li>
-                        </ul>
+                        <span className="institute-text">WSO2</span><br />
+                        {/*<ul className="research-content-text">*/}
+                        {/*    <li>Improved the HR aspects of the company by introducing a model to predict the workforce requirement in the coming years.</li>*/}
+                        {/*</ul>*/}
                         <span className="date-country-text">Apr. 2021 - Oct. 2021</span><br />
                         <span className="date-country-text">Sri Lanka</span>
                     </li>
