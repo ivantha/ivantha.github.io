@@ -41,6 +41,10 @@ const IndexPage = () => {
                                     <span><a className="link" href="https://scholar.google.com/citations?user=2FA0RngAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></span>
                                 </div>
                                 <div className="contact-item">
+                                    <StaticImage src="../images/kaggle.png" alt="kaggle" placeholder="blurred" height={16} layout="fixed"/>
+                                    <span><a className="link" href="https://www.kaggle.com/ivantha" target="_blank" rel="noopener noreferrer">Kaggle</a></span>
+                                </div>
+                                <div className="contact-item">
                                     <StaticImage src="../images/research-gate.png" alt="research gate" placeholder="blurred" height={16} layout="fixed"/>
                                     <span><a className="link" href="https://www.researchgate.net/profile/Oshan-Mudannayake" target="_blank" rel="noopener noreferrer">ResearchGate</a></span>
                                 </div>
