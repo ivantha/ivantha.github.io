@@ -27,6 +27,8 @@ const PublicationsPage = () => (
                     <li>
                         <span><b>Oshan Mudannayake</b>, Disni Rathnayake, Jerome Dinal Herath, Dinuni K Fernando, MGNAS Fernando "Exploring Machine Learning and Deep Learning Approaches for Multi-Step Forecasting in Municipal Solid Waste Generation"</span>
                         <br/>
+                        <span>Preprint submitted to <i><a className="link" href="https://www.journals.elsevier.com/waste-management" target="_blank" rel="noopener noreferrer">Waste Management</a></i>.</span>
+                        <br/>
                         <span>
                             <a className="link" href="/swm_project.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>
                             {/*<a className="link" href="xxxxx">[Cite]</a>*/}
