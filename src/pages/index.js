@@ -72,7 +72,7 @@ const IndexPage = () => {
                     <div className="research-interests">
                         <h2>Research Interests</h2>
                         <span>Reinforcement Learning | Machine Learning | Artificial Intelligence</span><br />
-                        <span>Game Theory | Computer Games</span>
+                        <span>Game Theory | Computer Games</span><br />
                         <span>Computer Vision</span>
                     </div>
                     <div className="news-section">
