@@ -25,12 +25,6 @@ const ResearchPage = () => (
                             <span className="date-text">Apr. 2022 - Present</span>
                         </li>
                         <li className="research-wrapper">
-                            <h3>Modeling and Prediction of Municipal Solid Waste Generation in Sri Lanka using Machine Learning Techniques</h3>
-                            <span className="tools-text">Darts | Python</span><br />
-                            {/*<span className="content-text">DESCRIPTION</span><br />*/}
-                            <span className="date-text">May 2021 - Present</span>
-                        </li>
-                        <li className="research-wrapper">
                             <h3>Machine Learning based Internet Domain Entity Matching and its Applications</h3>
                             <span className="tools-text">Scikit-learn | Tensorflow | Python</span><br />
                             {/*<span className="content-text">DESCRIPTION</span><br />*/}
@@ -43,9 +37,16 @@ const ResearchPage = () => (
                     <h2 className="research-subtitle">Completed</h2>
                     <ul>
                         <li className="research-wrapper">
+                            <h3>Modeling and Prediction of Municipal Solid Waste Generation in Sri Lanka using Machine Learning Techniques</h3>
+                            <span className="tools-text">Darts | Python</span><br />
+                            <span className="content-text">This project aimed to model and forecast solid waste generation patterns in cities using machine learning techniques.</span><br />
+                            <span className="date-text">May 2021 - Jul. 2022</span><br />
+                            <span><a className="link" href="/swm_project.pdf" target="_blank" rel="noopener noreferrer">[Paper - Pending]</a></span>
+                        </li>
+                        <li className="research-wrapper">
                             <h3>Realtime Property Evaluation of Large Streaming Graphs</h3>
                             <span className="tools-text">Graphs | Graph Summarization | Python</span><br />
-                            <span className="content-text">Final year research project carried on the area of massive streaming graph summarization.</span><br />
+                            <span className="content-text">I investigated massive graph stream summarization techniques and proposed an improved graph sketch; kMatrix.</span><br />
                             <span className="date-text">Jan. 2019 - Jan. 2020</span><br />
                             <span><a className="link" href="https://docs.google.com/presentation/d/1HQr98OLbt1QBcVf28NeYp1ws2XV7admlYiCcRN5dnHA/edit?usp=sharing" target="_blank" rel="noopener noreferrer">[Presentation]</a> <a className="link" href="https://github.com/ivantha/rpelsg" target="_blank" rel="noopener noreferrer">[Source]</a> <a className="link" href="/2021_kmatrix_a_space_efficient_streaming_graph_summarization_technique.pdf" target="_blank" rel="noopener noreferrer">[Paper]</a></span>
                         </li>
