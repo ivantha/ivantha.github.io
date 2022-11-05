@@ -13,6 +13,12 @@ const ResearchPage = () => (
                     <h2 className="research-subtitle">Ongoing</h2>
                     <ul>
                         <li className="research-wrapper">
+                            <h3>Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles</h3>
+                            <span className="tools-text">CV | Tensorflow | OpenCV | Python</span><br />
+                            <span className="content-text">Our work attempts at detecting water surfaces using Unmanned Ariel Vehicles (UAV) footage.</span><br />
+                            <span className="date-text">Oct. 2022 - Present</span><br />
+                        </li>
+                        <li className="research-wrapper">
                             <h3>The Art of Optical Character Recognition on Printed Sinhala Text</h3>
                             <span className="tools-text">ML | OCR | Tessseract</span><br />
                             <span className="content-text">We aim to establish the benchmark for the Sinhala OCR for printed text.</span><br />

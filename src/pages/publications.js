@@ -22,12 +22,12 @@ const PublicationsPage = () => (
                     </li>
                 </ul>
                 <div className="publications-divider"></div>
-                <h2 className="publications-subtitle">Articles in Review</h2>
+                <h2 className="publications-subtitle">Accepted Articles</h2>
                 <ul>
                     <li>
                         <span>[Journal] <b>Oshan Mudannayake</b>, Disni Rathnayake, Jerome Dinal Herath, Dinuni K Fernando, MGNAS Fernando "Exploring Machine Learning and Deep Learning Approaches for Multi-Step Forecasting in Municipal Solid Waste Generation"</span>
                         <br/>
-                        <span>Submitted to <i><a className="link" href="https://ieeeaccess.ieee.org/" target="_blank" rel="noopener noreferrer">IEEE Access</a></i>.</span>
+                        <span>Accepted by <i><a className="link" href="https://ieeeaccess.ieee.org/" target="_blank" rel="noopener noreferrer">IEEE Access</a></i>.</span>
                         <br/>
                         <span>
                             <a className="link" href="/mudannayake2022exploring.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>
@@ -35,6 +35,21 @@ const PublicationsPage = () => (
                         </span>
                     </li>
                 </ul>
+                <div className="publications-divider"></div>
+                <h2 className="publications-subtitle">Articles in Review</h2>
+                <ul>
+                    <li>
+                        <span>[Conference] Harin Samaranayake, <b>Oshan Mudannayake</b>, Dushani Perera, Prabhash Kumarasinghe, Chathura Suduwella, Kasun De Zoysa, Prasad Wimalaratne "Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles"</span>
+                        <br/>
+                        <span>Submitted to <i><a className="link" href="https://cvpr2023.thecvf.com/" target="_blank" rel="noopener noreferrer">CVPR 2023</a></i>.</span>
+                        <br/>
+                        <span>
+                            {/*<a className="link" href="/mudannayake2022exploring.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>*/}
+                            {/*<a className="link" href="xxxxx">[Cite]</a>*/}
+                        </span>
+                    </li>
+                </ul>
+                <div className="publications-divider"></div>
                 <h2 className="publications-subtitle">Preprints</h2>
                 <ul>
                     <li>
