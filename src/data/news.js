@@ -1,27 +1,28 @@
 import people from "./people"
 import orgs from "./orgs"
 import React from "react"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const news = [
     {
         date: "Apr 17, 2022",
-        content: <>Started working towards an improved Sinhala OCR solution with <a className="link" href={people.indrajithekanayake.link} target="_blank" rel="noopener noreferrer">{people.indrajithekanayake.name}</a>.</>
+        content: <>Started working towards an improved Sinhala OCR solution with <OutboundLink className="link" href={people.indrajithekanayake.link} target="_blank" rel="noopener noreferrer">{people.indrajithekanayake.name}</OutboundLink>.</>
     },
     {
         date: "May 01, 2021",
-        content: <>I joined {orgs.ucsc.anchor} as a part time Research Assistant to work on predicting the solid waste generation in Sri Lanka. This project is supervised by <a className="link" href={people.noelfernando.link} target="_blank" rel="noopener noreferrer">{people.noelfernando.namewithhonorifics}</a>.</>
+        content: <>I joined {orgs.ucsc.anchor} as a part time Research Assistant to work on predicting the solid waste generation in Sri Lanka. This project is supervised by <OutboundLink className="link" href={people.noelfernando.link} target="_blank" rel="noopener noreferrer">{people.noelfernando.namewithhonorifics}</OutboundLink>.</>
     },
     {
         date: "Sep 29, 2020",
-        content: <>I joined {orgs.score.anchor} to work on a research to find ways to match internet domain entities using ML techniques with <a className="link" href={people.mohammadnabeel.link} target="_blank" rel="noopener noreferrer">{people.mohammadnabeel.namewithhonorifics}</a> @{orgs.qcri.anchor}.</>
+        content: <>I joined {orgs.score.anchor} to work on a research to find ways to match internet domain entities using ML techniques with <OutboundLink className="link" href={people.mohammadnabeel.link} target="_blank" rel="noopener noreferrer">{people.mohammadnabeel.namewithhonorifics}</OutboundLink> @{orgs.qcri.anchor}.</>
     },
     {
         date: "Jul 01, 2018",
-        content: <>I joined {orgs.ucsc.anchor} as a full-time Research Intern to work under the topic 'Machine Learning over Encrypted Data'. I will be supervised by <a className="link" href={people.nalinranasinghe.link} target="_blank" rel="noopener noreferrer">{people.nalinranasinghe.namewithhonorifics}</a>.</>
+        content: <>I joined {orgs.ucsc.anchor} as a full-time Research Intern to work under the topic 'Machine Learning over Encrypted Data'. I will be supervised by <OutboundLink className="link" href={people.nalinranasinghe.link} target="_blank" rel="noopener noreferrer">{people.nalinranasinghe.namewithhonorifics}</OutboundLink>.</>
     },
     {
         date: "Jan 18, 2018",
-        content: <>I started working part-time on developing an OCR solution for Sinhala language using Tesseract OCR Engine in collaboration with <a className="link" href={people.leoniesolomons.link} target="_blank" rel="noopener noreferrer">{people.leoniesolomons.namewithhonorifics}</a>.</>
+        content: <>I started working part-time on developing an OCR solution for Sinhala language using Tesseract OCR Engine in collaboration with <OutboundLink className="link" href={people.leoniesolomons.link} target="_blank" rel="noopener noreferrer">{people.leoniesolomons.namewithhonorifics}</OutboundLink>.</>
     },
     {
         date: "Feb 05, 2016",
@@ -45,7 +46,7 @@ const news = [
     },
     {
         date: "Apr 23, 2018",
-        content: <>I got selected as for the GSoC 2018 under {orgs.cernhsf.anchor}|{orgs.owncloud.anchor}|{orgs.aarnet.anchor} to carry out the project <a className="link" href="https://summerofcode.withgoogle.com/archive/2018/projects/5334913901395968" target="_blank" rel="noopener noreferrer">Petabyte-Scale Cloud Storage File Manager</a>.</>
+        content: <>I got selected as for the GSoC 2018 under {orgs.cernhsf.anchor}|{orgs.owncloud.anchor}|{orgs.aarnet.anchor} to carry out the project <OutboundLink className="link" href="https://summerofcode.withgoogle.com/archive/2018/projects/5334913901395968" target="_blank" rel="noopener noreferrer">Petabyte-Scale Cloud Storage File Manager</OutboundLink>.</>
     },
 ]
 
