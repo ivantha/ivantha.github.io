@@ -14,12 +14,13 @@ const PublicationsPage = () => {
                     <h2 className="publications-subtitle">Published Articles</h2>
                     <ul>
                         <li>
-                            <span>[Conference] <b>Oshan Mudannayake</b>, Nalin Ranasinghe, "kMatrix: A Space Efficient Streaming Graph Summarization Technique", in 10th IEEE International Conference on Information and Automation for Sustainability (ICIAfS) 2021  Colombo, Sri Lanka, Aug. 2021. <OutboundLink
+                            <span>[Conference] <b>Oshan Mudannayake</b>, Nalin Ranasinghe, "kMatrix: A Space Efficient Streaming Graph Summarization Technique", in <OutboundLink
+                                className="link" href="https://spsr.sltc.ac.lk/events/iciafs-2021/" target="_blank" rel="noopener noreferrer">10th IEEE International Conference on Information and Automation for Sustainability (ICIAfS) 2021</OutboundLink> Colombo, Sri Lanka, Aug. 2021. <OutboundLink
                                 className="link" href="https://ieeexplore.ieee.org/document/9606137">DOI: 10.1109/ICIAfS52090.2021.9606137</OutboundLink></span>
                             <br/>
                             <span>
                                 <OutboundLink className="link" href="/mudannayake2021kmatrix.pdf" target="_blank"
-                                   rel="noopener noreferrer">[PDF]</OutboundLink>
+                                              rel="noopener noreferrer">[PDF]</OutboundLink>
                                 {/*<a className="link" href="xxxxx">[Cite]</a>*/}
                             </span>
                         </li>
@@ -30,12 +31,13 @@ const PublicationsPage = () => {
                         <li>
                             <span>[Journal] <b>Oshan Mudannayake</b>, Disni Rathnayake, Jerome Dinal Herath, Dinuni K Fernando, MGNAS Fernando "Exploring Machine Learning and Deep Learning Approaches for Multi-Step Forecasting in Municipal Solid Waste Generation"</span>
                             <br/>
-                            <span>Accepted by <i><OutboundLink className="link" href="https://ieeeaccess.ieee.org/" target="_blank"
-                                                    rel="noopener noreferrer">IEEE Access</OutboundLink></i>.</span>
+                            <span>Accepted by <i><OutboundLink className="link" href="https://ieeeaccess.ieee.org/"
+                                                               target="_blank"
+                                                               rel="noopener noreferrer">IEEE Access</OutboundLink></i>.</span>
                             <br/>
                             <span>
                                 <OutboundLink className="link" href="/mudannayake2022exploring.pdf" target="_blank"
-                                   rel="noopener noreferrer">[PDF]</OutboundLink>
+                                              rel="noopener noreferrer">[PDF]</OutboundLink>
                                 {/*<a className="link" href="xxxxx">[Cite]</a>*/}
                             </span>
                         </li>
@@ -47,7 +49,8 @@ const PublicationsPage = () => {
                             <span>[Conference] Harin Samaranayake, <b>Oshan Mudannayake</b>, Dushani Perera, Prabhash Kumarasinghe, Chathura Suduwella, Kasun De Zoysa, Prasad Wimalaratne "Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles"</span>
                             <br/>
                             <span>Submitted to <i><OutboundLink className="link" href="https://cvpr2023.thecvf.com/"
-                                                     target="_blank" rel="noopener noreferrer">CVPR 2023</OutboundLink></i>.</span>
+                                                                target="_blank"
+                                                                rel="noopener noreferrer">CVPR 2023</OutboundLink></i>.</span>
                             <br/>
                             <span>
                                 {/*<a className="link" href="/mudannayake2022exploring.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>*/}
