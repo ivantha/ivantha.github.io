@@ -45,35 +45,25 @@ const ResearchPage = () => {
                         <h2 className="research-subtitle">Completed</h2>
                         <ul>
                             <li className="research-wrapper">
-                                <h3>Modeling and Prediction of Municipal Solid Waste Generation in Sri Lanka using
-                                    Machine Learning Techniques</h3>
+                                <h3>Modeling and Prediction of Municipal Solid Waste Generation in Sri Lanka using Machine Learning Techniques</h3>
                                 <span className="tools-text">ML | Time series | Darts | Python</span><br/>
                                 <span className="content-text">We aimed to model and forecast solid waste generation patterns in cities using machine learning techniques.</span><br/>
                                 <span className="date-text">May 2021 - Jul. 2022</span><br/>
-                                <span><OutboundLink className="link" href="/mudannayake2022exploring.pdf" target="_blank"
-                                         rel="noopener noreferrer">[Paper - Pending]</OutboundLink></span>
+                                <span><OutboundLink className="link" href="/mudannayake2022exploring.pdf" target="_blank" rel="noopener noreferrer">[Paper]</OutboundLink></span>
                             </li>
                             <li className="research-wrapper">
                                 <h3>Realtime Property Evaluation of Large Streaming Graphs</h3>
                                 <span className="tools-text">Graphs | Graph Summarization | Python</span><br/>
                                 <span className="content-text">We investigated massive graph stream summarization techniques and proposed an improved graph sketch; kMatrix.</span><br/>
                                 <span className="date-text">Jan. 2019 - Jan. 2020</span><br/>
-                                <span><OutboundLink className="link"
-                                         href="https://docs.google.com/presentation/d/1HQr98OLbt1QBcVf28NeYp1ws2XV7admlYiCcRN5dnHA/edit?usp=sharing"
-                                         target="_blank" rel="noopener noreferrer">[Presentation]</OutboundLink> <OutboundLink
-                                    className="link" href="https://github.com/ivantha/rpelsg" target="_blank"
-                                    rel="noopener noreferrer">[Source]</OutboundLink> <OutboundLink className="link"
-                                                                              href="/mudannayake2021kmatrix.pdf"
-                                                                              target="_blank"
-                                                                              rel="noopener noreferrer">[Paper]</OutboundLink></span>
+                                <span><OutboundLink className="link" href="https://docs.google.com/presentation/d/1HQr98OLbt1QBcVf28NeYp1ws2XV7admlYiCcRN5dnHA/edit?usp=sharing" target="_blank" rel="noopener noreferrer">[Presentation]</OutboundLink> <OutboundLink className="link" href="https://github.com/ivantha/rpelsg" target="_blank" rel="noopener noreferrer">[Source]</OutboundLink> <OutboundLink className="link" href="/mudannayake2021kmatrix.pdf" target="_blank" rel="noopener noreferrer">[Paper]</OutboundLink></span>
                             </li>
                             <li className="projects-wrapper">
                                 <h3>Machine Learning over Encrypted Data</h3>
                                 <span className="tools-text">ML | Encryption | SMPC | Tensorflow | Python | Google Cloud Platform</span><br/>
                                 <span className="content-text">We added a layer over Tensorflow to facilitate machine learning on encrypted data over a distributed network of machines.</span><br/>
                                 <span className="date-text">Jul. 2018 - Jan. 2019</span><br/>
-                                <span><OutboundLink className="link" href="/mloed_slasscom_poster.png" target="_blank"
-                                         rel="noopener noreferrer">[Poster]</OutboundLink></span>
+                                <span><OutboundLink className="link" href="/mloed_slasscom_poster.png" target="_blank" rel="noopener noreferrer">[Poster]</OutboundLink></span>
                             </li>
                         </ul>
                     </div>
