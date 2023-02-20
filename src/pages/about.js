@@ -17,6 +17,21 @@ const AboutPage = () => {
                             <div className="education-card">
                                 <div className="img-container ucsc-mal">
                                     <StaticImage
+                                        src="../images/uom.png"
+                                        alt="UoM"
+                                        placeholder="blurred"
+                                        objectFit="contain"
+                                    />
+                                </div>
+                                <div className="card-content">
+                                    <h3>University of Moratuwa</h3>
+                                    <h3>[Reading] M.Sc in Data Science & AI</h3>
+                                    <span className="date-text">Jan. 2023 - Present</span><br/>
+                                </div>
+                            </div>
+                            <div className="education-card">
+                                <div className="img-container ucsc-mal">
+                                    <StaticImage
                                         src="../images/ucsc.jpg"
                                         alt="UCSC"
                                         placeholder="blurred"
@@ -26,8 +41,7 @@ const AboutPage = () => {
                                 <div className="card-content">
                                     <h3>University of Colombo School of Computing</h3>
                                     <h3>B.Sc (Hons) in Computer Science</h3>
-                                    <span
-                                        className="tags-text">First Class Honors with a GPA of 3.61/4.0 (Top 5%)</span><br/>
+                                    <span className="tags-text">First Class Honors with a GPA of 3.61/4.0 (Top 5%)</span><br/>
                                     <span className="tags-text">Ranked 6th over 156 CS students</span><br/>
                                     <span className="tags-text">Thesis: “Summarization of Large Scale Streaming Graphs” (Grade A)</span><br/>
                                     <span className="content-text">
