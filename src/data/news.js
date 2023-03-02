@@ -5,10 +5,6 @@ import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const news = [
     {
-        date: "Apr 17, 2022",
-        content: <>Started working towards an improved Sinhala OCR solution with <OutboundLink className="link" href={people.indrajithekanayake.link} target="_blank" rel="noopener noreferrer">{people.indrajithekanayake.name}</OutboundLink>.</>
-    },
-    {
         date: "May 01, 2021",
         content: <>I joined {orgs.ucsc.anchor} as a part time Research Assistant to work on predicting the solid waste generation in Sri Lanka. This project is supervised by <OutboundLink className="link" href={people.noelfernando.link} target="_blank" rel="noopener noreferrer">{people.noelfernando.namewithhonorifics}</OutboundLink>.</>
     },

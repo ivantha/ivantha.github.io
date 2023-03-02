@@ -39,25 +39,22 @@ const PublicationsPage = () => {
                     {/*<ul>*/}
                     {/*    */}
                     {/*</ul>*/}
-                    <div className="publications-divider"></div>
-                    <h2 className="publications-subtitle">Articles in Review</h2>
+                    {/*<div className="publications-divider"></div>*/}
+                    {/*<h2 className="publications-subtitle">Articles in Review</h2>*/}
+                    {/*<ul>*/}
+                    {/*    */}
+                    {/*</ul>*/}
+                    {/*<div className="publications-divider"></div>*/}
+                    <h2 className="publications-subtitle">Preprints</h2>
                     <ul>
                         <li>
-                            <span>[Conference] Harin Samaranayake, <b>Oshan Mudannayake</b>, Dushani Perera, Prabhash Kumarasinghe, Chathura Suduwella, Kasun De Zoysa, Prasad Wimalaratne "Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles"</span>
-                            <br/>
-                            <span>Submitted to <i><OutboundLink className="link" href="https://cvpr2023.thecvf.com/"
-                                                                target="_blank"
-                                                                rel="noopener noreferrer">CVPR 2023</OutboundLink></i>.</span>
+                            <span>Harin Samaranayake, <b>Oshan Mudannayake</b>, Dushani Perera, Prabhash Kumarasinghe, Chathura Suduwella, Kasun De Zoysa, Prasad Wimalaratne "Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles"</span>
                             <br/>
                             <span>
                                 {/*<a className="link" href="/mudannayake2022exploring.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>*/}
                                 {/*<a className="link" href="xxxxx">[Cite]</a>*/}
                             </span>
                         </li>
-                    </ul>
-                    <div className="publications-divider"></div>
-                    <h2 className="publications-subtitle">Preprints</h2>
-                    <ul>
                         <li>
                             <span><b>Oshan Mudannayake</b>, Amila Indika, Upul Jayasinghe, Gyu Myoung Lee "Privacy Preserved Machine Learning using Secure Multi-party Computing: A Survey"</span>
                             <br/>
