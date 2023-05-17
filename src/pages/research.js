@@ -49,7 +49,7 @@ const ResearchPage = () => {
                                 <span className="tools-text">ML | Time series | Darts | Python</span><br/>
                                 <span className="content-text">We aimed to model and forecast solid waste generation patterns in cities using machine learning techniques.</span><br/>
                                 <span className="date-text">May 2021 - Jul. 2022</span><br/>
-                                <span><OutboundLink className="link" href="/mudannayake2022exploring.pdf" target="_blank" rel="noopener noreferrer">[Paper]</OutboundLink></span>
+                                <span><OutboundLink className="link" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9950270" target="_blank" rel="noopener noreferrer">[Paper]</OutboundLink></span>
                             </li>
                             <li className="research-wrapper">
                                 <h3>Realtime Property Evaluation of Large Streaming Graphs</h3>
