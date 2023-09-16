@@ -15,16 +15,10 @@ const ResearchPage = () => {
                         <h2 className="research-subtitle">Ongoing</h2>
                         <ul>
                             <li className="research-wrapper">
-                                <h3>Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles</h3>
-                                <span className="tools-text">CV | Tensorflow | OpenCV | Python</span><br/>
-                                <span className="content-text">Our work attempts at detecting water surfaces using Unmanned Ariel Vehicles (UAV) footage.</span><br/>
-                                <span className="date-text">Oct. 2022 - Present</span><br/>
-                            </li>
-                            <li className="research-wrapper">
                                 <h3>The Art of Optical Character Recognition on Printed Sinhala Text</h3>
                                 <span className="tools-text">ML | OCR | Tessseract</span><br/>
                                 <span className="content-text">We aim to establish the benchmark for the Sinhala OCR for printed text.</span><br/>
-                                <span className="date-text">Apr. 2022 - Present</span>
+                                <span className="date-text">Aug. 2023 - Present</span>
                             </li>
                             <li className="research-wrapper">
                                 <h3>Privacy Preserved Machine Learning using Secure Multi-party Computing</h3>
@@ -44,6 +38,13 @@ const ResearchPage = () => {
                     <div>
                         <h2 className="research-subtitle">Completed</h2>
                         <ul>
+                            <li className="research-wrapper">
+                                <h3>Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles</h3>
+                                <span className="tools-text">CV | Tensorflow | OpenCV | Python</span><br/>
+                                <span className="content-text">Our work attempts at detecting water surfaces using Unmanned Ariel Vehicles (UAV) footage.</span><br/>
+                                <span className="date-text">Oct. 2022 - Present</span><br/>
+                                <span><OutboundLink className="link" href="https://www.sciencedirect.com/science/article/pii/S1047320323001839?dgcid=author" target="_blank" rel="noopener noreferrer">[Paper]</OutboundLink></span>
+                            </li>
                             <li className="research-wrapper">
                                 <h3>Modeling and Prediction of Municipal Solid Waste Generation in Sri Lanka using Machine Learning Techniques</h3>
                                 <span className="tools-text">ML | Time series | Darts | Python</span><br/>
