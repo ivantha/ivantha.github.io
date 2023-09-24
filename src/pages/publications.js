@@ -53,7 +53,7 @@ const PublicationsPage = () => {
                     {/*    */}
                     {/*</ul>*/}
                     {/*<div className="publications-divider"></div>*/}
-                    <h2 className="publications-subtitle">Preprints</h2>
+                    <h2 className="publications-subtitle">Articles Under Review</h2>
                     <ul>
                         <li>
                             <span>Sahan Dissanayaka*, <b>Oshan Mudannayake*</b>, Thilina Halloluwa, Chameera De Silva "ImageLab: Simplifying Image Processing Exploration for Novices and Experts Alike"</span>
