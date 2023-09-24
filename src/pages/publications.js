@@ -56,14 +56,10 @@ const PublicationsPage = () => {
                     <h2 className="publications-subtitle">Preprints</h2>
                     <ul>
                         <li>
+                            <span>Sahan Dissanayaka*, <b>Oshan Mudannayake*</b>, Thilina Halloluwa, Chameera De Silva "ImageLab: Simplifying Image Processing Exploration for Novices and Experts Alike"</span>
+                        </li>
+                        <li>
                             <span><b>Oshan Mudannayake</b>, Amila Indika, Upul Jayasinghe, Gyu Myoung Lee "Privacy Preserved Machine Learning using Secure Multi-party Computing: A Survey"</span>
-                            <br/>
-                            {/*<span>Submitted to <i><a className="link" href="https://ieeeaccess.ieee.org/" target="_blank" rel="noopener noreferrer">IEEE Access</a></i>.</span>*/}
-                            <br/>
-                            <span>
-                                {/*<a className="link" href="/mudannayake2022privacy.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>*/}
-                                {/*<a className="link" href="xxxxx">[Cite]</a>*/}
-                            </span>
                         </li>
                     </ul>
                 </div>
