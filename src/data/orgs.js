@@ -53,6 +53,12 @@ const orgs = {
         url: "https://wso2.com/",
         anchor: <OutboundLink className="link" href="https://wso2.com/" target="_blank" rel="noopener noreferrer">WSO2</OutboundLink>,
     },
+    salus: {
+        fullname: "Salus",
+        shortname: "Salus",
+        url: "https://www.saluslabs.ai/",
+        anchor: <OutboundLink className="link" href="https://www.saluslabs.ai/" target="_blank" rel="noopener noreferrer">Salus</OutboundLink>,
+    },
 }
 
 export default orgs

@@ -22,7 +22,7 @@ class IndexPage extends React.Component {
                                 <div className="profile-description">
                                     <h2>Hello world!</h2>
                                     <span className="content-text">
-                                    I am a Senior Data Science Engineer at {orgs.wso2.anchor}. I graduated from {orgs.ucsc.anchor} with an honours degree in Computer Science. I am currently engaged in research projects at {orgs.ucsc.anchor} and {orgs.score.anchor}.
+                                    I am the Lead ML Engineer at {orgs.wso2.salus}. I graduated from {orgs.ucsc.anchor} with an honours degree in Computer Science. I am currently engaged in research projects at {orgs.ucsc.anchor} and {orgs.score.anchor}.
                                     <br/>
                                     My research interests primarily lie in the intersection of reinforcement learning and computer games. I am particularly interested in studying about intelligent agents that improve with experience.
                                     <br/>
