@@ -24,7 +24,9 @@ const PublicationItem = ({ pub }) => {
     const venueLabel = pub.venue_type ? `[${pub.venue_type}] ` : ""
     const venueHasYear = venue && pub.year && new RegExp(`\\b${pub.year}\\b`).test(venue)
     const yearSuffix = pub.year && !venueHasYear ? `, ${pub.year}` : ""
-    const venueText = venue ? `, in ${venue}${yearSuffix}` : (pub.year ? `, ${pub.year}` : "")
+    const venueText = pub.doi_url
+        ? (venue ? `, in ${venue}${yearSuffix}` : (pub.year ? `, ${pub.year}` : ""))
+        : ""
 
     return (
         <li>

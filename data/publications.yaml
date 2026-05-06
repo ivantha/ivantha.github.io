@@ -16,7 +16,7 @@ items:
       - { name: "O. Mudannayake", self: true }
     title: "Paired-Offset Reevaluation: A Diagnostic for Selection-Induced Optimism in Reinforcement-Learning Hyperparameter Search"
     title_casual: "Paired-Offset Reevaluation: Selection-Bias Diagnostic for RL HPO"
-    venue_casual: "AutoML 2026 (Methods Track) · Under Review"
+    venue_casual: "Under Review"
 
   - venue_type: "Workshop"
     include_in: [casual]
@@ -25,7 +25,7 @@ items:
       - { name: "O. Mudannayake", self: true }
     title: "Affordable Reinforcement Learning Hyperparameter Rigor: A Paired-Offset Reevaluation Catalogue"
     title_casual: "Affordable RL Hyperparameter Rigor: Paired-Offset Reevaluation"
-    venue_casual: "GlobalSouthML @ ICML 2026 · Under Review (non-archival)"
+    venue_casual: "Under Review"
 
   - venue_type: "Preprint"
     include_in: [casual]
@@ -37,7 +37,7 @@ items:
       - { name: "C. De Silva" }
     title: "ImageLab: Simplifying Image Processing Exploration for Novices and Experts Alike"
     title_casual: "ImageLab: Simplifying Image Processing Exploration"
-    venue_casual: "Preprint · Under Review"
+    venue_casual: "Preprint"
 
   - venue_type: "Manuscript"
     include_in: [casual]
