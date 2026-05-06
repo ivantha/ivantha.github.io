@@ -1,51 +1,62 @@
 # Certifications. Academic lists all 13; casual shows the 8 ML-focused ones.
 # `name_casual` overrides the name just for the casual CV when the phrasing
 # differs (e.g. Oracle cert includes the score on casual).
+# `url:` is the public verification URL (e.g. Coursera certificate page).
+# `pdf_url:` is a local PDF link relative to the site root (used by the
+# website to render a [Certificate] link alongside `url`).
 
 - name: "Advanced Machine Learning on Google Cloud Specialization"
   institute: "Coursera"
   year: 2021
   include_in: [academic, casual]
+  url: "https://www.coursera.org/account/accomplishments/specialization/certificate/GEQ3Y52BD6QM"
 
 - name: "Data Engineering, Big Data, and Machine Learning on GCP Specialization"
   institute: "Coursera"
   year: 2021
   include_in: [academic, casual]
+  url: "https://www.coursera.org/account/accomplishments/specialization/certificate/R839DUKFK5F6"
   pdf_url: "/certificates/2021.03.28 - Data Engineering, Big Data, and Machine Learning on GCP Specialization.pdf"
 
 - name: "Machine Learning on Google Cloud Specialization"
   institute: "Coursera"
   year: 2021
   include_in: [academic, casual]
+  url: "https://www.coursera.org/account/accomplishments/specialization/certificate/B4DZM89QCHTY"
 
 - name: "Deep Learning Specialization"
   institute: "Coursera"
   year: 2020
   include_in: [academic, casual]
+  url: "https://www.coursera.org/account/accomplishments/specialization/certificate/UTW8ESZG3W85"
   pdf_url: "/certificates/2020.10.19 - Deep Learning Specialization.pdf"
 
 - name: "Natural Language Processing Specialization"
   institute: "Coursera"
   year: 2020
   include_in: [academic, casual]
+  url: "https://www.coursera.org/account/accomplishments/specialization/certificate/M7CXZX366Y4G"
   pdf_url: "/certificates/2020.10.30 - Natural Language Processing Specialization.pdf"
 
 - name: "DeepLearning.AI TensorFlow Developer Specialization"
   institute: "Coursera"
   year: 2020
   include_in: [academic, casual]
+  url: "https://www.coursera.org/account/accomplishments/specialization/certificate/B5J28B9449EC"
   pdf_url: "/certificates/2020.11.11 - DeepLearning.AI TensorFlow Developer.pdf"
 
 - name: "Generative Adversarial Networks (GANs) Specialization"
   institute: "Coursera"
   year: 2020
   include_in: [academic, casual]
+  url: "https://www.coursera.org/account/accomplishments/specialization/certificate/UH6H72AWTZB4"
   pdf_url: "/certificates/2020.11.19 - Generative Adversarial Networks (GANs) Specialization.pdf"
 
 - name: "Qwicklabs quests on ML and Data Science"
   institute: "Qwicklabs"
   year: 2020
   include_in: [academic]
+  url: "https://www.qwiklabs.com/public_profiles/a3117be0-5025-4aea-a423-07b1c7bfc75a"
 
 - name: "Oracle Certified Professional Java SE 6 Programmer"
   name_casual: "Oracle Certified Professional | Java SE 6 Programmer - (Score : 98/100)"

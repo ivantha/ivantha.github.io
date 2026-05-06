@@ -3,6 +3,7 @@ import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const SUPER = /#super\[([^\]]+)\]/g
 const ITALIC_QUOTED = /_"([^"]+)"_/g
+const ITALIC_PLAIN = /(?<![A-Za-z0-9])_([^_\n]+?)_(?![A-Za-z0-9])/g
 const LINK_TOKEN = /\[([^\]\n]+)\]/g
 
 const splitOn = (input, regex, render) => {
@@ -29,6 +30,7 @@ export const renderTypstMd = (input) => {
     if (input == null) return null
     let parts = [String(input)]
     parts = flatMap(parts, ITALIC_QUOTED, (text) => <em>“{text}”</em>)
+    parts = flatMap(parts, ITALIC_PLAIN, (text) => <em>{text}</em>)
     parts = flatMap(parts, SUPER, (text) => <sup>{text}</sup>)
     return <>{parts.map((p, i) => <React.Fragment key={i}>{p}</React.Fragment>)}</>
 }
@@ -38,6 +40,7 @@ export const renderWithLinks = (input, links) => {
     const lookup = links || {}
     let parts = [String(input)]
     parts = flatMap(parts, ITALIC_QUOTED, (text) => <em>“{text}”</em>)
+    parts = flatMap(parts, ITALIC_PLAIN, (text) => <em>{text}</em>)
     parts = flatMap(parts, SUPER, (text) => <sup>{text}</sup>)
     parts = flatMap(parts, LINK_TOKEN, (label) => {
         const href = lookup[label]
