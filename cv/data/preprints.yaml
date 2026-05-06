@@ -1,0 +1,6 @@
+- authors:
+    - { name: "Sahan Dissanayaka", equal_contribution: true }
+    - { name: "O. Mudannayake", self: true, equal_contribution: true }
+    - { name: "Thilina Halloluwa" }
+    - { name: "Chameera De Silva" }
+  title: "ImageLab: Simplifying Image Processing Exploration for Novices and Experts Alike"

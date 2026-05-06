@@ -1,0 +1,196 @@
+# Work history, most-recent first.
+#
+# `category`      — "professional" | "research"; academic CV splits on this,
+#                   casual shows them mixed chronologically.
+# `bullets`       — both variants render these under the role; academic shows
+#                   each bullet's stack as a small muted sub-line.
+# `advisor`       — academic research rows show "· Advised by …"; casual omits.
+# `employment_type` — e.g. "Full-time", "Contract"; academic appends "(…)" to
+#                   the role; casual omits (role stays clean).
+# Date canonicalized to user-reconciled values (see plan).
+
+- id: paradigmai-lead
+  include_in: [academic, casual]
+  category: professional
+  role_academic: "Lead Machine Learning Engineer"
+  role_casual: "Lead ML Engineer"
+  company: "ParadigmAI"
+  location: "Colombo"
+  dates: "Aug 2023 - Present"
+  employment_type: "Full-time"
+  bullets:
+    - text: "Built an LLM-backed platform that predicts a respondent's survey answers from their prior response history."
+      stack: "FastAPI, Python, React, TypeScript, LangChain, OpenAI, AWS"
+    - text: "Designed the translation backend for a low-code system compiling graph-structured workflows into executable code."
+      stack: "Python, LlamaIndex, OpenAI, Anthropic"
+      include_in: [academic, casual]
+    - text: "Engineered a multi-transport LLM gateway (REST and gRPC) with Postgres-backed key rotation, vendor allow/deny policies, OpenAI/Anthropic fallback, and request-level tracing for production LLM traffic."
+      text_casual: "Engineered a multi-transport LLM gateway (REST/gRPC) with key rotation, vendor fallback (OpenAI/Anthropic), and request-level tracing for production traffic."
+      stack: "NestJS, TypeScript, PostgreSQL, gRPC, OpenAI, Anthropic"
+    - text: "Implemented a Celery-on-SQS transcript evaluation service with Pydantic-enforced response schemas, streamed scoring via an internal OpenAI proxy, and Postgres-backed result sync with automated feedback generation."
+      stack: "Python, Celery, AWS SQS, OpenAI, Postgres"
+      include_in: [academic]
+    - text: "Built a Streamlit LLMOps analytics suite (async loaders, multi-tier caching, pooled SQLAlchemy) surfacing cost, latency, and health metrics across ML API and proxy workloads."
+      text_casual: "Built LLMOps tooling: an async Celery/SQS evaluation service and a Streamlit analytics suite surfacing cost, latency, and health metrics across LLM workloads."
+      stack: "Streamlit, Python, matplotlib, numpy"
+      stack_casual: "Streamlit, Python, Celery, AWS SQS, SQLAlchemy"
+    - text: "Architected an AI-powered code evaluation platform ingesting GitHub repositories for automated review."
+      stack: "FastAPI, Python, Celery, OpenAI Codex, CloudFormation, LocalStack"
+
+- id: cohere-researcher
+  include_in: [academic]
+  category: research
+  role: "Community Researcher"
+  company: "Cohere For AI"
+  location: "Sri Lanka"
+  dates: "Mar. 2023 - Apr. 2024"
+  employment_type: "Part-time"
+  advisor: "Sara Hooker"
+  bullets:
+    - text: "Built the web platform used to collect human annotations and contributed data for the Aya multilingual instruction-tuning dataset; published at ACL 2024."
+
+- id: wso2-senior-dse
+  include_in: [academic, casual]
+  category: professional
+  role: "Senior Data Science Engineer"
+  company: "WSO2"
+  location_academic: "Sri Lanka"
+  location_casual: "Colombo"
+  dates: "Nov 2021 - Aug 2023"
+  employment_type: "Full-time"
+  bullets:
+    - text: "Trained and deployed classification, regression, and clustering models driving product adoption and user-engagement metrics."
+    - text: "Built internal analytics dashboards exposing model performance, A/B test outcomes, and business KPIs."
+    - text: "Standardized team practice for experiment tracking, model versioning, and reproducible evaluation pipelines."
+
+- id: ucsc-research-assistant
+  include_in: [academic, casual]
+  category: research
+  role_academic: "Research Assistant"
+  role_casual: "Research Assistant (Contract)"
+  company: "University of Colombo School of Computing"
+  location_academic: "Sri Lanka"
+  location_casual: "Colombo"
+  dates: "May 2021 - Dec 2024"
+  employment_type: "Part-time"
+  advisor: "Dr. Noel Fernando"
+  bullets:
+    - text: "Applied classical and deep time-series models to forecast long-horizon municipal solid-waste generation in Sri Lankan cities; published in IEEE Access."
+
+- id: wso2-dse
+  include_in: [academic, casual]
+  category: professional
+  role: "Data Science Engineer"
+  company: "WSO2"
+  location_academic: "Sri Lanka"
+  location_casual: "Colombo"
+  dates: "Apr 2021 - Oct 2021"
+  employment_type: "Full-time"
+  bullets:
+    - text: "Performed exploratory analysis on product-usage telemetry and built predictive models to surface adoption trends."
+      text_casual: "Analyzed product-usage telemetry and built predictive models to surface adoption trends; scoped ML opportunities with product and engineering stakeholders."
+    - text: "Scoped ML opportunities with product and engineering stakeholders and presented findings to technical and non-technical audiences."
+      include_in: [academic]
+
+- id: score-lab-researcher
+  include_in: [academic, casual]
+  category: research
+  role_academic: "Researcher"
+  role_casual: "Researcher (Contract)"
+  company: "Sustainable Computing Research (SCoRe) Lab"
+  location_academic: "Sri Lanka"
+  location_casual: "Colombo"
+  dates: "Aug. 2020 - Dec. 2021"
+  employment_type: "Part-time"
+  advisor: "Dr. Mohamed Nabeel"
+  bullets:
+    - text: "Developed an ML-based detector for malicious internet domains using lexical, registration, and DNS-resolution features."
+
+- id: wso2-software-engineer
+  include_in: [academic, casual]
+  category: professional
+  role: "Software Engineer - IAM Team"
+  company: "WSO2"
+  location_academic: "Sri Lanka"
+  location_casual: "Colombo"
+  dates: "Mar 2020 - Mar 2021"
+  employment_type: "Full-time"
+  bullets:
+    - text: "Contributed to the WSO2 Identity Server on the product-development track, shipping new features into mainline releases."
+      text_casual: "Shipped features into WSO2 Identity Server on the product-development track and served on the patch-services team triaging and backporting fixes across supported customer releases."
+    - text: "Served on the patch (services) team triaging and backporting security and functional fixes across supported customer releases."
+      include_in: [academic]
+
+- id: ucsc-research-intern
+  include_in: [academic, casual]
+  category: research
+  role: "Research Intern"
+  company_academic: "University of Colombo School of Computing - Distributed Computing Group"
+  company_casual: "University of Colombo School of Computing"
+  location_academic: "Sri Lanka"
+  location_casual: "Colombo"
+  dates: "Jul. 2018 - Jan. 2019"
+  employment_type: "Full-time"
+  advisor: "Dr. Nalin Ranasinghe"
+  bullets:
+    - text: "Prototyped a privacy-preserving training layer over TensorFlow enabling model fitting on homomorphically encrypted tensors across a distributed worker network."
+    - text: "Presented the work as a poster at the Sri Lanka Association for the Advancement of Science (SLAAS) Exhibition, Dec. 2018."
+      include_in: [academic]
+
+- id: cern-gsoc
+  include_in: [academic, casual]
+  category: professional
+  role: "Student Developer"
+  company: "CERN-HSF - Google Summer of Code"
+  location: "Remote"
+  dates: "May. 2018 - Aug. 2018"
+  bullets:
+    - text: "Contributed to Phoenix, the next-generation Vue.js web UI for ownCloud and CERNBox (the CERN-wide cloud storage platform serving 13K+ users over 2.5 PB), implementing authentication, file browsing, upload/download, and public-link sharing against the ownCloud backend."
+      text_casual: "Contributed to Phoenix, the next-gen Vue.js web UI for ownCloud and CERNBox (CERN's cloud-storage platform serving 13K+ users over 2.5 PB), with offline-capable browser operation via service-worker caching and a Go-based local WebDAV bridge."
+      stack: "Vue.js, TypeScript, ownCloud, Pug"
+      stack_casual: "Vue.js, TypeScript, Service Workers, Go, WebDAV"
+    - text: "Added offline-capable browser operation: service-worker metadata caching, offline-mode detection with reconciliation on reconnect, and a Go-based local WebDAV bridge integrating the desktop sync client to redirect file I/O while disconnected."
+      stack: "Vue.js, Service Workers, Go, WebDAV"
+      include_in: [academic]
+
+- id: language-matters
+  include_in: [academic]
+  category: professional
+  role: "Software Developer"
+  company: "Language Matters"
+  location: "Sri Lanka"
+  dates: "Jan. 2018 - Mar. 2020"
+  employment_type: "Contract"
+  advisor: "Dr. Leonie Solomons"
+  bullets:
+    - text: "Developed TessTA, a production OCR system for Sinhala: fine-tuned the Tesseract engine on a hand-curated Sinhala corpus and diagnosed and resolved script-specific failure modes (character decomposition, ligature segmentation, diacritic attachment) to lift recognition accuracy on low-resource Sinhala text."
+      stack: "Tesseract, OCR, React, TypeScript, Java, Spring Boot, Hibernate, AWS"
+
+- id: dreamteam-dev
+  include_in: [academic]
+  category: professional
+  role: "Software Developer"
+  company: "Dreamteam IT Solutions"
+  location: "Sri Lanka"
+  dates: "Feb. 2016 - Jan. 2017"
+  employment_type: "Contract"
+  advisor: "Dr. Gihan Kuruppu"
+  bullets:
+    - text: "Built an instrumented Smart Glove prototype (FSR-400 pressure array + Arduino) capturing hand pressure distribution and acceleration to model cricket batting grip dynamics."
+      stack: "Java, JavaFX, FSR-400, Arduino"
+    - text: "Deployed an embedded OpenCV pipeline on Raspberry Pi detecting knots in yarn threads on industrial glove-weaving machines, eliminating hundreds of needle breakages per day and reducing manual inspection."
+      stack: "OpenCV, Python, Raspberry Pi"
+    - text: "Built a conveyor-line image-processing system identifying common textile-glove defects in-flow and triggering automated reject handling without operator intervention."
+      stack: "OpenCV, Python, Image Processing"
+
+- id: dreamteam-instructor
+  include_in: [academic]
+  category: professional
+  role: "Course Instructor"
+  company: "Dreamteam IT Solutions"
+  location: "Sri Lanka"
+  dates: "Jan. 2016 - Jun. 2016"
+  employment_type: "Contract"
+  bullets:
+    - text: "Delivered Java preparation sessions for the Oracle Certified Java Programmer (OCJP, Java SE 6) certification, covering the full certification syllabus."
+    - text: "Taught an introductory robotics course centered on line-following robots, covering sensor calibration, simple control loops, and microcontroller programming."

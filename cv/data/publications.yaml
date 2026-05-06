@@ -1,0 +1,131 @@
+# Academic publications. `items[].authors` is a list; `self: true` bolds the
+# name, `equal_contribution: true` attaches a superscript "*".
+# `venue_type` is rendered in bold brackets before the citation.
+#
+# Casual CV shows a compact subset via `include_in: [academic, casual]` and
+# renders `title_casual` / `venue_casual` (falls back to bare fields) as a
+# year-prefixed one-liner — no author list, no DOI.
+
+equal_contribution_note: "Equal contribution"
+
+items:
+  - venue_type: "Conference"
+    include_in: [casual]
+    year: 2026
+    authors:
+      - { name: "O. Mudannayake", self: true }
+    title: "Paired-Offset Reevaluation: A Diagnostic for Selection-Induced Optimism in Reinforcement-Learning Hyperparameter Search"
+    title_casual: "Paired-Offset Reevaluation: Selection-Bias Diagnostic for RL HPO"
+    venue_casual: "AutoML 2026 (Methods Track) · Under Review"
+
+  - venue_type: "Workshop"
+    include_in: [casual]
+    year: 2026
+    authors:
+      - { name: "O. Mudannayake", self: true }
+    title: "Affordable Reinforcement Learning Hyperparameter Rigor: A Paired-Offset Reevaluation Catalogue"
+    title_casual: "Affordable RL Hyperparameter Rigor: Paired-Offset Reevaluation"
+    venue_casual: "GlobalSouthML @ ICML 2026 · Under Review (non-archival)"
+
+  - venue_type: "Preprint"
+    include_in: [casual]
+    year: 2025
+    authors:
+      - { name: "S. Dissanayaka", equal_contribution: true }
+      - { name: "O. Mudannayake", self: true, equal_contribution: true }
+      - { name: "T. Halloluwa" }
+      - { name: "C. De Silva" }
+    title: "ImageLab: Simplifying Image Processing Exploration for Novices and Experts Alike"
+    title_casual: "ImageLab: Simplifying Image Processing Exploration"
+    venue_casual: "Preprint · Under Review"
+
+  - venue_type: "Manuscript"
+    include_in: [casual]
+    year: 2025
+    authors:
+      - { name: "O. Mudannayake", self: true }
+      - { name: "K. Senarathne" }
+      - { name: "S. Farook" }
+      - { name: "L. De Mel" }
+      - { name: "C. Jayanaka" }
+    title: "Leveraging Spatial and Temporal Data for Enhanced Wildfire Spread Prediction"
+    title_casual: "Spatio-Temporal Deep Learning for Wildfire Spread Prediction"
+    venue_casual: "Under Review"
+
+  - venue_type: "Journal"
+    include_in: [academic, casual]
+    year: 2025
+    authors:
+      - { name: "O. Mudannayake", self: true }
+      - { name: "A. Indika" }
+      - { name: "U. Jayasinghe" }
+      - { name: "G. M. Lee" }
+      - { name: "J. Alawatugoda" }
+    title: "On Privacy-Preserved Machine Learning Using Secure Multi-Party Computing: Techniques and Trends"
+    title_casual: "Privacy-Preserving ML via Secure Multi-Party Computing: Techniques and Trends"
+    venue: "Computers, Materials & Continua (CMC), vol. 85, no. 2, pp. 2527-2578, 2025"
+    venue_casual: "Computers, Materials & Continua"
+    doi_url: "https://doi.org/10.32604/cmc.2025.068875"
+    doi_label: "doi: 10.32604/cmc.2025.068875"
+
+  - venue_type: "Conference"
+    include_in: [academic, casual]
+    year: 2024
+    authors:
+      - { name: "S. Singh" }
+      - { name: "..." }
+      - { name: "O. Mudannayake", self: true }
+      - { name: "and others" }
+    title: "Aya dataset: An open-access collection for multilingual instruction tuning"
+    title_casual: "Aya: Open-Access Multilingual Instruction-Tuning Dataset"
+    venue: "Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL)"
+    venue_casual: "ACL 2024"
+    doi_url: "https://aclanthology.org/2024.acl-long.620/"
+    doi_label: "doi: 10.18653/v1/2024.acl-long.620"
+
+  - venue_type: "Journal"
+    include_in: [academic, casual]
+    year: 2023
+    authors:
+      - { name: "H. Samaranayake" }
+      - { name: "O. Mudannayake", self: true }
+      - { name: "D. Perera" }
+      - { name: "P. Kumarasinghe" }
+      - { name: "C. Suduwella" }
+      - { name: "K. De Zoysa" }
+      - { name: "P. Wimalaratne" }
+    title: "Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles"
+    title_casual: "Detecting Water Surfaces in UAV Image Streams (UNet)"
+    venue: "Journal of Visual Communication and Image Representation (JVCI)"
+    venue_casual: "JVCI (Elsevier)"
+    doi_url: "https://www.sciencedirect.com/science/article/abs/pii/S1047320323001839?dgcid=author"
+    doi_label: "doi: 10.1016/j.jvcir.2023.103933"
+
+  - venue_type: "Journal"
+    include_in: [academic, casual]
+    year: 2022
+    authors:
+      - { name: "O. Mudannayake", self: true, equal_contribution: true }
+      - { name: "D. Rathnayake", equal_contribution: true }
+      - { name: "J. D. Herath" }
+      - { name: "D. K. Fernando" }
+      - { name: "M. Fernando" }
+    title: "Exploring Machine Learning and Deep Learning Approaches for Multi-Step Forecasting in Municipal Solid Waste Generation"
+    title_casual: "ML and Deep Learning for Multi-Step Municipal Waste Forecasting"
+    venue: "IEEE Access, vol. 10, pp. 122570-122585, 2022"
+    venue_casual: "IEEE Access"
+    doi_url: "https://ieeexplore.ieee.org/document/9950270"
+    doi_label: "doi: 10.1109/ACCESS.2022.3221941"
+
+  - venue_type: "Conference"
+    include_in: [academic, casual]
+    year: 2021
+    authors:
+      - { name: "O. Mudannayake", self: true }
+      - { name: "N. Ranasinghe" }
+    title: "kMatrix: A Space Efficient Streaming Graph Summarization Technique"
+    title_casual: "kMatrix: Space-Efficient Streaming Graph Summarization"
+    venue: "2021 10th International Conference on Information and Automation for Sustainability (ICIAfS), 2021, pp. 161-166"
+    venue_casual: "IEEE ICIAfS"
+    doi_url: "https://ieeexplore.ieee.org/document/9606137"
+    doi_label: "doi: 10.1109/ICIAfS52090.2021.9606137"

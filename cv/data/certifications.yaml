@@ -1,0 +1,69 @@
+# Certifications. Academic lists all 13; casual shows the 8 ML-focused ones.
+# `name_casual` overrides the name just for the casual CV when the phrasing
+# differs (e.g. Oracle cert includes the score on casual).
+
+- name: "Advanced Machine Learning on Google Cloud Specialization"
+  institute: "Coursera"
+  year: 2021
+  include_in: [academic, casual]
+
+- name: "Data Engineering, Big Data, and Machine Learning on GCP Specialization"
+  institute: "Coursera"
+  year: 2021
+  include_in: [academic, casual]
+
+- name: "Machine Learning on Google Cloud Specialization"
+  institute: "Coursera"
+  year: 2021
+  include_in: [academic, casual]
+
+- name: "Deep Learning Specialization"
+  institute: "Coursera"
+  year: 2020
+  include_in: [academic, casual]
+
+- name: "Natural Language Processing Specialization"
+  institute: "Coursera"
+  year: 2020
+  include_in: [academic, casual]
+
+- name: "DeepLearning.AI TensorFlow Developer Specialization"
+  institute: "Coursera"
+  year: 2020
+  include_in: [academic, casual]
+
+- name: "Generative Adversarial Networks (GANs) Specialization"
+  institute: "Coursera"
+  year: 2020
+  include_in: [academic, casual]
+
+- name: "Qwicklabs quests on ML and Data Science"
+  institute: "Qwicklabs"
+  year: 2020
+  include_in: [academic]
+
+- name: "Oracle Certified Professional Java SE 6 Programmer"
+  name_casual: "Oracle Certified Professional | Java SE 6 Programmer - (Score : 98/100)"
+  institute: "Oracle"
+  year: 2015
+  include_in: [academic]
+
+- name: "Robotics & Automation"
+  institute: "Dreamteam IT Solutions"
+  year: 2015
+  include_in: [academic]
+
+- name: "Professional Certified Java Developer"
+  institute: "Dreamteam IT Solutions"
+  year: 2015
+  include_in: [academic]
+
+- name: "Diploma in Software Engineering"
+  institute: "Esoft"
+  year: 2013
+  include_in: [academic]
+
+- name: "Diploma in PC Hardware and Network Administration"
+  institute: "Esoft"
+  year: 2010
+  include_in: [academic]

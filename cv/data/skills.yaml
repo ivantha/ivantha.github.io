@@ -1,0 +1,19 @@
+# Casual-CV-only: skills grouped by category.
+# Each entry renders as "Category | comma-separated stack".
+
+- category: "Languages"
+  stack: "Python, SQL, Java, TypeScript"
+- category: "LLM / GenAI"
+  stack: "LangChain, LlamaIndex, OpenAI API, Anthropic API, RAG, Prompt Engineering"
+- category: "ML / Deep Learning"
+  stack: "PyTorch, TensorFlow, Scikit-learn, Hugging Face Transformers, XGBoost, OpenCV"
+- category: "MLOps & Deployment"
+  stack: "Docker, MLflow, Celery, FastAPI, AWS (SageMaker, SQS, S3)"
+- category: "Data"
+  stack: "Pandas, NumPy, Spark, Kafka"
+- category: "Databases"
+  stack: "PostgreSQL, MongoDB, Firebase"
+- category: "Cloud"
+  stack: "AWS, GCP, Azure"
+- category: "Visualization"
+  stack: "Matplotlib, Seaborn, Streamlit"
