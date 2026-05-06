@@ -1,8 +1,46 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import "../styles/pages/experience.scss"
 import Layout from "../components/layout"
+import ExperienceItem from "../components/ExperienceItem"
+import { isWebVisible } from "../components/markup"
 
 const ExperiencePage = () => {
+    const { allExperienceYaml } = useStaticQuery(graphql`
+        query {
+            allExperienceYaml {
+                nodes {
+                    yamlId
+                    include_in
+                    category
+                    role
+                    role_academic
+                    role_casual
+                    company
+                    company_academic
+                    company_casual
+                    location
+                    location_academic
+                    location_casual
+                    dates
+                    employment_type
+                    advisor
+                    bullets {
+                        text
+                        text_casual
+                        stack
+                        stack_casual
+                        include_in
+                    }
+                }
+            }
+        }
+    `)
+
+    const items = allExperienceYaml.nodes.filter(isWebVisible)
+    const research = items.filter((it) => it.category === "research")
+    const professional = items.filter((it) => it.category === "professional")
+
     return (
         <Layout>
             <div className="experienceLayout section-wrapper">
@@ -10,157 +48,25 @@ const ExperiencePage = () => {
                     <h1>Experience</h1>
                 </div>
                 <div className="section-items">
-                    <h2 className="experience-subtitle">Research Experience</h2>
-                    <ul>
-                        <li className="research-wrapper">
-                            <h3>Community Researcher (Part-time)</h3>
-                            <span className="institute-text">Cohere For AI</span>
-                            <ul className="research-content-text">
-                                <li>Advised by <b>Sara Hooker</b></li>
-                                <li>Built the open-source web platform used to collect human annotations and contributed data for the Aya multilingual instruction-tuning dataset.</li>
-                                <li>Co-authored the resulting Aya dataset paper, published at ACL 2024.</li>
+                    {research.length > 0 && (
+                        <>
+                            <h2 className="experience-subtitle">Research Experience</h2>
+                            <ul>
+                                {research.map((item) => <ExperienceItem key={item.yamlId} item={item}/>)}
                             </ul>
-                            <span className="date-country-text">Mar. 2023 - Apr. 2024</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Research Assistant (Part-time)</h3>
-                            <span className="institute-text">University of Colombo School of Computing</span>
-                            <ul className="research-content-text">
-                                <li>Advised by <b>Dr. Noel Fernando</b></li>
-                                <li>Conducted research on solid waste generation patterns in cities using machine learning techniques, which involved collecting and analyzing time series data over several decades.</li>
-                                <li>Developed and implemented machine learning models to forecast solid waste generation patterns, which improved the efficiency of waste management planning and resource allocation.</li>
-                                <li>Contributed to a publication on solid waste management in IEEE Access, which highlighted the research findings and their implications for waste management practices.</li>
+                        </>
+                    )}
+                    {research.length > 0 && professional.length > 0 && (
+                        <div className="experience-divider"></div>
+                    )}
+                    {professional.length > 0 && (
+                        <>
+                            <h2 className="experience-subtitle">Professional Experience</h2>
+                            <ul>
+                                {professional.map((item) => <ExperienceItem key={item.yamlId} item={item}/>)}
                             </ul>
-                            <span className="date-country-text">May. 2021 - Dec. 2024</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Researcher (Part-time)</h3>
-                            <span className="institute-text">Sustainable Computing Research (SCoRe) Lab</span>
-                            <ul className="research-content-text">
-                                <li>Advised by <b>Dr. Mohamed Nabeel</b></li>
-                                <li>Developed a machine learning based approach to detect malicious internet domains using lexical, registration, and DNS-resolution features.</li>
-                            </ul>
-                            <span className="date-country-text">Aug. 2020 - Dec. 2021</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Research Intern (Full-time)</h3>
-                            <span className="institute-text">University of Colombo School of Computing - Distributed Computing Group</span>
-                            <ul className="research-content-text">
-                                <li>Advised by <b>Dr. Nalin Ranasinghe</b></li>
-                                <li>Successfully developed and implemented a new layer over Tensorflow to facilitate machine learning on encrypted data over a distributed network of machines, improving data security and privacy.</li>
-                                <li>Presented research findings at the Sri Lanka Association for the Advancement of Science (SLAAS) Exhibition, demonstrating excellent communication and presentation skills.</li>
-                            </ul>
-                            <span className="date-country-text">Jul. 2018 - Jan. 2019</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Software Developer - R&D (Contract)</h3>
-                            <span className="institute-text">Language Matters</span>
-                            <ul className="research-content-text">
-                                <li>Supervised by <b>Dr. Leonie Solomons</b></li>
-                                <li>Working part time on developing an OCR solution for Sinhala language using Tesseract
-                                    OCR Engine.
-                                </li>
-                            </ul>
-                            <span className="date-country-text">Jan. 2018 - Mar. 2020</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Software Developer - R&D (Contract)</h3>
-                            <span className="institute-text">Dreamteam IT Solutions</span>
-                            <ul className="research-content-text">
-                                <li>Supervised by <b>Dr. Gihan Kuruppu</b></li>
-                                <li>Provided R&D solutions to industrial problems such as Bra Elasticity Analyzing
-                                    System, Yarn Detection System and Glove Defect Identification System.
-                                </li>
-                            </ul>
-                            <span className="date-country-text">Feb. 2016 - Jan. 2017</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                    </ul>
-                    <div className="experience-divider"></div>
-                    <h2 className="experience-subtitle">Professional Experience</h2>
-                    <ul>
-                        <li className="research-wrapper">
-                            <h3>Lead Machine Learning Engineer (Full-time)</h3>
-                            <span className="institute-text">ParadigmAI</span><br/>
-                            <ul className="research-content-text">
-                                <li>Built an LLM-backed platform that predicts a respondent's survey answers from their prior response history.</li>
-                                <li>Designed the translation backend for a low-code system compiling graph-structured workflows into executable code.</li>
-                                <li>Engineered a multi-transport LLM gateway (REST and gRPC) with Postgres-backed key rotation, vendor allow/deny policies, OpenAI/Anthropic fallback, and request-level tracing for production LLM traffic.</li>
-                                <li>Implemented a Celery-on-SQS transcript evaluation service with Pydantic-enforced response schemas, streamed scoring via an internal OpenAI proxy, and Postgres-backed result sync with automated feedback generation.</li>
-                                <li>Built a Streamlit LLMOps analytics suite (async loaders, multi-tier caching, pooled SQLAlchemy) surfacing cost, latency, and health metrics across ML API and proxy workloads.</li>
-                                <li>Architected an AI-powered code evaluation platform ingesting GitHub repositories for automated review.</li>
-                            </ul>
-                            <span className="date-country-text">Aug. 2023 - Present</span><br/>
-                            <span className="date-country-text">Colombo, Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Senior Data Science Engineer (Full-time)</h3>
-                            <span className="institute-text">WSO2</span><br/>
-                            <ul className="research-content-text">
-                                <li>Developed and deployed machine learning models to optimize performance and enhance functionality of software products.</li>
-                                <li>Collaborated with the product team to incorporate insights from machine learning algorithms into WSO2's core product offerings, resulting in increased customer engagement and sales.</li>
-                                <li>Developed and maintained custom data visualization dashboards for internal stakeholders, enabling faster and more effective decision-making.</li>
-                                <li>Contributed to the development and implementation of best practices for data science, including code documentation, version control, and model evaluation.</li>
-                            </ul>
-                            <span className="date-country-text">Nov. 2021 - Aug. 2023</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Data Science Engineer (Full-time)</h3>
-                            <span className="institute-text">WSO2</span><br/>
-                            <ul className="research-content-text">
-                                <li>Conducted exploratory data analysis to identify trends and patterns and made data-driven recommendations to improve business strategies.</li>
-                                <li>Presented findings and insights from data analyses to both technical and non-technical stakeholders.</li>
-                                <li>Collaborated with cross-functional teams to identify and define business problems, and developed solutions to meet business objectives.</li>
-                            </ul>
-                            <span className="date-country-text">Apr. 2021 - Oct. 2021</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Software Engineer - IAM Team (Full-time)</h3>
-                            <span className="institute-text">WSO2</span>
-                            <ul className="research-content-text">
-                                <li>Designed and implemented a new CORS architecture for Identity Server 5.11, improving security and enabling cross-origin resource sharing.</li>
-                                <li>Contributed to customer support efforts by providing timely and effective solutions to product issues, resulting in increased customer satisfaction and retention.</li>
-                                <li>Investigated the FIDO capabilities of Identity Server and proposed changes necessary for its adoption across the platform, enhancing the product's authentication capabilities.</li>
-                                <li>Worked on configuring Identity Server and propagating necessary configurations in tenanted URL mode, ensuring seamless and efficient operation across multiple tenants.</li>
-                                <li>Successfully managed and prioritized multiple projects simultaneously, ensuring on-time delivery.</li>
-                                <li>Proactively sought out new technologies and approaches to improve product performance and functionality.</li>
-                            </ul>
-                            <span className="date-country-text">Mar. 2020 - Mar. 2021</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                        <li className="research-wrapper">
-                            <h3>Student Developer</h3>
-                            <span className="institute-text">CERN-HSF - Google Summer of Code</span>
-                            <ul className="research-content-text">
-                                <li>Worked as a Google Summer of Code Participant in collaboration with CERN-HSF,
-                                    ownCloud and AARNet to provide a prototype of a new web UI for CERNBox that will
-                                    provide an immersive user experience.
-                                </li>
-                            </ul>
-                            <span className="date-country-text">May. 2018 - Aug. 2018</span><br/>
-                            <span className="date-country-text">Remote</span>
-                        </li>
-                    </ul>
-                    <div className="experience-divider"></div>
-                    <h2 className="experience-subtitle">Teaching Experience</h2>
-                    <ul>
-                        <li className="research-wrapper">
-                            <h3>Course Instructor (Contract)</h3>
-                            <span className="institute-text">Dreamteam IT Solutions</span>
-                            <ul className="research-content-text">
-                                <li>Conducted sessions for introductory robotics and Java 6.</li>
-                            </ul>
-                            <span className="date-country-text">Jan. 2016 - Jun. 2016</span><br/>
-                            <span className="date-country-text">Sri Lanka</span>
-                        </li>
-                    </ul>
+                        </>
+                    )}
                 </div>
             </div>
         </Layout>
