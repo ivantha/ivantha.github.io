@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
                         <OutboundLink href="/people">People</OutboundLink>
                         {/*<Link to="/articles">Articles</Link>*/}
                         <OutboundLink href="/articles">Articles</OutboundLink>
-                        <OutboundLink href="/cv.pdf" target="_blank" rel="noopener noreferrer">CV</OutboundLink>
+                        <OutboundLink href="/cv/academic-cv.pdf" target="_blank" rel="noopener noreferrer">CV</OutboundLink>
                         {/*<Link to="/about">About</Link>*/}
                         <OutboundLink href="/about">About</OutboundLink>
                         {/*<Link className="officeHours" to="/officehours">Office Hours</Link>*/}
