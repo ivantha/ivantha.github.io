@@ -31,12 +31,14 @@ entries:
     organizer: "IEEE"
     marker: "*"
     include_in: [academic]
+    pdf_url: "/certificates/2020.11.18 - IEEE Regional Exemplary Student Branch Award 2020.pdf"
   - year: 2019
     event: "IEEE Darrel Chong Student Activity Award 2020"
     organizer: "IEEE"
     place_academic: "Bronze category winner"
     marker: "*"
     include_in: [academic]
+    pdf_url: "/certificates/2020.11.14 - Darrel Chong Award .pdf"
   - year: 2019
     event: "IEEE SLSYWC 2019 — GameRush"
     organizer: "IEEE"

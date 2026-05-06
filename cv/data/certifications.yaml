@@ -11,6 +11,7 @@
   institute: "Coursera"
   year: 2021
   include_in: [academic, casual]
+  pdf_url: "/certificates/2021.03.28 - Data Engineering, Big Data, and Machine Learning on GCP Specialization.pdf"
 
 - name: "Machine Learning on Google Cloud Specialization"
   institute: "Coursera"
@@ -21,21 +22,25 @@
   institute: "Coursera"
   year: 2020
   include_in: [academic, casual]
+  pdf_url: "/certificates/2020.10.19 - Deep Learning Specialization.pdf"
 
 - name: "Natural Language Processing Specialization"
   institute: "Coursera"
   year: 2020
   include_in: [academic, casual]
+  pdf_url: "/certificates/2020.10.30 - Natural Language Processing Specialization.pdf"
 
 - name: "DeepLearning.AI TensorFlow Developer Specialization"
   institute: "Coursera"
   year: 2020
   include_in: [academic, casual]
+  pdf_url: "/certificates/2020.11.11 - DeepLearning.AI TensorFlow Developer.pdf"
 
 - name: "Generative Adversarial Networks (GANs) Specialization"
   institute: "Coursera"
   year: 2020
   include_in: [academic, casual]
+  pdf_url: "/certificates/2020.11.19 - Generative Adversarial Networks (GANs) Specialization.pdf"
 
 - name: "Qwicklabs quests on ML and Data Science"
   institute: "Qwicklabs"
