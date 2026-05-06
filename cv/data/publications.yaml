@@ -100,6 +100,7 @@ items:
     venue_casual: "JVCI (Elsevier)"
     doi_url: "https://www.sciencedirect.com/science/article/abs/pii/S1047320323001839?dgcid=author"
     doi_label: "doi: 10.1016/j.jvcir.2023.103933"
+    pdf_url: "/papers/samaranayake2023detecting.pdf"
 
   - venue_type: "Journal"
     include_in: [academic, casual]
@@ -116,6 +117,7 @@ items:
     venue_casual: "IEEE Access"
     doi_url: "https://ieeexplore.ieee.org/document/9950270"
     doi_label: "doi: 10.1109/ACCESS.2022.3221941"
+    pdf_url: "/papers/mudannayake2022exploring.pdf"
 
   - venue_type: "Conference"
     include_in: [academic, casual]
@@ -129,3 +131,4 @@ items:
     venue_casual: "IEEE ICIAfS"
     doi_url: "https://ieeexplore.ieee.org/document/9606137"
     doi_label: "doi: 10.1109/ICIAfS52090.2021.9606137"
+    pdf_url: "/papers/mudannayake2021kmatrix.pdf"
