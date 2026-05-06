@@ -8,7 +8,6 @@ public
 
 # Built CV PDFs (produced by `npm run build:cv`, not committed)
 static/cv/
-static/cv.pdf
 
 # MacOS
 .DS_Store
