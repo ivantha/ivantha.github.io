@@ -1,9 +1,31 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import "../styles/pages/achievements.scss"
 import Layout from "../components/layout"
-import achievements from "../data/achievements"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { pickField, isWebVisible, renderTypstMd } from "../components/markup"
 
 const AchievementsPage = () => {
+    const { awardsYaml } = useStaticQuery(graphql`
+        query {
+            awardsYaml {
+                entries {
+                    year
+                    event
+                    event_casual
+                    organizer
+                    place_academic
+                    place_casual
+                    include_in
+                    pdf_url
+                }
+            }
+        }
+    `)
+
+    const entries = (awardsYaml?.entries || []).filter(isWebVisible)
+    const sorted = [...entries].sort((a, b) => (b.year || 0) - (a.year || 0))
+
     return (
         <Layout>
             <div className="achievementsLayout section-wrapper">
@@ -12,13 +34,31 @@ const AchievementsPage = () => {
                 </div>
                 <div className="section-items">
                     <ul>
-                        {achievements.map(achievement => (
-                            <li key={achievement.url} className="achievements-wrapper">
-                                <span className="institute-text">{achievement.year} | {achievement.place}</span>
-                                <h3>{achievement.event}</h3>
-                                <span className="institute-text country">{achievement.country}</span>
-                            </li>
-                        ))}
+                        {sorted.map((entry, idx) => {
+                            const event = pickField(entry, "event", "casual")
+                            const place = pickField(entry, "place", "casual")
+                            const organizer = entry.organizer
+                            return (
+                                <li key={idx} className="achievements-wrapper">
+                                    <span className="institute-text">
+                                        {entry.year}
+                                        {place && <> | {renderTypstMd(place)}</>}
+                                    </span>
+                                    <h3>{event}</h3>
+                                    {organizer && (
+                                        <span className="institute-text country">{organizer}</span>
+                                    )}
+                                    {entry.pdf_url && (
+                                        <>
+                                            <br/>
+                                            <OutboundLink className="link" href={entry.pdf_url} target="_blank" rel="noopener noreferrer">
+                                                [Certificate]
+                                            </OutboundLink>
+                                        </>
+                                    )}
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             </div>
