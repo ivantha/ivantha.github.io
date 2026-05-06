@@ -1,0 +1,39 @@
+# Education, ordered most-recent first.
+# `dates` is the academic-formatted canonical value (full months);
+# `dates_casual` is the shorter year-range the casual CV prefers.
+
+- id: uom-msc
+  include_in: [academic, casual]
+  institute: "University of Moratuwa"
+  institute_academic_prefix: "[Reading]"
+  degree_academic: "M.Sc in Data Science & AI"
+  degree_casual:   "MSc in Data Science & AI"
+  dates: "Jan. 2023 - Dec. 2026"
+  dates_casual: "2023 - 2026"
+  extras_academic:
+    - "Current GPA: 4.02/4.2"
+  extras_casual:
+    - "Focus: Deep Learning, NLP, MLOps"
+
+- id: ucsc-bsc
+  include_in: [academic, casual]
+  institute: "University of Colombo School of Computing"
+  degree_academic: "B.Sc (Hons) in Computer Science"
+  degree_casual:   "BSc(Hons) in Computer Science"
+  dates: "Feb. 2016 - Feb. 2020"
+  dates_casual: "2016 - 2020"
+  extras_academic:
+    - "First Class Honors with a GPA of 3.61/4.0 (Top 5%)"
+    - "Ranked 6#super[th] over 156 CS students"
+    - 'Thesis: _"Summarization of Large Scale Streaming Graphs"_ (Grade A)'
+    - "Activities: Chair - IEEE Student Branch, Core Team - Mozilla Club, Member - CompSoc, Instructor - Exploration Club, Batch Representative - IUD"
+  extras_casual:
+    - "GPA : 3.61 (Rank : 6#super[th] of 156 students)"
+
+- id: maliyadeva-hs
+  include_in: [academic]
+  institute: "Maliyadeva College"
+  degree_academic: "G.C.E. Advance Level Examination - Physical Science Stream"
+  dates: "Jan. 2001 - Dec. 2014"
+  extras_academic:
+    - "Activities: President - Robotics Club, Lead - Hardware and Networking Group"

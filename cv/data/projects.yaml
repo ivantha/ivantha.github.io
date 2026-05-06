@@ -1,0 +1,113 @@
+# Projects. `description` is the short casual one-liner; `description_academic`
+# is the longer academic version (falls back to `description` if omitted).
+
+- id: water-detection
+  include_in: [academic, casual]
+  name_casual: "UAV Water Surface Detection"
+  name_academic: "Water Surface Detection from UAV Imagery"
+  stack_casual: "UNet | TensorFlow | OpenCV | Python"
+  stack_academic: "UNet, TensorFlow, OpenCV, Python"
+  description: "An attempt at detecting water surfaces using Unmanned Ariel Vehicles (UAV) footage."
+  description_casual: "UNet-based semantic segmentation for water-surface detection in low-altitude UAV imagery; published in JVCI (Elsevier)."
+  description_academic: "UNet-based semantic segmentation pipeline for water-surface detection in low-altitude UAV imagery; published in JVCI (Elsevier)."
+  url: "https://github.com/harinsamaranayake/Water-Surface-Identigication-Using-UNet-2022"
+
+- id: waste-forecasting
+  include_in: [academic, casual]
+  name_casual: "Municipal Waste Forecasting"
+  name_academic: "Municipal Solid Waste Generation Forecasting"
+  stack_casual: "Time-series | Darts | LSTM | N-BEATS | Python"
+  stack_academic: "Time-series ML, Darts, TensorFlow, Python"
+  description: "Aimed to model and forecast solid waste generation patterns in cities using machine learning techniques."
+  description_casual: "Multi-step time-series forecasting benchmarking classical ML against deep sequence models (LSTM, N-BEATS, TCN); published in IEEE Access."
+  description_academic: "Multi-step time-series forecasting of municipal solid waste generation benchmarking classical ML against deep sequence models (LSTM, N-BEATS, TCN); published in IEEE Access."
+  url: "https://github.com/UCloudMl/solid-waste-prediction"
+
+- id: streaming-graphs
+  include_in: [academic, casual]
+  name_casual: "kMatrix — Streaming Graph Summarization"
+  name_academic: "Realtime Property Evaluation of Large Streaming Graphs"
+  stack_casual: "Streaming Graphs | Sketching | Python"
+  stack_academic: "Streaming Graphs, Graph Summarization, Python"
+  description: "Worked on algorithms to summarize massive graph streams."
+  description_casual: "A space-efficient sketch for streaming graph summarization supporting real-time structural property queries over unbounded edge streams; published at IEEE ICIAfS; BSc thesis (Grade A)."
+  description_academic: "kMatrix — a space-efficient sketch for streaming graph summarization supporting real-time structural property queries over unbounded edge streams; published at IEEE ICIAfS; basis of BSc thesis (Grade A)."
+  url: "https://github.com/ivantha/rpelsg"
+
+- id: imagelab
+  include_in: [academic, casual]
+  name: "ImageLab"
+  stack_casual: "Python | OpenCV | Image Processing | GUI"
+  stack_academic: "Python, OpenCV, Image Processing"
+  description: "An interactive tool for exploring image processing pipelines, aimed at both novices and experts."
+  description_academic: "Interactive framework for composing, visualizing, and inspecting image-processing pipelines; co-first-author manuscript under peer review."
+  url: "https://github.com/c2siorg/imagelab"
+
+- id: ml-encrypted
+  include_in: [academic, casual]
+  name: "Machine Learning over Encrypted Data"
+  stack_casual: "ML | Encryption | TensorFlow | Python | GCP"
+  stack_academic: "ML, Homomorphic Encryption, TensorFlow, Python, GCP"
+  description: "Developed a privacy-preserving layer over TensorFlow to enable ML training on encrypted data across distributed machines."
+  description_academic: "Privacy-preserving training layer over TensorFlow enabling model fitting on homomorphically encrypted tensors across a distributed worker network; research-intern project at UCSC DCG."
+
+- id: tessta
+  include_in: [academic, casual]
+  name: "TessTA"
+  stack_casual: "React | TypeScript | Java | Spring Boot | Hibernate | Tesseract | AWS"
+  stack_academic: "Tesseract, OCR, React, Java, Spring Boot, AWS"
+  description: "An OCR Solution for Sinhala language using Tesseract OCR Engine."
+  description_academic: "OCR system for low-resource Sinhala script with a custom-trained Tesseract model and a browser-based annotation/correction interface for iterative dataset curation."
+
+- id: traffic-light
+  include_in: [academic]
+  name_casual: "Smart Traffic Light System"
+  name_academic: "Intelligent Traffic Light System"
+  stack_casual: "Angular | NodeJS | TypeScript | Firebase | GCP | Raspberry Pi | Arduino | MQTT | Ionic Framework"
+  stack_academic: "TensorFlow, CNN, Raspberry Pi, Arduino, MQTT, Angular, NodeJS, GCP"
+  description: "Traditional time interval based traffic light system was improved to remove the involvement of traffic officers."
+  description_academic: "Replaced fixed round-robin traffic-light scheduling with a vision-based adaptive controller using on-device CNN vehicle detection on Raspberry Pi, coordinated across intersections over MQTT."
+
+- id: smart-glove
+  include_in: [academic]
+  name: "Smart Glove"
+  stack_casual: "Java | JavaFX | FSR 400 | Arduino"
+  stack_academic: "FSR-400, IMU, Arduino, Java, JavaFX"
+  description: "A glove prototype that can measure the pressure distribution and the acceleration of hand in order to derive the best patterns of movements for Cricket players in relation with the hand pressure."
+  description_academic: "Instrumented glove prototype (FSR-400 pressure array + IMU on Arduino) capturing hand pressure distribution and acceleration to characterize cricket batting grip dynamics."
+
+- id: yarn
+  include_in: [academic]
+  name: "Yarn Detection System"
+  stack_casual: "Image Processing | Python | OpenCV | Raspberry Pi"
+  stack_academic: "OpenCV, Python, Raspberry Pi"
+  description: "Solution to detect the knots of yarn threads in glove weaving machines."
+  description_academic: "Embedded computer-vision system on Raspberry Pi detecting knots in yarn threads on industrial glove-weaving machines, eliminating hundreds of broken needles per day and reducing manual inspection."
+
+- id: glove-defect
+  include_in: [academic]
+  name: "Glove Defect Identification System"
+  stack_casual: "Java | JavaFX | Android | FSR 400"
+  stack_academic: "OpenCV, Python, Image Processing"
+  description: "Identified the common defect of gloves using image processing as they are being passed through a conveyor belt."
+  description_academic: "Conveyor-line defect detection for textile gloves using classical CV, enabling automated rejection of defective units without operator intervention."
+
+- id: bra-elasticity
+  include_in: [academic]
+  name: "Bra Elasticity Analyzing System"
+  stack_casual: "Java | Swing | Image Processing | OpenCV"
+  stack_academic: "OpenCV, Java, Swing, Image Processing"
+  description: "Implemented a way to compare the elasticity of sports bras using image processing."
+  description_academic: "Image-processing pipeline quantifying and comparing elasticity of sports bras from deformation imagery under controlled loading."
+
+- id: domain-matching
+  include_in: [casual]
+  name: "Machine Learning based Internet Domain Entity Matching and its Applications"
+  stack_casual: "ML | Scikit-learn | Tensorflow | Python"
+  description: "Aimed to predict the malicious domain URLs by using machine learning techniques."
+
+- id: petabyte-cloud
+  include_in: []
+  name: "Petabyte Scale Cloud Storage File Manager"
+  stack_casual: "Vue.js | TypeScript | ownCloud | Pug"
+  description: "My Google Summer of Code 2018 project in collaboration with _CERN-HSF | ownCloud_ and _AARNet_."

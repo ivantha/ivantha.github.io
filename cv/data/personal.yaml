@@ -1,0 +1,69 @@
+first_name: Oshan
+last_name: Mudannayake
+
+# Taglines displayed under the name.
+# Casual CV renders `roles_casual` as a TypeScript-style union type:
+#   role: "Machine Learning Engineer" | "Data Scientist"
+# Falls back to `tagline_casual` if `roles_casual` is absent.
+roles_casual:
+  - "Machine Learning Engineer"
+  - "Data Scientist"
+tagline_casual: "Lead Machine Learning Engineer"
+tagline_academic_role: "Researcher"
+tagline_academic_field: "Computer Science"
+
+# Contact details.
+emails:
+  - address: oshan.ivantha@gmail.com
+  - address: osh@ucsc.cmb.ac.lk
+    academic_only: true
+phone: "(+94) 71 908 4020"
+location: "Colombo, Sri Lanka"
+
+homepage:
+  url: "https://ivantha.com"
+  label: "ivantha.com"
+
+# All known profiles (keyed by slug). Each variant picks which to show via
+# `profiles_*` below. This keeps URLs canonical even if a variant hides a row.
+profile_entries:
+  github:
+    url: "https://github.com/ivantha"
+    label: "@ivantha"
+    label_academic: "GitHub"
+  linkedin:
+    url: "https://www.linkedin.com/in/ivantha/"
+    label: "in/ivantha"
+    label_academic: "LinkedIn"
+  twitter:
+    url: "https://twitter.com/_ivantha"
+    label: "@_ivantha"
+  scholar:
+    url: "https://scholar.google.com/citations?user=2FA0RngAAAAJ&hl=en"
+    label: "Google Scholar"
+  kaggle:
+    url: "https://www.kaggle.com/ivantha"
+    label: "Kaggle"
+  medium:
+    url: "https://ivantha.medium.com/"
+    label: "Medium"
+
+# Per-variant profile ordering (slugs from profile_entries above).
+profiles_academic: [scholar, github, kaggle, medium, linkedin]
+profiles_casual:   [homepage, linkedin, github, twitter]
+
+# Casual-only sidebar content.
+about_me: >
+  Senior ML engineer with 5+ years building production LLM platforms, MLOps
+  tooling, and ML systems at scale. Published researcher in privacy-preserving
+  ML and time-series forecasting.
+interests_casual: "Reinforcement Learning, Machine Learning, Artificial Intelligence, Game Theory, Computer Games, Computer Vision"
+who_am_i:
+  - "Avid reader"
+  - "Video gamer"
+  - "Loves traveling"
+  - "Likes food and cooking"
+  - "An otaku"
+
+# Academic-only header row.
+interests_academic: "Reinforcement Learning | Machine Learning | Artificial Intelligence | Game Theory | Computer Games | Computer Vision"
