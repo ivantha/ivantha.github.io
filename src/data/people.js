@@ -30,8 +30,8 @@ const people = {
         researchgate: "https://www.researchgate.net/profile/Noel-Fernando",
     },
     mohammadnabeel: {
-        name: "Mohammad Nabeel",
-        namewithhonorifics: "Dr. Mohammad Nabeel",
+        name: "Mohamed Nabeel",
+        namewithhonorifics: "Dr. Mohamed Nabeel",
         position: "Research Scientist | Qatar Computing Research Institute (QCRI)",
         link: "https://www.hbku.edu.qa/en/staff/dr-mohamed-nabeel",
         web: "https://www.hbku.edu.qa/en/staff/dr-mohamed-nabeel",

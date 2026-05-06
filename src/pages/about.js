@@ -26,7 +26,8 @@ const AboutPage = () => {
                                 <div className="card-content">
                                     <h3>University of Moratuwa</h3>
                                     <h3>[Reading] M.Sc in Data Science & AI</h3>
-                                    <span className="date-text">Jan. 2023 - Present</span><br/>
+                                    <span className="tags-text">Current GPA: 4.02/4.2</span><br/>
+                                    <span className="date-text">Jan. 2023 - Dec. 2026</span><br/>
                                 </div>
                             </div>
                             <div className="education-card">
