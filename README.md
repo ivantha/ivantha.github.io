@@ -3,7 +3,7 @@
 Source for [ivantha.com](https://ivantha.com) — a personal site that's
 also the single source of truth for my CV. The site is rendered with
 Gatsby; the CV (academic and casual variants) is rendered with Typst.
-Both consume the YAML data in `cv/data/`.
+Both consume the YAML data in `data/`.
 
 ## Quickstart
 
@@ -31,7 +31,7 @@ Node and Yarn.
 
 ## Editing CV content
 
-All CV data lives in `cv/data/*.yaml`. Pick the file that matches the
+All CV data lives in `data/*.yaml`. Pick the file that matches the
 section you want to change:
 
 | File | Drives |
@@ -79,8 +79,7 @@ static/
 ├── cv/                  # built academic-cv.pdf + casual-cv.pdf (gitignored)
 ├── papers/              # research paper PDFs
 ├── posters/             # research / talk posters
-├── certificates/        # course + competition certificate PDFs
-└── cv.pdf               # back-compat alias of cv/academic-cv.pdf (gitignored)
+└── certificates/        # course + competition certificate PDFs
 ```
 
 ## CI / deployment
