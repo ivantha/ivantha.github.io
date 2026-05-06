@@ -33,6 +33,24 @@ module.exports = {
             __key: "images",
         },
         {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                name: "cv",
+                path: `${__dirname}/cv/data/`,
+            },
+            __key: "cv",
+        },
+        {
+            resolve: "gatsby-transformer-yaml",
+            options: {
+                typeName: ({ node }) => {
+                    const base = node.name === "index" ? node.relativeDirectory : node.name
+                    const camel = base.replace(/-([a-z])/g, (_, c) => c.toUpperCase())
+                    return camel.charAt(0).toUpperCase() + camel.slice(1) + "Yaml"
+                },
+            },
+        },
+        {
             resolve: 'gatsby-plugin-manifest',
             options: {
                 icon: 'src/images/favicon.png',
