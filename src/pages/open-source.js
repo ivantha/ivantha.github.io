@@ -1,9 +1,56 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import "../styles/pages/open-source.scss"
 import Layout from "../components/layout"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { pickField, isWebVisible, renderWithLinks } from "../components/markup"
+
+const restoreYamlKeys = (links) => {
+    if (!links) return {}
+    const out = {}
+    for (const [k, v] of Object.entries(links)) {
+        if (v == null || k === "internal" || k === "id" || k === "parent" || k === "children") continue
+        // gatsby-transformer-yaml converts kebab-case to snake_case in field
+        // names; YAML descriptions reference the original kebab-case labels,
+        // so reverse the substitution here.
+        out[k.replace(/_/g, "-")] = v
+    }
+    return out
+}
 
 const OpenSourcePage = () => {
+    const { allOpenSourceYaml } = useStaticQuery(graphql`
+        query {
+            allOpenSourceYaml {
+                nodes {
+                    id
+                    include_in
+                    name
+                    name_casual
+                    name_url
+                    stack
+                    stack_casual
+                    description
+                    description_casual
+                    links {
+                        TensorMap
+                        DroneSym
+                        ImageLab
+                        DataLoom
+                        fact_bounty
+                        carbon_identity_framework
+                        identity_api_server
+                        product_is
+                        docs_is
+                        aya_annotations_ui
+                    }
+                }
+            }
+        }
+    `)
+
+    const items = allOpenSourceYaml.nodes.filter(isWebVisible)
+
     return (
         <Layout>
             <div className="openSourceLayout section-wrapper">
@@ -12,21 +59,29 @@ const OpenSourcePage = () => {
                 </div>
                 <div className="section-items">
                     <ul>
-                        <li className="open-source-wrapper">
-                            <h3><OutboundLink className="link" href="https://github.com/wso2/product-is" target="_blank" rel="noopener noreferrer">WSO2 Identity Server</OutboundLink></h3>
-                            <span className="tools-text">Java | OSGi | REST | Tomcat Valves</span><br/>
-                            <span className="content-text">Designed and shipped the tenant-aware CORS architecture for Identity Server 5.11 end-to-end, including the OSGi management service, DAO layer, REST APIs (tenant, application, and origin scopes), servlet valve, integration tests, and the public migration guide. Changes landed across <OutboundLink className="link" href="https://github.com/wso2/carbon-identity-framework" target="_blank" rel="noopener noreferrer">carbon-identity-framework</OutboundLink>, <OutboundLink className="link" href="https://github.com/wso2/identity-api-server" target="_blank" rel="noopener noreferrer">identity-api-server</OutboundLink>, <OutboundLink className="link" href="https://github.com/wso2/product-is" target="_blank" rel="noopener noreferrer">product-is</OutboundLink>, and <OutboundLink className="link" href="https://github.com/wso2/docs-is" target="_blank" rel="noopener noreferrer">docs-is</OutboundLink>.</span>
-                        </li>
-                        <li className="open-source-wrapper">
-                            <h3><OutboundLink className="link" href="https://github.com/c2siorg" target="_blank" rel="noopener noreferrer">SCoRe Lab / C2SI</OutboundLink></h3>
-                            <span className="tools-text">Python | Flask | React | Redux | Elasticsearch | TensorFlow | GitHub Actions</span><br/>
-                            <span className="content-text">Long-running contributor and Google Summer of Code mentor across the lab's SCoRe-era projects and its successor organisation C2SI. Initiated and architected three of the organisation's flagship projects (<OutboundLink className="link" href="https://github.com/c2siorg/imagelab" target="_blank" rel="noopener noreferrer">ImageLab</OutboundLink>, <OutboundLink className="link" href="https://github.com/c2siorg/tensormap" target="_blank" rel="noopener noreferrer">TensorMap</OutboundLink>, and <OutboundLink className="link" href="https://github.com/c2siorg/dataloom" target="_blank" rel="noopener noreferrer">DataLoom</OutboundLink>), driving their core feature development and release engineering (fork-PR linting, slash-command automation triggers, release workflows). Also built the authentication and news-crawler stack for <OutboundLink className="link" href="https://github.com/scorelab/fact-bounty" target="_blank" rel="noopener noreferrer">fact-bounty</OutboundLink> and contributed to <OutboundLink className="link" href="https://github.com/scorelab/DroneSym" target="_blank" rel="noopener noreferrer">DroneSym</OutboundLink>.</span>
-                        </li>
-                        <li className="open-source-wrapper">
-                            <h3><OutboundLink className="link" href="https://github.com/Cohere-Labs-Community/aya-annotations-ui" target="_blank" rel="noopener noreferrer">Cohere Labs — Aya Annotations Platform</OutboundLink></h3>
-                            <span className="tools-text">Next.js | Nest.js | PostgreSQL | Docker | Google Cloud Platform</span><br/>
-                            <span className="content-text">Built and deployed the open-source web platform used to collect multilingual instruction-tuning data from a global contributor community for the Aya dataset (ACL 2024). Covers Google and Discord SSO, the full task-annotation workflow, analytics, RTL language support, and the Cloud Build deployment pipeline.</span>
-                        </li>
+                        {items.map((item) => {
+                            const name = pickField(item, "name", "academic")
+                            const stack = pickField(item, "stack", "academic")
+                            const description = pickField(item, "description", "academic")
+                            const links = restoreYamlKeys(item.links)
+                            return (
+                                <li key={item.id} className="open-source-wrapper">
+                                    <h3>
+                                        {item.name_url ? (
+                                            <OutboundLink className="link" href={item.name_url} target="_blank" rel="noopener noreferrer">
+                                                {name}
+                                            </OutboundLink>
+                                        ) : name}
+                                    </h3>
+                                    {stack && <><span className="tools-text">{stack}</span><br/></>}
+                                    {description && (
+                                        <span className="content-text">
+                                            {renderWithLinks(description, links)}
+                                        </span>
+                                    )}
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             </div>
