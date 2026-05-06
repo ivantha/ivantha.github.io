@@ -9,11 +9,11 @@ const orgs = {
         anchor: <OutboundLink className="link" href="#" target="_blank" rel="noopener noreferrer">Dreamteam IT Solutions</OutboundLink>,
     },
     ucsc: {
-        fullname: "Univesity of Colombo School of Computing",
+        fullname: "University of Colombo School of Computing",
         shortname: "UCSC",
         url: "https://ucsc.cmb.ac.lk/",
         anchor: <OutboundLink className="link" href="https://ucsc.cmb.ac.lk/" target="_blank" rel="noopener noreferrer">UCSC</OutboundLink>,
-        anchorfullname: <OutboundLink className="link" href="https://ucsc.cmb.ac.lk/" target="_blank" rel="noopener noreferrer">Univesity of Colombo School of Computing</OutboundLink>,
+        anchorfullname: <OutboundLink className="link" href="https://ucsc.cmb.ac.lk/" target="_blank" rel="noopener noreferrer">University of Colombo School of Computing</OutboundLink>,
     },
     cernhsf: {
         fullname: "High-Energy Physics Software Foundation",
@@ -53,11 +53,17 @@ const orgs = {
         url: "https://wso2.com/",
         anchor: <OutboundLink className="link" href="https://wso2.com/" target="_blank" rel="noopener noreferrer">WSO2</OutboundLink>,
     },
-    salus: {
-        fullname: "Salus",
-        shortname: "Salus",
-        url: "https://www.saluslabs.ai/",
-        anchor: <OutboundLink className="link" href="https://www.saluslabs.ai/" target="_blank" rel="noopener noreferrer">Salus</OutboundLink>,
+    paradigmai: {
+        fullname: "ParadigmAI",
+        shortname: "ParadigmAI",
+        url: "https://paradigmai.com/",
+        anchor: <OutboundLink className="link" href="https://paradigmai.com/" target="_blank" rel="noopener noreferrer">ParadigmAI</OutboundLink>,
+    },
+    cohere: {
+        fullname: "Cohere For AI",
+        shortname: "Cohere For AI",
+        url: "https://cohere.com/research",
+        anchor: <OutboundLink className="link" href="https://cohere.com/research" target="_blank" rel="noopener noreferrer">Cohere For AI</OutboundLink>,
     },
 }
 

@@ -30,6 +30,8 @@ const Layout = ({ children }) => {
                         <OutboundLink href="/experience">Experience</OutboundLink>
                         {/*<Link to="/projects">Projects</Link>*/}
                         <OutboundLink href="/projects">Projects</OutboundLink>
+                        {/*<Link to="/open-source">Open Source</Link>*/}
+                        <OutboundLink href="/open-source">Open Source</OutboundLink>
                         {/*<Link to="/certifications">Certifications</Link>*/}
                         <OutboundLink href="/certifications">Certifications</OutboundLink>
                         {/*<Link to="/achievements">Achievements</Link>*/}

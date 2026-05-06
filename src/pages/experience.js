@@ -13,16 +13,26 @@ const ExperiencePage = () => {
                     <h2 className="experience-subtitle">Research Experience</h2>
                     <ul>
                         <li className="research-wrapper">
+                            <h3>Community Researcher (Part-time)</h3>
+                            <span className="institute-text">Cohere For AI</span>
+                            <ul className="research-content-text">
+                                <li>Advised by <b>Sara Hooker</b></li>
+                                <li>Built the open-source web platform used to collect human annotations and contributed data for the Aya multilingual instruction-tuning dataset.</li>
+                                <li>Co-authored the resulting Aya dataset paper, published at ACL 2024.</li>
+                            </ul>
+                            <span className="date-country-text">Mar. 2023 - Apr. 2024</span><br/>
+                            <span className="date-country-text">Sri Lanka</span>
+                        </li>
+                        <li className="research-wrapper">
                             <h3>Research Assistant (Part-time)</h3>
                             <span className="institute-text">University of Colombo School of Computing</span>
                             <ul className="research-content-text">
                                 <li>Advised by <b>Dr. Noel Fernando</b></li>
-                                <li>Conducted research on solid waste generation patterns in cities using machine learning techniques, which involved collecting and analyzing time series data over a several decades.</li>
+                                <li>Conducted research on solid waste generation patterns in cities using machine learning techniques, which involved collecting and analyzing time series data over several decades.</li>
                                 <li>Developed and implemented machine learning models to forecast solid waste generation patterns, which improved the efficiency of waste management planning and resource allocation.</li>
                                 <li>Contributed to a publication on solid waste management in IEEE Access, which highlighted the research findings and their implications for waste management practices.</li>
-                                <li>Demonstrated a strong ability to work independently, manage time effectively, and prioritize tasks to meet project deadlines.</li>
                             </ul>
-                            <span className="date-country-text">May. 2021 - Present</span><br/>
+                            <span className="date-country-text">May. 2021 - Dec. 2024</span><br/>
                             <span className="date-country-text">Sri Lanka</span>
                         </li>
                         <li className="research-wrapper">
@@ -30,9 +40,9 @@ const ExperiencePage = () => {
                             <span className="institute-text">Sustainable Computing Research (SCoRe) Lab</span>
                             <ul className="research-content-text">
                                 <li>Advised by <b>Dr. Mohamed Nabeel</b></li>
-                                <li>Working on Machine Learning based Internet Domain Entity Matching and its Applications.</li>
+                                <li>Developed a machine learning based approach to detect malicious internet domains using lexical, registration, and DNS-resolution features.</li>
                             </ul>
-                            <span className="date-country-text">Aug. 2020 - Present</span><br/>
+                            <span className="date-country-text">Aug. 2020 - Dec. 2021</span><br/>
                             <span className="date-country-text">Sri Lanka</span>
                         </li>
                         <li className="research-wrapper">
@@ -41,7 +51,7 @@ const ExperiencePage = () => {
                             <ul className="research-content-text">
                                 <li>Advised by <b>Dr. Nalin Ranasinghe</b></li>
                                 <li>Successfully developed and implemented a new layer over Tensorflow to facilitate machine learning on encrypted data over a distributed network of machines, improving data security and privacy.</li>
-                                <li>Presented research findings at the SLASSCOM conference, demonstrating excellent communication and presentation skills.</li>
+                                <li>Presented research findings at the Sri Lanka Association for the Advancement of Science (SLAAS) Exhibition, demonstrating excellent communication and presentation skills.</li>
                             </ul>
                             <span className="date-country-text">Jul. 2018 - Jan. 2019</span><br/>
                             <span className="date-country-text">Sri Lanka</span>
@@ -67,13 +77,27 @@ const ExperiencePage = () => {
                                     System, Yarn Detection System and Glove Defect Identification System.
                                 </li>
                             </ul>
-                            <span className="date-country-text">Mar. 2016 - Jan. 2017</span><br/>
+                            <span className="date-country-text">Feb. 2016 - Jan. 2017</span><br/>
                             <span className="date-country-text">Sri Lanka</span>
                         </li>
                     </ul>
                     <div className="experience-divider"></div>
                     <h2 className="experience-subtitle">Professional Experience</h2>
                     <ul>
+                        <li className="research-wrapper">
+                            <h3>Lead Machine Learning Engineer (Full-time)</h3>
+                            <span className="institute-text">ParadigmAI</span><br/>
+                            <ul className="research-content-text">
+                                <li>Built an LLM-backed platform that predicts a respondent's survey answers from their prior response history.</li>
+                                <li>Designed the translation backend for a low-code system compiling graph-structured workflows into executable code.</li>
+                                <li>Engineered a multi-transport LLM gateway (REST and gRPC) with Postgres-backed key rotation, vendor allow/deny policies, OpenAI/Anthropic fallback, and request-level tracing for production LLM traffic.</li>
+                                <li>Implemented a Celery-on-SQS transcript evaluation service with Pydantic-enforced response schemas, streamed scoring via an internal OpenAI proxy, and Postgres-backed result sync with automated feedback generation.</li>
+                                <li>Built a Streamlit LLMOps analytics suite (async loaders, multi-tier caching, pooled SQLAlchemy) surfacing cost, latency, and health metrics across ML API and proxy workloads.</li>
+                                <li>Architected an AI-powered code evaluation platform ingesting GitHub repositories for automated review.</li>
+                            </ul>
+                            <span className="date-country-text">Aug. 2023 - Present</span><br/>
+                            <span className="date-country-text">Colombo, Sri Lanka</span>
+                        </li>
                         <li className="research-wrapper">
                             <h3>Senior Data Science Engineer (Full-time)</h3>
                             <span className="institute-text">WSO2</span><br/>
@@ -83,7 +107,7 @@ const ExperiencePage = () => {
                                 <li>Developed and maintained custom data visualization dashboards for internal stakeholders, enabling faster and more effective decision-making.</li>
                                 <li>Contributed to the development and implementation of best practices for data science, including code documentation, version control, and model evaluation.</li>
                             </ul>
-                            <span className="date-country-text">Nov. 2021 - Present</span><br/>
+                            <span className="date-country-text">Nov. 2021 - Aug. 2023</span><br/>
                             <span className="date-country-text">Sri Lanka</span>
                         </li>
                         <li className="research-wrapper">

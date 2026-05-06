@@ -15,22 +15,16 @@ const ResearchPage = () => {
                         <h2 className="research-subtitle">Ongoing</h2>
                         <ul>
                             <li className="research-wrapper">
-                                <h3>The Art of Optical Character Recognition on Printed Sinhala Text</h3>
-                                <span className="tools-text">ML | OCR | Tessseract</span><br/>
-                                <span className="content-text">We aim to establish the benchmark for the Sinhala OCR for printed text.</span><br/>
-                                <span className="date-text">Aug. 2023 - Present</span>
+                                <h3>Reinforcement Learning Hyperparameter Rigor — Paired-Offset Reevaluation</h3>
+                                <span className="tools-text">RL | HPO | Selection Bias | Diagnostics</span><br/>
+                                <span className="content-text">Investigating selection-induced optimism in RL hyperparameter search and proposing a paired-offset reevaluation diagnostic. Two manuscripts under review at AutoML 2026 (Methods Track) and the GlobalSouthML Workshop @ ICML 2026.</span><br/>
+                                <span className="date-text">2025 - Present</span>
                             </li>
                             <li className="research-wrapper">
-                                <h3>Privacy Preserved Machine Learning using Secure Multi-party Computing</h3>
-                                <span className="tools-text">ML | SMPC</span><br/>
-                                <span className="content-text">We are writing a comprehensive survey on privacy preserving machine learning that employs secure multi-party computing.</span><br/>
-                                <span className="date-text">Apr. 2022 - Present</span>
-                            </li>
-                            <li className="research-wrapper">
-                                <h3>Machine Learning based Internet Domain Entity Matching and its Applications</h3>
-                                <span className="tools-text">ML | Scikit-learn | Tensorflow | Python</span><br/>
-                                <span className="content-text">We try to predict the malicious domain URLs by using machine learning techniques.</span><br/>
-                                <span className="date-text">Aug. 2020 - Present</span>
+                                <h3>Wildfire Spread Prediction with Spatio-Temporal Deep Learning</h3>
+                                <span className="tools-text">Spatio-Temporal | Deep Learning | Remote Sensing</span><br/>
+                                <span className="content-text">Leveraging spatial and temporal data for enhanced wildfire spread prediction. Manuscript under review.</span><br/>
+                                <span className="date-text">2024 - Present</span>
                             </li>
                         </ul>
                     </div>
@@ -39,10 +33,17 @@ const ResearchPage = () => {
                         <h2 className="research-subtitle">Completed</h2>
                         <ul>
                             <li className="research-wrapper">
+                                <h3>On Privacy-Preserved Machine Learning Using Secure Multi-Party Computing: Techniques and Trends</h3>
+                                <span className="tools-text">ML | SMPC | Privacy</span><br/>
+                                <span className="content-text">Comprehensive survey on privacy-preserving machine learning that employs secure multi-party computing.</span><br/>
+                                <span className="date-text">Apr. 2022 - 2025</span><br/>
+                                <span><OutboundLink className="link" href="https://doi.org/10.32604/cmc.2025.068875" target="_blank" rel="noopener noreferrer">[Paper]</OutboundLink></span>
+                            </li>
+                            <li className="research-wrapper">
                                 <h3>Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles</h3>
-                                <span className="tools-text">CV | Tensorflow | OpenCV | Python</span><br/>
-                                <span className="content-text">Our work attempts at detecting water surfaces using Unmanned Ariel Vehicles (UAV) footage.</span><br/>
-                                <span className="date-text">Oct. 2022 - Present</span><br/>
+                                <span className="tools-text">CV | UNet | Tensorflow | OpenCV | Python</span><br/>
+                                <span className="content-text">Our work attempts at detecting water surfaces using Unmanned Aerial Vehicles (UAV) footage.</span><br/>
+                                <span className="date-text">Oct. 2022 - 2023</span><br/>
                                 <span><OutboundLink className="link" href="https://www.sciencedirect.com/science/article/pii/S1047320323001839?dgcid=author" target="_blank" rel="noopener noreferrer">[Paper]</OutboundLink></span>
                             </li>
                             <li className="research-wrapper">
@@ -51,6 +52,12 @@ const ResearchPage = () => {
                                 <span className="content-text">We aimed to model and forecast solid waste generation patterns in cities using machine learning techniques.</span><br/>
                                 <span className="date-text">May 2021 - Jul. 2022</span><br/>
                                 <span><OutboundLink className="link" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9950270" target="_blank" rel="noopener noreferrer">[Paper]</OutboundLink></span>
+                            </li>
+                            <li className="research-wrapper">
+                                <h3>Machine Learning based Internet Domain Entity Matching and its Applications</h3>
+                                <span className="tools-text">ML | Scikit-learn | Tensorflow | Python</span><br/>
+                                <span className="content-text">We tried to predict malicious domain URLs by using machine learning techniques.</span><br/>
+                                <span className="date-text">Aug. 2020 - Dec. 2021</span>
                             </li>
                             <li className="research-wrapper">
                                 <h3>Realtime Property Evaluation of Large Streaming Graphs</h3>
