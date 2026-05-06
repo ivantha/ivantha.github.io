@@ -1,0 +1,46 @@
+# Each entry: a title with a link, a stack, and a description paragraph
+# that may reference further links by label (resolved via `links`).
+# The renderer walks the description for `[label]` tokens and emits #link()
+# calls using `links[label]` as the URL.
+#
+# Casual CV uses `name_casual` / `description_casual` (shorter, no link
+# tokens) and filters on `include_in` like other variant-scoped entries.
+
+- name: "WSO2 Identity Server"
+  name_url: "https://github.com/wso2/product-is"
+  include_in: [academic, casual]
+  stack: "Java, OSGi, REST, Tomcat Valves"
+  stack_casual: "Java, OSGi, REST"
+  description: "Designed and shipped the tenant-aware CORS architecture for Identity Server 5.11 end-to-end, including the OSGi management service, DAO layer, REST APIs (tenant, application, and origin scopes), servlet valve, integration tests, and the public migration guide. Changes landed across [carbon-identity-framework], [identity-api-server], [product-is], and [docs-is]."
+  description_casual: "Designed and shipped the tenant-aware CORS architecture for Identity Server 5.11 end-to-end — OSGi management service, DAO, REST APIs, servlet valve, and public migration guide."
+  links:
+    carbon-identity-framework: "https://github.com/wso2/carbon-identity-framework"
+    identity-api-server: "https://github.com/wso2/identity-api-server"
+    product-is: "https://github.com/wso2/product-is"
+    docs-is: "https://github.com/wso2/docs-is"
+
+- name: "SCoRe Lab / C2SI (Sustainable Computing Research → Ceylon Computer Science Institute)"
+  name_casual: "SCoRe Lab / C2SI"
+  name_url: "https://github.com/c2siorg"
+  include_in: [academic, casual]
+  stack: "Python, Flask, React, Redux, Elasticsearch, TensorFlow, GitHub Actions"
+  stack_casual: "Python, React, TensorFlow, GitHub Actions"
+  description: "Long-running contributor and mentor across the lab's SCoRe-era projects and its successor organisation C2SI, spanning multiple years as contributor and Google Summer of Code mentor. Initiated and architected three of the organisation's flagship projects ([ImageLab], [TensorMap], and [DataLoom]), driving their core feature development and release engineering (fork-PR linting, slash-command automation triggers, release workflows). Also built the authentication and news-crawler stack for [fact-bounty] and contributed to [DroneSym]."
+  description_casual: "Long-running contributor and Google Summer of Code mentor; initiated and architected three flagship projects (ImageLab, TensorMap, DataLoom) and built release-engineering automation."
+  links:
+    fact-bounty: "https://github.com/scorelab/fact-bounty"
+    TensorMap: "https://github.com/c2siorg/tensormap"
+    DroneSym: "https://github.com/scorelab/DroneSym"
+    ImageLab: "https://github.com/c2siorg/imagelab"
+    DataLoom: "https://github.com/c2siorg/dataloom"
+
+- name: "Cohere Labs Community: Instruct Multilingual"
+  name_casual: "Cohere Labs — Aya Annotations Platform"
+  name_url: "https://github.com/Cohere-Labs-Community/aya-annotations-ui"
+  include_in: [academic]
+  stack: "Next.js, Nest.js, PostgreSQL, Docker, Google Cloud Platform"
+  stack_casual: "Next.js, Nest.js, PostgreSQL, GCP"
+  description: "Built and deployed the open-source web platform used to collect multilingual instruction-tuning data from a global contributor community, covering Google and Discord SSO, the full task-annotation workflow, analytics, RTL language support, and the Cloud Build deployment pipeline. The original work was internal; the public release lives at [aya-annotations-ui]."
+  description_casual: "Built the open-source web platform used to collect multilingual instruction-tuning data for the Aya dataset (ACL 2024) — SSO, task-annotation workflow, analytics, RTL support."
+  links:
+    aya-annotations-ui: "https://github.com/Cohere-Labs-Community/aya-annotations-ui"

@@ -1,0 +1,18 @@
+# Academic scholarships & grants. `footnote` attaches an academic footnote.
+- text: "AutoML Fall School Scholarship"
+  year: 2021
+- text: "Dataquest & AI Inclusive Scholarship"
+  year: 2021
+- text: "Tokyo Data Science Full Scholarship"
+  year: 2020
+- text: "Commonwealth of Learning Coursera Scholarship by Commonwealth of Learning, Canada"
+  year: 2020
+- text: "HackZurich Travel grant"
+  year: 2019
+- text: "AI Summer School Singapore Scholarship"
+  footnote: "I did not accept this scholarship as I could not attend the event due to university examinations."
+  year: 2019
+- text: "ownCloud Conference Travel grant by CERN and ownCloud"
+  year: 2018
+- text: "Hack the North Travel grant"
+  year: 2018

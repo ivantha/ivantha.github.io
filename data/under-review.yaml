@@ -1,0 +1,17 @@
+- authors:
+    - { name: "O. Mudannayake", self: true }
+  title: "Paired-Offset Reevaluation: A Diagnostic for Selection-Induced Optimism in Reinforcement-Learning Hyperparameter Search"
+  venue: "AutoML 2026 (Methods Track)"
+
+- authors:
+    - { name: "O. Mudannayake", self: true }
+  title: "Affordable Reinforcement Learning Hyperparameter Rigor: A Paired-Offset Reevaluation Catalogue"
+  venue: "GlobalSouthML Workshop at ICML 2026 (non-archival)"
+
+- authors:
+    - { name: "O. Mudannayake", self: true }
+    - { name: "K. Senarathne" }
+    - { name: "S. Farook" }
+    - { name: "L. De Mel" }
+    - { name: "C. Jayanaka" }
+  title: "Leveraging Spatial and Temporal Data for Enhanced Wildfire Spread Prediction"

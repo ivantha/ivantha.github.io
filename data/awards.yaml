@@ -1,0 +1,150 @@
+# Awards / Honours / Achievements.
+# Academic renders these under "Honours & Awards" with a numbered enum and
+# footnote markers ('*', '†', '‡'). Casual renders them under "Achievements"
+# as a tight list with year and optional place.
+#
+# `marker`: optional footnote symbol (rendered as superscript, academic only)
+# `organizer`: academic-only detail showing who ran the event
+# `place_casual`: what the casual CV calls this entry (e.g. "1st place")
+# `description_casual`: falls back to place_casual; renderer prefers this
+
+awards_notes_academic:
+  - marker: "*"
+    text: "President of the IEEE Student Branch of UCSC"
+  - marker: "†"
+    text: "Finance Team Lead of IEEE TAP project"
+  - marker: "‡"
+    text: "Program Team Lead of CloudHack 17 hackathon"
+
+entries:
+  - year: 2019
+    event: "HackZurich, Switzerland"
+    place_casual: "Got selected out of 5000+ hackers"
+    include_in: [casual]
+  - year: 2019
+    event: "Datathon (SLIIT Codefest)"
+    organizer: "Sri Lanka Institute of Information Technology"
+    place_academic: "Merit Award"
+    include_in: [academic]
+  - year: 2019
+    event: "IEEE Regional Exemplary Student Branch 2020 under Region 10 and Sri Lanka Section"
+    organizer: "IEEE"
+    marker: "*"
+    include_in: [academic]
+  - year: 2019
+    event: "IEEE Darrel Chong Student Activity Award 2020"
+    organizer: "IEEE"
+    place_academic: "Bronze category winner"
+    marker: "*"
+    include_in: [academic]
+  - year: 2019
+    event: "IEEE SLSYWC 2019 — GameRush"
+    organizer: "IEEE"
+    place_academic: "Best Student Branch Activity Award"
+    marker: "*"
+    include_in: [academic]
+
+  - year: 2018
+    event: "Google Summer of Code 2018"
+    place_casual: "_CERN-HSF_"
+    include_in: [casual]
+  - year: 2018
+    event: "Hack The North, Waterloo, Canada"
+    place_casual: ""
+    include_in: [casual]
+  - year: 2018
+    event: "Codezilla"
+    organizer: "Mozilla Campus Club of Uva Wellassa University"
+    place_casual: "1#super[st] place"
+    place_academic: "1#super[st] place"
+    include_in: [academic, casual]
+  - year: 2018
+    event: "LetMeHack"
+    organizer: "Sabaragamuwa University"
+    place_casual: "1#super[st] place"
+    place_academic: "1#super[st] place"
+    include_in: [academic, casual]
+
+  - year: 2017
+    event: "University of Colombo School of Computing"
+    event_casual: "UCSC Appreciation Awards"
+    place_casual: ""
+    place_academic: "Award of Appreciation on recognizing the outstanding achievements in hackathons and coding competitions."
+    include_in: [academic]
+  - year: 2017
+    event: "IEEE SLSYWC 2017 — Industry Collaborative"
+    organizer: "IEEE"
+    place_academic: "Best Industry Collaborative Award"
+    marker: "†"
+    include_in: [academic]
+  - year: 2017
+    event: "IEEE SLSYWC 2017 — Student Branch Activity"
+    organizer: "IEEE"
+    place_academic: "Best Student Branch Activity Award"
+    marker: "‡"
+    include_in: [academic]
+  - year: 2017
+    event: "Presistent Hackathon"
+    organizer: "Persistent Systems Lanka"
+    place_casual: "2#super[nd] place"
+    place_academic: "2#super[nd] place"
+    include_in: [academic, casual]
+  - year: 2017
+    event: "HACKiNTRA"
+    organizer: "University of Jaffna"
+    place_casual: "2#super[nd] place"
+    place_academic: "2#super[nd] place"
+    include_in: [academic]
+  - year: 2017
+    event: "CodeFest Designathon"
+    event_casual: "CodeFest Designathon"
+    organizer: "Sri Lanka Institute of Information Technology"
+    place_casual: "Finalists"
+    place_academic: "Finalist"
+    include_in: [academic]
+  - year: 2017
+    event: "SS12 Asia"
+    organizer: "IEEE"
+    place_casual: "Semi Finalists"
+    place_academic: "Finalist"
+    include_in: [academic]
+  - year: 2017
+    event: "Dialog Game Dev Hackathon"
+    event_casual: "Dialog Gaming Hackathon"
+    organizer: "Dialog Axiata"
+    place_casual: "3#super[rd] place"
+    place_academic: "3#super[rd] place"
+    include_in: [academic]
+
+  - year: 2016
+    event: "Mozilla Web Maker Party"
+    organizer: "Mozilla Club of University of Colombo School of Computing"
+    place_casual: "1#super[st] place"
+    place_academic: "1#super[st] place"
+    include_in: [academic]
+  - year: 2016
+    event: "CodeFest Tertiary Hackathon"
+    organizer: "Sri Lanka Institute of Information Technology"
+    place_casual: "2#super[nd] place"
+    place_academic: "2#super[nd] place"
+    include_in: [academic]
+  - year: 2016
+    event: "IEEE preXtreme 1.0"
+    organizer: "IEEE Student Branch of University of Colombo School of Computing"
+    place_casual: "1#super[st] place"
+    place_academic: "1#super[st] place"
+    include_in: [academic, casual]
+  - year: 2016
+    event: "ACES Coders"
+    event_casual: "ACES Coders"
+    organizer: "University of Peradeniya"
+    place_casual: "6#super[th] Place"
+    place_academic: "6#super[th] place"
+    include_in: [academic]
+  - year: 2016
+    event: "Code Expertz"
+    event_casual: "Code Experts"
+    organizer: "University of Moratuwa"
+    place_casual: "5#super[th] Place"
+    place_academic: "5#super[th] place"
+    include_in: [academic]
