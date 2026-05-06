@@ -11,9 +11,9 @@
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "npm run build:cv && gatsby build",
-    "build:cv": "mkdir -p static/cv && cd cv && typst compile --root . --font-path fonts variants/academic/main.typ ../static/cv/academic-cv.pdf && typst compile --root . --font-path fonts variants/casual/main.typ ../static/cv/casual-cv.pdf && cp ../static/cv/academic-cv.pdf ../static/cv.pdf",
-    "build:cv:academic": "mkdir -p static/cv && cd cv && typst compile --root . --font-path fonts variants/academic/main.typ ../static/cv/academic-cv.pdf",
-    "build:cv:casual": "mkdir -p static/cv && cd cv && typst compile --root . --font-path fonts variants/casual/main.typ ../static/cv/casual-cv.pdf",
+    "build:cv": "mkdir -p static/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ static/cv/academic-cv.pdf && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ static/cv/casual-cv.pdf",
+    "build:cv:academic": "mkdir -p static/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ static/cv/academic-cv.pdf",
+    "build:cv:casual": "mkdir -p static/cv && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ static/cv/casual-cv.pdf",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "npm run build && gh-pages -d public -b gh-pages"

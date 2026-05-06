@@ -28,7 +28,7 @@ const stringListYamls = [
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     const { createNode } = actions
     for (const { file, typeName } of stringListYamls) {
-        const fullPath = path.join(__dirname, "cv", "data", file)
+        const fullPath = path.join(__dirname, "data", file)
         const raw = fs.readFileSync(fullPath, "utf8")
         const parsed = yaml.load(raw)
         if (!Array.isArray(parsed)) continue

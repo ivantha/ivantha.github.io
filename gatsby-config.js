@@ -36,7 +36,7 @@ module.exports = {
             resolve: "gatsby-source-filesystem",
             options: {
                 name: "cv",
-                path: `${__dirname}/cv/data/`,
+                path: `${__dirname}/data/`,
             },
             __key: "cv",
         },

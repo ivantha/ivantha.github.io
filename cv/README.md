@@ -1,12 +1,12 @@
 # cv
 
 Two Typst CVs (academic and casual) driven by a single YAML source of truth.
-Supersedes the standalone `academic-cv` and `casual-cv` repositories.
+The YAML lives at the repo root in `../data/` and is shared with the Gatsby
+site.
 
 ## Layout
 
 ```
-data/              # single source of truth (YAML)
 common/loaders.typ # shared YAML loader + variant-filter helpers
 fonts/             # shared font pool (Linux Libertine, Roboto Mono, Font Awesome 6)
 variants/
@@ -35,7 +35,7 @@ Outputs:
 
 ## SSOT conventions
 
-Every entry in a `data/*.yaml` list that can appear in either CV carries an
+Every entry in a `../data/*.yaml` list that can appear in either CV carries an
 `include_in` tag:
 
 ```yaml
@@ -83,11 +83,6 @@ the `md()` helper in each variant's `renderers.typ`.
 
 ## Adding or editing content
 
-1. Find the right YAML file.
+1. Find the right YAML file in `../data/`.
 2. Edit or add the entry. If variant-scoped, set `include_in`.
 3. Run `just` to rebuild.
-
-## Legacy repos
-
-`../academic-cv/` and `../casual-cv/` remain as golden references and receive
-no further commits.
