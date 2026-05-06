@@ -33,7 +33,8 @@ const PublicationsPage = () => {
     const items = publicationsYaml.items || []
     const sorted = [...items].sort((a, b) => (b.year || 0) - (a.year || 0))
     const published = sorted.filter((p) => p.doi_url)
-    const underReview = sorted.filter((p) => !p.doi_url)
+    const preprints = sorted.filter((p) => !p.doi_url && p.venue_type === "Preprint")
+    const underReview = sorted.filter((p) => !p.doi_url && p.venue_type !== "Preprint")
     const note = publicationsYaml.equal_contribution_note
 
     const hasEqContribInPublished = published.some((p) =>
@@ -63,6 +64,14 @@ const PublicationsPage = () => {
                             <h2 className="publications-subtitle">Articles Under Review</h2>
                             <ul>
                                 {underReview.map((pub, idx) => <PublicationItem key={idx} pub={pub}/>)}
+                            </ul>
+                        </>
+                    )}
+                    {preprints.length > 0 && (
+                        <>
+                            <h2 className="publications-subtitle">Preprints</h2>
+                            <ul>
+                                {preprints.map((pub, idx) => <PublicationItem key={idx} pub={pub}/>)}
                             </ul>
                         </>
                     )}
