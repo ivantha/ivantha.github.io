@@ -1,0 +1,16 @@
+{
+    "name": "Oshan Mudannayake",
+    "short_name": "Oshan",
+    "description": "Personal website of Oshan Mudannayake — AI Researcher and ML Engineer.",
+    "start_url": "/",
+    "display": "minimal-ui",
+    "background_color": "#ffffff",
+    "theme_color": "#424242",
+    "icons": [
+        {
+            "src": "/icon.png",
+            "sizes": "any",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,15 +1,10 @@
-// MIXINS
-@mixin box-shadow($value) {
-  -webkit-box-shadow: $value;
-  -moz-box-shadow: $value;
-  box-shadow: $value;
-}
-
 // Fonts
-$pf-primary-font: 'Roboto Mono', monospace;
-$pf-secondary-font: 'Roboto', sans-serif;
+$pf-primary-font: "Roboto Mono", monospace;
+$pf-secondary-font: "Roboto", sans-serif;
+
+// Links
 $pf-link-color: #1772d0;
-$pf-link-hover-color: #F9A825;
+$pf-link-hover-color: #f9a825;
 
 // Colors
 $pf-primary-color: #424242;

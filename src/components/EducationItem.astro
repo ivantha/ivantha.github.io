@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content"
+import TypstMd from "@/components/TypstMd.astro"
+import { pickField } from "@/lib/variants"
+
+interface Props {
+    item: CollectionEntry<"education">["data"]
+}
+
+const { item } = Astro.props
+
+const degree = pickField(item, "degree") ?? ""
+const dates = pickField(item, "dates") ?? ""
+const extras: string[] = item.extras_casual ?? item.extras_academic ?? []
+---
+
+<li>
+    <h3>{item.institute}</h3>
+    {dates && <span class="date-text">{dates}</span>}
+    {degree && <p class="content-text">{degree}</p>}
+    {
+        extras.length > 0 && (
+            <ul>
+                {extras.map((extra: string) => (
+                    <li>
+                        <TypstMd text={extra} />
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+</li>

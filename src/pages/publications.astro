@@ -1,0 +1,71 @@
+---
+import { getEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import PublicationItem from "@/components/PublicationItem.astro"
+import "@/styles/pages/publications.scss"
+
+const publications = await getEntry("publications", "main")
+const items = publications?.data.items ?? []
+const sorted = [...items].sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
+const published = sorted.filter((p) => p.doi_url)
+const preprints = sorted.filter((p) => !p.doi_url && p.venue_type === "Preprint")
+const underReview = sorted.filter((p) => !p.doi_url && p.venue_type !== "Preprint")
+const note = publications?.data.equal_contribution_note
+const hasEqContribInPublished = published.some((p) =>
+    (p.authors ?? []).some((a: { equal_contribution?: boolean }) => a.equal_contribution),
+)
+---
+
+<Layout
+    title="Publications | Oshan Mudannayake"
+    description="Peer-reviewed publications, preprints, and articles under review."
+>
+    <div class="publicationsLayout section-wrapper">
+        <div class="section-title">
+            <h1>Publications</h1>
+        </div>
+        <div class="section-items">
+            {
+                published.length > 0 && (
+                    <>
+                        <h2 class="publications-subtitle">Published Articles</h2>
+                        <ul>
+                            {published.map((pub) => (
+                                <PublicationItem pub={pub} />
+                            ))}
+                        </ul>
+                        {hasEqContribInPublished && note && (
+                            <p>
+                                <sup>*</sup> {note}
+                            </p>
+                        )}
+                    </>
+                )
+            }
+            {
+                underReview.length > 0 && (
+                    <>
+                        <h2 class="publications-subtitle">Articles Under Review</h2>
+                        <ul>
+                            {underReview.map((pub) => (
+                                <PublicationItem pub={pub} />
+                            ))}
+                        </ul>
+                    </>
+                )
+            }
+            {
+                preprints.length > 0 && (
+                    <>
+                        <h2 class="publications-subtitle">Preprints</h2>
+                        <ul>
+                            {preprints.map((pub) => (
+                                <PublicationItem pub={pub} />
+                            ))}
+                        </ul>
+                    </>
+                )
+            }
+        </div>
+    </div>
+</Layout>

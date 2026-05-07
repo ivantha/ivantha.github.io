@@ -1,19 +1,18 @@
 .newsLayout {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  .news-wrapper {
-    line-height: 1.25;
-    margin-top: 2rem;
+    .news-wrapper {
+        line-height: 1.25;
+        margin-top: 2rem;
 
-    .date-text {
-      font-size: 0.9rem;
-      font-weight: 700;
+        .date-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .content-text {
+            font-size: 0.96rem;
+        }
     }
-
-    .content-text {
-      font-size: 0.96rem;
-    }
-  }
-
 }

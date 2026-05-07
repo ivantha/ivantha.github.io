@@ -1,0 +1,26 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import "@/styles/pages/workshops.scss"
+
+const items: CollectionEntry<"workshops">[] = await getCollection("workshops")
+---
+
+<Layout title="Workshops | Oshan Mudannayake" description="Workshops, summer schools, and training programs attended.">
+    <div class="workshopsLayout section-wrapper">
+        <div class="section-title">
+            <h1>Workshops</h1>
+        </div>
+        <div class="section-items">
+            <ul>
+                {
+                    items.map((entry) => (
+                        <li class="workshops-wrapper">
+                            <span class="content-text">{entry.data.line}</span>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
+</Layout>

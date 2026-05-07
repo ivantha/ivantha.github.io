@@ -1,0 +1,126 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import { isWebVisible, pickField } from "@/lib/variants"
+import "@/styles/pages/certifications.scss"
+
+type Cert = CollectionEntry<"certifications">["data"]
+
+const all: CollectionEntry<"certifications">[] = await getCollection("certifications")
+const items = all.filter((entry) => isWebVisible(entry.data))
+const moocInstitutes = new Set(["Coursera", "Qwicklabs"])
+const moocs = items.filter((entry) => moocInstitutes.has(entry.data.institute))
+const professional = items.filter((entry) => !moocInstitutes.has(entry.data.institute))
+---
+
+<Layout
+    title="Certifications | Oshan Mudannayake"
+    description="MOOCs, professional certifications, and course completions."
+>
+    <div class="certificationsLayout section-wrapper">
+        <div class="section-title">
+            <h1>Certifications</h1>
+        </div>
+        <div class="section-items">
+            {
+                moocs.length > 0 && (
+                    <div>
+                        <h2>MOOCs</h2>
+                        <ul>
+                            {moocs.map((entry) => {
+                                const cert: Cert = entry.data
+                                const name = pickField(cert, "name", "academic") ?? cert.name
+                                return (
+                                    <li class="certification-wrapper">
+                                        <h3>
+                                            {cert.year} | {name}
+                                        </h3>
+                                        <span class="institute-text">
+                                            {cert.institute}
+                                            {cert.url && (
+                                                <>
+                                                    {" | "}
+                                                    <a
+                                                        class="link"
+                                                        href={cert.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        [Certificate]
+                                                    </a>
+                                                </>
+                                            )}
+                                            {cert.pdf_url && (
+                                                <>
+                                                    {" "}
+                                                    <a
+                                                        class="link"
+                                                        href={cert.pdf_url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        [PDF]
+                                                    </a>
+                                                </>
+                                            )}
+                                        </span>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                )
+            }
+            {moocs.length > 0 && professional.length > 0 && <div class="certification-divider" />}
+            {
+                professional.length > 0 && (
+                    <div>
+                        <h2 class="certification-subtitle">Professional Certifications</h2>
+                        <ul>
+                            {professional.map((entry) => {
+                                const cert: Cert = entry.data
+                                const name = pickField(cert, "name", "academic") ?? cert.name
+                                return (
+                                    <li class="certification-wrapper">
+                                        <h3>
+                                            {cert.year} | {name}
+                                        </h3>
+                                        <span class="institute-text">
+                                            {cert.institute}
+                                            {cert.url && (
+                                                <>
+                                                    {" | "}
+                                                    <a
+                                                        class="link"
+                                                        href={cert.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        [Certificate]
+                                                    </a>
+                                                </>
+                                            )}
+                                            {cert.pdf_url && (
+                                                <>
+                                                    {" "}
+                                                    <a
+                                                        class="link"
+                                                        href={cert.pdf_url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        [PDF]
+                                                    </a>
+                                                </>
+                                            )}
+                                        </span>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</Layout>

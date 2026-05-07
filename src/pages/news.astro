@@ -1,0 +1,27 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import NewsEntry from "@/components/NewsEntry.astro"
+import "@/styles/pages/news.scss"
+
+const allNews: CollectionEntry<"news">[] = await getCollection("news")
+---
+
+<Layout title="News | Oshan Mudannayake" description="Recent updates, milestones, and changes for Oshan Mudannayake.">
+    <div class="newsLayout section-wrapper">
+        <div class="section-title">
+            <h1>News</h1>
+        </div>
+        <div class="section-items">
+            <ul>
+                {
+                    allNews.map((entry) => (
+                        <li class="news-wrapper">
+                            <NewsEntry entry={entry.data} />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
+</Layout>

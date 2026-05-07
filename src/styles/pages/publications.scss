@@ -1,23 +1,23 @@
 .publicationsLayout {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  .publications-subtitle {
-  }
-
-  .publications-divider {
-    height: 0.5rem;
-  }
-
-  ul {
-    overflow-wrap: anywhere;
-  }
-
-  li {
-    padding-bottom: 1rem;
-
-    p {
-      word-break: break-word;
+    .publications-subtitle {
     }
-  }
+
+    .publications-divider {
+        height: 0.5rem;
+    }
+
+    ul {
+        overflow-wrap: anywhere;
+    }
+
+    li {
+        padding-bottom: 1rem;
+
+        p {
+            word-break: break-word;
+        }
+    }
 }

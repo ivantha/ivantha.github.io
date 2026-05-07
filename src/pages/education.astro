@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import EducationItem from "@/components/EducationItem.astro"
+import { isWebVisible } from "@/lib/variants"
+import "@/styles/pages/education.scss"
+
+const all: CollectionEntry<"education">[] = await getCollection("education")
+const items = all.filter((entry) => isWebVisible(entry.data))
+---
+
+<Layout title="Education | Oshan Mudannayake" description="Academic background and degrees.">
+    <div class="educationLayout section-wrapper">
+        <div class="section-title">
+            <h1>Education</h1>
+        </div>
+        <div class="section-items">
+            <ul>
+                {items.map((entry) => <EducationItem item={entry.data} />)}
+            </ul>
+        </div>
+    </div>
+</Layout>

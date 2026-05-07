@@ -1,0 +1,20 @@
+---
+import { tokenize } from "@/lib/markup"
+
+interface Props {
+    text: string | null | undefined
+}
+
+const { text } = Astro.props
+const tokens = tokenize(text)
+---
+
+{
+    tokens.map((token) => {
+        if (token.type === "text") return token.value
+        if (token.type === "italic") return <em>{token.value}</em>
+        if (token.type === "italic-quoted") return <em>&ldquo;{token.value}&rdquo;</em>
+        if (token.type === "sup") return <sup>{token.value}</sup>
+        return null
+    })
+}

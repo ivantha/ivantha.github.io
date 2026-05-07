@@ -1,0 +1,47 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import ExperienceItem from "@/components/ExperienceItem.astro"
+import { isWebVisible } from "@/lib/variants"
+import "@/styles/pages/experience.scss"
+
+const all: CollectionEntry<"experience">[] = await getCollection("experience")
+const items = all.filter((entry) => isWebVisible(entry.data))
+const research = items.filter((entry) => entry.data.category === "research")
+const professional = items.filter((entry) => entry.data.category === "professional")
+---
+
+<Layout title="Experience | Oshan Mudannayake" description="Research and professional experience timeline.">
+    <div class="experienceLayout section-wrapper">
+        <div class="section-title">
+            <h1>Experience</h1>
+        </div>
+        <div class="section-items">
+            {
+                research.length > 0 && (
+                    <>
+                        <h2 class="experience-subtitle">Research Experience</h2>
+                        <ul>
+                            {research.map((entry) => (
+                                <ExperienceItem item={entry.data} />
+                            ))}
+                        </ul>
+                    </>
+                )
+            }
+            {research.length > 0 && professional.length > 0 && <div class="experience-divider" />}
+            {
+                professional.length > 0 && (
+                    <>
+                        <h2 class="experience-subtitle">Professional Experience</h2>
+                        <ul>
+                            {professional.map((entry) => (
+                                <ExperienceItem item={entry.data} />
+                            ))}
+                        </ul>
+                    </>
+                )
+            }
+        </div>
+    </div>
+</Layout>
