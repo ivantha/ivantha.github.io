@@ -1,0 +1,13 @@
+# Auto-generated
+pnpm-lock.yaml
+dist/
+.astro/
+node_modules/
+public/
+
+# YAML data — author's preferred indentation; Typst CV reads these too
+data/
+
+# Author-formatted docs
+README.md
+LICENSE

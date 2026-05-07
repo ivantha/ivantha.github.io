@@ -1,58 +1,46 @@
 {
-  "name": "ivantha",
-  "version": "1.0.0",
-  "private": true,
-  "description": "ivantha",
-  "author": "Oshan Ivantha",
-  "keywords": [
-    "gatsby"
-  ],
-  "engines": {
-    "node": ">=22"
-  },
-  "packageManager": "pnpm@10.33.4",
-  "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "pnpm build:cv && gatsby build",
-    "build:cv": "mkdir -p static/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ static/cv/academic-cv.pdf && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ static/cv/casual-cv.pdf",
-    "build:cv:academic": "mkdir -p static/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ static/cv/academic-cv.pdf",
-    "build:cv:casual": "mkdir -p static/cv && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ static/cv/casual-cv.pdf",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "deploy": "pnpm build && gh-pages -d public -b gh-pages"
-  },
-  "dependencies": {
-    "gatsby": "^5.16.1",
-    "gatsby-plugin-google-gtag": "^5.16.0",
-    "gatsby-plugin-image": "^3.16.0",
-    "gatsby-plugin-manifest": "^5.16.0",
-    "gatsby-plugin-react-helmet": "^6.16.0",
-    "gatsby-plugin-sass": "^6.16.0",
-    "gatsby-plugin-sharp": "^5.16.0",
-    "gatsby-source-filesystem": "^5.16.0",
-    "gatsby-transformer-sharp": "^5.16.0",
-    "gatsby-transformer-yaml": "^5.16.0",
-    "js-yaml": "^4.1.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-helmet": "^6.1.0",
-    "sass": "^1.99.0"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "core-js",
-      "core-js-pure",
-      "es5-ext",
-      "gatsby",
-      "gatsby-cli",
-      "lmdb",
-      "msgpackr-extract",
-      "sharp"
-    ]
-  }
+    "name": "ivantha",
+    "version": "2.0.0",
+    "private": true,
+    "type": "module",
+    "description": "Source for ivantha.com — personal site + Typst CV SSOT",
+    "author": "Oshan Mudannayake",
+    "license": "MIT",
+    "engines": {
+        "node": ">=22"
+    },
+    "packageManager": "pnpm@10.33.4",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "pnpm build:cv && astro build",
+        "build:cv": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ public/cv/academic-cv.pdf && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ public/cv/casual-cv.pdf",
+        "build:cv:academic": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ public/cv/academic-cv.pdf",
+        "build:cv:casual": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ public/cv/casual-cv.pdf",
+        "preview": "astro preview",
+        "lint": "astro check && eslint . && prettier --check .",
+        "format": "prettier --write ."
+    },
+    "dependencies": {
+        "astro": "^5.0.0",
+        "sharp": "^0.33.0",
+        "yaml": "^2.6.0"
+    },
+    "devDependencies": {
+        "@astrojs/check": "^0.9.0",
+        "@eslint/js": "^9.0.0",
+        "eslint": "^9.0.0",
+        "eslint-plugin-astro": "^1.0.0",
+        "prettier": "^3.0.0",
+        "prettier-plugin-astro": "^0.14.0",
+        "sass": "^1.80.0",
+        "typescript": "^5.6.0",
+        "typescript-eslint": "^8.0.0"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild",
+            "sharp"
+        ]
+    }
 }
