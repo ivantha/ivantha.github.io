@@ -1,13 +1,15 @@
 # Jetbrains
 .idea
 
-# Gatsby
+# Dependencies
 node_modules/
-.cache/
-public
 
-# Built CV PDFs (produced by `npm run build:cv`, not committed)
-static/cv/
+# Build output
+dist/
+.astro/
+
+# Built CV PDFs (produced by `pnpm run build:cv`, not committed)
+public/cv/
 
 # MacOS
 .DS_Store
