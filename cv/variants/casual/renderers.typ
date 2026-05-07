@@ -225,9 +225,11 @@
       let venue = field(p, "venue", "casual")
       let doi = p.at("doi_url", default: none)
       let title-body = if doi != none { link(doi, text(fill: accent-cyan, weight: "bold", title)) } else { text(fill: accent-cyan, weight: "bold", title) }
-      [
+      if doi != none [
         #text(fill: accent-amber, str(p.year)) #text(fill: comment-grey)[·] #title-body \
         #text(fill: comment-grey, "// " + venue)
+      ] else [
+        #text(fill: accent-amber, str(p.year)) #text(fill: comment-grey)[·] #title-body
       ]
     }),
   )
