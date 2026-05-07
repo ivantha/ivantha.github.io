@@ -17,7 +17,7 @@ const ResearchPage = () => {
                             <li className="research-wrapper">
                                 <h3>Reinforcement Learning Hyperparameter Rigor — Paired-Offset Reevaluation</h3>
                                 <span className="tools-text">RL | HPO | Selection Bias | Diagnostics</span><br/>
-                                <span className="content-text">Investigating selection-induced optimism in RL hyperparameter search and proposing a paired-offset reevaluation diagnostic. Two manuscripts under review at AutoML 2026 (Methods Track) and the GlobalSouthML Workshop @ ICML 2026.</span><br/>
+                                <span className="content-text">Investigating selection-induced optimism in RL hyperparameter search and proposing a paired-offset reevaluation diagnostic. Two manuscripts under review.</span><br/>
                                 <span className="date-text">2025 - Present</span>
                             </li>
                             <li className="research-wrapper">
