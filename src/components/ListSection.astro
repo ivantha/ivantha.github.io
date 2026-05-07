@@ -1,0 +1,17 @@
+---
+interface Props {
+    title: string
+    className?: string
+}
+
+const { title, className = "" } = Astro.props
+---
+
+<div class={`${className} section-wrapper`.trim()}>
+    <div class="section-title">
+        <h1>{title}</h1>
+    </div>
+    <div class="section-items">
+        <slot />
+    </div>
+</div>

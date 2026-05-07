@@ -1,0 +1,52 @@
+---
+import { getEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import TypstMd from "@/components/TypstMd.astro"
+import { isWebVisible, pickField } from "@/lib/variants"
+import "@/styles/pages/achievements.scss"
+
+const awards = await getEntry("awards", "main")
+const entries = (awards?.data.entries ?? []).filter(isWebVisible)
+const sorted = [...entries].sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
+---
+
+<Layout title="Achievements | Oshan Mudannayake" description="Hackathons, competitions, awards, and honours.">
+    <div class="achievementsLayout section-wrapper">
+        <div class="section-title">
+            <h1>Achievements</h1>
+        </div>
+        <div class="section-items">
+            <ul>
+                {
+                    sorted.map((entry) => {
+                        const event = pickField(entry, "event") ?? entry.event
+                        const place = pickField(entry, "place")
+                        return (
+                            <li class="achievements-wrapper">
+                                <span class="institute-text">
+                                    {entry.year}
+                                    {place && (
+                                        <>
+                                            {" | "}
+                                            <TypstMd text={place} />
+                                        </>
+                                    )}
+                                </span>
+                                <h3>{event}</h3>
+                                {entry.organizer && <span class="institute-text country">{entry.organizer}</span>}
+                                {entry.pdf_url && (
+                                    <>
+                                        <br />
+                                        <a class="link" href={entry.pdf_url} target="_blank" rel="noopener noreferrer">
+                                            [Certificate]
+                                        </a>
+                                    </>
+                                )}
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </div>
+    </div>
+</Layout>

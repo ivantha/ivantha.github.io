@@ -1,0 +1,58 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import TextWithLinks from "@/components/TextWithLinks.astro"
+import { isWebVisible, pickField } from "@/lib/variants"
+import "@/styles/pages/open-source.scss"
+
+const all: CollectionEntry<"open-source">[] = await getCollection("open-source")
+const items = all.filter((entry) => isWebVisible(entry.data))
+---
+
+<Layout
+    title="Open Source | Oshan Mudannayake"
+    description="Open-source contributions across WSO2, SCoRe Lab/C2SI, and Cohere Labs."
+>
+    <div class="openSourceLayout section-wrapper">
+        <div class="section-title">
+            <h1>Open Source</h1>
+        </div>
+        <div class="section-items">
+            <ul>
+                {
+                    items.map((entry) => {
+                        const item = entry.data
+                        const name = pickField(item, "name", "academic") ?? item.name
+                        const stack = pickField(item, "stack", "academic")
+                        const description = pickField(item, "description", "academic")
+                        const links = item.links ?? {}
+                        return (
+                            <li class="open-source-wrapper">
+                                <h3>
+                                    {item.name_url ? (
+                                        <a class="link" href={item.name_url} target="_blank" rel="noopener noreferrer">
+                                            {name}
+                                        </a>
+                                    ) : (
+                                        name
+                                    )}
+                                </h3>
+                                {stack && (
+                                    <>
+                                        <span class="tools-text">{stack}</span>
+                                        <br />
+                                    </>
+                                )}
+                                {description && (
+                                    <span class="content-text">
+                                        <TextWithLinks text={description} links={links} />
+                                    </span>
+                                )}
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </div>
+    </div>
+</Layout>

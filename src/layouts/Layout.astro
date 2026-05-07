@@ -1,0 +1,57 @@
+---
+import "@/styles/components/layout.scss"
+import NavBar from "@/components/NavBar.astro"
+
+interface Props {
+    title?: string
+    description?: string
+}
+
+const { title, description = "Personal website of Oshan Mudannayake — AI Researcher and ML Engineer." } = Astro.props
+
+const fullTitle = title ?? "Oshan Mudannayake | AI Researcher"
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="canonical" href={canonicalUrl} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+        <title>{fullTitle}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-9YY9CJLD5V"></script>
+        <script is:inline>
+            window.dataLayer = window.dataLayer || []
+            function gtag(...args) {
+                window.dataLayer.push(args)
+            }
+            gtag("js", new Date())
+            gtag("config", "G-9YY9CJLD5V")
+        </script>
+    </head>
+    <body>
+        <div class="content">
+            <div class="header">
+                <h2>Oshan Mudannayake</h2>
+            </div>
+            <div class="container">
+                <NavBar />
+                <main>
+                    <slot />
+                </main>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from "astro:content"
+import TypstMd from "@/components/TypstMd.astro"
+import { isWebVisible, pickField } from "@/lib/variants"
+
+type Item = CollectionEntry<"experience">["data"]
+type Bullet = Item["bullets"][number]
+
+interface Props {
+    item: Item
+}
+
+const { item } = Astro.props
+
+const role = pickField(item, "role") ?? ""
+const company = pickField(item, "company") ?? ""
+const location = pickField(item, "location") ?? ""
+const bullets: Bullet[] = item.bullets.filter(isWebVisible)
+---
+
+<li class="research-content-text">
+    <h3>{role}</h3>
+    <span class="institute-text">
+        {company}{location && ` · ${location}`}
+        {item.advisor && ` · Advised by ${item.advisor}`}
+    </span>
+    <span class="date-country-text"> · {item.dates}</span>
+    {
+        bullets.length > 0 && (
+            <ul>
+                {bullets.map((bullet: Bullet) => {
+                    const text = pickField(bullet, "text") ?? bullet.text
+                    return (
+                        <li>
+                            <TypstMd text={text} />
+                        </li>
+                    )
+                })}
+            </ul>
+        )
+    }
+</li>

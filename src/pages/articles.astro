@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets"
+import Layout from "@/layouts/Layout.astro"
+import corsImg from "@/assets/cors.jpg"
+import gsocImg from "@/assets/gsoc.jpg"
+import "@/styles/pages/articles.scss"
+---
+
+<Layout title="Articles | Oshan Mudannayake" description="Long-form technical articles by Oshan Mudannayake.">
+    <div class="articlesLayout section-wrapper">
+        <div class="section-title">
+            <h1>Articles</h1>
+        </div>
+        <div class="section-items">
+            <ul>
+                <li class="articles-wrapper">
+                    <div class="articles-card">
+                        <div class="img-container cors">
+                            <Image src={corsImg} alt="CORS" class="article-img" />
+                        </div>
+                        <div class="card-content">
+                            <h3>CORS with WSO2 Identity Server 5.11</h3>
+                            <span class="tags-text">wso2 identity server, cors</span><br />
+                            <span class="content-text">
+                                If you are here, chances are you know what CORS is. But let&rsquo;s go through the
+                                basics in case you are a bit rusty on the exact way that CORS works. You can hop over to
+                                the next section if you feel confident...{" "}
+                                <a
+                                    class="link"
+                                    href="https://ivantha.medium.com/cors-with-wso2-identity-server-5-11-1067b3a6f9bd"
+                                    target="_blank"
+                                    rel="noopener noreferrer">[Read more]</a
+                                >
+                            </span><br />
+                            <span class="date-text">Dec 4, 2020</span><br />
+                        </div>
+                    </div>
+                </li>
+                <li class="articles-wrapper">
+                    <div class="articles-card">
+                        <div class="img-container gsoc">
+                            <Image src={gsocImg} alt="GSoC" class="article-img" />
+                        </div>
+                        <div class="card-content">
+                            <h3>GSoC diaries I - Long walk to GSoC with CERN-HSF</h3>
+                            <span class="tags-text">open source, gsoc, cern, owncloud</span><br />
+                            <span class="content-text">
+                                Google Summer of Code is an annual initiative carried out by Google for the betterment
+                                of the open-source software and the students in STEM fields. It started in 2005 as a
+                                program that would help students...{" "}
+                                <a
+                                    class="link"
+                                    href="https://ivantha.medium.com/gsoc-diaries-part-i-long-walk-to-gsoc-with-cern-hsf-92e671fad4f5"
+                                    target="_blank"
+                                    rel="noopener noreferrer">[Read more]</a
+                                >
+                            </span><br />
+                            <span class="date-text">Nov 18, 2019</span><br />
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</Layout>

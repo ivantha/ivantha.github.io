@@ -1,0 +1,39 @@
+---
+const links: Array<{ href: string; label: string; external?: boolean }> = [
+    { href: "/", label: "Home" },
+    { href: "/research", label: "Research" },
+    { href: "/publications", label: "Publications" },
+    { href: "/experience", label: "Experience" },
+    { href: "/projects", label: "Projects" },
+    { href: "/open-source", label: "Open Source" },
+    { href: "/certifications", label: "Certifications" },
+    { href: "/achievements", label: "Achievements" },
+    { href: "/workshops", label: "Workshops" },
+    { href: "/talks", label: "Talks" },
+    { href: "/volunteering", label: "Volunteering" },
+    { href: "/people", label: "People" },
+    { href: "/articles", label: "Articles" },
+    { href: "/cv/academic-cv.pdf", label: "CV", external: true },
+    { href: "/about", label: "About" },
+]
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/"
+---
+
+<div class="navbar">
+    {
+        links.map(({ href, label, external }) => {
+            const isActive = !external && (href === "/" ? currentPath === "/" : currentPath.startsWith(href))
+            const className = isActive ? "active" : undefined
+            return external ? (
+                <a href={href} target="_blank" rel="noopener noreferrer" class={className}>
+                    {label}
+                </a>
+            ) : (
+                <a href={href} class={className}>
+                    {label}
+                </a>
+            )
+        })
+    }
+</div>

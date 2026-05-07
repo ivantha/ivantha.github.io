@@ -1,0 +1,27 @@
+---
+import { tokenize } from "@/lib/markup"
+
+interface Props {
+    text: string | null | undefined
+    links?: Record<string, string>
+}
+
+const { text, links = {} } = Astro.props
+const tokens = tokenize(text, links)
+---
+
+{
+    tokens.map((token) => {
+        if (token.type === "text") return token.value
+        if (token.type === "italic") return <em>{token.value}</em>
+        if (token.type === "italic-quoted") return <em>&ldquo;{token.value}&rdquo;</em>
+        if (token.type === "sup") return <sup>{token.value}</sup>
+        if (token.type === "link")
+            return (
+                <a class="link" href={token.href} target="_blank" rel="noopener noreferrer">
+                    {token.label}
+                </a>
+            )
+        return null
+    })
+}

@@ -1,0 +1,47 @@
+---
+import { getEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import "@/styles/pages/about.scss"
+
+const personal = await getEntry("personal", "main")
+const aboutMe = personal?.data.about_me
+const interests = personal?.data.interests_casual
+const hobbies = personal?.data.who_am_i ?? []
+---
+
+<Layout title="About | Oshan Mudannayake" description="About Oshan Mudannayake — interests, hobbies, background.">
+    <div class="aboutLayout section-wrapper">
+        <div class="section-title">
+            <h1>About</h1>
+        </div>
+        <div class="section-items">
+            {
+                aboutMe && (
+                    <div>
+                        <p>{aboutMe}</p>
+                    </div>
+                )
+            }
+            {
+                interests && (
+                    <div>
+                        <h2>Interests</h2>
+                        <p>{interests}</p>
+                    </div>
+                )
+            }
+            {
+                hobbies.length > 0 && (
+                    <div>
+                        <h2>Hobbies</h2>
+                        <ul>
+                            {hobbies.map((item: string) => (
+                                <li>{item}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</Layout>

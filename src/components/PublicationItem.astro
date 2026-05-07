@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from "astro:content"
+import TypstMd from "@/components/TypstMd.astro"
+
+type Pub = CollectionEntry<"publications">["data"]["items"][number]
+type Author = Pub["authors"][number]
+
+interface Props {
+    pub: Pub
+}
+
+const { pub } = Astro.props
+
+const title = pub.title_casual ?? pub.title
+const venue = pub.venue_casual ?? pub.venue
+const authors: Author[] = pub.authors ?? []
+---
+
+<li>
+    <p>
+        <strong>[{pub.venue_type}]</strong>{" "}
+        <TypstMd text={title} />
+        {
+            authors.length > 0 && (
+                <>
+                    <br />
+                    <span>
+                        {authors.map((author: Author, i: number) => (
+                            <>
+                                {i > 0 && ", "}
+                                {author.self ? <strong>{author.name}</strong> : author.name}
+                                {author.equal_contribution && <sup>*</sup>}
+                            </>
+                        ))}
+                    </span>
+                </>
+            )
+        }
+        {
+            venue && (
+                <>
+                    <br />
+                    <em>{venue}</em>
+                    {pub.year && `, ${pub.year}`}
+                </>
+            )
+        }
+        {(pub.doi_url || pub.pdf_url) && <br />}
+        {
+            pub.doi_url && (
+                <a class="link" href={pub.doi_url} target="_blank" rel="noopener noreferrer">
+                    {`[${pub.doi_label ?? "DOI"}]`}
+                </a>
+            )
+        }
+        {pub.doi_url && pub.pdf_url && " "}
+        {
+            pub.pdf_url && (
+                <a class="link" href={pub.pdf_url} target="_blank" rel="noopener noreferrer">
+                    [PDF]
+                </a>
+            )
+        }
+    </p>
+</li>

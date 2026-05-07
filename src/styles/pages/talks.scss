@@ -1,15 +1,17 @@
-.newsLayout {
+.talksLayout {
     display: flex;
     flex-direction: column;
 
-    .news-wrapper {
+    .talks-subtitle {
+    }
+
+    .talks-divider {
+        height: 0.5rem;
+    }
+
+    .talks-wrapper {
         line-height: 1.25;
         margin-top: 2rem;
-
-        .date-text {
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
 
         .content-text {
             font-size: 0.96rem;

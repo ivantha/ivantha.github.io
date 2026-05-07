@@ -1,0 +1,49 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import { isWebVisible, pickField } from "@/lib/variants"
+import "@/styles/pages/projects.scss"
+
+const all: CollectionEntry<"projects">[] = await getCollection("projects")
+const items = all.filter((entry) => isWebVisible(entry.data))
+---
+
+<Layout title="Projects | Oshan Mudannayake" description="Selected research and engineering projects.">
+    <div class="projectsLayout section-wrapper">
+        <div class="section-title">
+            <h1>Selected Projects</h1>
+        </div>
+        <div class="section-items">
+            <ul>
+                {
+                    items.map((entry) => {
+                        const item = entry.data
+                        const name = pickField(item, "name", "academic") ?? item.name
+                        const stack = pickField(item, "stack", "academic")
+                        const description = pickField(item, "description", "academic") ?? item.description
+                        return (
+                            <li class="projects-wrapper">
+                                <h3>
+                                    {item.url ? (
+                                        <a class="link" href={item.url} target="_blank" rel="noopener noreferrer">
+                                            {name}
+                                        </a>
+                                    ) : (
+                                        name
+                                    )}
+                                </h3>
+                                {stack && (
+                                    <>
+                                        <span class="tools-text">{stack}</span>
+                                        <br />
+                                    </>
+                                )}
+                                {description && <span class="content-text">{description}</span>}
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </div>
+    </div>
+</Layout>
