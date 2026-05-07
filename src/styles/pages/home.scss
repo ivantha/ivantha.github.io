@@ -20,6 +20,12 @@
                     display: flex;
                     max-width: 250px;
                     min-width: 100px;
+
+                    .article-img {
+                        max-width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
                 }
 
                 .profile-description {
