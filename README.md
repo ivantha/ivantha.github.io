@@ -8,26 +8,26 @@ Both consume the YAML data in `data/`.
 ## Quickstart
 
 ```sh
-yarn install
-yarn develop          # http://localhost:8000
+pnpm install
+pnpm develop          # http://localhost:8000
 ```
 
 To build everything (PDFs + site):
 
 ```sh
-yarn build            # runs build:cv, then gatsby build
+pnpm build            # runs build:cv, then gatsby build
 ```
 
 To rebuild just the CVs:
 
 ```sh
-yarn build:cv         # produces static/cv/{academic,casual}-cv.pdf
-yarn build:cv:academic
-yarn build:cv:casual
+pnpm build:cv         # produces static/cv/{academic,casual}-cv.pdf
+pnpm build:cv:academic
+pnpm build:cv:casual
 ```
 
-Requires `typst >= 0.13` for the CV build. The site itself only needs
-Node and Yarn.
+Requires `typst >= 0.13` for the CV build. The site itself needs Node
+22+ (24 recommended; see `.nvmrc`) and pnpm 10+.
 
 ## Editing CV content
 
@@ -69,7 +69,7 @@ optional `pdf_url:` to link a local file (e.g. cert PDFs in
 `static/certificates/` or paper PDFs in `static/papers/`). Used by the
 website to render `[PDF]` / `[Certificate]` links; ignored by Typst.
 
-After any YAML edit, rerun `yarn build:cv` (or `cd cv && just`) to
+After any YAML edit, rerun `pnpm build:cv` (or `cd cv && just`) to
 refresh the PDFs.
 
 ## Static layout
@@ -86,9 +86,9 @@ static/
 
 Pushing to `main` triggers `.github/workflows/gatsby.yml`, which:
 
-1. Sets up Node 16 and Typst 0.13.
-2. Runs `yarn install` and `yarn build` (which chains `build:cv` →
-   `gatsby build`).
+1. Sets up Node 24 and Typst 0.13.
+2. Runs `pnpm install --frozen-lockfile` and `pnpm run build` (which
+   chains `build:cv` → `gatsby build`).
 3. Uploads `public/` and deploys to GitHub Pages.
 
 The CNAME is in `static/CNAME` (`ivantha.com`).
