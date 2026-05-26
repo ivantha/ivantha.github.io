@@ -55,4 +55,9 @@ export const orgs: Record<string, Org> = {
         shortname: "Cohere For AI",
         url: "https://cohere.com/research",
     },
+    uom: {
+        fullname: "University of Moratuwa",
+        shortname: "UoM",
+        url: "https://uom.lk/",
+    },
 }

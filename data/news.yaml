@@ -4,6 +4,27 @@
 #   [[person:KEY]]   → resolves via src/data/people.ts (renders namewithhonorifics linked)
 #   [LABEL](URL)     → standard markdown-style external link
 
+- date: "Sep 2025"
+  content: "Our paper [On Privacy-Preserved Machine Learning Using Secure Multi-Party Computing: Techniques and Trends](https://doi.org/10.32604/cmc.2025.068875) was published in Computers, Materials & Continua (CMC)."
+
+- date: "Aug 2024"
+  content: "Our paper on the [Aya dataset](https://aclanthology.org/2024.acl-long.620/) — an open-access collection for multilingual instruction tuning — was published at ACL 2024."
+
+- date: "Oct 2023"
+  content: "Our paper [Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles](https://www.sciencedirect.com/science/article/abs/pii/S1047320323001839) was published in the Journal of Visual Communication and Image Representation (JVCI)."
+
+- date: "Aug 01, 2023"
+  content: "I joined [[org:paradigmai]] as the Lead Machine Learning Engineer."
+
+- date: "Mar 01, 2023"
+  content: "I joined [[org:cohere]] as a Community Researcher to work on the Aya multilingual instruction-tuning project under [[person:sarahooker]]."
+
+- date: "Jan 01, 2023"
+  content: "I started reading for an M.Sc in Data Science & AI at [[org:uom]]."
+
+- date: "Nov 2022"
+  content: "Our paper [Exploring Machine Learning and Deep Learning Approaches for Multi-Step Forecasting in Municipal Solid Waste Generation](https://ieeexplore.ieee.org/document/9950270) was published in IEEE Access."
+
 - date: "Nov 01, 2021"
   content: "I got promoted to the Senior Data Science Engineer role."
 

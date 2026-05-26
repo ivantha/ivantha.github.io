@@ -1,6 +1,49 @@
 # Projects. `description` is the short casual one-liner; `description_academic`
 # is the longer academic version (falls back to `description` if omitted).
 
+- id: atlas-rl
+  include_in: [academic, casual]
+  name_casual: "ATLAS-RL — RL Thesis Line"
+  name_academic: "ATLAS-RL: From Sensors to Perception — Prescription over Search in Open-World RL Agents"
+  stack_casual: "Reinforcement Learning | JAX | Crafter | Craftax | DDQN | WandB | Python"
+  stack_academic: "Reinforcement Learning, JAX, Crafter/Craftax, DDQN, WandB, Python"
+  description: "Seven-experiment MSc thesis line on prescription-over-search RL agents in open-world environments."
+  description_casual: "Seven-experiment MSc thesis line on RL agents — prescribed and emergent foveation, sensory curricula on pixel DDQN, GA-optimized intrinsic rewards, joint reward-sensory coevolution, and a paired-offset diagnostic for selection-bias-resistant hyperparameter reevaluation."
+  description_academic: "MSc thesis line organised across four strands — prescribed foveation, emergent foveation, sensory curricula on pixel DDQN, and joint reward-sensory coevolution on Craftax — with a cross-cutting thread on selection-bias-resistant hyperparameter reevaluation (Paired-Offset Reevaluation). Two papers from the line are currently under review."
+
+- id: pupila-vlm
+  include_in: [academic]
+  name_academic: "Pupila-VLM — Self-Distilling Small Vision-Language Models"
+  stack_academic: "Vision-Language Models, Self-Distillation, Verifier Heads, PyTorch"
+  description_academic: "Working research direction on small (≤3B parameter) vision-language models that improve themselves through self-distillation scored by a learned verifier head, with no external teacher. Position document covers verifier-weighted self-distillation as the primary line."
+
+- id: iris
+  include_in: [academic, casual]
+  name: "iris"
+  stack_casual: "Python | Gemini | Textual TUI | sqlite-vec"
+  stack_academic: "Python, Gemini API, Textual TUI, SQLite + sqlite-vec"
+  description: "A keyboard-driven terminal app and personal CRM with a generation layer."
+  description_casual: "Terminal-based personal CRM that maintains structured context for each relationship and drafts grounded messages via Gemini, with embeddings and a sqlite-vec retrieval layer over personas, memories, and a knowledge base."
+  description_academic: "Terminal-based personal CRM and message-drafting assistant; three-layer SQLite store (personas, interaction memories, knowledge-base chunks) embedded with gemini-embedding-2 into sqlite-vec virtual tables for top-k retrieval at draft time; drafts compose persona, retrieved memories, knowledge chunks, scenario, and style in a Textual TUI."
+  url: "https://github.com/ivantha/iris"
+
+- id: codex
+  include_in: [academic, casual]
+  name: "codex"
+  stack_casual: "Next.js | Prisma | PostgreSQL | Firebase Auth | TypeScript"
+  stack_academic: "Next.js 15, Prisma, PostgreSQL, Firebase Authentication, TypeScript"
+  description: "Self-hosted personal book library management app."
+  description_casual: "Self-hosted personal book library — structured shelves, reading progress and goals, reviews, library import/export, public profiles, and Google Books metadata enrichment; Next.js 15, Prisma, Postgres, Firebase Auth."
+  description_academic: "Self-hosted personal book library management app — structured shelves, reading progress and goals, statistics and reviews, library import/export, public profiles, Google Books metadata enrichment, and an in-app notifications system across in-app, email, and per-user preferences."
+  url: "https://github.com/ivantha/codex"
+
+- id: hermes
+  include_in: [casual]
+  name_casual: "hermes — FTP client"
+  stack_casual: "Rust | Tauri 2 | React 19 | TypeScript | Tailwind"
+  description_casual: "Cross-platform FTP/FTPS client with multi-segment parallel downloads (REST + RETR over N connections), resumable transfers, OS-keychain-stored bookmarks, and a FileZilla-style dual-pane UI; Tauri 2 (Rust) + React 19."
+  url: "https://github.com/ivantha/hermes"
+
 - id: water-detection
   include_in: [academic, casual]
   name_casual: "UAV Water Surface Detection"

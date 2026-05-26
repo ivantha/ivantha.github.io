@@ -115,4 +115,13 @@ export const people: Record<string, Person> = {
         scholar: "https://scholar.google.com/citations?user=9nBn4b0AAAAJ",
         researchgate: "https://www.researchgate.net/profile/Upul-Jayasinghe",
     },
+    sarahooker: {
+        name: "Sara Hooker",
+        namewithhonorifics: "Dr. Sara Hooker",
+        position: "Head of Cohere Labs",
+        link: "https://www.sarahooker.me/",
+        web: "https://www.sarahooker.me/",
+        linkedin: "https://www.linkedin.com/in/sararosehooker/",
+        scholar: "https://scholar.google.com/citations?user=2xy6h3sAAAAJ&hl=en",
+    },
 }
