@@ -35,6 +35,7 @@
 #let sp-side-section = 3.8em   // between sidebar sections (sidebar has more height to fill)
 #let sp-header-above = 0.6em   // above a section header
 #let sp-header-below = 0.9em   // below a section header
+#let sp-leading      = 0.75em  // line spacing inside body-section paragraphs
 
 // ----- Helpers ---------------------------------------------------------------
 
@@ -161,7 +162,7 @@
 #let make-experience(items) = {
   cv-section("Experience")
   set text(size: footnote-size)
-  set par(leading: 0.7em)
+  set par(leading: sp-leading)
   for item in items [
     #text(weight: "bold", fill: accent-cyan, field(item, "role", "casual"))#text(fill: comment-grey, " @ ")#text(weight: "bold", fill: dove-white, field(item, "company", "casual")) \
     #text(fill: comment-grey, "// " + field(item, "location", "casual") + " · " + arrow-dates(item.dates))
@@ -189,7 +190,7 @@
 #let make-open-source(items) = {
   cv-section("Open Source")
   set text(size: footnote-size)
-  set par(leading: 0.75em)
+  set par(leading: sp-leading)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -214,7 +215,7 @@
 #let make-publications(items) = {
   cv-section("Publications")
   set text(size: footnote-size)
-  set par(leading: 0.75em)
+  set par(leading: sp-leading)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -240,7 +241,7 @@
 #let make-projects(items) = {
   cv-section("Projects")
   set text(size: footnote-size)
-  set par(leading: 0.75em)
+  set par(leading: sp-leading)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -259,7 +260,7 @@
 #let make-education(items) = {
   cv-section("Education")
   set text(size: footnote-size)
-  set par(leading: 0.75em)
+  set par(leading: sp-leading)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -278,15 +279,14 @@
 #let make-skills(items) = {
   cv-section("Skills")
   set text(size: footnote-size)
-  set par(leading: 0.75em)
+  set par(leading: sp-leading)
   grid(
-    columns: (auto, auto, 1fr),
-    column-gutter: 0.5em,
-    row-gutter: sp-entry,
+    columns: (auto, 1fr),
+    column-gutter: 0.45em,
+    row-gutter: 0.18em,
     ..items
       .map(s => (
-        text(fill: accent-cyan, snake(s.category)),
-        text(fill: dove-white, "="),
+        text(fill: accent-cyan, lower(s.at("category_casual", default: s.category))) + text(fill: dove-white)[ =],
         bracket-list(s.stack, sep: ","),
       ))
       .flatten()
@@ -296,7 +296,7 @@
 #let make-certifications(items) = {
   cv-section("Certifications")
   set text(size: footnote-size)
-  set par(leading: 0.75em)
+  set par(leading: sp-leading)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -314,7 +314,7 @@
 #let make-achievements(items) = {
   cv-section("Achievements")
   set text(size: footnote-size)
-  set par(leading: 0.75em)
+  set par(leading: sp-leading)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
