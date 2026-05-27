@@ -257,6 +257,15 @@
   )
 }
 
+// Technical skills: one line per category. Category in bold, stack inline.
+// Reads as text-dense prose, in keeping with the rest of the academic CV.
+#let render-skills(items) = {
+  for (i, s) in items.enumerate() [
+    #if i > 0 [\ ]
+    *#s.category:* #s.stack
+  ]
+}
+
 // Simple string-list renderer (workshops, mentoring, volunteering).
 #let render-string-list(items) = {
   enum(
