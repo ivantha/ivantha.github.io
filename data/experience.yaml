@@ -43,7 +43,7 @@
   role: "Community Researcher"
   company: "Cohere For AI"
   location: "Sri Lanka"
-  dates: "Mar. 2023 - Apr. 2024"
+  dates: "Mar 2023 - Apr 2024"
   employment_type: "Part-time"
   advisor: "Sara Hooker"
   bullets:
@@ -100,7 +100,7 @@
   company: "Sustainable Computing Research (SCoRe) Lab"
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
-  dates: "Aug. 2020 - Dec. 2021"
+  dates: "Aug 2020 - Dec 2021"
   employment_type: "Part-time"
   advisor: "Dr. Mohamed Nabeel"
   bullets:
@@ -129,7 +129,7 @@
   company_casual: "University of Colombo School of Computing"
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
-  dates: "Jul. 2018 - Jan. 2019"
+  dates: "Jul 2018 - Jan 2019"
   employment_type: "Full-time"
   advisor: "Dr. Nalin Ranasinghe"
   bullets:
@@ -143,7 +143,7 @@
   role: "Student Developer"
   company: "CERN-HSF - Google Summer of Code"
   location: "Remote"
-  dates: "May. 2018 - Aug. 2018"
+  dates: "May 2018 - Aug 2018"
   bullets:
     - text: "Contributed to Phoenix, the next-generation Vue.js web UI for ownCloud and CERNBox (the CERN-wide cloud storage platform serving 13K+ users over 2.5 PB), implementing authentication, file browsing, upload/download, and public-link sharing against the ownCloud backend."
       text_casual: "Contributed to Phoenix, the next-gen Vue.js web UI for ownCloud and CERNBox (CERN's cloud-storage platform serving 13K+ users over 2.5 PB), with offline-capable browser operation via service-worker caching and a Go-based local WebDAV bridge."
@@ -159,7 +159,7 @@
   role: "Software Developer"
   company: "Language Matters"
   location: "Sri Lanka"
-  dates: "Jan. 2018 - Mar. 2020"
+  dates: "Jan 2018 - Mar 2020"
   employment_type: "Contract"
   advisor: "Dr. Leonie Solomons"
   bullets:
@@ -172,7 +172,7 @@
   role: "Software Developer"
   company: "Dreamteam IT Solutions"
   location: "Sri Lanka"
-  dates: "Feb. 2016 - Jan. 2017"
+  dates: "Feb 2016 - Jan 2017"
   employment_type: "Contract"
   advisor: "Dr. Gihan Kuruppu"
   bullets:
@@ -189,7 +189,7 @@
   role: "Course Instructor"
   company: "Dreamteam IT Solutions"
   location: "Sri Lanka"
-  dates: "Jan. 2016 - Jun. 2016"
+  dates: "Jan 2016 - Jun 2016"
   employment_type: "Contract"
   bullets:
     - text: "Delivered Java preparation sessions for the Oracle Certified Java Programmer (OCJP, Java SE 6) certification, covering the full certification syllabus."
