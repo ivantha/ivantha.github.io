@@ -28,9 +28,9 @@
 
 #let sp-bullet       = 0.45em  // between bullets within one entry
 #let sp-entry-tight  = 0.9em   // short single-line entries (certs, achievements)
-#let sp-entry        = 1.15em  // multi-line entries (education, projects, skills)
+#let sp-entry        = 0.4em   // multi-line entries (education, projects, skills)
 #let sp-entry-wide   = 0.9em   // between experience blocks (adds to internal list spacing)
-#let sp-section      = 1.9em   // between major sections within a main column
+#let sp-section      = 1.5em   // between major sections within a main column
 #let sp-side-entry   = 1.3em   // between entries in sidebar lists (more room than main)
 #let sp-side-section = 3.8em   // between sidebar sections (sidebar has more height to fill)
 #let sp-header-above = 0.6em   // above a section header
@@ -225,7 +225,8 @@
       let venue = field(p, "venue", "casual")
       let doi = p.at("doi_url", default: none)
       let title-body = if doi != none { link(doi, text(fill: accent-cyan, weight: "bold", title)) } else { text(fill: accent-cyan, weight: "bold", title) }
-      if doi != none [
+      let has-venue = venue != none and venue != ""
+      if has-venue [
         #text(fill: accent-amber, str(p.year)) #text(fill: comment-grey)[·] #title-body \
         #text(fill: comment-grey, "// " + venue)
       ] else [
