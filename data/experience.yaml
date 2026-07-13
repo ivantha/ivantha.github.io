@@ -13,11 +13,11 @@
   include_in: [academic, casual]
   category: professional
   role_academic: "Lead Machine Learning Engineer"
-  role_casual: "Lead ML Engineer"
+  role_casual: "Lead ML Engineer (Contract)"
   company: "ParadigmAI"
   location: "Colombo"
   dates: "Aug 2023 - Present"
-  employment_type: "Full-time"
+  employment_type: "Contract"
   bullets:
     - text: "Built an LLM-backed platform that predicts a respondent's survey answers from their prior response history."
       stack: "FastAPI, Python, React, TypeScript, LangChain, OpenAI, AWS"
