@@ -27,18 +27,6 @@ items:
     title_casual: "Affordable RL Hyperparameter Rigor: Paired-Offset Reevaluation"
     venue_casual: "Under Review"
 
-  - venue_type: "Preprint"
-    include_in: [casual]
-    year: 2025
-    authors:
-      - { name: "S. Dissanayaka", equal_contribution: true }
-      - { name: "O. Mudannayake", self: true, equal_contribution: true }
-      - { name: "T. Halloluwa" }
-      - { name: "C. De Silva" }
-    title: "ImageLab: Simplifying Image Processing Exploration for Novices and Experts Alike"
-    title_casual: "ImageLab: Simplifying Image Processing Exploration"
-    venue_casual: "Preprint"
-
   - venue_type: "Manuscript"
     include_in: [casual]
     year: 2025
@@ -68,6 +56,20 @@ items:
     doi_url: "https://doi.org/10.32604/cmc.2025.068875"
     doi_label: "doi: 10.32604/cmc.2025.068875"
 
+  - venue_type: "Preprint"
+    include_in: [casual]
+    year: 2024
+    authors:
+      - { name: "S. Dissanayaka", equal_contribution: true }
+      - { name: "O. Mudannayake", self: true, equal_contribution: true }
+      - { name: "T. Halloluwa" }
+      - { name: "C. De Silva" }
+    title: "ImageLab: Simplifying Image Processing Exploration for Novices and Experts Alike"
+    title_casual: "ImageLab: Simplifying Image Processing Exploration"
+    venue_casual: "Preprint"
+    doi_url: "https://arxiv.org/abs/2401.03157"
+    doi_label: "arXiv: 2401.03157"
+
   - venue_type: "Conference"
     include_in: [academic, casual]
     year: 2024
@@ -94,9 +96,9 @@ items:
       - { name: "C. Suduwella" }
       - { name: "K. De Zoysa" }
       - { name: "P. Wimalaratne" }
-    title: "Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles"
-    title_casual: "Detecting Water Surfaces in UAV Image Streams (UNet)"
-    venue: "Journal of Visual Communication and Image Representation (JVCI)"
+    title: "Detecting Water in Visual Image Streams from UAV with Flight Constraints"
+    title_casual: "Detecting Water in UAV Image Streams with Flight Constraints"
+    venue: "Journal of Visual Communication and Image Representation (JVCI), vol. 96, art. 103933, 2023"
     venue_casual: "JVCI (Elsevier)"
     doi_url: "https://www.sciencedirect.com/science/article/abs/pii/S1047320323001839?dgcid=author"
     doi_label: "doi: 10.1016/j.jvcir.2023.103933"
