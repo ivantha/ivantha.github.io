@@ -54,7 +54,7 @@ profiles_casual:   [homepage, linkedin, github, twitter]
 
 # Casual-only sidebar content.
 about_me: >
-  Senior ML engineer with 5+ years building production LLM platforms, MLOps
+  Senior ML engineer with 6+ years building production LLM platforms, MLOps
   tooling, and ML systems at scale. Published researcher in privacy-preserving
   ML and time-series forecasting.
 interests_casual: "Reinforcement Learning, Machine Learning, Artificial Intelligence, Game Theory, Computer Games, Computer Vision"
