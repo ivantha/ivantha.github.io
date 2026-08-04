@@ -8,10 +8,11 @@ site.
 
 ```
 common/loaders.typ # shared YAML loader + variant-filter helpers
-fonts/             # shared font pool (Linux Libertine, Roboto Mono, Font Awesome 6)
+fonts/             # shared font pool (Linux Libertine, IBM Plex Sans,
+                   # JetBrains Mono, Font Awesome 6)
 variants/
   academic/        # serif, Linux Libertine, 6 pages. main.typ + renderers.typ
-  casual/          # dark-blue sidebar + Roboto Mono, 2 pages.
+  casual/          # dark, IBM Plex Sans + JetBrains Mono, 2 pages.
 build/             # generated PDFs (gitignored)
 ```
 
@@ -32,6 +33,20 @@ Outputs:
 
 - `build/academic-cv.pdf`
 - `build/casual-cv.pdf`
+
+## Fonts
+
+Every face a variant uses must live in `fonts/`. CI builds on a bare Ubuntu
+runner with no system fonts installed, so anything referenced but not vendored
+falls back silently — the PDF still builds, it just comes out in the wrong
+typeface. All vendored faces are OFL.
+
+To check a change hasn't introduced a system-font dependency, build the way CI
+effectively does and confirm it still looks right:
+
+```sh
+typst compile --root .. --font-path fonts --ignore-system-fonts variants/casual/main.typ /tmp/check.pdf
+```
 
 ## SSOT conventions
 
