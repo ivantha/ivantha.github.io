@@ -37,7 +37,7 @@
 #let sans = "IBM Plex Sans"
 #let mono = "JetBrains Mono"
 
-// FIVE sizes, and no others. Every `size:` in this file resolves to one of
+// FOUR sizes, and no others. Every `size:` in this file resolves to one of
 // these — a literal pt value anywhere below is a bug.
 //
 // An earlier revision drifted to twelve sizes, four of them (8, 8.2, 8.4, 8.8)
@@ -45,12 +45,22 @@
 // hierarchy; they just make the page look unresolved. Where two things need to
 // be told apart at the same size, weight and colour do it — that is what the
 // vendored 500/600/700 faces are for.
+//
+// Page 1 and page 2 previously ran their prose at 8.4pt and 7.6pt, on the
+// reasoning that page 2's half-width columns want a smaller size for their
+// shorter measure. That is sound in isolation and wrong here: body text is most
+// of what the eye takes in, so a 10% step between facing pages reads as two
+// different documents rather than as a considered adjustment. One body size
+// now, on both pages; the columns get tighter LEADING instead, which answers
+// the narrow measure without touching apparent size.
 
 #let fs-display = 26pt    // the name. Used exactly once.
-#let fs-title   = 9.6pt   // page-1 entry titles (role @ company)
-#let fs-body    = 8.4pt   // page-1 prose, profile summary, role line
-#let fs-col     = 7.6pt   // page-2 columns: prose AND entry titles alike,
-                          // separated by weight rather than by size
+#let fs-title   = 9.6pt   // page-1 entry titles (role @ company). The only
+                          // size that is page-specific, because experience is
+                          // the spine of the document and reads as such.
+#let fs-body    = 8pt     // ALL prose on both pages, the profile summary, the
+                          // role line, and page-2 entry titles (weight 600 and
+                          // `bright` separate those from the prose around them)
 #let fs-meta    = 6.6pt   // every mono metadatum, everywhere: dates, stacks,
                           // locations, section labels, years, page number
 
@@ -62,8 +72,10 @@
 
 #let sp-stack-above = 2.8pt
 #let sp-bullet      = 6pt
-#let sp-job         = 7pt
-#let sp-entry       = 4.4pt
+#let sp-job         = 11pt    // must read as clearly bigger than sp-bullet, or
+                              // the boundary between two jobs is carried by the
+                              // title styling alone. At 7pt it did not.
+#let sp-entry       = 4pt
 #let sp-entry-tight = 3.8pt   // single-line entries (certs, achievements)
 #let sp-head-above  = 8pt
 #let sp-head-below  = 5pt
@@ -73,7 +85,10 @@
                               // sp-entry without the rows merging
 // Page-2 columns run on a tighter leading than page 1: the measure is half as
 // wide, so lines are short and need less vertical separation to stay legible.
-#let col-leading    = 0.56em
+// This is also what pays for the columns running at full fs-body — 8pt in a
+// 90mm column is ~1.48 line-height here, still comfortable, and leading is far
+// less perceptible across a page turn than size is.
+#let col-leading    = 0.48em
 
 // Left metadata gutter on page 1. Sized so "Nov 2021 – Aug 2023" sets on one
 // line at fs-meta: 19 glyphs x 0.6em advance x 6.6pt ≈ 26.5mm.
@@ -322,14 +337,14 @@
 // metadata gutter entirely.
 
 #let make-education(items) = {
-  set text(size: fs-col)
+  set text(size: fs-body)
   cv-section-inline("Education")
   for (i, e) in items.enumerate() {
     marked({
       text(font: mono, size: fs-meta, fill: body, dash-dates(e.dates_casual))
       linebreak()
       v(1.4pt)
-      text(size: fs-col, weight: 600, fill: bright,
+      text(size: fs-body, weight: 600, fill: bright,
         e.at("degree_casual", default: ""))
       linebreak()
       v(1pt)
@@ -347,12 +362,12 @@
 // advances exactly 0.6em per glyph and the labels are ASCII, so wrapped values
 // hang under the value instead of colliding with the next label.
 #let make-skills(items) = {
-  set text(size: fs-col)
+  set text(size: fs-body)
   cv-section-inline("Skills")
   for (i, s) in items.enumerate() {
     let label = lower(s.at("category_casual", default: s.category))
     // Absolute, not em: the label sets at fs-meta but the paragraph's em is
-    // fs-col, so an em-relative indent would land in the wrong place. The +3
+    // fs-body, so an em-relative indent would land in the wrong place. The +3
     // covers the " = " separator.
     par(hanging-indent: (label.len() + 3) * 0.6 * fs-meta)[
       #text(font: mono, size: fs-meta, weight: 700, fill: bright, label)
@@ -364,11 +379,11 @@
 }
 
 #let make-projects(items) = {
-  set text(size: fs-col)
+  set text(size: fs-body)
   cv-section-inline("Projects")
   for (i, p) in items.enumerate() {
     marked({
-      text(size: fs-col, weight: 600, fill: bright, field(p, "name", "casual"))
+      text(size: fs-body, weight: 600, fill: bright, field(p, "name", "casual"))
       block(above: sp-stack-above, below: 0pt,
         tokens(split-on(field(p, "stack", "casual"), "|")))
       block(above: 2.6pt, below: 0pt,
@@ -379,13 +394,13 @@
 }
 
 #let make-publications(items) = {
-  set text(size: fs-col)
+  set text(size: fs-body)
   cv-section-inline("Publications")
   for (i, p) in items.enumerate() {
     let title = field(p, "title", "casual")
     let venue = field(p, "venue", "casual")
     let doi = p.at("doi_url", default: none)
-    let head = text(size: fs-col, weight: 600, fill: bright, title)
+    let head = text(size: fs-body, weight: 600, fill: bright, title)
     marked({
       text(font: mono, size: fs-meta, fill: mute, str(p.year))
       h(0.6em)
@@ -400,11 +415,11 @@
 }
 
 #let make-open-source(items) = {
-  set text(size: fs-col)
+  set text(size: fs-body)
   cv-section-inline("Open Source")
   for (i, o) in items.enumerate() {
     let url = o.at("name_url", default: none)
-    let head = text(size: fs-col, weight: 600, fill: bright, field(o, "name", "casual"))
+    let head = text(size: fs-body, weight: 600, fill: bright, field(o, "name", "casual"))
     marked({
       if url != none { ext-link(url, head) } else { head }
       block(above: sp-stack-above, below: 0pt,
@@ -420,7 +435,7 @@
 // data/ doesn't strand a bare header.
 #let make-certifications(items) = {
   if items.len() == 0 { return }
-  set text(size: fs-col)
+  set text(size: fs-body)
   cv-section-inline("Certifications")
   for (i, c) in items.enumerate() {
     marked({
@@ -434,7 +449,7 @@
 }
 
 #let make-achievements(items) = {
-  set text(size: fs-col)
+  set text(size: fs-body)
   cv-section-inline("Achievements")
   for (i, a) in items.enumerate() {
     let event = render-md(a.at("event_casual", default: a.event))
