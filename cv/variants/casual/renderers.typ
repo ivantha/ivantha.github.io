@@ -149,14 +149,24 @@
 #let sp-job         = 11pt    // must read as clearly bigger than sp-bullet, or
                               // the boundary between two jobs is carried by the
                               // title styling alone. At 7pt it did not.
-#let sp-entry       = 4pt
-#let sp-entry-tight = 3.8pt   // single-line entries (certs, achievements)
+// The page-2 gaps below were all raised once the `›` markers came off. Those
+// markers were the only left-edge delimiter page-2 entries had; without one,
+// separation has to be carried by space, and the 3mm per entry the markers gave
+// back is what pays for it. Right column budget after the change: ~9pt spare.
+#let sp-entry       = 5pt
+#let sp-entry-tight = 4.6pt   // single-line entries (certs, achievements)
 #let sp-head-above  = 8pt
 #let sp-head-below  = 5pt
-#let sp-section     = 8pt
-#let sp-skill       = 4pt     // between skill rows; the hanging indent already
-                              // binds a wrapped row, so this can sit under
-                              // sp-entry without the rows merging
+#let sp-section     = 10pt
+#let sp-skill       = 5.5pt   // between skill rows. This was 4pt against a
+                              // col-leading of 3.84pt — a 4% step, which fails
+                              // the rhythm rule at the top of this block: a
+                              // multi-line skill row merged into the row under
+                              // it, and five of the twelve rows are multi-line.
+                              // The old note argued the hanging indent bound a
+                              // wrapped row so the gap could stay small. It
+                              // binds the row to ITSELF; it says nothing about
+                              // where the row ends. Now 43% over the leading.
 // Page-2 columns run on a tighter leading than page 1: the measure is half as
 // wide, so lines are short and need less vertical separation to stay legible.
 // This is also what pays for the columns running at full fs-body — 8pt in a
@@ -261,7 +271,14 @@
   meta, content,
 )
 
-// Marker + body, used for every bullet and list item in the document.
+// Marker + body. THE RULE: `›` marks a bullet INSIDE an entry. An entry itself
+// is anchored by what it already has — a 700-weight `bright` title, or the year
+// column it leads with. So this is page-1 experience bullets and nothing else.
+//
+// It used to wrap every list item in the document: all eight experience bullets
+// AND all thirty-odd page-2 entries. A marker that marks everything marks
+// nothing, and each one spent 3mm of an 85.5mm column to say so. Handing that
+// 3mm back to the measure is what pays for the skills value column.
 #let marked(content, marker: "›", indent: 3mm) = grid(
   columns: (indent, 1fr),
   align: (left + top, left + top),
@@ -470,7 +487,7 @@
   set text(size: fs-body)
   cv-section-inline("Education")
   for (i, e) in items.enumerate() {
-    marked({
+    block({
       text(font: mono, size: fs-meta, fill: body, dash-dates(e.dates_casual))
       linebreak()
       v(1.4pt)
@@ -534,7 +551,7 @@
   set text(size: fs-body)
   cv-section-inline("Projects")
   for (i, p) in items.enumerate() {
-    marked({
+    block({
       text(size: fs-body, weight: 700, fill: bright, field(p, "name", "casual"))
       block(above: sp-stack-above, below: 0pt,
         tokens(split-on(field(p, "stack", "casual"), "|"), fill: stack))
@@ -553,7 +570,7 @@
     let venue = field(p, "venue", "casual")
     let doi = p.at("doi_url", default: none)
     let head = text(size: fs-body, weight: 700, fill: bright, title)
-    marked({
+    block({
       par(hanging-indent: year-indent, {
         text(font: mono, size: fs-meta, fill: mute, str(p.year))
         h(0.6em)
@@ -577,7 +594,7 @@
   for (i, o) in items.enumerate() {
     let url = o.at("name_url", default: none)
     let head = text(size: fs-body, weight: 700, fill: bright, field(o, "name", "casual"))
-    marked({
+    block({
       if url != none { ext-link(url, head) } else { head }
       block(above: sp-stack-above, below: 0pt,
         tokens(split-on(field(o, "stack", "casual"), ","), fill: stack))
@@ -595,12 +612,12 @@
   set text(size: fs-body)
   cv-section-inline("Certifications")
   for (i, c) in items.enumerate() {
-    marked(par(hanging-indent: year-indent, {
+    par(hanging-indent: year-indent, {
       text(font: mono, size: fs-meta, fill: mute, str(c.year))
       h(0.6em)
       text(fill: bright, render-md(field(c, "name", "casual")))
       text(fill: mute, " · " + c.institute)
-    }))
+    })
     if i + 1 < items.len() { v(sp-entry-tight) }
   }
 }
@@ -611,7 +628,7 @@
   for (i, a) in items.enumerate() {
     let event = render-md(a.at("event_casual", default: a.event))
     let place = a.at("place_casual", default: "")
-    marked(par(hanging-indent: year-indent, {
+    par(hanging-indent: year-indent, {
       text(font: mono, size: fs-meta, fill: mute, str(a.year))
       h(0.6em)
       text(fill: bright, event)
@@ -622,7 +639,7 @@
         // a section label, nor a link, so it fails the accent rule up top.
         text(fill: body, [ (#render-md(place))])
       }
-    }))
+    })
     if i + 1 < items.len() { v(sp-entry-tight) }
   }
 }
