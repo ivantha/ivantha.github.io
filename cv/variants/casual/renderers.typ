@@ -37,11 +37,22 @@
 #let sans = "IBM Plex Sans"
 #let mono = "JetBrains Mono"
 
-#let body-size  = 8.4pt   // main-column prose
-#let col-size   = 7.6pt   // page-2 two-column prose — narrower measure
-#let token-size = 6.6pt   // mono metadata: dates, stacks, locations
-#let head-size  = 6.6pt   // section labels
-#let name-size  = 26pt
+// FIVE sizes, and no others. Every `size:` in this file resolves to one of
+// these — a literal pt value anywhere below is a bug.
+//
+// An earlier revision drifted to twelve sizes, four of them (8, 8.2, 8.4, 8.8)
+// inside a single 0.8pt band. Differences that small don't register as
+// hierarchy; they just make the page look unresolved. Where two things need to
+// be told apart at the same size, weight and colour do it — that is what the
+// vendored 500/600/700 faces are for.
+
+#let fs-display = 26pt    // the name. Used exactly once.
+#let fs-title   = 9.6pt   // page-1 entry titles (role @ company)
+#let fs-body    = 8.4pt   // page-1 prose, profile summary, role line
+#let fs-col     = 7.6pt   // page-2 columns: prose AND entry titles alike,
+                          // separated by weight rather than by size
+#let fs-meta    = 6.6pt   // every mono metadatum, everywhere: dates, stacks,
+                          // locations, section labels, years, page number
 
 // ----- Spacing ---------------------------------------------------------------
 // RHYTHM RULE (inherited from the previous theme, still true): the gap between
@@ -65,7 +76,7 @@
 #let col-leading    = 0.56em
 
 // Left metadata gutter on page 1. Sized so "Nov 2021 – Aug 2023" sets on one
-// line at token-size: 19 glyphs x 0.6em advance x 6.9pt ≈ 27.7mm.
+// line at fs-meta: 19 glyphs x 0.6em advance x 6.6pt ≈ 26.5mm.
 #let gutter = 30mm
 
 // ----- Helpers ---------------------------------------------------------------
@@ -85,7 +96,7 @@
 // A dotted token run: "FastAPI · Python · React". `sep` is tightenable for runs
 // that must hold one line — at 0.6em per glyph a wide separator costs real
 // millimetres, and a wrapped run in the page footer overflows the page.
-#let tokens(items, size: token-size, fill: mute, sep: "  ·  ") = {
+#let tokens(items, size: fs-meta, fill: mute, sep: "  ·  ") = {
   if items.len() == 0 { return }
   text(font: mono, size: size, fill: fill, items.join(sep))
 }
@@ -105,7 +116,7 @@
 // sits inline. Absolute sizes, so a header never inherits the caller's size.
 
 #let head-label(title) = text(
-  font: mono, size: head-size, weight: 700,
+  font: mono, size: fs-meta, weight: 700,
   fill: signal, tracking: 0.12em, upper(title),
 )
 
@@ -163,12 +174,12 @@
 }
 
 #let render-header(personal) = {
-  text(size: name-size, weight: 600, fill: bright, tracking: -0.015em,
+  text(size: fs-display, weight: 600, fill: bright, tracking: -0.015em,
     personal.first_name + " " + personal.last_name)
   // The one surviving nod to the old theme: a terminal cursor, kept because it
   // is a single glyph rather than a whole simulated application.
   h(2.5pt)
-  text(size: name-size, weight: 600, fill: signal, "_")
+  text(size: fs-display, weight: 600, fill: signal, "_")
 
   v(5pt)
   // Parenthesised: Typst ends a statement at a newline unless it is bracketed,
@@ -179,7 +190,7 @@
       .map(r => text(fill: body, r))
       .join(text(fill: hair, "  /  "))
   )
-  text(font: mono, size: 7.8pt, roles)
+  text(font: mono, size: fs-body, roles)
 
   v(8pt)
   box(width: 100%, height: 0.8pt, fill: hair)
@@ -191,13 +202,13 @@
   grid(
     columns: (1fr, auto),
     align: (left + horizon, right + horizon),
-    text(font: mono, size: token-size, fill: mute)[
+    text(font: mono, size: fs-meta, fill: mute)[
       #link("mailto:" + email, email)
       #h(0.7em)·#h(0.7em) #link("tel:" + tel, personal.phone)
       #h(0.7em)·#h(0.7em) #personal.location
     ],
     link(personal.homepage.url,
-      text(font: mono, size: token-size, fill: signal, personal.homepage.label)),
+      text(font: mono, size: fs-meta, fill: signal, personal.homepage.label)),
   )
 
   v(3.5pt)
@@ -208,12 +219,12 @@
     .map(slug => {
       let p = personal.profile_entries.at(slug)
       box(link(p.url, {
-        text(size: token-size, fill: signal, profile-icon(slug))
+        text(size: fs-meta, fill: signal, profile-icon(slug))
         h(0.4em)
-        text(font: mono, size: token-size, fill: body, p.label)
+        text(font: mono, size: fs-meta, fill: body, p.label)
       }))
     })
-  entries.join(text(font: mono, size: token-size, fill: hair, "   ·   "))
+  entries.join(text(font: mono, size: fs-meta, fill: hair, "   ·   "))
 }
 
 // The one lifted surface in the document, so the summary reads before anything
@@ -223,26 +234,31 @@
   fill: raised,
   inset: (x: 5mm, y: 4mm),
   radius: 1.5pt,
-  text(size: 8.8pt, fill: bright, personal.about_me),
+  text(size: fs-body, fill: bright, personal.about_me),
 )
 
 // `interests` and `who_am_i` were vertical sidebar lists. As single dotted runs
 // they keep the personality of the casual variant at a fraction of the space,
 // and pinned to the foot of the last page they close the document rather than
 // competing with experience for page 1.
-// Sized to hold ONE line. The interests run is the longest string in the
-// document (116 glyphs incl. separators); at JetBrains Mono's 0.6em advance it
-// needs <= 6.5pt to clear the 159.5mm measure. A second line here would push
-// the footer past the bottom margin and off the sheet.
-#let personal-size = 6.2pt
-
+// These rows must hold ONE line each — a second line pushes the footer past
+// the bottom margin and off the sheet. Rather than give them a sixth font size
+// to fit, the room is bought back from the label column, which is what actually
+// had slack. The arithmetic at fs-meta, JetBrains Mono, 0.6em advance:
+//
+//   label  "INTERESTS"  9 glyphs x 0.64em (0.6 + tracking) x 6.6pt = 13.4mm
+//   value  116 glyphs (101 chars + 5 separators) x 0.6em x 6.6pt   = 162.1mm
+//   measure  180mm - 14mm label - 2mm gutter                       = 164.0mm
+//
+// ~2mm of slack, so one more interest in personal.yaml will wrap it. If that
+// happens, grow the page-2 bottom margin in main.typ to match.
 #let personal-row(label, items) = grid(
-  columns: (17mm, 1fr),
-  column-gutter: 2.5mm,
+  columns: (14mm, 1fr),
+  column-gutter: 2mm,
   align: (left + top, left + top),
-  text(font: mono, size: personal-size, weight: 700, fill: signal,
-    tracking: 0.12em, label),
-  tokens(items, size: personal-size, sep: " · "),
+  text(font: mono, size: fs-meta, weight: 700, fill: signal,
+    tracking: 0.04em, label),
+  tokens(items, size: fs-meta, sep: " · "),
 )
 
 // The page number rides on the last row rather than taking a line of its own:
@@ -265,22 +281,22 @@
 // ----- Experience ------------------------------------------------------------
 
 #let make-experience(items) = {
-  set text(size: body-size)
+  set text(size: fs-body)
   cv-section("Experience")
   for (i, item) in items.enumerate() {
     let bullets = bullets-for(item, "casual")
     gutter-row(
       {
-        text(font: mono, size: 6.9pt, fill: body, dash-dates(item.dates))
+        text(font: mono, size: fs-meta, fill: body, dash-dates(item.dates))
         linebreak()
         v(1pt)
-        text(font: mono, size: token-size, fill: mute,
+        text(font: mono, size: fs-meta, fill: mute,
           field(item, "location", "casual"))
       },
       {
-        text(size: 9.6pt, weight: 600, fill: bright, field(item, "role", "casual"))
-        text(size: 9.6pt, fill: hair, "  /  ")
-        text(size: 9.6pt, weight: 500, fill: signal, field(item, "company", "casual"))
+        text(size: fs-title, weight: 600, fill: bright, field(item, "role", "casual"))
+        text(size: fs-title, fill: hair, "  /  ")
+        text(size: fs-title, weight: 500, fill: signal, field(item, "company", "casual"))
         if bullets.len() > 0 {
           v(3.6pt)
           for b in bullets {
@@ -306,14 +322,14 @@
 // metadata gutter entirely.
 
 #let make-education(items) = {
-  set text(size: col-size)
+  set text(size: fs-col)
   cv-section-inline("Education")
   for (i, e) in items.enumerate() {
     marked({
-      text(font: mono, size: token-size, fill: body, dash-dates(e.dates_casual))
+      text(font: mono, size: fs-meta, fill: body, dash-dates(e.dates_casual))
       linebreak()
       v(1.4pt)
-      text(size: 8.4pt, weight: 600, fill: bright,
+      text(size: fs-col, weight: 600, fill: bright,
         e.at("degree_casual", default: ""))
       linebreak()
       v(1pt)
@@ -331,16 +347,16 @@
 // advances exactly 0.6em per glyph and the labels are ASCII, so wrapped values
 // hang under the value instead of colliding with the next label.
 #let make-skills(items) = {
-  set text(size: col-size)
+  set text(size: fs-col)
   cv-section-inline("Skills")
   for (i, s) in items.enumerate() {
     let label = lower(s.at("category_casual", default: s.category))
-    // Absolute, not em: the label sets at token-size but the paragraph's em is
-    // col-size, so an em-relative indent would land in the wrong place. The +3
+    // Absolute, not em: the label sets at fs-meta but the paragraph's em is
+    // fs-col, so an em-relative indent would land in the wrong place. The +3
     // covers the " = " separator.
-    par(hanging-indent: (label.len() + 3) * 0.6 * token-size)[
-      #text(font: mono, size: token-size, weight: 700, fill: bright, label)
-      #text(font: mono, size: token-size, fill: hair, " = ")
+    par(hanging-indent: (label.len() + 3) * 0.6 * fs-meta)[
+      #text(font: mono, size: fs-meta, weight: 700, fill: bright, label)
+      #text(font: mono, size: fs-meta, fill: hair, " = ")
       #tokens(split-on(s.stack, ","), fill: body)
     ]
     if i + 1 < items.len() { v(sp-skill) }
@@ -348,11 +364,11 @@
 }
 
 #let make-projects(items) = {
-  set text(size: col-size)
+  set text(size: fs-col)
   cv-section-inline("Projects")
   for (i, p) in items.enumerate() {
     marked({
-      text(size: 8.2pt, weight: 600, fill: bright, field(p, "name", "casual"))
+      text(size: fs-col, weight: 600, fill: bright, field(p, "name", "casual"))
       block(above: sp-stack-above, below: 0pt,
         tokens(split-on(field(p, "stack", "casual"), "|")))
       block(above: 2.6pt, below: 0pt,
@@ -363,20 +379,20 @@
 }
 
 #let make-publications(items) = {
-  set text(size: col-size)
+  set text(size: fs-col)
   cv-section-inline("Publications")
   for (i, p) in items.enumerate() {
     let title = field(p, "title", "casual")
     let venue = field(p, "venue", "casual")
     let doi = p.at("doi_url", default: none)
-    let head = text(size: 8pt, weight: 600, fill: bright, title)
+    let head = text(size: fs-col, weight: 600, fill: bright, title)
     marked({
-      text(font: mono, size: token-size, fill: mute, str(p.year))
+      text(font: mono, size: fs-meta, fill: mute, str(p.year))
       h(0.6em)
       if doi != none { ext-link(doi, head) } else { head }
       if venue != none and venue != "" {
         block(above: sp-stack-above, below: 0pt,
-          text(font: mono, size: token-size, fill: mute, venue))
+          text(font: mono, size: fs-meta, fill: mute, venue))
       }
     })
     if i + 1 < items.len() { v(sp-entry) }
@@ -384,11 +400,11 @@
 }
 
 #let make-open-source(items) = {
-  set text(size: col-size)
+  set text(size: fs-col)
   cv-section-inline("Open Source")
   for (i, o) in items.enumerate() {
     let url = o.at("name_url", default: none)
-    let head = text(size: 8.2pt, weight: 600, fill: bright, field(o, "name", "casual"))
+    let head = text(size: fs-col, weight: 600, fill: bright, field(o, "name", "casual"))
     marked({
       if url != none { ext-link(url, head) } else { head }
       block(above: sp-stack-above, below: 0pt,
@@ -404,11 +420,11 @@
 // data/ doesn't strand a bare header.
 #let make-certifications(items) = {
   if items.len() == 0 { return }
-  set text(size: col-size)
+  set text(size: fs-col)
   cv-section-inline("Certifications")
   for (i, c) in items.enumerate() {
     marked({
-      text(font: mono, size: token-size, fill: mute, str(c.year))
+      text(font: mono, size: fs-meta, fill: mute, str(c.year))
       h(0.6em)
       text(fill: bright, render-md(field(c, "name", "casual")))
       text(fill: mute, " · " + c.institute)
@@ -418,13 +434,13 @@
 }
 
 #let make-achievements(items) = {
-  set text(size: col-size)
+  set text(size: fs-col)
   cv-section-inline("Achievements")
   for (i, a) in items.enumerate() {
     let event = render-md(a.at("event_casual", default: a.event))
     let place = a.at("place_casual", default: "")
     marked({
-      text(font: mono, size: token-size, fill: mute, str(a.year))
+      text(font: mono, size: fs-meta, fill: mute, str(a.year))
       h(0.6em)
       text(fill: bright, event)
       if place != "" {
@@ -441,7 +457,7 @@
 #let page-number-text = context {
   let cur = counter(page).get().first()
   let tot = counter(page).final().first()
-  text(font: mono, size: 6.4pt, fill: mute)[#cur / #tot]
+  text(font: mono, size: fs-meta, fill: mute)[#cur / #tot]
 }
 
 #let page-number = align(right, page-number-text)

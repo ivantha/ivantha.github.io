@@ -28,7 +28,7 @@
   footer: page-number,
   footer-descent: 5mm,
 )
-#set text(font: sans, size: body-size, fill: body, weight: 400, hyphenate: false)
+#set text(font: sans, size: fs-body, fill: body, weight: 400, hyphenate: false)
 #set par(justify: false, leading: 0.6em)
 // Deliberate no-op: links carry no inherited styling. Affordance is explicit —
 // renderers colour them, and `ext-link` rules them.
