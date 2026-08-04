@@ -7,35 +7,69 @@
 // amber string-literals, comment-grey metadata.
 // =============================================================================
 
+// ----- Palette ---------------------------------------------------------------
+// Ratios are contrast against the dark-blue page fill.
+
 #let dark-blue     = rgb(45, 48, 59)
 #let panel-bg      = rgb(38, 41, 51)
-#let dove-white    = rgb(221, 221, 221)
-#let medium-white  = rgb(166, 166, 166)
-#let comment-grey  = rgb(120, 130, 145)
-#let dark-grey     = rgb(97, 97, 97)
+#let dove-white    = rgb(221, 221, 221)   // 9.6:1 — entry emphasis
+#let medium-white  = rgb(184, 188, 196)   // 6.9:1 — body copy
+#let comment-grey  = rgb(148, 158, 173)   // 4.9:1 — `//` metadata; the
+                                          //         highest-frequency text here
+#let rule-grey     = rgb(115, 124, 140)   // 3.1:1 — section rules; tinted rather
+                                          //         than neutral so it reads as
+                                          //         part of the theme
 #let bright-green  = rgb(120, 214, 112)
 #let accent-cyan   = rgb(97, 175, 239)
 #let accent-amber  = rgb(229, 192, 123)
+#let chip-text     = rgb(140, 190, 134)   // 6.2:1 — calmer than bright-green so
+#let chip-bracket  = rgb(105, 115, 130)   //         stack chips stop shouting
 #let traffic-red   = rgb(237, 109, 96)
 #let traffic-amber = rgb(229, 192, 123)
 #let traffic-green = rgb(120, 214, 112)
 
-#let body-size     = 10pt
-#let footnote-size = 7.5pt
+// ----- Type scale ------------------------------------------------------------
+// A real 700 face is vendored (fonts/RobotoMono-Bold.ttf), so weight — not just
+// hue — carries hierarchy. The ladder:
+//   700  name, section headers, entry titles
+//   500  company names, header sigils
+//   400  body copy, metadata, chips
+
+#let body-size      = 10pt    // document default; the whoami header block sits here
+#let footnote-size  = 7.5pt   // main-column body copy
+#let side-size      = 8pt     // sidebar body copy — narrower column, and the
+                              // sidebar has spare vertical room to give it
+#let head-size      = 10pt    // main-column section headers
+#let side-head-size = 9pt     // sidebar headers — deliberately subordinate
+#let name-size      = 19pt
 
 // ----- Spacing scale ---------------------------------------------------------
-// Em-based so every gap scales with text size. One place to retune rhythm.
+// RHYTHM RULE: the gap *between* entries must clearly exceed the leading
+// *within* an entry, or multi-line entries merge into an unreadable wall.
+// Bulleted lists get a smaller margin because the `›` marker already anchors
+// each item.
+//
+// Section/header gaps are absolute pt so they don't silently change with the
+// caller's text size. Everything else is em so it scales with local body copy.
+// This block is the single tuning point for the document's vertical rhythm.
 
-#let sp-bullet       = 0.45em  // between bullets within one entry
-#let sp-entry-tight  = 0.9em   // short single-line entries (certs, achievements)
-#let sp-entry        = 0.4em   // multi-line entries (education, projects, skills)
-#let sp-entry-wide   = 0.9em   // between experience blocks (adds to internal list spacing)
-#let sp-section      = 1.5em   // between major sections within a main column
-#let sp-side-entry   = 1.3em   // between entries in sidebar lists (more room than main)
-#let sp-side-section = 3.8em   // between sidebar sections (sidebar has more height to fill)
-#let sp-header-above = 0.6em   // above a section header
-#let sp-header-below = 0.9em   // below a section header
-#let sp-leading      = 0.75em  // line spacing inside body-section paragraphs
+#let sp-line          = 0.56em  // leading WITHIN an entry
+#let sp-bullet        = 0.80em  // between bullets in one job
+#let sp-entry         = 0.95em  // between multi-line entries
+#let sp-entry-compact = 0.75em  // between single-line entries (certs, achievements)
+#let sp-skill         = 0.50em  // between skill rows (hanging indent already binds them)
+#let sp-job           = 1.32em  // between experience blocks
+#let sp-side-entry    = 1.35em  // between sidebar list rows
+#let sp-side-section  = 40pt    // between sidebar sections
+#let sp-header-above  = 8pt     // above a section header
+#let sp-header-below  = 5pt     // below a section header — a header belongs closer
+                                // to what it introduces than to what it follows
+#let sp-section       = 13pt    // between sections within a column
+
+// whoami header block
+#let sp-name-above    = 0.55em
+#let sp-name-below    = 0.80em
+#let sp-meta-line     = 0.25em
 
 // ----- Helpers ---------------------------------------------------------------
 
@@ -57,22 +91,32 @@
 // Strings originate in our own data/ dir, so arbitrary-code risk is nil.
 #let render-md(s) = eval(s, mode: "markup")
 
+// A linked title, marked so it is distinguishable from plain text. The page-level
+// `show link` rule is a deliberate no-op, so without this a DOI-linked
+// publication title would look identical to an unlinked one.
+#let ext-link(url, body) = link(url, body) + text(fill: comment-grey, size: 0.9em)[#h(0.15em)↗]
+
 // Render a stack string as bracketed tag chips: "[Python] [FastAPI] [LangChain]".
+// Secondary annotation under a bullet, so it uses the dimmed chip palette.
 #let tag-list(s, sep: ",") = {
   let parts = s.split(sep).map(p => p.trim()).filter(p => p.len() > 0)
   parts
-    .map(p => box[#text(fill: comment-grey, "[")#text(fill: bright-green, p)#text(fill: comment-grey, "]")])
-    .join(text(fill: comment-grey, " "))
+    .map(p => box[#text(fill: chip-bracket, "[")#text(fill: chip-text, p)#text(fill: chip-bracket, "]")])
+    .join(text(fill: chip-bracket, " "))
 }
 
 // Render a stack as a single bracketed comma-separated list: "[Python, SQL, Java]".
+// This *is* the content in the skills section, so it keeps the brighter green.
 #let bracket-list(s, sep: ",") = {
   let parts = s.split(sep).map(p => p.trim()).filter(p => p.len() > 0)
-  let inner = parts.map(p => text(fill: bright-green, p)).join(text(fill: comment-grey, ", "))
-  text(fill: comment-grey, "[") + inner + text(fill: comment-grey, "]")
+  let inner = parts.map(p => text(fill: bright-green, p)).join(text(fill: chip-bracket, ", "))
+  text(fill: chip-bracket, "[") + inner + text(fill: chip-bracket, "]")
 }
 
 // ----- Section headers -------------------------------------------------------
+// Both use absolute sizes so they render identically regardless of the caller's
+// ambient text size. They previously inherited it, which made main-column
+// headers 10.5pt and sidebar headers 7.5pt purely by accident of call order.
 
 // Main column: shell prompt header.  `$ experience ──────────────`
 #let cv-section(title) = {
@@ -81,9 +125,9 @@
     columns: (auto, auto, 1fr),
     column-gutter: 0.4em,
     align: (left + horizon, left + horizon, left + horizon),
-    text(weight: "bold", size: 1.05em, fill: bright-green, "$"),
-    text(weight: "bold", size: 1.05em, fill: dove-white, lower(title)),
-    box(width: 100%, height: 0.5pt, fill: dark-grey),
+    text(weight: "medium", size: head-size, fill: bright-green, "$"),
+    text(weight: "bold", size: head-size, fill: dove-white, lower(title)),
+    box(width: 100%, height: 0.6pt, fill: rule-grey),
   ))
   v(sp-header-below, weak: true)
 }
@@ -95,9 +139,9 @@
     columns: (auto, auto, 1fr),
     column-gutter: 0.4em,
     align: (left + horizon, left + horizon, left + horizon),
-    text(fill: comment-grey, weight: "bold", "//"),
-    text(weight: "bold", fill: dove-white, snake(title)),
-    box(width: 100%, height: 0.5pt, fill: dark-grey),
+    text(fill: comment-grey, weight: "medium", size: side-head-size, "//"),
+    text(weight: "bold", fill: dove-white, size: side-head-size, snake(title)),
+    box(width: 100%, height: 0.6pt, fill: rule-grey),
   ))
   v(sp-header-below, weak: true)
 }
@@ -107,15 +151,15 @@
 #let render-main-header(personal) = {
   set par(leading: 0.4em)
   text(size: footnote-size, fill: bright-green, "oshan@cv:~$ ")
-  text(size: footnote-size, fill: dove-white, weight: "bold", "whoami")
-  v(0.55em)
+  text(size: footnote-size, fill: dove-white, weight: "medium", "whoami")
+  v(sp-name-above)
   block(below: 0pt)[
-    #text(size: 19pt, fill: comment-grey, "> ")
-    #text(size: 19pt, weight: "bold", fill: dove-white, personal.first_name + " " + personal.last_name)
-    #text(size: 19pt, weight: "bold", fill: bright-green, "_")
+    #text(size: name-size, fill: comment-grey, "> ")
+    #text(size: name-size, weight: "bold", fill: dove-white, personal.first_name + " " + personal.last_name)
+    #text(size: name-size, weight: "bold", fill: bright-green, "_")
   ]
-  v(0.8em)
-  set text(size: 10pt)
+  v(sp-name-below)
+  set text(size: body-size)
   let roles = personal.at("roles_casual", default: none)
   if roles != none and roles.len() > 0 {
     text(fill: accent-cyan, "role")
@@ -128,14 +172,14 @@
     text(fill: comment-grey, style: "italic", personal.tagline_casual)
   }
   linebreak()
-  v(0.25em)
+  v(sp-meta-line)
   text(fill: accent-cyan, "more")
   text(fill: dove-white, ": ")
   link(
     personal.homepage.url,
-    underline(text(fill: bright-green, weight: "bold", personal.homepage.label)),
+    underline(text(fill: bright-green, weight: "medium", personal.homepage.label)),
   )
-  text(fill: bright-green, weight: "bold", " →")
+  text(fill: bright-green, weight: "medium", " →")
 }
 
 // ----- FontAwesome profile-icon table ----------------------------------------
@@ -160,37 +204,41 @@
 
 // Experience.
 #let make-experience(items) = {
-  cv-section("Experience")
   set text(size: footnote-size)
-  set par(leading: sp-leading)
-  for item in items [
-    #text(weight: "bold", fill: accent-cyan, field(item, "role", "casual"))#text(fill: comment-grey, " @ ")#text(weight: "bold", fill: dove-white, field(item, "company", "casual")) \
-    #text(fill: comment-grey, "// " + field(item, "location", "casual") + " · " + arrow-dates(item.dates))
-    #let bullets = bullets-for(item, "casual")
-    #if bullets.len() > 0 [
-      #list(
-        marker: text(fill: bright-green, "›"),
-        indent: 0pt,
-        body-indent: 0.5em,
-        spacing: sp-bullet,
-        ..bullets.map(b => [
-          #text(fill: medium-white, render-md(field(b, "text", "casual")))
-          #let st = field(b, "stack", "casual")
-          #if st != none [
-            \ #tag-list(st, sep: ",")
-          ]
-        ]),
-      )
+  cv-section("Experience")
+  set par(leading: sp-line)
+  for (i, item) in items.enumerate() {
+    [
+      #text(weight: "bold", fill: accent-cyan, field(item, "role", "casual"))#text(fill: comment-grey, " @ ")#text(weight: "medium", fill: dove-white, field(item, "company", "casual")) \
+      #text(fill: comment-grey, "// " + field(item, "location", "casual") + " · " + arrow-dates(item.dates))
+      #let bullets = bullets-for(item, "casual")
+      #if bullets.len() > 0 [
+        #list(
+          marker: text(fill: bright-green, "›"),
+          indent: 0pt,
+          body-indent: 0.5em,
+          spacing: sp-bullet,
+          ..bullets.map(b => [
+            #text(fill: medium-white, render-md(field(b, "text", "casual")))
+            #let st = field(b, "stack", "casual")
+            #if st != none [
+              \ #tag-list(st, sep: ",")
+            ]
+          ]),
+        )
+      ]
     ]
-    #v(sp-entry-wide)
-  ]
+    // Only *between* blocks — an unconditional gap here left a dangling space
+    // under the last job.
+    if i + 1 < items.len() { v(sp-job) }
+  }
 }
 
 // Open-source contributions. Project name (linked) · stack · one-line description.
 #let make-open-source(items) = {
-  cv-section("Open Source")
   set text(size: footnote-size)
-  set par(leading: sp-leading)
+  cv-section("Open Source")
+  set par(leading: sp-line)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -201,7 +249,7 @@
       let stack = field(o, "stack", "casual")
       let desc = field(o, "description", "casual")
       let url = o.at("name_url", default: none)
-      let title-body = if url != none { link(url, text(fill: accent-cyan, weight: "bold", name)) } else { text(fill: accent-cyan, weight: "bold", name) }
+      let title-body = if url != none { ext-link(url, text(fill: accent-cyan, weight: "bold", name)) } else { text(fill: accent-cyan, weight: "bold", name) }
       [
         #title-body \
         #text(fill: comment-grey, "// " + stack) \
@@ -213,9 +261,9 @@
 
 // Publications. Compact one-liner: year · title (in brackets: venue).
 #let make-publications(items) = {
-  cv-section("Publications")
   set text(size: footnote-size)
-  set par(leading: sp-leading)
+  cv-section("Publications")
+  set par(leading: sp-line)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -225,7 +273,7 @@
       let title = field(p, "title", "casual")
       let venue = field(p, "venue", "casual")
       let doi = p.at("doi_url", default: none)
-      let title-body = if doi != none { link(doi, text(fill: accent-cyan, weight: "bold", title)) } else { text(fill: accent-cyan, weight: "bold", title) }
+      let title-body = if doi != none { ext-link(doi, text(fill: accent-cyan, weight: "bold", title)) } else { text(fill: accent-cyan, weight: "bold", title) }
       let has-venue = venue != none and venue != ""
       if has-venue [
         #text(fill: accent-amber, str(p.year)) #text(fill: comment-grey)[·] #title-body \
@@ -239,9 +287,9 @@
 
 // Projects.
 #let make-projects(items) = {
-  cv-section("Projects")
   set text(size: footnote-size)
-  set par(leading: sp-leading)
+  cv-section("Projects")
+  set par(leading: sp-line)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -258,9 +306,9 @@
 // ----- Sections: page 2 left column ------------------------------------------
 
 #let make-education(items) = {
-  cv-section("Education")
   set text(size: footnote-size)
-  set par(leading: sp-leading)
+  cv-section("Education")
+  set par(leading: sp-line)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
@@ -276,32 +324,34 @@
   )
 }
 
+// Skills. Each category is one paragraph with a hanging indent computed from its
+// label, so wrapped stack lines hang exactly under the value instead of running
+// back to the margin and colliding with the next category's label.
 #let make-skills(items) = {
-  cv-section("Skills")
   set text(size: footnote-size)
-  set par(leading: sp-leading)
-  grid(
-    columns: (auto, 1fr),
-    column-gutter: 0.45em,
-    row-gutter: 0.18em,
-    ..items
-      .map(s => (
-        text(fill: accent-cyan, lower(s.at("category_casual", default: s.category))) + text(fill: dove-white)[ =],
-        bracket-list(s.stack, sep: ","),
-      ))
-      .flatten()
-  )
+  cv-section("Skills")
+  set par(leading: sp-line)
+  for (i, s) in items.enumerate() {
+    let label = lower(s.at("category_casual", default: s.category))
+    // Roboto Mono advances exactly 0.6em per glyph, so the indent that aligns
+    // continuation lines under the value is computable. Labels are ASCII, so
+    // .len() equals the glyph count. The +3 covers the " = " separator.
+    par(hanging-indent: (label.len() + 3) * 0.6em)[
+      #text(fill: accent-cyan, label)#text(fill: dove-white, " = ")#bracket-list(s.stack, sep: ",")
+    ]
+    if i + 1 < items.len() { v(sp-skill) }
+  }
 }
 
 #let make-certifications(items) = {
-  cv-section("Certifications")
   set text(size: footnote-size)
-  set par(leading: sp-leading)
+  cv-section("Certifications")
+  set par(leading: sp-line)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
     body-indent: 0.5em,
-    spacing: sp-entry-tight,
+    spacing: sp-entry-compact,
     ..items.map(c => [
       #text(fill: accent-amber, str(c.year))
       #text(fill: comment-grey)[·]
@@ -312,14 +362,14 @@
 }
 
 #let make-achievements(items) = {
-  cv-section("Achievements")
   set text(size: footnote-size)
-  set par(leading: sp-leading)
+  cv-section("Achievements")
+  set par(leading: sp-line)
   list(
     marker: text(fill: bright-green, "›"),
     indent: 0pt,
     body-indent: 0.5em,
-    spacing: sp-entry-tight,
+    spacing: sp-entry-compact,
     ..items.map(a => {
       let event = render-md(a.at("event_casual", default: a.event))
       let place = a.at("place_casual", default: "")
@@ -335,15 +385,15 @@
 // ----- Sidebar (page 1 left column) ------------------------------------------
 
 #let render-sidebar(personal) = {
-  set text(size: footnote-size)
-  set par(leading: 1.1em)
+  set text(size: side-size)
+  set par(leading: 1.05em)
   set align(left)
 
   cv-side-section("About Me")
-  text(fill: dove-white, personal.about_me)
+  text(fill: medium-white, personal.about_me)
 
   cv-side-section("Interests")
-  text(fill: dove-white, personal.interests_casual)
+  text(fill: medium-white, personal.interests_casual)
 
   cv-side-section("Who Am I?")
   list(
@@ -355,13 +405,15 @@
   )
 
   cv-side-section("Contact Me")
+  let email = personal.emails.at(0).address
+  let tel = personal.phone.replace(" ", "").replace("(", "").replace(")", "")
   grid(
     columns: (auto, 1fr),
     column-gutter: 0.6em,
     row-gutter: sp-side-entry,
     align: (left + horizon, left + horizon),
-    ..icon-row(fa-envelope(), text(fill: dove-white, personal.emails.at(0).address)),
-    ..icon-row(fa-phone(),    text(fill: dove-white, personal.phone)),
+    ..icon-row(fa-envelope(), link("mailto:" + email, text(fill: dove-white, email))),
+    ..icon-row(fa-phone(),    link("tel:" + tel, text(fill: dove-white, personal.phone))),
     ..icon-row(fa-map(),      text(fill: dove-white, personal.location)),
   )
 
@@ -384,6 +436,8 @@
 }
 
 // ----- Page chrome: title bar + status bar (used in main.typ) ---------------
+// Inset matches the content columns' 8mm so the chrome lines up with the text
+// below it rather than floating at its own margin.
 
 // Editor-tab title bar — inline block at the top of each page.
 #let title-bar = context {
@@ -391,7 +445,7 @@
   let tot = counter(page).final().first()
   block(
     width: 100%,
-    inset: (x: 6mm, y: 1.5mm),
+    inset: (x: 8mm, y: 1.5mm),
     fill: dark-blue,
     grid(
       columns: (auto, 1fr, auto),
@@ -418,7 +472,7 @@
 // Status-bar style footer — inline block at the bottom of each page.
 #let status-bar = block(
   width: 100%,
-  inset: (x: 6mm, y: 1.5mm),
+  inset: (x: 8mm, y: 1.5mm),
   fill: dark-blue,
   grid(
     columns: (auto, 1fr, auto),
