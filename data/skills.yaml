@@ -26,7 +26,7 @@
 - category: "Databases"
   stack: "PostgreSQL, MongoDB, Redis, Firebase, SQLite"
 - category: "Vector DBs"
-  stack: "Pinecone, Chroma, pgvector, Weaviate, Qdrant"
+  stack: "Pinecone, Chroma, pgvector, Weaviate"
 - category: "Cloud"
   stack: "AWS (Lambda, ECS, CloudWatch, IAM, Cognito), GCP (Cloud Run, Cloud Build, BigQuery)"
 - category: "Visualization"
