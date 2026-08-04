@@ -14,10 +14,21 @@
 //   * Proportional type (IBM Plex Sans) for anything that is a sentence.
 //     Monospace (JetBrains Mono) only for things that really are tokens —
 //     dates, stacks, skill values, labels, identifiers.
-//   * ONE accent hue. `signal` marks employers, section labels and links, and
-//     nothing else. Hierarchy is carried by size, weight and space.
+//   * ONE accent hue. `signal` marks exactly three kinds of thing —
+//     ORGANIZATIONS (employers, institutions), SECTION LABELS, and LINKS —
+//     plus the single cursor glyph after the name. Nothing else. An earlier
+//     revision of this comment said "employers, section labels and links",
+//     which was narrower than the design ever was (an institution is the
+//     education analogue of an employer) and was in any case not what the code
+//     did: achievement placings were accented too, which is neither an
+//     organization nor a label nor a link. The code now matches this list.
+//     Hierarchy is carried by size, weight and space.
 //   * No page furniture that isn't load-bearing. A page number is; a fake
 //     status bar isn't.
+//   * The document is meant to be PRINTED. Anything structural — the section
+//     rules, the one lifted surface, the link underlines — has to survive a
+//     greyscale laser printer, not merely register on a calibrated display.
+//     Several values below were raised for exactly this reason.
 // =============================================================================
 
 // ----- Palette ---------------------------------------------------------------
@@ -28,7 +39,15 @@
 
 #let ground = rgb(16, 17, 21)     // near-neutral black; the old blue-grey read
                                   // as "theme" rather than as a ground
-#let raised = rgb(23, 25, 30)     // the one lifted surface (profile panel)
+#let raised = rgb(33, 36, 44)     // the one lifted surface (profile panel).
+                                  //  1.22:1 against `ground`. It was 1.07:1 —
+                                  //  a seven-value step that registered as a
+                                  //  hint on screen and as nothing at all on
+                                  //  paper, which makes "the one lifted
+                                  //  surface" a claim the document didn't keep.
+                                  //  Roughly tripling the step costs almost
+                                  //  nothing: `bright` on the panel is still
+                                  //  13.5:1, well clear of AAA.
 #let bright = rgb(238, 239, 242)  // 16.4:1 — name, entry titles
 #let body   = rgb(176, 181, 191)  //  9.2:1 — prose
 #let mute   = rgb(146, 155, 171)  //  6.7:1 — metadata, stacks, markers. This is
@@ -37,13 +56,21 @@
                                   //  real margin over AA rather than the 4.6:1
                                   //  it used to scrape by on.
 #let signal = rgb(126, 226, 152)  // 11.9:1 — the only accent
-#let hair   = rgb(48, 52, 61)     //  1.5:1 — RULES ONLY. Far below AA, which is
+#let hair   = rgb(62, 67, 79)     //  1.9:1 — RULES ONLY. Far below AA, which is
                                   //  fine for a hairline and disqualifying for
                                   //  text; `separator` exists so that stays true.
-#let separator = rgb(103, 110, 123) // 3.4:1 — the "/" and "=" glyphs that divide
-                                  //  two pieces of text. Deliberately below body
-                                  //  contrast (they are punctuation, not
-                                  //  content) but visible, which `hair` was not.
+                                  //  Raised from 1.5:1, where the section rules
+                                  //  washed out in print. They carry section
+                                  //  boundaries, so they are structure, not
+                                  //  decoration, and have to survive the page.
+                                  //  1.9:1 is still nowhere near a text tier.
+#let separator = rgb(103, 110, 123) // 3.7:1 — the "/" and "=" glyphs that divide
+                                  //  two pieces of text, and the link underline.
+                                  //  Deliberately below body contrast (they are
+                                  //  punctuation, not content) but visible,
+                                  //  which `hair` was not. Annotated 3.4:1 for
+                                  //  several revisions; the block claims its
+                                  //  figures are computed, so: 3.68:1.
 
 // ----- Type ------------------------------------------------------------------
 
@@ -146,9 +173,13 @@
 
 // Links get an explicit rule; the page-level `show link` rule is a no-op, so
 // without this a DOI-linked title is indistinguishable from an unlinked one.
+// The stroke is `separator`, not `hair`: this underline's whole job is to be
+// perceived, and `hair` (1.9:1, and 1.5:1 when this was written) is the one
+// value in the palette that guarantees it isn't — which left the comment above
+// describing an affordance the code did not actually provide.
 #let ext-link(url, body) = link(url, underline(
   body,
-  stroke: 0.4pt + hair,
+  stroke: 0.4pt + separator,
   offset: 1.6pt,
   evade: true,
 ))
@@ -239,35 +270,87 @@
   box(width: 100%, height: 0.8pt, fill: hair)
   v(5pt)
 
-  // Contact strip.
+  // Contact block: two stacked rows of contact detail on the left, the site
+  // call-to-action on the right, as ONE grid rather than the two full-width
+  // rows this used to be.
+  //
+  // The homepage previously sat as a right-aligned cell inside the contact
+  // strip at fs-meta in signal — the same size and weight as the phone number
+  // beside it. Colour alone doesn't say "there is more of this elsewhere", so
+  // nothing in the document told a reader the site was worth opening. It now
+  // gets the one piece of deliberate emphasis in the header: fs-body, bold, in
+  // an outlined pill, with a plain-language qualifier leading into it.
+  //
+  // Outlined, not filled. A signal-filled chip on this ground reads as a UI
+  // button rather than as print, and at this size it would out-shout the name.
   let email = personal.emails.at(0).address
   let tel = personal.phone.replace(" ", "").replace("(", "").replace(")", "")
   grid(
     columns: (1fr, auto),
+    column-gutter: 6mm,
     align: (left + horizon, right + horizon),
-    text(font: mono, size: fs-meta, fill: mute)[
-      #link("mailto:" + email, email)
-      #h(0.7em)·#h(0.7em) #link("tel:" + tel, personal.phone)
-      #h(0.7em)·#h(0.7em) #personal.location
-    ],
-    link(personal.homepage.url,
-      text(font: mono, size: fs-meta, fill: signal, personal.homepage.label)),
+    {
+      text(font: mono, size: fs-meta, fill: mute)[
+        #link("mailto:" + email, email)
+        #h(0.7em)·#h(0.7em) #link("tel:" + tel, personal.phone)
+        #h(0.7em)·#h(0.7em) #personal.location
+      ]
+
+      v(3.5pt)
+
+      // Profile links, inline rather than as a sidebar column. `homepage` is
+      // filtered out because it now has the pill opposite; listing it here too
+      // would spend the emphasis twice.
+      let entries = personal.profiles_casual
+        .filter(slug => slug != "homepage")
+        .map(slug => {
+          let p = personal.profile_entries.at(slug)
+          box(link(p.url, {
+            text(size: fs-meta, fill: signal, profile-icon(slug))
+            h(0.4em)
+            text(font: mono, size: fs-meta, fill: body, p.label)
+          }))
+        })
+      entries.join(text(font: mono, size: fs-meta, fill: separator, "   ·   "))
+    },
+    // The qualifier sits BESIDE the pill, not stacked under it. Stacked, the
+    // right cell runs ~27pt against the left stack's ~19.5pt and the whole
+    // header grows; page 1 has only ~28pt of slack and `main.typ` breaks it
+    // with a hard `#pagebreak()`, so overflow becomes a third page rather than
+    // reflowing. Beside, the cell is one pill tall (~16pt) and costs nothing.
+    //
+    // The qualifier has a HARD width budget, because this row and the contact
+    // strip share one 180mm measure and the strip is the one that gives: too
+    // long a qualifier doesn't wrap itself, it wraps "Colombo, Sri Lanka" and
+    // orphans "Sri Lanka" on a line of its own. At fs-meta, JetBrains Mono,
+    // 0.6em advance (1.397mm/glyph):
+    //
+    //   contact strip  68 glyph-widths (23 email + 17 phone + 18 location
+    //                  + 2 separators at ~5)                        = 95.0mm
+    //   pill           5.2 inset + globe + 0.5em + 11 x 1.693       = 27.0mm
+    //   gutter + gap                                                =  8.5mm
+    //   measure 180 - 95.0 - 27.0 - 8.5                             = 49.5mm
+    //
+    // ~35 glyphs. The first cut of this line was 41 ("projects · publications
+    // · talks · writing") and wrapped the strip by 7.8mm. 25 glyphs leaves
+    // 14.5mm, which is the room a longer email address would need.
+    link(personal.homepage.url, {
+      text(font: mono, size: fs-meta, fill: mute,
+        "projects · papers · talks")
+      h(2.5mm)
+      box(
+        stroke: 0.6pt + signal,
+        radius: 2pt,
+        inset: (x: 2.6mm, y: 1.2mm),
+        {
+          text(size: fs-meta, fill: signal, profile-icon("homepage"))
+          h(0.5em)
+          text(font: mono, size: fs-body, weight: 700, fill: signal,
+            personal.homepage.label)
+        },
+      )
+    }),
   )
-
-  v(3.5pt)
-
-  // Profile links, inline rather than as a sidebar column.
-  let entries = personal.profiles_casual
-    .filter(slug => slug != "homepage")
-    .map(slug => {
-      let p = personal.profile_entries.at(slug)
-      box(link(p.url, {
-        text(size: fs-meta, fill: signal, profile-icon(slug))
-        h(0.4em)
-        text(font: mono, size: fs-meta, fill: body, p.label)
-      }))
-    })
-  entries.join(text(font: mono, size: fs-meta, fill: separator, "   ·   "))
 }
 
 // The one lifted surface in the document, so the summary reads before anything
@@ -487,7 +570,11 @@
       h(0.6em)
       text(fill: bright, event)
       if place != "" {
-        text(fill: signal, [ (#render-md(place))])
+        // `body`, not `signal`. The placing is a qualifier on the event beside
+        // it, and accenting it inverted that — the eye landed on "(1st place)"
+        // before the thing that was won. It is also neither an organization,
+        // a section label, nor a link, so it fails the accent rule up top.
+        text(fill: body, [ (#render-md(place))])
       }
     })
     if i + 1 < items.len() { v(sp-entry-tight) }

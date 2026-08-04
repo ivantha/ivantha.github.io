@@ -13,7 +13,7 @@
   extras_academic:
     - "Current GPA: 4.02/4.2"
   extras_casual:
-    - "Focus: Deep Learning, NLP, MLOps"
+    - "GPA : 4.02/4.2"
 
 - id: ucsc-bsc
   include_in: [academic, casual]
@@ -28,7 +28,7 @@
     - 'Thesis: _"Summarization of Large Scale Streaming Graphs"_ (Grade A)'
     - "Activities: Chair - IEEE Student Branch, Core Team - Mozilla Club, Member - CompSoc, Instructor - Exploration Club, Batch Representative - IUD"
   extras_casual:
-    - "GPA : 3.61 (Rank : 6#super[th] of 156 students)"
+    - "GPA : 3.61/4.0 (Rank : 6#super[th] of 156 students)"
 
 - id: maliyadeva-hs
   include_in: [academic]
