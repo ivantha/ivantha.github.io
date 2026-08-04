@@ -21,21 +21,49 @@
 // =============================================================================
 
 // ----- Palette ---------------------------------------------------------------
-// Ratios are contrast against `ground`.
+// Ratios are WCAG contrast against `ground`, computed rather than estimated —
+// an earlier revision carried eyeballed figures that were all slightly off.
+// Every run of text in this document is under 14pt, so WCAG treats all of it as
+// "normal text": AA is 4.5:1, AAA is 7:1. Nothing here may sit below 4.5.
 
 #let ground = rgb(16, 17, 21)     // near-neutral black; the old blue-grey read
                                   // as "theme" rather than as a ground
 #let raised = rgb(23, 25, 30)     // the one lifted surface (profile panel)
-#let bright = rgb(238, 239, 242)  // 15.6:1 — name, entry titles
-#let body   = rgb(176, 181, 191)  //  8.4:1 — prose
-#let mute   = rgb(118, 125, 138)  //  4.6:1 — metadata, stacks, markers
-#let signal = rgb(126, 226, 152)  // 11.3:1 — the only accent
-#let hair   = rgb(48, 52, 61)     // rules and separators; never carries text
+#let bright = rgb(238, 239, 242)  // 16.4:1 — name, entry titles
+#let body   = rgb(176, 181, 191)  //  9.2:1 — prose
+#let mute   = rgb(146, 155, 171)  //  6.7:1 — metadata, stacks, markers. This is
+                                  //  the smallest type in the document (fs-meta,
+                                  //  6.6pt) and the most frequent, so it gets
+                                  //  real margin over AA rather than the 4.6:1
+                                  //  it used to scrape by on.
+#let signal = rgb(126, 226, 152)  // 11.9:1 — the only accent
+#let hair   = rgb(48, 52, 61)     //  1.5:1 — RULES ONLY. Far below AA, which is
+                                  //  fine for a hairline and disqualifying for
+                                  //  text; `separator` exists so that stays true.
+#let separator = rgb(103, 110, 123) // 3.4:1 — the "/" and "=" glyphs that divide
+                                  //  two pieces of text. Deliberately below body
+                                  //  contrast (they are punctuation, not
+                                  //  content) but visible, which `hair` was not.
 
 // ----- Type ------------------------------------------------------------------
 
 #let sans = "IBM Plex Sans"
 #let mono = "JetBrains Mono"
+
+// WEIGHTS: 400 and 700 only, and that is a property of the fonts, not a choice.
+// IBM Plex's OTF release files Medium and SemiBold under their own family names
+// ("IBM Plex Sans Medm", "IBM Plex Sans SmBld"), so the family "IBM Plex Sans"
+// offers exactly Regular 400, Italic 400 and Bold 700. An earlier revision asked
+// for `weight: 500` and `weight: 600` believing a ladder existed; Typst silently
+// resolved those to the nearest real face (500 -> 400, 600 -> 700) and the two
+// vendored files were never embedded at all. Asking for weights the family does
+// not have is worse than asking for the ones it does — it reads as a ladder in
+// the source while rendering as a binary. So: 400 or 700, explicitly.
+//
+// Inter was evaluated as a replacement, since it does carry a real 100-900 ladder
+// in one family. It costs two extra pages at identical size — its metrics are
+// materially wider — so the ladder is not worth the paper. Plex also has more
+// character for this theme, which is the point of the theme.
 
 // FOUR sizes, and no others. Every `size:` in this file resolves to one of
 // these — a literal pt value anywhere below is a bug.
@@ -43,8 +71,8 @@
 // An earlier revision drifted to twelve sizes, four of them (8, 8.2, 8.4, 8.8)
 // inside a single 0.8pt band. Differences that small don't register as
 // hierarchy; they just make the page look unresolved. Where two things need to
-// be told apart at the same size, weight and colour do it — that is what the
-// vendored 500/600/700 faces are for.
+// be told apart at the same size, weight and colour do it (see the weight note
+// below — the ladder is 400/700, not a continuum).
 //
 // Page 1 and page 2 previously ran their prose at 8.4pt and 7.6pt, on the
 // reasoning that page 2's half-width columns want a smaller size for their
@@ -59,7 +87,7 @@
                           // size that is page-specific, because experience is
                           // the spine of the document and reads as such.
 #let fs-body    = 8pt     // ALL prose on both pages, the profile summary, the
-                          // role line, and page-2 entry titles (weight 600 and
+                          // role line, and page-2 entry titles (weight 700 and
                           // `bright` separate those from the prose around them)
 #let fs-meta    = 6.6pt   // every mono metadatum, everywhere: dates, stacks,
                           // locations, section labels, years, page number
@@ -189,12 +217,12 @@
 }
 
 #let render-header(personal) = {
-  text(size: fs-display, weight: 600, fill: bright, tracking: -0.015em,
+  text(size: fs-display, weight: 700, fill: bright, tracking: -0.015em,
     personal.first_name + " " + personal.last_name)
   // The one surviving nod to the old theme: a terminal cursor, kept because it
   // is a single glyph rather than a whole simulated application.
   h(2.5pt)
-  text(size: fs-display, weight: 600, fill: signal, "_")
+  text(size: fs-display, weight: 700, fill: signal, "_")
 
   v(5pt)
   // Parenthesised: Typst ends a statement at a newline unless it is bracketed,
@@ -203,7 +231,7 @@
   let roles = (
     personal.roles_casual
       .map(r => text(fill: body, r))
-      .join(text(fill: hair, "  /  "))
+      .join(text(fill: separator, "  /  "))
   )
   text(font: mono, size: fs-body, roles)
 
@@ -239,7 +267,7 @@
         text(font: mono, size: fs-meta, fill: body, p.label)
       }))
     })
-  entries.join(text(font: mono, size: fs-meta, fill: hair, "   ·   "))
+  entries.join(text(font: mono, size: fs-meta, fill: separator, "   ·   "))
 }
 
 // The one lifted surface in the document, so the summary reads before anything
@@ -309,9 +337,9 @@
           field(item, "location", "casual"))
       },
       {
-        text(size: fs-title, weight: 600, fill: bright, field(item, "role", "casual"))
-        text(size: fs-title, fill: hair, "  /  ")
-        text(size: fs-title, weight: 500, fill: signal, field(item, "company", "casual"))
+        text(size: fs-title, weight: 700, fill: bright, field(item, "role", "casual"))
+        text(size: fs-title, fill: separator, "  /  ")
+        text(size: fs-title, weight: 400, fill: signal, field(item, "company", "casual"))
         if bullets.len() > 0 {
           v(3.6pt)
           for b in bullets {
@@ -344,7 +372,7 @@
       text(font: mono, size: fs-meta, fill: body, dash-dates(e.dates_casual))
       linebreak()
       v(1.4pt)
-      text(size: fs-body, weight: 600, fill: bright,
+      text(size: fs-body, weight: 700, fill: bright,
         e.at("degree_casual", default: ""))
       linebreak()
       v(1pt)
@@ -371,7 +399,7 @@
     // covers the " = " separator.
     par(hanging-indent: (label.len() + 3) * 0.6 * fs-meta)[
       #text(font: mono, size: fs-meta, weight: 700, fill: bright, label)
-      #text(font: mono, size: fs-meta, fill: hair, " = ")
+      #text(font: mono, size: fs-meta, fill: separator, " = ")
       #tokens(split-on(s.stack, ","), fill: body)
     ]
     if i + 1 < items.len() { v(sp-skill) }
@@ -383,7 +411,7 @@
   cv-section-inline("Projects")
   for (i, p) in items.enumerate() {
     marked({
-      text(size: fs-body, weight: 600, fill: bright, field(p, "name", "casual"))
+      text(size: fs-body, weight: 700, fill: bright, field(p, "name", "casual"))
       block(above: sp-stack-above, below: 0pt,
         tokens(split-on(field(p, "stack", "casual"), "|")))
       block(above: 2.6pt, below: 0pt,
@@ -400,7 +428,7 @@
     let title = field(p, "title", "casual")
     let venue = field(p, "venue", "casual")
     let doi = p.at("doi_url", default: none)
-    let head = text(size: fs-body, weight: 600, fill: bright, title)
+    let head = text(size: fs-body, weight: 700, fill: bright, title)
     marked({
       text(font: mono, size: fs-meta, fill: mute, str(p.year))
       h(0.6em)
@@ -419,7 +447,7 @@
   cv-section-inline("Open Source")
   for (i, o) in items.enumerate() {
     let url = o.at("name_url", default: none)
-    let head = text(size: fs-body, weight: 600, fill: bright, field(o, "name", "casual"))
+    let head = text(size: fs-body, weight: 700, fill: bright, field(o, "name", "casual"))
     marked({
       if url != none { ext-link(url, head) } else { head }
       block(above: sp-stack-above, below: 0pt,
