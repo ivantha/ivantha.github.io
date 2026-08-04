@@ -68,10 +68,10 @@ the `md()` helper in each variant's `renderers.typ`.
 | `education.yaml`      | both | academic retains extras + Maliyadeva HS |
 | `experience.yaml`     | both | `category: professional\|research` splits academic sections |
 | `projects.yaml`       | both | casual uses short `description`, academic uses `description_academic` |
-| `skills.yaml`         | casual | grouped by category |
+| `skills.yaml`         | both | grouped by category; `category_casual` shortens labels for the casual CV's narrow column |
 | `certifications.yaml` | both | `name_casual` override for Oracle entry |
 | `awards.yaml`         | both | top-level map: `entries` + `awards_notes_academic` |
-| `publications.yaml`   | academic | top-level map: `items` + `equal_contribution_note`; structured authors |
+| `publications.yaml`   | both | top-level map: `items` + `equal_contribution_note`; structured authors |
 | `preprints.yaml`      | academic | structured authors |
 | `under-review.yaml`   | academic | structured authors + optional `venue` annotation |
 | `scholarships.yaml`   | academic | optional `footnote:` per entry |

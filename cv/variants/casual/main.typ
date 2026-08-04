@@ -31,6 +31,8 @@
 )
 #set text(font: "Roboto Mono", size: body-size, fill: dove-white, hyphenate: false)
 #set par(justify: false, leading: 0.62em)
+// Deliberate no-op: links carry no inherited styling. Affordance is explicit —
+// renderers colour them, and `ext-link` marks them with a trailing ↗.
 #show link: it => it
 
 // -------- Page 1 --------
@@ -51,7 +53,7 @@
     inset: (x: 8mm, y: 6mm),
   )[
     #render-main-header(personal)
-    #v(sp-header-below)
+    #v(sp-section)
     #make-experience(experience)
   ],
 )
