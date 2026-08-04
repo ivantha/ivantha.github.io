@@ -270,19 +270,15 @@
   box(width: 100%, height: 0.8pt, fill: hair)
   v(5pt)
 
-  // Contact block: two stacked rows of contact detail on the left, the site
-  // call-to-action on the right, as ONE grid rather than the two full-width
-  // rows this used to be.
+  // Contact block: two stacked rows of contact detail on the left, the site on
+  // the right, as ONE grid rather than the two full-width rows this used to be.
   //
   // The homepage previously sat as a right-aligned cell inside the contact
   // strip at fs-meta in signal — the same size and weight as the phone number
   // beside it. Colour alone doesn't say "there is more of this elsewhere", so
-  // nothing in the document told a reader the site was worth opening. It now
-  // gets the one piece of deliberate emphasis in the header: fs-body, bold, in
-  // an outlined pill, with a plain-language qualifier leading into it.
-  //
-  // Outlined, not filled. A signal-filled chip on this ground reads as a UI
-  // button rather than as print, and at this size it would out-shout the name.
+  // nothing in the document told a reader the site was worth opening. It is now
+  // the one piece of deliberate emphasis in the header, and the grid exists to
+  // give it a column of its own instead of the tail of a line.
   let email = personal.emails.at(0).address
   let tel = personal.phone.replace(" ", "").replace("(", "").replace(")", "")
   grid(
@@ -299,8 +295,8 @@
       v(3.5pt)
 
       // Profile links, inline rather than as a sidebar column. `homepage` is
-      // filtered out because it now has the pill opposite; listing it here too
-      // would spend the emphasis twice.
+      // filtered out because it has its own treatment opposite; listing it
+      // here too would spend the emphasis twice.
       let entries = personal.profiles_casual
         .filter(slug => slug != "homepage")
         .map(slug => {
@@ -313,42 +309,29 @@
         })
       entries.join(text(font: mono, size: fs-meta, fill: separator, "   ·   "))
     },
-    // The qualifier sits BESIDE the pill, not stacked under it. Stacked, the
-    // right cell runs ~27pt against the left stack's ~19.5pt and the whole
-    // header grows; page 1 has only ~28pt of slack and `main.typ` breaks it
-    // with a hard `#pagebreak()`, so overflow becomes a third page rather than
-    // reflowing. Beside, the cell is one pill tall (~16pt) and costs nothing.
+    // The emphasis is carried by SIZE, WEIGHT and COLOUR — nothing else. An
+    // earlier cut boxed this in an outlined pill and led into it with a
+    // "projects · papers · talks" qualifier. Both were foreign to the theme:
+    // the document contains exactly one container, the profile panel, and that
+    // is a lifted *surface* rather than an outline, so a stroked box read as
+    // borrowed UI. The rules up top already say hierarchy comes from size,
+    // weight and space; the pill was a fourth mechanism invented for one item.
     //
-    // The qualifier has a HARD width budget, because this row and the contact
-    // strip share one 180mm measure and the strip is the one that gives: too
-    // long a qualifier doesn't wrap itself, it wraps "Colombo, Sri Lanka" and
-    // orphans "Sri Lanka" on a line of its own. At fs-meta, JetBrains Mono,
-    // 0.6em advance (1.397mm/glyph):
+    // What is left still steps hard off its surroundings: fs-body against the
+    // fs-meta metadata on every side (a 21% size step), weight 700 against
+    // 400, and `signal` against `mute`. The globe repeats the icon-then-label
+    // idiom of the profile row directly below, so it reads as native to the
+    // header rather than bolted onto it.
     //
-    //   contact strip  68 glyph-widths (23 email + 17 phone + 18 location
-    //                  + 2 separators at ~5)                        = 95.0mm
-    //   pill           5.2 inset + globe + 0.5em + 11 x 1.693       = 27.0mm
-    //   gutter + gap                                                =  8.5mm
-    //   measure 180 - 95.0 - 27.0 - 8.5                             = 49.5mm
-    //
-    // ~35 glyphs. The first cut of this line was 41 ("projects · publications
-    // · talks · writing") and wrapped the strip by 7.8mm. 25 glyphs leaves
-    // 14.5mm, which is the room a longer email address would need.
+    // Widths are no longer tight — this cell is ~22mm against the contact
+    // strip's ~95mm in a 180mm measure — but the strip must still hold ONE
+    // line. Anything added here comes out of its slack, and when it runs out
+    // the strip is what wraps, orphaning "Sri Lanka" on a line of its own.
     link(personal.homepage.url, {
-      text(font: mono, size: fs-meta, fill: mute,
-        "projects · papers · talks")
-      h(2.5mm)
-      box(
-        stroke: 0.6pt + signal,
-        radius: 2pt,
-        inset: (x: 2.6mm, y: 1.2mm),
-        {
-          text(size: fs-meta, fill: signal, profile-icon("homepage"))
-          h(0.5em)
-          text(font: mono, size: fs-body, weight: 700, fill: signal,
-            personal.homepage.label)
-        },
-      )
+      text(size: fs-meta, fill: signal, profile-icon("homepage"))
+      h(0.5em)
+      text(font: mono, size: fs-body, weight: 700, fill: signal,
+        personal.homepage.label)
     }),
   )
 }
