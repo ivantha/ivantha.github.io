@@ -2,16 +2,15 @@ first_name: Oshan
 last_name: Mudannayake
 
 # Taglines displayed under the name.
-# Casual CV renders `roles_casual` as a TypeScript-style union type:
-#   role: "ML Engineer" | "AI Engineer" | "Data Scientist"
+# Casual CV renders `roles_casual` as a slash-separated mono run:
+#   ML Engineer  /  Data Scientist
 # Falls back to `tagline_casual` if `roles_casual` is absent.
 #
-# Kept short deliberately: the union renders on one line at body-size, and page
+# Kept short deliberately: the run renders on one line at body-size, and page
 # 1's main column is a fixed-height block that clips rather than reflows. Three
 # spelled-out titles wrap and slice the last stack-chip row off the page.
 roles_casual:
   - "ML Engineer"
-  - "AI Engineer"
   - "Data Scientist"
 tagline_casual: "Lead Machine Learning Engineer"
 tagline_academic_role: "Researcher"
@@ -60,8 +59,8 @@ profiles_casual:   [homepage, linkedin, github, twitter]
 # Casual-only sidebar content.
 about_me: >
   Senior ML engineer with 6+ years in industry building production LLM
-  platforms, MLOps tooling, and ML systems at scale — shipping production
-  software since 2016. Published ML researcher (ACL, IEEE Access, Elsevier).
+  platforms, MLOps tooling, and ML systems at scale, shipping software
+  since 2016. Published ML researcher (ACL, IEEE Access, Elsevier).
 interests_casual: "Reinforcement Learning, Machine Learning, Artificial Intelligence, Game Theory, Computer Games, Computer Vision"
 who_am_i:
   - "Avid reader"
