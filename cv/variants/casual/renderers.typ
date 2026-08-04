@@ -50,11 +50,30 @@
                                   //  13.5:1, well clear of AAA.
 #let bright = rgb(238, 239, 242)  // 16.4:1 — name, entry titles
 #let body   = rgb(176, 181, 191)  //  9.2:1 — prose
-#let mute   = rgb(146, 155, 171)  //  6.7:1 — metadata, stacks, markers. This is
-                                  //  the smallest type in the document (fs-meta,
-                                  //  6.6pt) and the most frequent, so it gets
-                                  //  real margin over AA rather than the 4.6:1
-                                  //  it used to scrape by on.
+#let mute   = rgb(146, 155, 171)  //  6.7:1 — identifying metadata (dates,
+                                  //  locations, years, venues) and bullet
+                                  //  markers. Shares fs-meta (6.6pt, the
+                                  //  smallest type here) with `stack`, so it
+                                  //  gets real margin over AA rather than the
+                                  //  4.6:1 it used to scrape by on.
+#let stack  = rgb(128, 136, 151)  //  5.3:1 — TECHNOLOGY RUNS only: the "FastAPI
+                                  //  · Python · React" lines under bullets, and
+                                  //  the project, open-source and skill values.
+                                  //  A tier of its own because those runs are
+                                  //  annotations ON content, not content: they
+                                  //  answer "with what" about the sentence above
+                                  //  them, and at `mute` they read at nearly the
+                                  //  weight of the prose they qualify. Skills
+                                  //  were worse still — they ran at full `body`,
+                                  //  so the one section that is ENTIRELY
+                                  //  technology was also the one that made it
+                                  //  indistinguishable from prose.
+                                  //  Sits between `separator` (punctuation) and
+                                  //  `mute` (metadata), which is exactly the
+                                  //  standing of a stack line. 5.3:1 is a
+                                  //  deliberate 18% over the AA floor rather
+                                  //  than a landing on it — this is the smallest
+                                  //  type in the document and it has to print.
 #let signal = rgb(126, 226, 152)  // 11.9:1 — the only accent
 #let hair   = rgb(62, 67, 79)     //  1.9:1 — RULES ONLY. Far below AA, which is
                                   //  fine for a hairline and disqualifying for
@@ -166,6 +185,12 @@
 // A dotted token run: "FastAPI · Python · React". `sep` is tightenable for runs
 // that must hold one line — at 0.6em per glyph a wide separator costs real
 // millimetres, and a wrapped run in the page footer overflows the page.
+//
+// The default fill is `mute` because the run is only sometimes a technology
+// list; every technology caller passes `stack` explicitly. Defaulting to `stack`
+// would have been fewer characters and a worse comment, since the footer's
+// interests and who_am_i rows are the CONTENT of their line rather than an
+// annotation on one, and shouldn't be dimmed to the annotation tier.
 #let tokens(items, size: fs-meta, fill: mute, sep: "  ·  ") = {
   if items.len() == 0 { return }
   text(font: mono, size: size, fill: fill, items.join(sep))
@@ -413,7 +438,8 @@
               text(fill: body, render-md(field(b, "text", "casual")))
               let st = field(b, "stack", "casual")
               if st != none {
-                block(above: sp-stack-above, below: 0pt, tokens(split-on(st, ",")))
+                block(above: sp-stack-above, below: 0pt,
+                  tokens(split-on(st, ","), fill: stack))
               }
             })
             v(sp-bullet, weak: true)
@@ -466,7 +492,7 @@
     par(hanging-indent: (label.len() + 3) * 0.6 * fs-meta)[
       #text(font: mono, size: fs-meta, weight: 700, fill: bright, label)
       #text(font: mono, size: fs-meta, fill: separator, " = ")
-      #tokens(split-on(s.stack, ","), fill: body)
+      #tokens(split-on(s.stack, ","), fill: stack)
     ]
     if i + 1 < items.len() { v(sp-skill) }
   }
@@ -479,7 +505,7 @@
     marked({
       text(size: fs-body, weight: 700, fill: bright, field(p, "name", "casual"))
       block(above: sp-stack-above, below: 0pt,
-        tokens(split-on(field(p, "stack", "casual"), "|")))
+        tokens(split-on(field(p, "stack", "casual"), "|"), fill: stack))
       block(above: 2.6pt, below: 0pt,
         text(fill: body, render-md(field(p, "description", "casual"))))
     })
@@ -517,7 +543,7 @@
     marked({
       if url != none { ext-link(url, head) } else { head }
       block(above: sp-stack-above, below: 0pt,
-        tokens(split-on(field(o, "stack", "casual"), ",")))
+        tokens(split-on(field(o, "stack", "casual"), ","), fill: stack))
       block(above: 2.6pt, below: 0pt,
         text(fill: body, render-md(field(o, "description", "casual"))))
     })
