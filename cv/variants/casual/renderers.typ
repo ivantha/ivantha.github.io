@@ -57,7 +57,10 @@
 #let sp-bullet        = 0.80em  // between bullets in one job
 #let sp-entry         = 0.95em  // between multi-line entries
 #let sp-entry-compact = 0.75em  // between single-line entries (certs, achievements)
-#let sp-skill         = 0.50em  // between skill rows (hanging indent already binds them)
+#let sp-skill         = 0.75em  // between skill rows. The hanging indent binds a
+                                // wrapped row horizontally, but most rows do wrap,
+                                // so this still has to clear sp-line — otherwise the
+                                // block violates the RHYTHM RULE and reads as a wall.
 #let sp-job           = 1.32em  // between experience blocks
 #let sp-side-entry    = 1.35em  // between sidebar list rows
 #let sp-side-section  = 40pt    // between sidebar sections
@@ -352,7 +355,11 @@
   }
 }
 
+// Self-suppresses when no entry opts into `casual`, so emptying the section from
+// data/ doesn't strand a bare header. The `weak: true` section gaps in main.typ
+// collapse around the omission.
 #let make-certifications(items) = {
+  if items.len() == 0 { return }
   set text(size: footnote-size)
   cv-section("Certifications")
   set par(leading: sp-line)

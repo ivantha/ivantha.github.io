@@ -3,10 +3,15 @@ last_name: Mudannayake
 
 # Taglines displayed under the name.
 # Casual CV renders `roles_casual` as a TypeScript-style union type:
-#   role: "Machine Learning Engineer" | "Data Scientist"
+#   role: "ML Engineer" | "AI Engineer" | "Data Scientist"
 # Falls back to `tagline_casual` if `roles_casual` is absent.
+#
+# Kept short deliberately: the union renders on one line at body-size, and page
+# 1's main column is a fixed-height block that clips rather than reflows. Three
+# spelled-out titles wrap and slice the last stack-chip row off the page.
 roles_casual:
-  - "Machine Learning Engineer"
+  - "ML Engineer"
+  - "AI Engineer"
   - "Data Scientist"
 tagline_casual: "Lead Machine Learning Engineer"
 tagline_academic_role: "Researcher"

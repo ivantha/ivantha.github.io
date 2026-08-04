@@ -1,4 +1,7 @@
-# Certifications. Academic lists all 13; casual shows the 8 ML-focused ones.
+# Certifications. Academic lists all 13; casual lists none — MOOC certificates
+# read as padding next to a peer-reviewed publication record, so the casual CV
+# leaves them to the website. `make-certifications` self-suppresses on an empty
+# list, so re-adding `casual` to any entry below brings the section back.
 # `name_casual` overrides the name just for the casual CV when the phrasing
 # differs (e.g. Oracle cert includes the score on casual).
 # `url:` is the public verification URL (e.g. Coursera certificate page).
@@ -8,47 +11,47 @@
 - name: "Advanced Machine Learning on Google Cloud Specialization"
   institute: "Coursera"
   year: 2021
-  include_in: [academic, casual]
+  include_in: [academic]
   url: "https://www.coursera.org/account/accomplishments/specialization/certificate/GEQ3Y52BD6QM"
 
 - name: "Data Engineering, Big Data, and Machine Learning on GCP Specialization"
   institute: "Coursera"
   year: 2021
-  include_in: [academic, casual]
+  include_in: [academic]
   url: "https://www.coursera.org/account/accomplishments/specialization/certificate/R839DUKFK5F6"
   pdf_url: "/certificates/2021.03.28 - Data Engineering, Big Data, and Machine Learning on GCP Specialization.pdf"
 
 - name: "Machine Learning on Google Cloud Specialization"
   institute: "Coursera"
   year: 2021
-  include_in: [academic, casual]
+  include_in: [academic]
   url: "https://www.coursera.org/account/accomplishments/specialization/certificate/B4DZM89QCHTY"
 
 - name: "Deep Learning Specialization"
   institute: "Coursera"
   year: 2020
-  include_in: [academic, casual]
+  include_in: [academic]
   url: "https://www.coursera.org/account/accomplishments/specialization/certificate/UTW8ESZG3W85"
   pdf_url: "/certificates/2020.10.19 - Deep Learning Specialization.pdf"
 
 - name: "Natural Language Processing Specialization"
   institute: "Coursera"
   year: 2020
-  include_in: [academic, casual]
+  include_in: [academic]
   url: "https://www.coursera.org/account/accomplishments/specialization/certificate/M7CXZX366Y4G"
   pdf_url: "/certificates/2020.10.30 - Natural Language Processing Specialization.pdf"
 
 - name: "DeepLearning.AI TensorFlow Developer Specialization"
   institute: "Coursera"
   year: 2020
-  include_in: [academic, casual]
+  include_in: [academic]
   url: "https://www.coursera.org/account/accomplishments/specialization/certificate/B5J28B9449EC"
   pdf_url: "/certificates/2020.11.11 - DeepLearning.AI TensorFlow Developer.pdf"
 
 - name: "Generative Adversarial Networks (GANs) Specialization"
   institute: "Coursera"
   year: 2020
-  include_in: [academic, casual]
+  include_in: [academic]
   url: "https://www.coursera.org/account/accomplishments/specialization/certificate/UH6H72AWTZB4"
   pdf_url: "/certificates/2020.11.19 - Generative Adversarial Networks (GANs) Specialization.pdf"
 
