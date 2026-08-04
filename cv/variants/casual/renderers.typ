@@ -84,8 +84,10 @@
   r
 }
 
-// Replace " - " with " -> " arrow for date ranges.
-#let arrow-dates(s) = s.replace(" - ", " → ").replace(" -- ", " → ").replace(" – ", " → ")
+// Replace " - " with an ASCII arrow for date ranges. Deliberately ASCII: Roboto
+// Mono has no U+2192, so a real "→" silently falls back to Linux Libertine and
+// drops a serif glyph into the monospace skin. "->" is more terminal-native anyway.
+#let arrow-dates(s) = s.replace(" - ", " -> ").replace(" -- ", " -> ").replace(" – ", " -> ")
 
 // Evaluate YAML-embedded Typst markup (e.g. `#super[th]`).
 // Strings originate in our own data/ dir, so arbitrary-code risk is nil.
@@ -94,7 +96,14 @@
 // A linked title, marked so it is distinguishable from plain text. The page-level
 // `show link` rule is a deliberate no-op, so without this a DOI-linked
 // publication title would look identical to an unlinked one.
-#let ext-link(url, body) = link(url, body) + text(fill: comment-grey, size: 0.9em)[#h(0.15em)↗]
+// A rule rather than a glyph: Roboto Mono has no arrow codepoints, so any "↗"
+// marker would fall back to Linux Libertine.
+#let ext-link(url, body) = link(url, underline(
+  body,
+  stroke: 0.4pt + rule-grey,
+  offset: 1.1pt,
+  evade: true,
+))
 
 // Render a stack string as bracketed tag chips: "[Python] [FastAPI] [LangChain]".
 // Secondary annotation under a bullet, so it uses the dimmed chip palette.
@@ -179,7 +188,7 @@
     personal.homepage.url,
     underline(text(fill: bright-green, weight: "medium", personal.homepage.label)),
   )
-  text(fill: bright-green, weight: "medium", " →")
+  text(fill: bright-green, weight: "medium", " ->")
 }
 
 // ----- FontAwesome profile-icon table ----------------------------------------
@@ -478,7 +487,10 @@
     columns: (auto, 1fr, auto),
     column-gutter: 1em,
     align: (left + horizon, left + horizon, right + horizon),
-    text(size: 7pt, fill: bright-green)[● #text(fill: dove-white)[ready]],
+    // Drawn, not the glyph "●" — Roboto Mono has no U+25CF and would fall back
+    // to a serif face. This also scales with the design rather than the font.
+    box(baseline: 0.5pt, circle(radius: 1.6pt, fill: bright-green))
+      + text(size: 7pt, fill: dove-white)[ ready],
     text(size: 7pt, fill: comment-grey)[utf-8 · typst · roboto-mono],
     text(size: 7pt, fill: comment-grey)[ln 1, col 1],
   ),
