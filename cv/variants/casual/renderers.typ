@@ -168,6 +168,16 @@
 // line at fs-meta: 19 glyphs x 0.6em advance x 6.6pt ≈ 26.5mm.
 #let gutter = 30mm
 
+// The page-2 analogue of that gutter, for the sections that lead with a year.
+// Page 1 sets identifying metadata in a COLUMN; page 2 used to set the same
+// class of thing inline and let the paragraph wrap back underneath it, so the
+// second line of an achievement returned under "2019" instead of under the
+// event. A hanging indent buys the column without a grid, which matters: a grid
+// would top-align a 6.6pt year against 8pt prose and break the shared baseline
+// the inline form gets for free. Four digits at the mono advance, plus the
+// 0.6em of the paragraph's own em that separates year from text.
+#let year-indent = 4 * 0.6 * fs-meta + 0.6 * fs-body
+
 // ----- Helpers ---------------------------------------------------------------
 
 // En-dash rather than the old ASCII "->": JetBrains Mono has U+2013, so this no
@@ -478,22 +488,44 @@
   }
 }
 
-// One row per category. The hanging indent is computable because JetBrains Mono
-// advances exactly 0.6em per glyph and the labels are ASCII, so wrapped values
-// hang under the value instead of colliding with the next label.
+// One row per category, and ONE value column for all of them. Every width here
+// is computable because JetBrains Mono advances exactly 0.6em per glyph and the
+// labels are ASCII.
+//
+// This used to compute the hanging indent from each row's OWN label, which
+// binds that row's wraps to itself and to nothing else: the `=` landed in
+// twelve different places down what is the densest block on the page, so the
+// one section a reader scans by structure was the one with no structure to
+// scan. Setting the label in a fixed-width box fixes the `=` in a single
+// channel, and the indent derived from that box makes wrapped values line up
+// under the values above them.
+//
+// The box is measured off the LONGEST label in the data rather than a literal,
+// so a new category in skills.yaml widens the column instead of silently
+// overflowing its box. Right-aligned, not left: the labels then close up
+// against the `=` exactly as page 1's metadata closes up against its gutter
+// edge. Same grammar as the facing page, a quarter of the width.
+//
+// Costed: the common column is wider than most rows used before, which is paid
+// for by the `›` markers this column no longer spends 3mm on.
 #let make-skills(items) = {
   set text(size: fs-body)
   cv-section-inline("Skills")
+  let label-of(s) = lower(s.at("category_casual", default: s.category))
+  // Absolute, not em: the label sets at fs-meta but the paragraph's em is
+  // fs-body, so an em-relative width would be measured against the wrong size.
+  let label-w = calc.max(..items.map(s => label-of(s).len())) * 0.6 * fs-meta
+  let sep-w = 3 * 0.6 * fs-meta   // " = "
   for (i, s) in items.enumerate() {
-    let label = lower(s.at("category_casual", default: s.category))
-    // Absolute, not em: the label sets at fs-meta but the paragraph's em is
-    // fs-body, so an em-relative indent would land in the wrong place. The +3
-    // covers the " = " separator.
-    par(hanging-indent: (label.len() + 3) * 0.6 * fs-meta)[
-      #text(font: mono, size: fs-meta, weight: 700, fill: bright, label)
-      #text(font: mono, size: fs-meta, fill: separator, " = ")
-      #tokens(split-on(s.stack, ","), fill: stack)
-    ]
+    // Code mode, not markup: in markup each source newline between the three
+    // runs sets as a space, so the value started two spaces past where the
+    // indent arithmetic said it did and no wrapped line ever quite aligned.
+    par(hanging-indent: label-w + sep-w, {
+      box(width: label-w, align(right,
+        text(font: mono, size: fs-meta, weight: 700, fill: bright, label-of(s))))
+      text(font: mono, size: fs-meta, fill: separator, " = ")
+      tokens(split-on(s.stack, ","), fill: stack)
+    })
     if i + 1 < items.len() { v(sp-skill) }
   }
 }
@@ -522,11 +554,16 @@
     let doi = p.at("doi_url", default: none)
     let head = text(size: fs-body, weight: 700, fill: bright, title)
     marked({
-      text(font: mono, size: fs-meta, fill: mute, str(p.year))
-      h(0.6em)
-      if doi != none { ext-link(doi, head) } else { head }
+      par(hanging-indent: year-indent, {
+        text(font: mono, size: fs-meta, fill: mute, str(p.year))
+        h(0.6em)
+        if doi != none { ext-link(doi, head) } else { head }
+      })
       if venue != none and venue != "" {
-        block(above: sp-stack-above, below: 0pt,
+        // Indented to the same column as the title, not to the year: the venue
+        // belongs to the title above it, and hanging it under the year would
+        // have put two different things in one column.
+        block(above: sp-stack-above, below: 0pt, inset: (left: year-indent),
           text(font: mono, size: fs-meta, fill: mute, venue))
       }
     })
@@ -558,12 +595,12 @@
   set text(size: fs-body)
   cv-section-inline("Certifications")
   for (i, c) in items.enumerate() {
-    marked({
+    marked(par(hanging-indent: year-indent, {
       text(font: mono, size: fs-meta, fill: mute, str(c.year))
       h(0.6em)
       text(fill: bright, render-md(field(c, "name", "casual")))
       text(fill: mute, " · " + c.institute)
-    })
+    }))
     if i + 1 < items.len() { v(sp-entry-tight) }
   }
 }
@@ -574,7 +611,7 @@
   for (i, a) in items.enumerate() {
     let event = render-md(a.at("event_casual", default: a.event))
     let place = a.at("place_casual", default: "")
-    marked({
+    marked(par(hanging-indent: year-indent, {
       text(font: mono, size: fs-meta, fill: mute, str(a.year))
       h(0.6em)
       text(fill: bright, event)
@@ -585,7 +622,7 @@
         // a section label, nor a link, so it fails the accent rule up top.
         text(fill: body, [ (#render-md(place))])
       }
-    })
+    }))
     if i + 1 < items.len() { v(sp-entry-tight) }
   }
 }
