@@ -19,11 +19,17 @@
   author: personal.first_name + " " + personal.last_name,
 )
 
+// A let rather than a literal because page 2's column arithmetic derives from
+// it: the measure is the sheet less two of these, and the three columns divide
+// what is left. Hardcoding 15mm in three places means a margin change silently
+// leaves the columns sized for the old measure.
+#let margin-x = 15mm
+
 // Real margins, unlike the previous revision's edge-to-edge panels: the dark
 // ground still bleeds to the paper edge, but the text block is inset properly.
 #set page(
   paper: "a4",
-  margin: (x: 15mm, top: 14mm, bottom: 11mm),
+  margin: (x: margin-x, top: 14mm, bottom: 11mm),
   fill: ground,
   footer: page-number,
   footer-descent: 5mm,
@@ -53,36 +59,87 @@
 // it at the default would carry the last row to within ~2mm of the trim edge,
 // inside the unprintable margin of most desktop printers.
 #set page(
-  margin: (x: 15mm, top: 14mm, bottom: 20mm),
+  margin: (x: margin-x, top: 14mm, bottom: 20mm),
   footer-descent: 3mm,
   footer: render-personal-footer(personal, trailing: page-number-text),
 )
 
-// -------- Page 2: everything else, two columns --------
-// Column split is a balance decision, not a semantic one: projects and
-// publications are the two tallest sections, so they get a column to
-// themselves and everything else stacks opposite.
+// -------- Page 2: everything else, three columns --------
+//
+//   ┌──────────┬─────────────────────────┐
+//   │          │  SKILLS   (band, 2 col) │
+//   │ PROJECTS ├────────────┬────────────┤
+//   │          │ EDUCATION  │ ACHIEVEM.  │
+//   │          │ PUBLICAT.  │ OPEN SRC   │
+//   └──────────┴────────────┴────────────┘
+//
+// Two constraints decide this shape, and both are load-bearing.
+//
+// FIRST: skills cannot live in a column. Its form is a fixed label gutter
+// right-aligned against `=` (see make-skills), and that gutter costs the same
+// 18mm whatever the measure — 22mm of a 85.5mm half-page, but 40% of a 56mm
+// third. At a third the value side is ~24 monospace glyphs and every row wraps
+// three to five times; the section swells past the height of the column it was
+// supposed to fit into. So skills comes OUT of the column grid and sets as a
+// band across the top instead.
+//
+// SECOND: that band spans columns 2 and 3 only, never all three. Projects is
+// the tallest section in the document — ~205mm at this measure, against a
+// 263mm body. A full-width band would take ~38mm off the top of every column
+// and leave projects ~225mm, which still fits; but the balance then collapses,
+// because nothing else is tall enough to hold the other two columns down. Held
+// to two columns, the band leaves column 1 at full height, projects reads as
+// one uninterrupted list, and the ~54mm it doesn't use is honest slack for the
+// next project rather than a hole in the middle of the page.
+//
+// Placement below is deliberate, not flowed. `columns(3)` would balance the
+// bottom edge more evenly, but it splits entries across column boundaries —
+// a project title stranded at the foot of one column with its body at the head
+// of the next — which grid cells cannot do by construction. Even bottoms are
+// not worth a renderer full of `breakable: false`.
+//
+// Education leads column 2 rather than sitting with the other short sections:
+// publications alone left column 2 ending ~50mm above its neighbours, which
+// read as a gap rather than as a ragged edge. Certifications sits with
+// achievements because the two share a renderer form exactly (year, then one
+// line), and because column 3 is the one holding the spare height.
+//
+// That spare height is ~46mm, which is the section header plus about THREE
+// certifications at this measure — not the thirteen in certifications.yaml,
+// which want ~170mm. The casual variant deliberately opts into none of them
+// (see the note at the top of that file), so this is contingency, not a
+// budget: re-enabling a couple is free, re-enabling the list needs a
+// rebalance and probably a third page.
+#let gut = 6mm
+#let colw = (210mm - 2 * margin-x - 2 * gut) / 3
+
 #[
   #set par(leading: col-leading)
   #grid(
-    columns: (1fr, 1fr),
-    column-gutter: 9mm,
+    columns: (colw, 2 * colw + gut),
+    column-gutter: gut,
     align: (left + top, left + top),
+    make-projects(projects),
     {
-      make-education(education)
-      v(sp-section, weak: true)
       make-skills(skills)
       v(sp-section, weak: true)
-      make-certifications(certifications)
-      v(sp-section, weak: true)
-      make-achievements(achievements)
-      v(sp-section, weak: true)
-      make-open-source(open-source)
-    },
-    {
-      make-projects(projects)
-      v(sp-section, weak: true)
-      make-publications(publications)
+      grid(
+        columns: (colw, colw),
+        column-gutter: gut,
+        align: (left + top, left + top),
+        {
+          make-education(education)
+          v(sp-section, weak: true)
+          make-publications(publications)
+        },
+        {
+          make-certifications(certifications)
+          v(sp-section, weak: true)
+          make-achievements(achievements)
+          v(sp-section, weak: true)
+          make-open-source(open-source)
+        },
+      )
     },
   )
 ]
