@@ -38,8 +38,8 @@
   name_casual: "Cohere Labs — Aya Annotations Platform"
   name_url: "https://github.com/Cohere-Labs-Community/aya-annotations-ui"
   include_in: [academic]
-  stack: "Next.js, Nest.js, PostgreSQL, Docker, Google Cloud Platform"
-  stack_casual: "Next.js, Nest.js, PostgreSQL, GCP"
+  stack: "Next.js, NestJS, PostgreSQL, Docker, Google Cloud Platform"
+  stack_casual: "Next.js, NestJS, PostgreSQL, GCP"
   description: "Built and deployed the open-source web platform used to collect multilingual instruction-tuning data from a global contributor community, covering Google and Discord SSO, the full task-annotation workflow, analytics, RTL language support, and the Cloud Build deployment pipeline. The original work was internal; the public release lives at [aya-annotations-ui]."
   description_casual: "Built the open-source web platform used to collect multilingual instruction-tuning data for the Aya dataset (ACL 2024) — SSO, task-annotation workflow, analytics, RTL support."
   links:
