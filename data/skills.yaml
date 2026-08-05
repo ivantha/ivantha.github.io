@@ -9,8 +9,8 @@
 # So a name earns its place on both CVs or on neither.
 #
 # What that means in practice, since it is the reason several obvious names are
-# absent: drop anything a reader already infers from a neighbour (OpenAI and
-# Gemini APIs next to Anthropic, Transformers next to PyTorch) or reads as
+# absent: drop anything a reader already infers from a neighbour (vendor model
+# APIs next to LlamaIndex, Transformers next to PyTorch) or reads as
 # filler next to the rest of the row (XGBoost, DDQN, GitHub Actions). Keep every
 # bare AWS/GCP service under `Cloud` rather than scattering one provider across
 # `MLOps` too. CloudFormation is the one exception: it stays under `IaC` next to
@@ -19,7 +19,7 @@
 - category: "Languages"
   stack: "Python, TypeScript, Java, SQL, C, C++, Rust, R"
 - category: "LLM / GenAI"
-  stack: "LangChain, LangGraph, LlamaIndex, Anthropic API, RAG, Prompt Engineering"
+  stack: "LangChain, LangGraph, LlamaIndex, RAG"
 - category: "ML / Deep Learning"
   category_casual: "ML / DL"
   stack: "PyTorch, JAX, TensorFlow, Scikit-learn, OpenCV"
