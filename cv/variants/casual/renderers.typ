@@ -253,7 +253,46 @@
                               // a smaller margin, but the ordering it has to
                               // preserve is intact and 7pt is still clear below.
                               // Eight of these on the page, so this is the second
-                              // biggest pool after sp-bullet.
+                              // biggest pool after sp-bullet. Seven now, not eight:
+                              // splitting experience in two turned one of these
+                              // boundaries into sp-section-p1 below.
+#let sp-section-p1  = 11pt    // between the two page-1 SECTIONS — professional
+                              // experience and research experience. The page-1
+                              // analogue of sp-section, and it exists for the same
+                              // reason: a boundary between two SUBJECTS has to
+                              // outrank the boundary between two entries about one,
+                              // or the split is carried by the section rule alone
+                              // and reads as decoration.
+                              //
+                              // 29% over sp-job, where page 2's sp-section clears
+                              // its sp-entry-rich by 110%. The smaller margin is
+                              // page 1's budget, not a different judgement: this
+                              // costs ~11pt of a page that had none, and every point
+                              // over sp-job here is a point taken from the pools
+                              // above. 13pt was the first value tried and is the one
+                              // this would carry on a page with room.
+                              //
+                              // The narrow margin is affordable because the SPACE is
+                              // not what separates the two sections — it is one of
+                              // three signals, and the weakest. The other two are a
+                              // ~139mm rule and a tracked `signal`-green label, and
+                              // neither appears anywhere else on page 1. Measured
+                              // top to bottom the boundary is 11pt + label + 4pt
+                              // ≈ 22pt against sp-job's 8.5pt, so a section break
+                              // still reads at better than twice a job break even
+                              // after this trim. Page 2 has to pay in full instead,
+                              // because it draws six of these and its widest rule is
+                              // ~105mm (the skills band) against ~40mm in a column —
+                              // a repeated, shorter mark, so it carries less on its
+                              // own than page 1's single full-measure one.
+                              //
+                              // Emitted as a WEAK v in main.typ, which is what makes
+                              // it composable with the sp-head-above (6pt, also weak)
+                              // that cv-section emits on the other side of the
+                              // boundary: weak spacing collapses to the max rather
+                              // than summing, so the gap is 11pt and not 17pt. Two
+                              // strong v's, or one of each, would stack and quietly
+                              // put 6pt of page-1 budget somewhere nobody costed it.
 // The page-2 gaps below were all raised once the `›` markers came off. Those
 // markers were the only left-edge delimiter page-2 entries had; without one,
 // separation has to be carried by space, and the 3mm per entry the markers gave
@@ -320,9 +359,11 @@
                               // boundary between two open-source entries, and the
                               // section rule was doing the work of the space alone.
                               // 110% over sp-entry-rich now — the largest step in the
-                              // document, which is right, because it is the only
-                              // boundary on page 2 that separates two SUBJECTS rather
-                              // than two entries about one.
+                              // document, which is right, because it is the boundary
+                              // on page 2 that separates two SUBJECTS rather than two
+                              // entries about one. Page 1 has one such boundary too
+                              // since experience was split; it is sp-section-p1, and
+                              // it is deliberately smaller. See the note there.
                               //
                               // Page 2 nests three levels — line, entry, section — so
                               // the top one has to be unmistakable or the page reads
@@ -453,9 +494,35 @@
 ))
 
 // ----- Section headers -------------------------------------------------------
-// One label typography throughout. Only the position varies: page 1 hangs the
-// label in the metadata gutter, page 2's narrow columns can't spare 30mm so it
-// sits inline. Absolute sizes, so a header never inherits the caller's size.
+// ONE form, both pages. Page 1 used to hang its label in the 30mm metadata
+// gutter and page 2 set it inline, on the reasoning that page 2's narrow columns
+// can't spare 30mm. That held while page 1 had exactly one section: "EXPERIENCE"
+// is ten glyphs and fits the gutter with room.
+//
+// Splitting experience broke it. At fs-meta with 0.12em tracking a glyph advances
+// 0.72em x 6.6pt = 4.75pt, so "PROFESSIONAL EXPERIENCE" wants 23 x 4.75 = 109pt
+// = 38.6mm and "RESEARCH EXPERIENCE" wants 32mm — both past the 30mm gutter, so
+// both wrapped to two lines. Measured, that wrap cost 16.9pt of page-1 height
+// across the two headers, on a page whose whole deficit was 20.4pt. Widening the
+// gutter to fit is the wrong direction: it comes straight out of the 145mm
+// content measure, and every millimetre there wraps bullets, which is the pool
+// this page is already shortest on.
+//
+// So the gutter form is gone rather than kept for one caller. What replaced it
+// is what page 2 already used, and the result is a document with one section
+// header instead of two — the label sets on one line whatever it says, and
+// renaming a section can no longer silently cost a page.
+//
+// What is lost is real and worth naming: the gutter form hung the label OUT of
+// the content column, clear of the entry titles, and aligned it with the dates
+// below it. Inline, it sits at the left edge of the measure above right-aligned
+// gutter metadata, which agrees with nothing in particular. The rule is what
+// carries the boundary instead, and it runs the header's block width less the
+// label — ~139mm of the 180mm measure on page 1, against ~105mm under the page-2
+// skills band and ~40mm in a 56mm column. So page 1's header is still the
+// loudest in the document, which is what the section split needs it to be.
+//
+// Absolute sizes, so a header never inherits the caller's size.
 
 #let head-label(title) = text(
   font: mono, size: fs-meta, weight: 700,
@@ -463,18 +530,6 @@
 )
 
 #let cv-section(title) = {
-  v(sp-head-above, weak: true)
-  block(width: 100%, breakable: false, grid(
-    columns: (gutter, 1fr),
-    column-gutter: 5mm,
-    align: (right + horizon, left + horizon),
-    head-label(title),
-    box(width: 100%, height: 0.5pt, fill: hair),
-  ))
-  v(sp-head-below, weak: true)
-}
-
-#let cv-section-inline(title) = {
   v(sp-head-above, weak: true)
   block(width: 100%, breakable: false, grid(
     columns: (auto, 1fr),
@@ -672,9 +727,15 @@
 
 // ----- Experience ------------------------------------------------------------
 
-#let make-experience(items) = {
+// `title` is a parameter because page 1 now carries TWO of these — professional
+// and research — split on the `category` field the academic variant has always
+// split on. The casual variant used to run them mixed and strictly
+// chronological, which is the honest shape for a document read top-to-bottom in
+// one pass; two sections is the better one for a reader scanning for a
+// particular kind of work, and it costs page-1 height (see sp-section-p1).
+#let make-experience(items, title: "Experience") = {
   set text(size: fs-body)
-  cv-section("Experience")
+  cv-section(title)
   for (i, item) in items.enumerate() {
     let bullets = bullets-for(item, "casual")
     gutter-row(
@@ -730,12 +791,14 @@
 }
 
 // ----- Page-2 sections -------------------------------------------------------
-// These live in 50%-width columns, so they use the inline header and drop the
-// metadata gutter entirely.
+// These live in 50%-width columns, so they drop the metadata gutter entirely and
+// set their identifying metadata inline or on a hanging indent instead. The
+// section header needs no adjusting for the measure — there is only one form now
+// (see the note above cv-section), and it was always this one.
 
 #let make-education(items) = {
   set text(size: fs-body)
-  cv-section-inline("Education")
+  cv-section("Education")
   for (i, e) in items.enumerate() {
     block({
       text(font: mono, size: fs-meta, fill: body, dash-dates(e.dates_casual))
@@ -795,7 +858,7 @@
 // for by the `›` markers this column no longer spends 3mm on.
 #let make-skills(items) = {
   set text(size: fs-body)
-  cv-section-inline("Skills")
+  cv-section("Skills")
   // `category` takes the usual `_casual` override — this column is narrow and
   // wants "ml / dl" where the academic CV writes "ML / Deep Learning". `stack`
   // does NOT, and reads `s.stack` directly rather than through `field`: the two
@@ -822,7 +885,7 @@
 
 #let make-projects(items) = {
   set text(size: fs-body)
-  cv-section-inline("Projects")
+  cv-section("Projects")
   for (i, p) in items.enumerate() {
     block({
       text(size: fs-body, weight: 700, fill: bright, field(p, "name", "casual"))
@@ -837,7 +900,7 @@
 
 #let make-publications(items) = {
   set text(size: fs-body)
-  cv-section-inline("Publications")
+  cv-section("Publications")
   for (i, p) in items.enumerate() {
     let title = field(p, "title", "casual")
     let venue = field(p, "venue", "casual")
@@ -863,7 +926,7 @@
 
 #let make-open-source(items) = {
   set text(size: fs-body)
-  cv-section-inline("Open Source")
+  cv-section("Open Source")
   for (i, o) in items.enumerate() {
     let url = o.at("name_url", default: none)
     let head = text(size: fs-body, weight: 700, fill: bright, field(o, "name", "casual"))
@@ -883,7 +946,7 @@
 #let make-certifications(items) = {
   if items.len() == 0 { return }
   set text(size: fs-body)
-  cv-section-inline("Certifications")
+  cv-section("Certifications")
   for (i, c) in items.enumerate() {
     par(hanging-indent: year-indent, {
       text(font: mono, size: fs-meta, fill: mute, str(c.year))
@@ -897,7 +960,7 @@
 
 #let make-achievements(items) = {
   set text(size: fs-body)
-  cv-section-inline("Achievements")
+  cv-section("Achievements")
   for (i, a) in items.enumerate() {
     let event = render-md(a.at("event_casual", default: a.event))
     let place = a.at("place_casual", default: "")

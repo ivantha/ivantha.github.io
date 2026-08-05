@@ -10,6 +10,13 @@
 #let achievements   = awards-doc.entries.filter(e => variant in e.at("include_in", default: (variant,)))
 #let projects       = load-yaml-list("/data/projects.yaml", variant)
 #let experience     = load-yaml-list("/data/experience.yaml", variant)
+// Split on the same field the academic variant splits on, and into the same two
+// section titles, because both documents are built from one experience.yaml and
+// a reader holding them together should not have to work out whether "Research
+// Experience" here means what it means there. Filtering preserves the file's
+// most-recent-first order, so each section is still chronological on its own.
+#let prof-exp       = experience.filter(e => e.category == "professional")
+#let research-exp   = experience.filter(e => e.category == "research")
 #let pubs-doc       = yaml("/data/publications.yaml")
 #let publications   = pubs-doc.items.filter(p => variant in p.at("include_in", default: (variant,)))
 #let open-source    = yaml("/data/open-source.yaml").filter(o => variant in o.at("include_in", default: (variant,)))
@@ -35,20 +42,37 @@
   footer-descent: 5mm,
 )
 #set text(font: sans, size: fs-body, fill: body, weight: 400, hyphenate: false)
-// 0.55em, down from 0.6em. Page 1 carries the whole of experience against a
-// fixed budget — the pagebreak below is unconditional, so anything that doesn't
-// fit doesn't flow, it strands. Nine roles do not fit at 0.6em, and the deficit
-// (~40pt) is larger than the entry gaps alone can pay: leading multiplies over
-// ~40 lines, so it is the only pool big enough to matter. Every gap constant in
-// renderers.typ that reads against this value was re-derived from 4.4pt rather
-// than left pointing at the old 4.8pt — see the rhythm note there.
+// 0.53em, down from 0.6em via 0.55em. Page 1 carries the whole of experience
+// against a fixed budget — the pagebreak below is unconditional, so anything
+// that doesn't fit doesn't flow, it strands. Nine roles and two section headers
+// do not fit at 0.6em. Every gap constant in renderers.typ that reads against
+// this value was re-derived from the absolute leading rather than left pointing
+// at an older one — see the rhythm note there.
+//
+// WHAT THIS POOL IS ACTUALLY WORTH, measured on the current document: 1.09pt per
+// 0.01em. Leading only opens gaps WITHIN a wrapped paragraph, and page 1 is
+// mostly explicit `v()` and block spacing, so the rate implies just ~14 wrapped-
+// line boundaries here (1.09 / 0.08pt per boundary at fs-body) — not the ~80
+// baselines the page actually sets. An earlier revision of this note called
+// leading "the only pool big enough to matter", which the arithmetic does not
+// support: the whole 0.6em → 0.55em step was worth ~5.5pt. It is a real pool and
+// a small one, and it is spendable mainly because the ratio it has to preserve
+// (below) improves as it shrinks.
+//
+// The last 0.02em is what splitting experience into two sections cost, and it
+// was measured rather than guessed: at 0.55em the split needs 815.9pt against a
+// text area ending at 810.7pt, and this pays 2.2pt of that. sp-section-p1 pays
+// the other 2pt. Splitting the cost across two pools was deliberate — either one
+// alone would have had to give up its whole documented margin.
 //
 // This narrows rather than widens the gap to page 2, which runs the same 8pt
-// prose at col-leading (0.48em). 0.55em is a ~1.55 line-height against page 2's
+// prose at col-leading (0.48em). 0.53em is a ~1.53 line-height against page 2's
 // ~1.48, so page 1 is still the looser of the two, and the theme's own note on
 // col-leading — leading is far less perceptible across a page turn than size is
 // — argues this direction is the cheap one. Size is untouched on both pages.
-#set par(justify: false, leading: 0.55em)
+// It also IMPROVES the rhythm ordering rather than straining it: sp-bullet (5pt)
+// now clears the leading by 18% where it cleared 4.4pt by 14%.
+#set par(justify: false, leading: 0.53em)
 // Deliberate no-op: links carry no inherited styling. Affordance is explicit —
 // renderers colour them, and `ext-link` rules them.
 #show link: it => it
@@ -63,7 +87,18 @@
 #v(6pt)
 #render-profile(personal)
 
-#make-experience(experience)
+// Professional first, research second. Not chronology — the two sections can't
+// both lead — but the reader this variant is written for: it is the CV that goes
+// to engineering teams, and the professional section holds the current role.
+// The academic variant orders them the same way, which is a coincidence of that
+// document's own logic rather than a shared rule, but there is no reason to
+// disagree with it here.
+//
+// Weak, so it collapses with the sp-head-above the section header emits rather
+// than stacking on top of it. See sp-section-p1 in renderers.typ.
+#make-experience(prof-exp, title: "Professional Experience")
+#v(sp-section-p1, weak: true)
+#make-experience(research-exp, title: "Research Experience")
 
 #pagebreak()
 
