@@ -86,7 +86,7 @@ entries:
     marker: "‡"
     include_in: [academic]
   - year: 2017
-    event: "Presistent Hackathon"
+    event: "Persistent Hackathon"
     organizer: "Persistent Systems Lanka"
     place_casual: "2#super[nd] place"
     place_academic: "2#super[nd] place"

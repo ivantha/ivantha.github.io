@@ -119,7 +119,7 @@
 - id: domain-matching
   include_in: [casual]
   name: "Machine Learning based Internet Domain Entity Matching and its Applications"
-  stack_casual: "ML | Scikit-learn | Tensorflow | Python"
+  stack_casual: "ML | Scikit-learn | TensorFlow | Python"
   description: "Aimed to predict the malicious domain URLs by using machine learning techniques."
 
 - id: petabyte-cloud
