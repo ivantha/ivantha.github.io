@@ -85,7 +85,6 @@ const experience = defineCollection({
         location_academic: z.string().optional(),
         location_casual: z.string().optional(),
         dates: z.string(),
-        employment_type: z.string().optional(),
         advisor: z.string().optional(),
         bullets: z.array(
             z.object({

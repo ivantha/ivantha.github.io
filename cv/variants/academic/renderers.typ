@@ -141,7 +141,7 @@
   ]
 }
 
-// Academic experience: one entry = tdline(role + employment_type, dates) +
+// Academic experience: one entry = tdline(role, dates) +
 // tdline(company italic, location); optional "· Advised by <advisor>" line;
 // optional compact bullet list with each bullet's stack rendered as a small
 // muted-italic subline. Bullets come from the same `bullets` field used by
@@ -150,9 +150,7 @@
   for (i, e) in items.enumerate() [
     #if i > 0 { v(0.45em) }
     #let role = field(e, "role", "academic")
-    #let emp = e.at("employment_type", default: none)
-    #let role-str = if emp != none [*#role (#emp)*] else [*#role*]
-    #tdline(role-str, text(fill: c-muted, emph(endash(e.dates)))) \
+    #tdline([*#role*], text(fill: c-muted, emph(endash(e.dates)))) \
     #tdline(
       emph(field(e, "company", "academic")),
       text(fill: c-muted, field(e, "location", "academic")),
