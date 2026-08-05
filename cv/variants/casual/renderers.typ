@@ -603,7 +603,12 @@
 #let make-skills(items) = {
   set text(size: fs-body)
   cv-section-inline("Skills")
-  let label-of(s) = lower(s.at("category_casual", default: s.category))
+  // `category` takes the usual `_casual` override — this column is narrow and
+  // wants "ml / dl" where the academic CV writes "ML / Deep Learning". `stack`
+  // does NOT, and reads `s.stack` directly rather than through `field`: the two
+  // CVs claim the same inventory by design (see data/skills.yaml), so a
+  // `stack_casual` sitting in the data should be visibly inert, not honoured.
+  let label-of(s) = lower(field(s, "category", "casual"))
   // Absolute, not em: the label sets at fs-meta but the paragraph's em is
   // fs-body, so an em-relative width would be measured against the wrong size.
   let label-w = calc.max(..items.map(s => label-of(s).len())) * 0.6 * fs-meta
