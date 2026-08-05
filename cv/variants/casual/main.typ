@@ -94,7 +94,10 @@
 // disagree with it here.
 //
 // Weak, so it collapses with the sp-head-above the section header emits rather
-// than stacking on top of it. See sp-section-p1 in renderers.typ.
+// than stacking on top of it. The first boundary gets a slightly longer pause
+// from the profile than the standard section rhythm. See sp-section-p1 in
+// renderers.typ.
+#v(sp-head-above + 2pt, weak: true)
 #make-experience(prof-exp, title: "Professional Experience")
 #v(sp-section-p1, weak: true)
 #make-experience(research-exp, title: "Research Experience")
