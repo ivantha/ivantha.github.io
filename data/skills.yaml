@@ -2,22 +2,35 @@
 # Each entry renders as "Category | comma-separated stack".
 # Optional `category_casual` is used by the casual CV (a tighter left column);
 # academic CV always uses `category`.
+#
+# The INVENTORY itself is shared: there is deliberately no `stack_casual`. Two
+# skill lists drift — a name added for one CV goes missing from the other, and
+# the two documents end up claiming different things about the same person.
+# So a name earns its place on both CVs or on neither.
+#
+# What that means in practice, since it is the reason several obvious names are
+# absent: drop anything a reader already infers from a neighbour (OpenAI and
+# Gemini APIs next to Anthropic, Transformers next to PyTorch) or reads as
+# filler next to the rest of the row (XGBoost, DDQN, GitHub Actions). Keep every
+# bare AWS/GCP service under `Cloud` rather than scattering one provider across
+# `MLOps` too. CloudFormation is the one exception: it stays under `IaC` next to
+# Terraform, where it reads as an IaC tool rather than as another AWS service.
 
 - category: "Languages"
   stack: "Python, TypeScript, Java, SQL, C, C++, Rust, R"
 - category: "LLM / GenAI"
-  stack: "LangChain, LangGraph, LlamaIndex, OpenAI API, Anthropic API, Gemini API, RAG, Prompt Engineering"
+  stack: "LangChain, LangGraph, LlamaIndex, Anthropic API, RAG, Prompt Engineering"
 - category: "ML / Deep Learning"
   category_casual: "ML / DL"
-  stack: "PyTorch, JAX, TensorFlow, Scikit-learn, Hugging Face Transformers, XGBoost, OpenCV"
+  stack: "PyTorch, JAX, TensorFlow, Scikit-learn, OpenCV"
 - category: "Reinforcement Learning"
   category_casual: "RL"
-  stack: "Gymnasium, Craftax, DDQN, WandB"
+  stack: "Gymnasium, Craftax, WandB"
 - category: "Web / Backend"
   stack: "React, Next.js, NestJS, FastAPI, Astro, Spring Boot, SQLAlchemy, Pydantic"
 - category: "MLOps & Deployment"
   category_casual: "MLOps"
-  stack: "Docker, Kubernetes, MLflow, Celery, gRPC, GitHub Actions, AWS SageMaker, AWS SQS, AWS S3"
+  stack: "Docker, Kubernetes, MLflow, Celery, gRPC"
 - category: "Infrastructure as Code"
   category_casual: "IaC"
   stack: "Terraform, CloudFormation"
@@ -28,6 +41,6 @@
 - category: "Vector DBs"
   stack: "Pinecone, Chroma, pgvector, Weaviate"
 - category: "Cloud"
-  stack: "AWS (Lambda, ECS, CloudWatch, IAM, Cognito), GCP (Cloud Run, Cloud Build, BigQuery)"
+  stack: "AWS (Lambda, ECS, S3, SQS, SageMaker, CloudWatch, IAM, Cognito), GCP (Cloud Run, Cloud Build, BigQuery)"
 - category: "Visualization"
   stack: "Matplotlib, Seaborn, Streamlit"
