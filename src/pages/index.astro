@@ -1,9 +1,11 @@
 ---
 import { Image } from "astro:assets"
-import { getCollection, type CollectionEntry } from "astro:content"
+import type { ImageMetadata } from "astro"
+import { getCollection, getEntry, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 import NewsEntry from "@/components/NewsEntry.astro"
 import { orgs } from "@/data/orgs"
+import { obfuscateEmail, type ProfileEntry } from "@/lib/contact"
 import "@/styles/pages/home.scss"
 
 import oimImg from "@/assets/oim.png"
@@ -19,6 +21,36 @@ import githubImg from "@/assets/github.png"
 
 const allNews: CollectionEntry<"news">[] = await getCollection("news")
 const recentNews = allNews.slice(0, 5)
+
+// Contact details and interests live in data/personal.yaml so the site and the
+// Typst CVs can never drift apart. Icon and optical height stay here — they are
+// presentation, not data.
+const icons: Record<string, { src: ImageMetadata; height: number }> = {
+    scholar: { src: scholarImg, height: 16 },
+    kaggle: { src: kaggleImg, height: 16 },
+    researchgate: { src: researchGateImg, height: 16 },
+    arxiv: { src: arxivImg, height: 16 },
+    twitter: { src: twitterImg, height: 13 },
+    linkedin: { src: linkedinImg, height: 15 },
+    github: { src: githubImg, height: 15 },
+}
+
+interface Contact {
+    entry: ProfileEntry
+    icon: { src: ImageMetadata; height: number }
+}
+
+const personal = await getEntry("personal", "main")
+const profileEntries: Record<string, ProfileEntry> = personal?.data.profile_entries ?? {}
+const slugs: string[] = personal?.data.profiles_web ?? []
+const profiles: Contact[] = slugs
+    .map((slug) => ({ entry: profileEntries[slug], icon: icons[slug] }))
+    .filter((profile): profile is Contact => Boolean(profile.entry && profile.icon))
+
+const phone: string | undefined = personal?.data.phone
+const emails: Array<{ address: string; academic_only?: boolean }> = personal?.data.emails ?? []
+const primaryEmail = emails.find((email) => !email.academic_only)?.address
+const interests: string | undefined = personal?.data.interests_academic
 ---
 
 <Layout
@@ -61,100 +93,41 @@ const recentNews = allNews.slice(0, 5)
                 </div>
                 <div class="contact-details-section">
                     <div class="contact-details">
-                        <div class="contact-item">
-                            <Image src={phoneImg} alt="Phone" height={14} />
-                            <span>(+94) 71 908 4020</span>
-                        </div>
-                        <div class="contact-item">
-                            <Image src={emailImg} alt="Email" height={11} />
-                            <span>oshan [DOT] ivantha [AT] g**** [DOT] com</span>
-                        </div>
-                        <div class="contact-item">
-                            <Image src={scholarImg} alt="Google Scholar" height={16} />
-                            <span>
-                                <a
-                                    class="link"
-                                    href="https://scholar.google.com/citations?user=2FA0RngAAAAJ&hl=en"
-                                    target="_blank"
-                                    rel="noopener noreferrer">Google Scholar</a
-                                >
-                            </span>
-                        </div>
-                        <div class="contact-item">
-                            <Image src={kaggleImg} alt="Kaggle" height={16} />
-                            <span>
-                                <a
-                                    class="link"
-                                    href="https://www.kaggle.com/ivantha"
-                                    target="_blank"
-                                    rel="noopener noreferrer">Kaggle</a
-                                >
-                            </span>
-                        </div>
-                        <div class="contact-item">
-                            <Image src={researchGateImg} alt="ResearchGate" height={16} />
-                            <span>
-                                <a
-                                    class="link"
-                                    href="https://www.researchgate.net/profile/Oshan-Mudannayake"
-                                    target="_blank"
-                                    rel="noopener noreferrer">ResearchGate</a
-                                >
-                            </span>
-                        </div>
-                        <div class="contact-item">
-                            <Image src={arxivImg} alt="arXiv" height={16} />
-                            <span>
-                                <a
-                                    class="link"
-                                    href="https://arxiv.org/search/cs?searchtype=author&query=Mudannayake%2C+O"
-                                    target="_blank"
-                                    rel="noopener noreferrer">arXiv</a
-                                >
-                            </span>
-                        </div>
-                        <div class="contact-item">
-                            <Image src={twitterImg} alt="Twitter" height={13} />
-                            <span>
-                                <a
-                                    class="link"
-                                    href="https://twitter.com/_ivantha"
-                                    target="_blank"
-                                    rel="noopener noreferrer">_ivantha</a
-                                >
-                            </span>
-                        </div>
-                        <div class="contact-item">
-                            <Image src={linkedinImg} alt="LinkedIn" height={15} />
-                            <span>
-                                <a
-                                    class="link"
-                                    href="https://www.linkedin.com/in/ivantha/"
-                                    target="_blank"
-                                    rel="noopener noreferrer">ivantha</a
-                                >
-                            </span>
-                        </div>
-                        <div class="contact-item">
-                            <Image src={githubImg} alt="GitHub" height={15} />
-                            <span>
-                                <a
-                                    class="link"
-                                    href="https://github.com/ivantha"
-                                    target="_blank"
-                                    rel="noopener noreferrer">ivantha</a
-                                >
-                            </span>
-                        </div>
+                        {
+                            phone && (
+                                <div class="contact-item">
+                                    <Image src={phoneImg} alt="" aria-hidden="true" height={14} />
+                                    <span>{phone}</span>
+                                </div>
+                            )
+                        }
+                        {
+                            primaryEmail && (
+                                <div class="contact-item">
+                                    <Image src={emailImg} alt="" aria-hidden="true" height={11} />
+                                    <span>{obfuscateEmail(primaryEmail)}</span>
+                                </div>
+                            )
+                        }
+                        {
+                            profiles.map(({ entry, icon }) => (
+                                <div class="contact-item">
+                                    <Image src={icon.src} alt="" aria-hidden="true" height={icon.height} />
+                                    <span>
+                                        <a class="link" href={entry.url} target="_blank" rel="noopener noreferrer">
+                                            {entry.label_web ?? entry.label}
+                                        </a>
+                                    </span>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
 
             <div class="research-interests">
                 <h2>Research Interests</h2>
-                <span>Reinforcement Learning | Machine Learning | Artificial Intelligence</span><br />
-                <span>Game Theory | Computer Games</span><br />
-                <span>Computer Vision</span>
+                <span>{interests}</span>
             </div>
             <div class="news-section">
                 <h2>News</h2>

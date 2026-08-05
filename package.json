@@ -17,11 +17,14 @@
         "build:cv": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ public/cv/academic-cv.pdf && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ public/cv/casual-cv.pdf",
         "build:cv:academic": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ public/cv/academic-cv.pdf",
         "build:cv:casual": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ public/cv/casual-cv.pdf",
+        "build:og": "node scripts/build-og.mjs",
         "preview": "astro preview",
         "lint": "astro check && eslint . && prettier --check .",
         "format": "prettier --write ."
     },
     "dependencies": {
+        "@astrojs/rss": "^4.0.19",
+        "@astrojs/sitemap": "^3.7.3",
         "astro": "^5.0.0",
         "sharp": "^0.33.0",
         "yaml": "^2.6.0"

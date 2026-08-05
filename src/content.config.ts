@@ -30,11 +30,13 @@ const personal = defineCollection({
                     url: z.string(),
                     label: z.string(),
                     label_academic: z.string().optional(),
+                    label_web: z.string().optional(),
                 }),
             )
             .optional(),
         profiles_academic: z.array(z.string()).optional(),
         profiles_casual: z.array(z.string()).optional(),
+        profiles_web: z.array(z.string()).optional(),
         about_me: z.string().optional(),
         interests_casual: z.string().optional(),
         interests_academic: z.string().optional(),

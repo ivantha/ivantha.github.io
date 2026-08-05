@@ -3,6 +3,26 @@
 Guidance for Claude Code when working in this repository. See `README.md`
 for what the project is and how to build it.
 
+## Theming
+
+**The website has exactly one theme, whatever that theme happens to be.**
+Don't add a second one.
+
+That rules out: a dark-mode variant, a light/dark toggle, `prefers-color-scheme`
+branches, per-user theme persistence, and "just a few" dark overrides. If the
+current palette is wrong, change the palette — don't add an alternative
+alongside it. Colours live in `src/styles/_variables.scss`; there should be one
+value per role, not one per mode.
+
+Committing to a single theme means **pinning** it. A page that sets text
+colours but no background doesn't have one theme — it has two, because the
+browser supplies a dark canvas to dark-mode users and the site's dark-grey text
+lands on it at roughly 1.5:1. So the baseline in
+`src/styles/components/layout.scss` must always declare both an explicit
+`background-color` and a matching `color-scheme`. Keep them in sync with the
+`theme-color` meta tag in `src/layouts/Layout.astro` and with
+`public/manifest.json`.
+
 ## Git workflow
 
 **Do not create worktrees.** Work directly in the current branch and commit

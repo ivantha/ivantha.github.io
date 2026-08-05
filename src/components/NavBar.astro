@@ -4,6 +4,7 @@ const links: Array<{ href: string; label: string; external?: boolean }> = [
     { href: "/research", label: "Research" },
     { href: "/publications", label: "Publications" },
     { href: "/experience", label: "Experience" },
+    { href: "/education", label: "Education" },
     { href: "/projects", label: "Projects" },
     { href: "/open-source", label: "Open Source" },
     { href: "/certifications", label: "Certifications" },
@@ -12,6 +13,7 @@ const links: Array<{ href: string; label: string; external?: boolean }> = [
     { href: "/talks", label: "Talks" },
     { href: "/volunteering", label: "Volunteering" },
     { href: "/people", label: "People" },
+    { href: "/news", label: "News" },
     { href: "/articles", label: "Articles" },
     { href: "/cv/academic-cv.pdf", label: "CV", external: true },
     { href: "/about", label: "About" },
@@ -20,7 +22,7 @@ const links: Array<{ href: string; label: string; external?: boolean }> = [
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/"
 ---
 
-<div class="navbar">
+<nav class="navbar" aria-label="Main">
     {
         links.map(({ href, label, external }) => {
             const isActive = !external && (href === "/" ? currentPath === "/" : currentPath.startsWith(href))
@@ -30,10 +32,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/"
                     {label}
                 </a>
             ) : (
-                <a href={href} class={className}>
+                <a href={href} class={className} aria-current={isActive ? "page" : undefined}>
                     {label}
                 </a>
             )
         })
     }
-</div>
+</nav>

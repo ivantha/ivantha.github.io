@@ -2,27 +2,69 @@
 @use "scrollbar";
 @use "navbar";
 
-.note {
-    color: red;
-}
-
 html {
     scroll-behavior: smooth;
+
+    // Declares the one theme rather than inheriting whatever canvas the
+    // browser supplies. Without this, dark-mode visitors get $pf-primary-color
+    // on a near-black background at ~1.5:1 — a second, unreadable theme.
+    color-scheme: light;
 }
 
 body,
 html {
     margin: 0;
     padding: 0;
-    transition: all 0.4s;
 
     font-family: $pf-primary-font;
     font-size: 14px;
+    background-color: $pf-page-bg;
     color: $pf-primary-color;
 }
 
 * {
     box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+// Visible only once focused, so keyboard users can jump the 17-link sidebar.
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background-color: #ffffff;
+    color: $pf-primary-color;
+    font-weight: 700;
+    text-decoration: none;
+    outline: 2px solid $pf-focus-ring-color;
+
+    &:focus {
+        left: 0;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid $pf-focus-ring-color;
+    outline-offset: 2px;
+}
+
+main {
+    scroll-margin-top: 1rem;
 }
 
 .content {
@@ -35,9 +77,15 @@ html {
         height: 122px;
         padding: 3rem 3.5rem 3rem 4.5rem;
 
-        h2 {
-            margin-bottom: 0;
-            margin-top: 0;
+        // Renders as the <h1> on the homepage and as a link back home
+        // elsewhere; both must keep the original <h2>'s optical weight.
+        .site-name {
+            display: inline-block;
+            margin: 0;
+            color: $pf-primary-color;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
         }
     }
 

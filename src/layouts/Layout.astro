@@ -1,6 +1,8 @@
 ---
+import { getEntry } from "astro:content"
 import "@/styles/components/layout.scss"
 import NavBar from "@/components/NavBar.astro"
+import type { ProfileEntry } from "@/lib/contact"
 
 interface Props {
     title?: string
@@ -11,6 +13,26 @@ const { title, description = "Personal website of Oshan Mudannayake — AI Resea
 
 const fullTitle = title ?? "Oshan Mudannayake | AI Researcher"
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href
+const ogImageUrl = new URL("/og.png", Astro.site).href
+
+// The site name doubles as the <h1> on the homepage; every other page owns its
+// own <h1>, so there it renders as a plain link back home instead.
+const isHome = Astro.url.pathname.replace(/\/$/, "") === ""
+
+const personal = await getEntry("personal", "main")
+const profileEntries: Record<string, ProfileEntry> = personal?.data.profile_entries ?? {}
+const sameAs = Object.values(profileEntries).map((profile) => profile.url)
+
+const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: `${personal?.data.first_name ?? "Oshan"} ${personal?.data.last_name ?? "Mudannayake"}`,
+    url: Astro.site?.href,
+    image: ogImageUrl,
+    jobTitle: personal?.data.tagline_casual,
+    knowsAbout: personal?.data.interests_casual?.split(",").map((interest: string) => interest.trim()),
+    sameAs,
+}
 ---
 
 <!doctype html>
@@ -19,9 +41,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content={Astro.generator} />
+        <meta name="theme-color" content="#ffffff" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="canonical" href={canonicalUrl} />
+        <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Oshan Mudannayake — News" href="/rss.xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
@@ -31,6 +56,18 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Oshan Mudannayake" />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Oshan Mudannayake — AI Researcher and ML Engineer" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@_ivantha" />
+        <meta name="twitter:creator" content="@_ivantha" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
         <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-9YY9CJLD5V"></script>
         <script is:inline>
             window.dataLayer = window.dataLayer || []
@@ -42,13 +79,22 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href
         </script>
     </head>
     <body>
+        <a class="skip-link" href="#main">Skip to content</a>
         <div class="content">
-            <div class="header">
-                <h2>Oshan Mudannayake</h2>
-            </div>
+            <header class="header">
+                {
+                    isHome ? (
+                        <h1 class="site-name">Oshan Mudannayake</h1>
+                    ) : (
+                        <a class="site-name" href="/">
+                            Oshan Mudannayake
+                        </a>
+                    )
+                }
+            </header>
             <div class="container">
                 <NavBar />
-                <main>
+                <main id="main">
                     <slot />
                 </main>
             </div>
