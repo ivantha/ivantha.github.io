@@ -34,8 +34,8 @@
     - text: "Designed the translation backend for a low-code system compiling graph-structured workflows into executable code."
       stack: "Python, LlamaIndex, OpenAI, Anthropic"
       include_in: [academic, casual]
-    - text: "Engineered a multi-transport LLM gateway (REST and gRPC) with Postgres-backed key rotation, vendor allow/deny policies, OpenAI/Anthropic fallback, and request-level tracing for production LLM traffic."
-      text_casual: "Engineered a multi-transport LLM gateway (REST/gRPC) with key rotation, vendor fallback (OpenAI/Anthropic), and request-level tracing for production traffic."
+    - text: "Engineered a multi-transport LLM gateway (REST and gRPC) with Postgres-backed key rotation, vendor allow/deny policies, OpenAI/Anthropic fallback, and request-level tracing, serving production LLM traffic peaking at 500K requests/day."
+      text_casual: "Engineered a multi-transport LLM gateway (REST/gRPC) with key rotation, vendor fallback (OpenAI/Anthropic), and request-level tracing, serving production traffic peaking at 500K requests/day."
       stack: "NestJS, TypeScript, PostgreSQL, gRPC, OpenAI, Anthropic"
     - text: "Implemented a Celery-on-SQS transcript evaluation service with Pydantic-enforced response schemas, streamed scoring via an internal OpenAI proxy, and Postgres-backed result sync with automated feedback generation."
       stack: "Python, Celery, AWS SQS, OpenAI, Postgres"
