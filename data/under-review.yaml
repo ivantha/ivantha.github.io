@@ -5,11 +5,3 @@
 - authors:
     - { name: "O. Mudannayake", self: true }
   title: "Affordable Reinforcement Learning Hyperparameter Rigor: A Paired-Offset Reevaluation Catalogue"
-
-- authors:
-    - { name: "O. Mudannayake", self: true }
-    - { name: "K. Senarathne" }
-    - { name: "S. Farook" }
-    - { name: "L. De Mel" }
-    - { name: "C. Jayanaka" }
-  title: "Leveraging Spatial and Temporal Data for Enhanced Wildfire Spread Prediction"
