@@ -12,8 +12,10 @@
   dates_casual: "2023 - 2026 (expected)"
   extras_academic:
     - "Current GPA: 4.02/4.2"
+    - "Master's thesis advisor: Dr. Thanuja D. Ambegoda"
   extras_casual:
     - "GPA: 4.02/4.2"
+    - "Thesis advisor: Dr. Thanuja D. Ambegoda"
 
 - id: ucsc-bsc
   include_in: [academic, casual]

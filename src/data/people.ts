@@ -10,6 +10,22 @@ export type Person = {
 }
 
 export const people: Record<string, Person> = {
+    thanujaambegoda: {
+        name: "Thanuja D. Ambegoda",
+        namewithhonorifics: "Dr. Thanuja D. Ambegoda",
+        position: "Senior Lecturer | University of Moratuwa",
+        link: "https://uom.lk/staff/Ambegoda.ALATD",
+        web: "https://uom.lk/staff/Ambegoda.ALATD",
+    },
+    dilrukshigamage: {
+        name: "Dilrukshi Gamage",
+        namewithhonorifics: "Dr. Dilrukshi Gamage",
+        position: "Senior Lecturer | University of Colombo School of Computing",
+        link: "https://www.dilrukshigamage.org/",
+        web: "https://www.dilrukshigamage.org/",
+        linkedin: "https://www.linkedin.com/in/dilrukshigamage/",
+        scholar: "https://scholar.google.ca/citations?hl=en&user=WCvk2EoAAAAJ",
+    },
     nalinranasinghe: {
         name: "Nalin Ranasinghe",
         namewithhonorifics: "Dr. Nalin Ranasinghe",
