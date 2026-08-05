@@ -56,7 +56,7 @@
                                   //  smallest type here) with `stack`, so it
                                   //  gets real margin over AA rather than the
                                   //  4.6:1 it used to scrape by on.
-#let stack  = rgb(128, 136, 151)  //  5.3:1 — TECHNOLOGY RUNS only: the "FastAPI
+#let stack  = rgb(121, 129, 144)  //  4.8:1 — TECHNOLOGY RUNS only: the "FastAPI
                                   //  · Python · React" lines under bullets, and
                                   //  the project, open-source and skill values.
                                   //  A tier of its own because those runs are
@@ -70,10 +70,20 @@
                                   //  indistinguishable from prose.
                                   //  Sits between `separator` (punctuation) and
                                   //  `mute` (metadata), which is exactly the
-                                  //  standing of a stack line. 5.3:1 is a
-                                  //  deliberate 18% over the AA floor rather
-                                  //  than a landing on it — this is the smallest
-                                  //  type in the document and it has to print.
+                                  //  standing of a stack line. Lowered from
+                                  //  5.3:1, where the run held nearly the
+                                  //  presence of the `mute` metadata tier above
+                                  //  it and a three-part entry read as one
+                                  //  block. This is the LAST step available: at
+                                  //  4.8:1 the margin over AA is ~7%, and since
+                                  //  this is the smallest type in the document
+                                  //  and it has to survive a greyscale laser
+                                  //  printer, what is left is not spendable.
+                                  //  Anything dimmer than this needs a lighter
+                                  //  WEIGHT instead, which the vendored
+                                  //  JetBrains Mono (Regular + Bold, static
+                                  //  files, no variable axis) cannot supply
+                                  //  without a new face in fonts/.
 #let signal = rgb(126, 226, 152)  // 11.9:1 — the only accent
 #let hair   = rgb(62, 67, 79)     //  1.9:1 — RULES ONLY. Far below AA, which is
                                   //  fine for a hairline and disqualifying for
@@ -143,8 +153,50 @@
 // entries must clearly exceed the leading within one, or entries merge into a
 // wall. The stack line is the trap — it belongs to the bullet ABOVE it, so its
 // `above` spacing must stay well under the inter-bullet gap.
+//
+// PARTS RULE (the same rule one level down, and it was missing entirely): the
+// gap between the PARTS of a single entry — title, technology run, description
+// — must ALSO exceed the leading inside those parts. It did not. A project ran
+// 2.8pt above its technology run and 2.6pt above its description against a
+// col-leading of 3.84pt, which means the boundaries BETWEEN the three parts
+// were TIGHTER than the boundaries between two lines of the same sentence. The
+// eye had no cue where one part ended, so an entry read as a single paragraph
+// with some bold at the front. Both gaps are now sp-part, 30% over col-leading.
+//
+// The two rules pull opposite ways on what looks like the same element, which
+// is why a technology run has two different constants depending on where it is:
+//
+//   page 1  the run is SUBORDINATE — it annotates the one bullet above it. So
+//           sp-stack-above stays UNDER page 1's 4.8pt leading and binds upward.
+//   page 2  the run is a SIBLING of the title and the description. So sp-part
+//           sits OVER the 3.84pt col-leading and separates.
+//
+// Same glyphs, same colour, opposite job, opposite spacing. Collapsing the two
+// into one constant is the mistake this block exists to prevent.
 
-#let sp-stack-above = 2.8pt
+#let sp-part        = 5pt     // between the major parts of ONE entry, both pages:
+                              // page 1's role line → its first bullet, and page 2's
+                              // title → technology run → description.
+                              // Clears page 2's col-leading by 30%. On page 1
+                              // (4.8pt leading) it clears by only 4%, which is
+                              // enough THERE because a page-1 title is 9.6pt/700/
+                              // bright and is already separated by size, weight and
+                              // colour before space is asked to do anything. Buying
+                              // a perceptible step would cost 8 × 1.9pt on the one
+                              // page with ~21pt of slack to its name.
+#let sp-stack-above = 3.8pt   // page 1 ONLY: bullet → its technology run. Was 2.8pt,
+                              // which sat the run in the descenders of the line above
+                              // it. Still deliberately under page 1's 4.8pt leading,
+                              // and well under sp-bullet, so the run stays bound to
+                              // the bullet it annotates instead of floating between
+                              // two of them.
+#let sp-venue       = 2.8pt   // page 2: publication title → venue. Bound upward like
+                              // the page-1 stack (under col-leading), and held at the
+                              // old value because publications lives in the ONE
+                              // column with no spare height — see the budget note
+                              // below. A venue is metadata on the title above it, not
+                              // a third part, so this is the right grouping anyway
+                              // and not merely the affordable one.
 #let sp-bullet      = 6pt
 #let sp-job         = 11pt    // must read as clearly bigger than sp-bullet, or
                               // the boundary between two jobs is carried by the
@@ -152,9 +204,32 @@
 // The page-2 gaps below were all raised once the `›` markers came off. Those
 // markers were the only left-edge delimiter page-2 entries had; without one,
 // separation has to be carried by space, and the 3mm per entry the markers gave
-// back is what pays for it. Right column budget after the change: ~9pt spare.
-#let sp-entry       = 5pt
-#let sp-entry-tight = 4.6pt   // single-line entries (certs, achievements)
+// back is what pays for it.
+//
+// There are TWO of them, because two shapes of entry live out here and the
+// parts rule prices them differently: an entry whose largest internal gap is
+// sp-part needs more around it than one built from a title and a line of
+// metadata.
+//
+// WHAT PAYS FOR IT. Measured slack to the bottom margin, per column:
+// ~163pt in column 1 (projects), ~144pt in column 3 (achievements, open
+// source), ~18pt in column 2 (education, publications). The two sections
+// carrying the three-part shape are the two sitting in the columns with room,
+// so the sections that needed the space are the ones that could afford it.
+// Column 2 takes the smaller bump, keeps sp-venue where it was, and still lands
+// with ~5pt spare. Re-check these figures before spending page-2 height again;
+// column 2 is the only one that can actually overflow.
+#let sp-entry       = 6.5pt   // education, publications, certifications and
+                              // achievements. Absorbs the old sp-entry-tight
+                              // (4.6pt, "single-line entries"): a 0.4pt step is not
+                              // a distinction, and those entries wrap to two lines
+                              // often enough that the premise was wrong as well.
+#let sp-entry-rich  = 9.5pt   // projects and open source — the three-part entries.
+                              // 90% over sp-part, so the boundary BETWEEN entries
+                              // clearly outranks the boundaries inside one. The old
+                              // 5pt cleared its internal gaps by a similar ratio,
+                              // which is why the ratio was never the bug: both
+                              // numbers were simply under the leading.
 #let sp-head-above  = 8pt
 #let sp-head-below  = 5pt
 #let sp-section     = 10pt
@@ -459,7 +534,7 @@
         text(size: fs-title, fill: separator, "  /  ")
         text(size: fs-title, weight: 400, fill: signal, field(item, "company", "casual"))
         if bullets.len() > 0 {
-          v(3.6pt)
+          v(sp-part)
           for b in bullets {
             marked({
               text(fill: body, render-md(field(b, "text", "casual")))
@@ -553,12 +628,12 @@
   for (i, p) in items.enumerate() {
     block({
       text(size: fs-body, weight: 700, fill: bright, field(p, "name", "casual"))
-      block(above: sp-stack-above, below: 0pt,
+      block(above: sp-part, below: 0pt,
         tokens(split-on(field(p, "stack", "casual"), "|"), fill: stack))
-      block(above: 2.6pt, below: 0pt,
+      block(above: sp-part, below: 0pt,
         text(fill: body, render-md(field(p, "description", "casual"))))
     })
-    if i + 1 < items.len() { v(sp-entry) }
+    if i + 1 < items.len() { v(sp-entry-rich) }
   }
 }
 
@@ -580,7 +655,7 @@
         // Indented to the same column as the title, not to the year: the venue
         // belongs to the title above it, and hanging it under the year would
         // have put two different things in one column.
-        block(above: sp-stack-above, below: 0pt, inset: (left: year-indent),
+        block(above: sp-venue, below: 0pt, inset: (left: year-indent),
           text(font: mono, size: fs-meta, fill: mute, venue))
       }
     })
@@ -596,12 +671,12 @@
     let head = text(size: fs-body, weight: 700, fill: bright, field(o, "name", "casual"))
     block({
       if url != none { ext-link(url, head) } else { head }
-      block(above: sp-stack-above, below: 0pt,
+      block(above: sp-part, below: 0pt,
         tokens(split-on(field(o, "stack", "casual"), ","), fill: stack))
-      block(above: 2.6pt, below: 0pt,
+      block(above: sp-part, below: 0pt,
         text(fill: body, render-md(field(o, "description", "casual"))))
     })
-    if i + 1 < items.len() { v(sp-entry) }
+    if i + 1 < items.len() { v(sp-entry-rich) }
   }
 }
 
@@ -618,7 +693,7 @@
       text(fill: bright, render-md(field(c, "name", "casual")))
       text(fill: mute, " · " + c.institute)
     })
-    if i + 1 < items.len() { v(sp-entry-tight) }
+    if i + 1 < items.len() { v(sp-entry) }
   }
 }
 
@@ -640,7 +715,7 @@
         text(fill: body, [ (#render-md(place))])
       }
     })
-    if i + 1 < items.len() { v(sp-entry-tight) }
+    if i + 1 < items.len() { v(sp-entry) }
   }
 }
 
