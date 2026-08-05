@@ -371,6 +371,52 @@
 // longer risks a serif fallback glyph, and a range is not an arrow.
 #let dash-dates(s) = s.replace(" - ", " – ").replace(" -- ", " – ")
 
+// How long a role lasted, DERIVED from `dates` rather than stored beside it.
+// A second field would be a second source of truth for one fact, and the one
+// that drifts is always the derived one — data/experience.yaml already carries
+// nine date ranges and nobody re-does the arithmetic when one is corrected.
+//
+// COUNTED INCLUSIVELY: both endpoint months count, so "Mar 2020 – Mar 2021" is
+// 1 yr 1 mo rather than 1 yr. That is not a rounding preference, it is the
+// convention LinkedIn uses, and this is the CV a reader is most likely to hold
+// against a LinkedIn profile. Matching an exclusive count there would read as an
+// error in one document or the other.
+//
+// "Present" resolves against the BUILD date, which means these values tick up on
+// their own — the current role gains a month every month CI runs. That is the
+// point: a hardcoded tenure is wrong the month after it is written. It does mean
+// two builds of the same commit can differ, so this is the one thing in the
+// document that isn't reproducible from the repository alone.
+#let month-index = (
+  Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6,
+  Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12,
+)
+
+#let tenure(dates) = {
+  let ends = dates.split(" - ").map(p => p.trim())
+  let month-year(s) = {
+    let p = s.split(" ")
+    (year: int(p.at(1)), month: month-index.at(p.at(0)))
+  }
+  let start = month-year(ends.at(0))
+  let end = if ends.at(1) == "Present" {
+    let t = datetime.today()
+    (year: t.year(), month: t.month())
+  } else { month-year(ends.at(1)) }
+
+  let months = (end.year - start.year) * 12 + (end.month - start.month) + 1
+  let years = calc.div-euclid(months, 12)
+  let rest = calc.rem-euclid(months, 12)
+  // Abbreviated ("yr", "mo"), because this line sets in the 30mm gutter beside
+  // "Nov 2021 – Aug 2023", and "1 year 10 months" is 16 glyphs against that
+  // line's 19 — it would read as a second date range rather than as a gloss on
+  // the one above it. Singulars are spelled out because "1 yrs" is just wrong.
+  let plural(n, unit) = str(n) + " " + unit + if n == 1 { "" } else { "s" }
+  if years == 0 { plural(rest, "mo") }
+  else if rest == 0 { plural(years, "yr") }
+  else { plural(years, "yr") + " " + plural(rest, "mo") }
+}
+
 // Evaluate Typst markup embedded in YAML (e.g. `#super[th]`). This is markup
 // eval, not code eval, and every string originates in our own data/ dir.
 #let render-md(s) = eval(s, mode: "markup")
@@ -638,6 +684,25 @@
         v(1pt)
         text(font: mono, size: fs-meta, fill: mute,
           field(item, "location", "casual"))
+        // Third line, on a bare linebreak where the location got a 1pt nudge.
+        // The nudge marks a change of tier — `body` dates above, `mute`
+        // metadata below — and there is no such change here: a tenure and a
+        // location are the same class of thing, so they set as one block.
+        //
+        // Costs nothing in page-1 height, which is the only reason it can be
+        // here at all: page 1 is FULL — last ink lands at 286.6mm against a
+        // text area that ends at 286mm — so a line that cost anything would
+        // cost a role. It doesn't, because the gutter is a PARALLEL column and
+        // a grid row is max(gutter, content). Measured in the built PDF, the
+        // content side wins on all nine rows, by 2.2mm on the six single-bullet
+        // ones and far more elsewhere; three lines of 6.6pt mono still sit
+        // inside a 9.6pt title over one wrapped bullet and its technology run.
+        //
+        // 2.2mm is about one and a half lines of this gutter, so a FOURTH line
+        // here is not free and would push page 1 over. That is the budget this
+        // sits in, not the entry gaps below.
+        linebreak()
+        text(font: mono, size: fs-meta, fill: mute, tenure(item.dates))
       },
       {
         text(size: fs-title, weight: 700, fill: bright, field(item, "role", "casual"))
