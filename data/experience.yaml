@@ -9,6 +9,17 @@
 # not recorded or rendered anywhere.
 # Date canonicalized to user-reconciled values (see plan).
 
+- id: kixlab-visiting-researcher
+  include_in: [academic, casual]
+  category: research
+  role: "Visiting Researcher"
+  company: "KIXLAB (KAIST Interaction Lab)"
+  location_academic: "Republic of Korea (Remote)"
+  location_casual: "Remote"
+  dates: "Aug 2026 - Present"
+  bullets:
+    - text: "Conducting research with KIXLAB, the human-computer interaction lab at KAIST."
+
 - id: paradigmai-lead
   include_in: [academic, casual]
   category: professional
@@ -88,18 +99,6 @@
       text_casual: "Analyzed product-usage telemetry and built predictive models to surface adoption trends; scoped ML opportunities with product and engineering stakeholders."
     - text: "Scoped ML opportunities with product and engineering stakeholders and presented findings to technical and non-technical audiences."
       include_in: [academic]
-
-- id: score-lab-researcher
-  include_in: [academic, casual]
-  category: research
-  role: "Researcher"
-  company: "Sustainable Computing Research (SCoRe) Lab"
-  location_academic: "Sri Lanka"
-  location_casual: "Colombo"
-  dates: "Aug 2020 - Dec 2021"
-  advisor: "Dr. Mohamed Nabeel"
-  bullets:
-    - text: "Developed an ML-based detector for malicious internet domains using lexical, registration, and DNS-resolution features."
 
 - id: wso2-software-engineer
   include_in: [academic, casual]

@@ -17,6 +17,15 @@
   stack_academic: "Vision-Language Models, Self-Distillation, Verifier Heads, PyTorch"
   description_academic: "Working research direction on small (≤3B parameter) vision-language models that improve themselves through self-distillation scored by a learned verifier head, with no external teacher. Position document covers verifier-weighted self-distillation as the primary line."
 
+- id: south-asia-deepfake-detection
+  include_in: [academic, casual]
+  name: "Deepfake Detection in South Asia"
+  stack_casual: "Deepfake Detection | Machine Learning | Computer Vision | HCI"
+  stack_academic: "Deepfake Detection, Machine Learning, Computer Vision, HCI"
+  description: "Researching deepfake detection for South Asian contexts with Dr. Dilrukshi Gamage."
+  description_academic: "Ongoing research with Dr. Dilrukshi Gamage on deepfake detection for South Asian contexts, where regional languages, media practices, and sociotechnical conditions create distinct detection challenges."
+  url: "https://sites.google.com/view/south-asia-deepfake-detection/"
+
 - id: water-detection
   include_in: [academic, casual]
   name_casual: "UAV Water Surface Detection"
@@ -117,10 +126,12 @@
   description_academic: "Image-processing pipeline quantifying and comparing elasticity of sports bras from deformation imagery under controlled loading."
 
 - id: domain-matching
-  include_in: [casual]
+  include_in: [academic, casual]
   name: "Machine Learning based Internet Domain Entity Matching and its Applications"
   stack_casual: "ML | Scikit-learn | TensorFlow | Python"
-  description: "Aimed to predict the malicious domain URLs by using machine learning techniques."
+  stack_academic: "Machine Learning, Scikit-learn, TensorFlow, Python"
+  description: "Exploratory research on malicious-domain detection using machine learning; the project was discontinued."
+  description_academic: "Exploratory research on malicious-domain detection using lexical, registration, and DNS-resolution features; the project was discontinued before publication."
 
 - id: petabyte-cloud
   include_in: []
