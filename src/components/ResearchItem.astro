@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from "astro:content"
+
+type Research = CollectionEntry<"research">["data"]
+
+interface Props {
+    item: Research
+}
+
+const { item } = Astro.props
+// The YAML loader surfaces record values as `unknown` to `astro check`, so the
+// value type is restated here rather than inferred.
+const links = Object.entries((item.links ?? {}) as Record<string, string>)
+---
+
+<li>
+    <h3>{item.title}</h3>
+    {
+        item.tags && (
+            <>
+                <span class="tools-text">{item.tags}</span>
+                <br />
+            </>
+        )
+    }
+    {
+        item.description && (
+            <>
+                <span class="content-text">{item.description}</span>
+                <br />
+            </>
+        )
+    }
+    {item.dates && <span class="date-text">{item.dates}</span>}
+    {
+        links.length > 0 && (
+            <>
+                {item.dates && <br />}
+                <span>
+                    {links.map(([label, href], i) => (
+                        <>
+                            {i > 0 && " "}
+                            <a class="link" href={href} target="_blank" rel="noopener noreferrer">{`[${label}]`}</a>
+                        </>
+                    ))}
+                </span>
+            </>
+        )
+    }
+</li>

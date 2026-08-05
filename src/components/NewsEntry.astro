@@ -1,7 +1,5 @@
 ---
-import { tokenizeNews } from "@/lib/markup"
-import { orgs } from "@/data/orgs"
-import { people } from "@/data/people"
+import RichText from "@/components/RichText.astro"
 
 interface Props {
     entry: {
@@ -11,42 +9,9 @@ interface Props {
 }
 
 const { entry } = Astro.props
-const tokens = tokenizeNews(entry.content)
 ---
 
 <div class="news-content">
     <span class="date-text">{entry.date}</span><br />
-    <span class="content-text">
-        {
-            tokens.map((token) => {
-                if (token.type === "text") return token.value
-                if (token.type === "org") {
-                    const org = orgs[token.key]
-                    if (!org) return `[[org:${token.key}]]`
-                    return (
-                        <a class="link" href={org.url} target="_blank" rel="noopener noreferrer">
-                            {org.shortname}
-                        </a>
-                    )
-                }
-                if (token.type === "person") {
-                    const person = people[token.key]
-                    if (!person) return `[[person:${token.key}]]`
-                    return (
-                        <a class="link" href={person.link} target="_blank" rel="noopener noreferrer">
-                            {person.namewithhonorifics}
-                        </a>
-                    )
-                }
-                if (token.type === "link") {
-                    return (
-                        <a class="link" href={token.href} target="_blank" rel="noopener noreferrer">
-                            {token.label}
-                        </a>
-                    )
-                }
-                return null
-            })
-        }
-    </span>
+    <span class="content-text"><RichText text={entry.content} /></span>
 </div>

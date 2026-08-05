@@ -37,6 +37,7 @@ const personal = defineCollection({
         profiles_academic: z.array(z.string()).optional(),
         profiles_casual: z.array(z.string()).optional(),
         profiles_web: z.array(z.string()).optional(),
+        bio_web: z.array(z.string()).optional(),
         about_me: z.string().optional(),
         interests_casual: z.string().optional(),
         interests_academic: z.string().optional(),
@@ -129,6 +130,21 @@ const projects = defineCollection({
         description_academic: z.string().optional(),
         description_casual: z.string().optional(),
         url: z.string().optional(),
+    }),
+})
+
+// Web-only: the Typst CVs derive their research section from experience.yaml
+// (`category == "research"`), so nothing here reaches either PDF.
+const research = defineCollection({
+    loader: () => loadYamlList("research.yaml"),
+    schema: z.object({
+        include_in: includeIn.optional(),
+        status: z.enum(["ongoing", "completed"]),
+        title: z.string(),
+        tags: z.string().optional(),
+        description: z.string().optional(),
+        dates: z.string().optional(),
+        links: z.record(z.string(), z.string()).optional(),
     }),
 })
 
@@ -229,6 +245,7 @@ export const collections = {
     experience,
     education,
     projects,
+    research,
     certifications,
     talks,
     "open-source": openSource,

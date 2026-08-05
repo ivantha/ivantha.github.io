@@ -60,4 +60,9 @@ export const orgs: Record<string, Org> = {
         shortname: "UoM",
         url: "https://uom.lk/",
     },
+    kixlab: {
+        fullname: "KAIST Interaction Lab",
+        shortname: "KIXLAB",
+        url: "https://www.kixlab.org/",
+    },
 }

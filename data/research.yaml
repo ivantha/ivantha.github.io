@@ -1,0 +1,94 @@
+# Research projects, grouped by `status` and rendered most-recent first within
+# each group. File order is the display order — nothing is sorted.
+#
+# Web-only. The Typst CVs build their research section by filtering
+# experience.yaml on `category == "research"` and never read this file, so
+# adding an entry here does not change either PDF.
+#
+# `status`      — "ongoing" | "completed"; drives the section it lands in.
+# `tags`        — pipe-separated topic run, shown as a muted sub-line.
+# `links`       — label → URL; rendered as the trailing "[Paper] [Source]" row
+#                 in the order written here.
+
+- id: deepfake-south-asia
+  status: ongoing
+  title: "Deepfake Detection in South Asia"
+  tags: "Deepfake Detection | Machine Learning | South Asia"
+  description: "Working with Dr. Dilrukshi Gamage on deepfake detection for the South Asian region."
+  dates: "2026 - Present"
+  links:
+    Project: "https://sites.google.com/view/south-asia-deepfake-detection/"
+
+- id: rl-hyperparameter-rigor
+  status: ongoing
+  title: "Reinforcement Learning Hyperparameter Rigor — Paired-Offset Reevaluation"
+  tags: "RL | HPO | Selection Bias | Diagnostics"
+  description: >-
+    Investigating selection-induced optimism in RL hyperparameter search and
+    proposing a paired-offset reevaluation diagnostic. Two manuscripts under
+    review.
+  dates: "2025 - Present"
+
+- id: smpc-privacy-survey
+  status: completed
+  title: "On Privacy-Preserved Machine Learning Using Secure Multi-Party Computing: Techniques and Trends"
+  tags: "ML | SMPC | Privacy"
+  description: >-
+    Comprehensive survey on privacy-preserving machine learning that employs
+    secure multi-party computing.
+  dates: "Apr. 2022 - 2025"
+  links:
+    Paper: "https://doi.org/10.32604/cmc.2025.068875"
+
+- id: uav-water-detection
+  status: completed
+  title: "Detecting Water In Visual Image Streams Captured From Unmanned Aerial Vehicles"
+  tags: "CV | UNet | TensorFlow | OpenCV | Python"
+  description: "Our work attempts at detecting water surfaces using Unmanned Aerial Vehicles (UAV) footage."
+  dates: "Oct. 2022 - 2023"
+  links:
+    Paper: "https://www.sciencedirect.com/science/article/pii/S1047320323001839?dgcid=author"
+
+- id: solid-waste-forecasting
+  status: completed
+  title: "Modeling and Prediction of Municipal Solid Waste Generation in Sri Lanka using Machine Learning Techniques"
+  tags: "ML | Time series | Darts | Python"
+  description: >-
+    We aimed to model and forecast solid waste generation patterns in cities
+    using machine learning techniques.
+  dates: "May 2021 - Jul. 2022"
+  links:
+    Paper: "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9950270"
+
+- id: domain-entity-matching
+  status: completed
+  title: "Machine Learning based Internet Domain Entity Matching and its Applications"
+  tags: "ML | Scikit-learn | TensorFlow | Python"
+  description: >-
+    An exploratory effort to detect malicious domain URLs using machine learning
+    techniques; the project was discontinued.
+  dates: "Aug. 2020 - Dec. 2021"
+
+- id: streaming-graph-properties
+  status: completed
+  title: "Realtime Property Evaluation of Large Streaming Graphs"
+  tags: "Graphs | Graph Summarization | Python"
+  description: >-
+    We investigated massive graph stream summarization techniques and proposed
+    an improved graph sketch; kMatrix.
+  dates: "Jan. 2019 - Jan. 2020"
+  links:
+    Presentation: "https://docs.google.com/presentation/d/1HQr98OLbt1QBcVf28NeYp1ws2XV7admlYiCcRN5dnHA/edit?usp=sharing"
+    Source: "https://github.com/ivantha/rpelsg"
+    Paper: "/papers/mudannayake2021kmatrix.pdf"
+
+- id: ml-over-encrypted-data
+  status: completed
+  title: "Machine Learning over Encrypted Data"
+  tags: "ML | Encryption | SMPC | TensorFlow | Python | Google Cloud Platform"
+  description: >-
+    We added a layer over TensorFlow to facilitate machine learning on encrypted
+    data over a distributed network of machines.
+  dates: "Jul. 2018 - Jan. 2019"
+  links:
+    Poster: "/posters/mloed_slasscom_poster.png"
