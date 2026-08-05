@@ -1,0 +1,59 @@
+---
+import { tokenizeNews } from "@/lib/markup"
+import { orgs } from "@/data/orgs"
+import { people } from "@/data/people"
+
+/**
+ * Renders the `[[org:…]]` / `[[person:…]]` / `[label](url)` markup that
+ * data/news.yaml and personal.yaml's `bio_web` both carry. Emits an inline run
+ * with no wrapper, so the caller owns the element and its class.
+ *
+ * An unresolved key renders its raw token rather than silently vanishing —
+ * a missing orgs.ts entry should be visible on the page, not swallowed.
+ *
+ * Anchors here sit inside a callback, which Astro compiles with JSX whitespace
+ * rules, so the surrounding indentation is trimmed and the link text comes out
+ * tight against neighbouring punctuation. Template-level markup does *not* get
+ * that trimming — see the note in src/pages/people.astro.
+ */
+interface Props {
+    text: string
+}
+
+const { text } = Astro.props
+const tokens = tokenizeNews(text)
+
+const EXTERNAL = { target: "_blank", rel: "noopener noreferrer" }
+---
+
+{
+    tokens.map((token) => {
+        if (token.type === "text") return token.value
+        if (token.type === "org") {
+            const org = orgs[token.key]
+            if (!org) return `[[org:${token.key}]]`
+            return (
+                <a class="link" href={org.url} {...EXTERNAL}>
+                    {org.shortname}
+                </a>
+            )
+        }
+        if (token.type === "person") {
+            const person = people[token.key]
+            if (!person) return `[[person:${token.key}]]`
+            return (
+                <a class="link" href={person.link} {...EXTERNAL}>
+                    {person.namewithhonorifics}
+                </a>
+            )
+        }
+        if (token.type === "link") {
+            return (
+                <a class="link" href={token.href} {...EXTERNAL}>
+                    {token.label}
+                </a>
+            )
+        }
+        return null
+    })
+}

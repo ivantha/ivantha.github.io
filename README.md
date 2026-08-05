@@ -52,11 +52,18 @@ section you want to change:
 | `publications.yaml` | published + under-review papers |
 | `preprints.yaml`, `under-review.yaml` | preprints, under-review (academic CV only) |
 | `projects.yaml` | portfolio projects |
+| `research.yaml` | research projects (website only — see below) |
 | `skills.yaml` | technical skills (casual CV only) |
 | `awards.yaml` | achievements / honours |
 | `certifications.yaml` | course / specialization certs |
 | `talks.yaml`, `workshops.yaml` | talks (poster/oral/invited), workshops attended |
 | `mentoring.yaml`, `volunteering.yaml`, `open-source.yaml`, `scholarships.yaml` | other CV sections |
+
+**Website-only data.** `research.yaml` backs the `/research` page and nothing
+else. The Typst CVs build their research section by filtering `experience.yaml`
+on `category: research`, so editing `research.yaml` never changes either PDF and
+needs no `pnpm build:cv`. Entries group under `status: ongoing | completed` and
+render in file order.
 
 **Variant filtering.** Each YAML entry may carry `include_in: [academic, casual]`
 to control which CV variant it appears in. Missing tag = visible

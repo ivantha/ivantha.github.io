@@ -68,6 +68,18 @@ profiles_academic: [scholar, github, kaggle, medium, linkedin]
 profiles_casual:   [homepage, linkedin, github, twitter]
 profiles_web:      [scholar, kaggle, researchgate, arxiv, twitter, linkedin, github]
 
+# Homepage bio, one entry per paragraph. First person, because it is the site
+# speaking rather than a CV summary — `about_me` below is the third-person
+# variant the PDFs and /about use, and the two are deliberately different.
+#
+# Supports the same tokens as news.yaml: [[org:KEY]] and [[person:KEY]] resolve
+# through src/data/{orgs,people}.ts, and [label](url) makes a plain link. Any
+# organisation named here needs an entry in orgs.ts or the raw token renders.
+bio_web:
+  - "I am the Lead ML Engineer at [[org:paradigmai]] and a visiting researcher at [[org:kixlab]], the human–computer interaction lab at KAIST. I graduated from [[org:ucsc]] with an honours degree in Computer Science and am currently reading for an M.Sc in Data Science & AI at the University of Moratuwa."
+  - "My research interests primarily lie in the intersection of reinforcement learning and computer games. I am particularly interested in studying about intelligent agents that improve with experience."
+  - "In a much broader sense, I like to work on theoretical and application research topics involving artificial intelligence."
+
 # Casual-only sidebar content.
 about_me: >
   Lead ML engineer and published researcher with 6+ years of experience
