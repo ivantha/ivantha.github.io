@@ -7,11 +7,20 @@
             flex-direction: row;
             flex-wrap: wrap;
 
+            // Takes the space the contact column doesn't need, rather than
+            // claiming a fixed share of the row. The old `max-width: 80%` fixed
+            // the split before either column's content was consulted, which is
+            // what starved the contact column.
             .profile-card {
                 display: flex;
+                // Zero basis, not `auto`: on a wrapping flex line an item is
+                // placed by its content size before any shrinking happens, and
+                // the card's content runs ~849px on its own — enough to claim
+                // the whole row and push the contacts onto a second one.
+                flex: 1 1 0;
+                min-width: 0;
                 margin-bottom: var(--sp-6);
                 margin-right: var(--sp-4);
-                max-width: 80%;
                 padding-right: var(--sp-4);
 
                 .img-container {
@@ -34,8 +43,20 @@
                 }
             }
 
+            // `flex: 1` is `flex: 1 1 0%` — a zero basis, so the column never
+            // asked for its content width and simply absorbed whatever the
+            // profile card left over. That came to 139px, and a label needs to
+            // clear the 14px icon and its gutter, so anything past ~107px wrapped:
+            // the phone at 166px, Google Scholar at 143px, ResearchGate at 125px.
+            //
+            // A content basis fixes that, but max-content alone is 361px — the
+            // obfuscated email runs 2.2x the next-widest item and would leave the
+            // bio under 130px. The cap holds the column to what the labels need
+            // and lets the email, which is the outlier, wrap on its own.
             .contact-details-section {
-                flex: 1;
+                flex: 0 0 auto;
+                width: max-content;
+                max-width: 13rem;
                 margin-top: var(--sp-3);
 
                 .contact-details {
@@ -74,12 +95,40 @@
     }
 }
 
+// Photo, bio, and contacts only fit across at the container's full width, and
+// they gain nothing beyond it — the container caps at 82rem, so the bio tops out
+// at 306px however wide the screen gets. Below that cap the three-column row has
+// nothing left to give: at a 900px viewport the bio fell to 164px, about twenty
+// characters a line. So the contacts drop below the card here rather than at the
+// site breakpoint, which is about the rail and comes 250px later.
+//
+// Stacking explicitly, not by leaving `flex-wrap` to it: the contact column is
+// content-sized and does not shrink, so a wrapped row kept its 182px and left
+// the photo and the whole bio to share what was left — 158px at 375px wide.
+@media (max-width: 1147px) {
+    .homeLayout .section-items .about-me {
+        flex-direction: column;
+
+        .profile-card {
+            // `flex: 1 1 0` puts a zero basis on the main axis, which is height
+            // once the row is a column.
+            flex: 0 0 auto;
+            margin-right: 0;
+            padding-right: 0;
+        }
+
+        // The cap exists to stop the column eating the bio beside it, and there
+        // is no bio beside it here.
+        .contact-details-section {
+            width: auto;
+            max-width: none;
+        }
+    }
+}
+
 @media (max-width: 899px) {
     .homeLayout .section-items .about-me .profile-card {
         flex-direction: column;
-        max-width: 100%;
-        margin-right: 0;
-        padding-right: 0;
 
         .profile-description {
             margin-left: 0;
