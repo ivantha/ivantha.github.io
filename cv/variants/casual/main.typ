@@ -35,7 +35,20 @@
   footer-descent: 5mm,
 )
 #set text(font: sans, size: fs-body, fill: body, weight: 400, hyphenate: false)
-#set par(justify: false, leading: 0.6em)
+// 0.55em, down from 0.6em. Page 1 carries the whole of experience against a
+// fixed budget — the pagebreak below is unconditional, so anything that doesn't
+// fit doesn't flow, it strands. Nine roles do not fit at 0.6em, and the deficit
+// (~40pt) is larger than the entry gaps alone can pay: leading multiplies over
+// ~40 lines, so it is the only pool big enough to matter. Every gap constant in
+// renderers.typ that reads against this value was re-derived from 4.4pt rather
+// than left pointing at the old 4.8pt — see the rhythm note there.
+//
+// This narrows rather than widens the gap to page 2, which runs the same 8pt
+// prose at col-leading (0.48em). 0.55em is a ~1.55 line-height against page 2's
+// ~1.48, so page 1 is still the looser of the two, and the theme's own note on
+// col-leading — leading is far less perceptible across a page turn than size is
+// — argues this direction is the cheap one. Size is untouched on both pages.
+#set par(justify: false, leading: 0.55em)
 // Deliberate no-op: links carry no inherited styling. Affordance is explicit —
 // renderers colour them, and `ext-link` rules them.
 #show link: it => it
@@ -43,7 +56,11 @@
 // -------- Page 1: identity + the whole of experience --------
 #render-header(personal)
 
-#v(10pt)
+// 6pt, down from 10pt. The header block is the one place on page 1 where space
+// can be reclaimed without touching the rhythm of the entries below it: this gap
+// separates two things that are already separated by a rule and a change of
+// ground, so it was the most redundant 4pt on the page.
+#v(6pt)
 #render-profile(personal)
 
 #make-experience(experience)

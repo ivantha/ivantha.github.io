@@ -167,29 +167,59 @@
 // is why a technology run has two different constants depending on where it is:
 //
 //   page 1  the run is SUBORDINATE — it annotates the one bullet above it. So
-//           sp-stack-above stays UNDER page 1's 4.8pt leading and binds upward.
+//           sp-stack-above stays UNDER page 1's 4.4pt leading and binds upward.
 //   page 2  the run is a SIBLING of the title and the description. So sp-part
 //           sits OVER the 3.84pt col-leading and separates.
 //
 // Same glyphs, same colour, opposite job, opposite spacing. Collapsing the two
 // into one constant is the mistake this block exists to prevent.
+//
+// PAGE 1 IS A FIXED BUDGET, and that is what sets every page-1 number below.
+// main.typ breaks the page unconditionally after experience, so the section does
+// not flow — it either fits or it strands a line on a page of its own. Nine roles
+// do not fit at the spacing this block used to carry, so page 1's leading went to
+// 0.55em and its gaps came down with it, each re-derived against the new 4.4pt
+// rather than scaled by eye. The ORDERING is what had to survive, and does:
+//
+//   sp-stack-above (3) < leading (4.4) < sp-bullet (5) < sp-job (8.5)
+//
+// The margins between those are now thinner than they were — sp-bullet clears the
+// leading by 14% where it used to clear by 25% — so this is close to the floor.
+// A tenth role does not fit by tightening; it needs a cut somewhere, and the
+// honest levers at that point are dropping an entry from `casual` in
+// data/experience.yaml or giving experience a second page.
 
-#let sp-part        = 5pt     // between the major parts of ONE entry, both pages:
-                              // page 1's role line → its first bullet, and page 2's
-                              // title → technology run → description.
-                              // Clears page 2's col-leading by 30%. On page 1
-                              // (4.8pt leading) it clears by only 4%, which is
-                              // enough THERE because a page-1 title is 9.6pt/700/
-                              // bright and is already separated by size, weight and
-                              // colour before space is asked to do anything. Buying
-                              // a perceptible step would cost 8 × 1.9pt on the one
-                              // page with ~21pt of slack to its name.
-#let sp-stack-above = 3.8pt   // page 1 ONLY: bullet → its technology run. Was 2.8pt,
-                              // which sat the run in the descenders of the line above
-                              // it. Still deliberately under page 1's 4.8pt leading,
-                              // and well under sp-bullet, so the run stays bound to
-                              // the bullet it annotates instead of floating between
-                              // two of them.
+#let sp-part        = 5pt     // PAGE 2 ONLY: title → technology run → description,
+                              // in projects and open source. Clears col-leading
+                              // (3.84pt) by 30%, which is the parts rule above.
+                              // This used to serve page 1's role line as well. It
+                              // can't any more: page 1 now has to seat nine roles in
+                              // a fixed budget and wants 4pt there, which on page 2
+                              // would clear col-leading by 4% and put the boundary
+                              // BETWEEN a project's parts back under the boundary
+                              // between two lines of its description — precisely the
+                              // bug the parts rule was written to prevent. One
+                              // constant cannot hold both numbers, so page 1 gets
+                              // sp-part-role below and this one keeps page 2 intact.
+#let sp-part-role   = 4pt     // page 1 ONLY: role line → its first bullet. Sits just
+                              // UNDER page 1's leading (4.4pt), which would be a
+                              // parts-rule violation anywhere else and is not one
+                              // here for the reason the old shared comment already
+                              // gave: a page-1 title is 9.6pt/700/bright and is fully
+                              // separated by size, weight and colour before space is
+                              // asked to do anything. Space is confirming a boundary
+                              // three other signals have already drawn. Nowhere else
+                              // in the document is a title so heavily marked, which
+                              // is why this licence doesn't generalize.
+#let sp-stack-above = 3pt     // page 1 ONLY: bullet → its technology run. Was 3.8pt
+                              // against a 4.8pt leading; both fell together, so the
+                              // relationship is unchanged — still under page 1's
+                              // leading (now 4.4pt) and still well under sp-bullet,
+                              // so the run stays bound to the bullet it annotates
+                              // instead of floating between two of them. It is NOT
+                              // back at the old 2.8pt that sat the run in the
+                              // descenders above it: 3pt at the tighter leading is
+                              // the same optical gap 3.8pt bought at the looser one.
 #let sp-venue       = 2.8pt   // page 2: publication title → venue. Bound upward like
                               // the page-1 stack (under col-leading), and held at the
                               // old value because publications lives in the ONE
@@ -203,10 +233,23 @@
                               // set at col-leading exactly, which is the one value in
                               // this block deliberately equal to something else. See
                               // make-education for why.
-#let sp-bullet      = 6pt
-#let sp-job         = 11pt    // must read as clearly bigger than sp-bullet, or
+#let sp-bullet      = 5pt     // the largest pool on page 1 — fourteen of these —
+                              // and the one the ninth role was mostly paid for
+                              // out of. Still over page 1's leading (4.4pt) by
+                              // 14%, so the rhythm rule at the top of this block
+                              // holds and a wrapped bullet stays one bullet. The
+                              // margin is thinner than it was (25% at 6pt/4.8pt),
+                              // which is the real cost of the ninth role; 4.5pt
+                              // was tried and is where wrapped bullets start
+                              // reading as separate ones.
+#let sp-job         = 8.5pt   // must read as clearly bigger than sp-bullet, or
                               // the boundary between two jobs is carried by the
-                              // title styling alone. At 7pt it did not.
+                              // title styling alone. At 7pt it did not. 70% over
+                              // sp-bullet here, against 83% at the old 11pt/6pt —
+                              // a smaller margin, but the ordering it has to
+                              // preserve is intact and 7pt is still clear below.
+                              // Eight of these on the page, so this is the second
+                              // biggest pool after sp-bullet.
 // The page-2 gaps below were all raised once the `›` markers came off. Those
 // markers were the only left-edge delimiter page-2 entries had; without one,
 // separation has to be carried by space, and the 3mm per entry the markers gave
@@ -259,8 +302,12 @@
                               // 5pt cleared its internal gaps by a similar ratio,
                               // which is why the ratio was never the bug: both
                               // numbers were simply under the leading.
-#let sp-head-above  = 8pt
-#let sp-head-below  = 5pt
+// Both trimmed 2pt and 1pt for page 1's budget. Page 2 is unaffected in practice:
+// a section boundary there is max(sp-section, sp-head-above) and both are weak, so
+// 20pt still wins outright — these only ever surface at the TOP of a column, where
+// the change buys that column a little more height rather than costing it any.
+#let sp-head-above  = 6pt
+#let sp-head-below  = 4pt
 #let sp-section     = 20pt    // between two page-2 SECTIONS — the gap that lands above
                               // a labelled rule. It was 10pt against an sp-entry-rich
                               // of 9.5pt: a 5% step, so the boundary between OPEN
@@ -443,7 +490,10 @@
   )
   text(font: mono, size: fs-body, roles)
 
-  v(8pt)
+  // 5pt above the rule rather than 8pt, so the rule sits centred between the role
+  // line and the contact strip instead of hanging closer to the strip. Reclaimed
+  // for page 1's budget; the symmetry is a side effect worth having.
+  v(5pt)
   box(width: 100%, height: 0.8pt, fill: hair)
   v(5pt)
 
@@ -518,7 +568,12 @@
 #let render-profile(personal) = block(
   width: 100%,
   fill: raised,
-  inset: (x: 5mm, y: 4mm),
+  // y-inset 3mm, down from 4mm. The panel is the one lifted surface in the
+  // document and reads as such from its fill, not from its padding, so this was
+  // ~5.7pt of page-1 budget that cost nothing structural to reclaim. The x-inset
+  // is untouched: horizontal room is not what page 1 is short of, and cutting it
+  // would visibly narrow the one element that is supposed to feel roomy.
+  inset: (x: 5mm, y: 3mm),
   radius: 1.5pt,
   text(size: fs-body, fill: bright, personal.about_me),
 )
@@ -584,7 +639,7 @@
         text(size: fs-title, fill: separator, "  /  ")
         text(size: fs-title, weight: 400, fill: signal, field(item, "company", "casual"))
         if bullets.len() > 0 {
-          v(sp-part)
+          v(sp-part-role)
           for b in bullets {
             marked({
               text(fill: body, render-md(field(b, "text", "casual")))
