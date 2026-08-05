@@ -1,7 +1,38 @@
 # Site theme rework — design
 
 Date: 2026-08-05
-Status: approved, ready for implementation planning
+Status: **superseded.** Kept as the record of a design that was planned and then
+not built.
+
+> **Superseded by the "paper terminal" theme, which is what the code now
+> implements.** There is no successor document. The shipped theme is documented
+> in the stylesheets themselves, where each rationale sits next to the value it
+> explains and so cannot drift from it:
+>
+> - `src/styles/_variables.scss` — every colour token with its measured ratio
+> - `src/styles/components/layout.scss` — type scale, shell, measure caps
+> - `src/styles/components/_navbar.scss` — rail nav and the disclosure
+> - `src/lib/prompt.ts`, `src/layouts/Layout.astro` — the command crumb
+>
+> **What survived:** §1's sticky rail and normal document scroll; §2's IBM Plex
+> Mono + Sans at a 14px base, and its 400/600-only weight postcondition, which
+> still greps clean; §4's `<details>` disclosure and the `@supports` guard around
+> it, shipped nearly verbatim; all 17 nav links.
+>
+> **What did not:**
+>
+> - **§3 is wrong in every row.** The canvas is `#fbfaf7` paper, not `#ffffff`,
+>   so every ratio was re-measured against it. The inks became `#17191c` /
+>   `#2f3136` / `#5c5a52`, the link `#1a5fb4` — §3 calls the link unchanged; it
+>   changed — the hover `#0f3f7a`, the accent `#9a7d2e`. `$pf-surface-sunken`,
+>   `$pf-rule`, and `$pf-rule-strong` are shipped tokens this document never
+>   anticipated. §5 inherits the same error where it expects `#ffffff` to hold.
+> - **Shipped without being designed here:** the four-step type scale and its
+>   "no page may introduce a fifth" rule, `--measure-mono` alongside the prose
+>   cap, three line-height tokens rather than two, `h2` demoted to a tracked
+>   uppercase rule-under label at metadata size, `h3` at body size, boxed venue
+>   chips, and the `$ ls ~/path` command crumb above each page title.
+> - **§1's blast radius was never true** — corrected in place, in that section.
 
 ## Goal
 
@@ -59,13 +90,13 @@ Measured on the live dev server, not assumed:
 
 ## Decisions taken
 
-| Decision | Choice |
-|---|---|
-| Layout model | Sticky rail + normal document scroll |
-| Type identity | Keep mono; add a proportional face for prose only |
-| Font superfamily | IBM Plex Mono + IBM Plex Sans |
-| Base font size | 14px (unchanged) |
-| Site name placement | Moves into the sticky rail |
+| Decision            | Choice                                            |
+| ------------------- | ------------------------------------------------- |
+| Layout model        | Sticky rail + normal document scroll              |
+| Type identity       | Keep mono; add a proportional face for prose only |
+| Font superfamily    | IBM Plex Mono + IBM Plex Sans                     |
+| Base font size      | 14px (unchanged)                                  |
+| Site name placement | Moves into the sticky rail                        |
 
 ## 1. Layout and scroll model
 
@@ -105,10 +136,24 @@ elsewhere) is unaffected.
 
 ### Blast radius
 
-The `.section-wrapper` → `.section-title` + `.section-items` structure is
-identical across all 19 pages, 12 of them via `src/components/ListSection.astro`.
-The layout change is therefore almost entirely confined to `layout.scss`; no
-per-page markup changes.
+> **Correction — this section was wrong when written, not merely superseded.**
+> The original text is quoted below rather than left standing as prose, because
+> a reader skimming for the component map would have acted on it.
+>
+> It claimed: "identical across all 19 pages, 12 of them via
+> `src/components/ListSection.astro`. The layout change is therefore almost
+> entirely confined to `layout.scss`; no per-page markup changes."
+>
+> `ListSection.astro` is imported by nothing — `grep -rn ListSection src/`
+> returns no hit at all, the only trace of the name anywhere in the tree being
+> the component's own filename. All **18** pages hand-roll
+> `.section-wrapper` / `.section-title` / `.section-items` inline, so the
+> component routes zero of them and the 12 was never a real number.
+>
+> The conclusion drawn from it was wrong too. Implementation was not confined to
+> `layout.scss` and did not avoid per-page markup: `NavBar.astro`,
+> `PublicationItem.astro`, `Layout.astro`, and `education.astro` all changed, and
+> `src/styles/pages/education.scss` was deleted outright.
 
 ## 2. Typography
 
@@ -120,14 +165,14 @@ Load real weights — Mono 400/600, Sans 400/600 — which resolves the faux-bol
 defect. Every declared weight must then be snapped to a loaded cut, or it stays
 synthesised. The full set:
 
-| Selector | Now | Becomes |
-|---|---|---|
-| `b` (`layout.scss`) | 800 | 600 |
-| `.site-name` (`layout.scss`) | `bold` (700) | 600 |
-| `.skip-link` (`layout.scss`) | 700 | 600 |
-| `.link` (`layout.scss`) | `bold` (700) | 600 |
-| `.navbar a.active` (`_navbar.scss`) | 500 | 600 |
-| `.date-text` (`home.scss`) | 700 | 600 |
+| Selector                            | Now          | Becomes |
+| ----------------------------------- | ------------ | ------- |
+| `b` (`layout.scss`)                 | 800          | 600     |
+| `.site-name` (`layout.scss`)        | `bold` (700) | 600     |
+| `.skip-link` (`layout.scss`)        | 700          | 600     |
+| `.link` (`layout.scss`)             | `bold` (700) | 600     |
+| `.navbar a.active` (`_navbar.scss`) | 500          | 600     |
+| `.date-text` (`home.scss`)          | 700          | 600     |
 
 This is a sweep, not a handful of edits. There are **26 `font-weight`
 declarations** across the stylesheets — 6 in `layout.scss`/`_navbar.scss` (the
@@ -135,10 +180,10 @@ table above) and 20 more spread over 13 page stylesheets, nearly all `700`.
 Every one must land on a loaded cut: after this change only `400` and `600` may
 appear anywhere in `src/styles/`, which is a greppable postcondition.
 
-| Role | Face |
-|---|---|
+| Role                                                                     | Face          |
+| ------------------------------------------------------------------------ | ------------- |
 | Site name, nav, `h1`/`h2`, dates, venues, DOI/arXiv refs, contact values | IBM Plex Mono |
-| Running prose — homepage bio, research/project/article descriptions | IBM Plex Sans |
+| Running prose — homepage bio, research/project/article descriptions      | IBM Plex Sans |
 
 - Base size stays **14px**.
 - Prose is capped at a `--measure` of ~68ch.
@@ -151,16 +196,20 @@ appear anywhere in `src/styles/`, which is a greppable postcondition.
 
 ## 3. Colour and hierarchy
 
+> **Stale — every token below was replaced, and the white canvas these ratios
+> assume is not the one that shipped.** Do not copy these values. The shipped
+> tokens and their measured ratios live in `src/styles/_variables.scss`.
+
 All ratios below are measured against `#ffffff`.
 
-| Token | Value | Ratio | Use |
-|---|---|---|---|
-| `ink-strong` | `#1a1a1a` | 17.4:1 | Headings, site name |
-| `ink-body` | `#333333` | 12.6:1 | Body text |
-| `ink-muted` | `#5f5f5f` | 6.4:1 | Metadata, inactive nav |
-| `link` | `#1772d0` | 4.8:1 | Links (unchanged) |
-| `link-hover` | `#0f4c8a` | 8.7:1 | Link hover, plus underline |
-| `accent` | `#c17d00` | 3.4:1 | **Non-text only** |
+| Token        | Value     | Ratio  | Use                        |
+| ------------ | --------- | ------ | -------------------------- |
+| `ink-strong` | `#1a1a1a` | 17.4:1 | Headings, site name        |
+| `ink-body`   | `#333333` | 12.6:1 | Body text                  |
+| `ink-muted`  | `#5f5f5f` | 6.4:1  | Metadata, inactive nav     |
+| `link`       | `#1772d0` | 4.8:1  | Links (unchanged)          |
+| `link-hover` | `#0f4c8a` | 8.7:1  | Link hover, plus underline |
+| `accent`     | `#c17d00` | 3.4:1  | **Non-text only**          |
 
 Three ink steps supply hierarchy that the current two greys (`#424242`,
 `#616161`) cannot. The hover colour now holds the link's hue and darkens it.
@@ -188,13 +237,15 @@ default** (correct for mobile). Desktop forces it open with CSS only:
 
 ```scss
 @media (min-width: 900px) {
-  @supports selector(::details-content) {
-    .site-nav > summary { display: none; }
-    .site-nav::details-content {
-      content-visibility: visible;
-      block-size: auto;
+    @supports selector(::details-content) {
+        .site-nav > summary {
+            display: none;
+        }
+        .site-nav::details-content {
+            content-visibility: visible;
+            block-size: auto;
+        }
     }
-  }
 }
 ```
 
