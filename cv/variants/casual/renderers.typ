@@ -680,7 +680,9 @@
   // The horizontal inset remains roomy and unchanged.
   inset: (x: 5mm, y: 1.5mm),
   radius: 1.5pt,
-  text(size: fs-body, fill: bright, personal.about_me),
+  // Slightly below the 8pt body size so the longer summary does not displace
+  // the final research entry from page 1.
+  text(size: 7.6pt, fill: bright, personal.about_me),
 )
 
 // `interests` and `who_am_i` were vertical sidebar lists. As single dotted runs
