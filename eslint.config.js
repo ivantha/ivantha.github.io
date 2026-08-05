@@ -4,7 +4,11 @@ import astro from "eslint-plugin-astro"
 
 export default tseslint.config(
     {
-        ignores: ["dist/**", ".astro/**", "node_modules/**", "public/**"],
+        // `.claude/**` matches .prettierignore. Without it, a worktree under
+        // .claude/worktrees/ is linted as a second copy of the repo, where the
+        // path-scoped config below no longer matches and every build script
+        // reports Buffer/console as undefined.
+        ignores: [".astro/**", ".claude/**", "dist/**", "node_modules/**", "public/**"],
     },
     eslint.configs.recommended,
     ...tseslint.configs.recommended,
