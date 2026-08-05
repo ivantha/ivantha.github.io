@@ -674,12 +674,11 @@
 #let render-profile(personal) = block(
   width: 100%,
   fill: raised,
-  // y-inset 3mm, down from 4mm. The panel is the one lifted surface in the
-  // document and reads as such from its fill, not from its padding, so this was
-  // ~5.7pt of page-1 budget that cost nothing structural to reclaim. The x-inset
-  // is untouched: horizontal room is not what page 1 is short of, and cutting it
-  // would visibly narrow the one element that is supposed to feel roomy.
-  inset: (x: 5mm, y: 3mm),
+  // The longer profile copy needs one more line than the original summary.
+  // Its panel already separates itself through fill, so a tighter vertical
+  // inset preserves the hierarchy while keeping all experience on page 1.
+  // The horizontal inset remains roomy and unchanged.
+  inset: (x: 5mm, y: 1.5mm),
   radius: 1.5pt,
   text(size: fs-body, fill: bright, personal.about_me),
 )

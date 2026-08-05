@@ -70,9 +70,13 @@ profiles_web:      [scholar, kaggle, researchgate, arxiv, twitter, linkedin, git
 
 # Casual-only sidebar content.
 about_me: >
-  Senior ML engineer with 6+ years in industry building production LLM
-  platforms, MLOps tooling, and ML systems at scale, shipping software
-  since 2016. Published ML researcher (ACL, IEEE Access, Elsevier).
+  ML engineer, data scientist, and published researcher with 6+ years of
+  experience turning data and research ideas into production systems. I enjoy
+  building scalable and efficient systems that solve practical problems. My
+  industry work spans predictive modelling, experimentation, LLM platforms,
+  MLOps, and supporting production infrastructure. My research focuses
+  primarily on the intersection of reinforcement learning and computer games,
+  alongside broader work in machine learning and computer vision.
 interests_casual: "Reinforcement Learning, Machine Learning, Artificial Intelligence, Game Theory, Computer Games, Computer Vision"
 who_am_i:
   - "Avid reader"
