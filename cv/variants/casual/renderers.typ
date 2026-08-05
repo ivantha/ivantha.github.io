@@ -139,7 +139,7 @@
 // the narrow measure without touching apparent size.
 
 #let fs-display = 26pt    // the name. Used exactly once.
-#let fs-title   = 9.6pt   // page-1 entry titles (role @ company). The only
+#let fs-title   = 9pt     // page-1 entry titles (role @ company). The only
                           // size that is page-specific, because experience is
                           // the spine of the document and reads as such.
 #let fs-body    = 8pt     // ALL prose on both pages, the profile summary, the
