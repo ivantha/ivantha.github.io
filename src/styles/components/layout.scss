@@ -2,13 +2,47 @@
 @use "scrollbar";
 @use "navbar";
 
+// Four type steps at a 14px base, and nothing else — no page may introduce a
+// fifth. An item title is the same size as body text and separates by weight
+// and ink instead, which is what keeps the count this low.
+:root {
+    --fs-title: 1.5rem; //  21px    — page <h1>, nothing else
+    --fs-lead: 1.15rem; //  16.1px  — the site name in the rail, nothing else
+    --fs-body: 1rem; //     14px    — body, prose, nav links, item titles
+    --fs-meta: 0.875rem; // 12.25px — metadata, section labels, prompt, chips
+
+    --lh-tight: 1.25;
+    --lh-mono: 1.45;
+    --lh-prose: 1.62;
+
+    // Six spacing steps on a quarter-rem grid, each roughly 1.5–1.6x the last.
+    // Every margin, padding, and gap on the site resolves to one of these — a
+    // value that isn't on the scale is a bug rather than a fine-tune. The
+    // reference point is the internal leading of body text (22.68 - 14 =
+    // 8.7px): a gap has to beat that to read as a break at all.
+    --sp-1: 0.25rem; //  3.5px — a title and the metadata line directly under it
+    --sp-2: 0.5rem; //     7px — between metadata lines inside one entry
+    --sp-3: 0.75rem; // 10.5px — between single-line entries
+    --sp-4: 1.25rem; // 17.5px — between entries that run more than one line
+    --sp-5: 2rem; //      28px — above a section label; between subsections
+    --sp-6: 3rem; //      42px — page-level blocks and cards
+
+    // Monospace runs ~30–40% wider per character than a proportional face, so
+    // prose and mono content need different caps to land on a similar measure.
+    --measure-prose: 68ch;
+    --measure-mono: 80ch;
+}
+
 html {
     scroll-behavior: smooth;
 
     // Declares the one theme rather than inheriting whatever canvas the
-    // browser supplies. Without this, dark-mode visitors get $pf-primary-color
-    // on a near-black background at ~1.5:1 — a second, unreadable theme.
+    // browser supplies. Without this, dark-mode visitors get the site's ink on
+    // a near-black background at ~1.5:1 — a second, unreadable theme.
     color-scheme: light;
+
+    scrollbar-width: thin;
+    scrollbar-color: $pf-rule-strong $pf-surface-sunken;
 }
 
 body,
@@ -18,8 +52,9 @@ html {
 
     font-family: $pf-primary-font;
     font-size: 14px;
+    line-height: var(--lh-mono);
     background-color: $pf-page-bg;
-    color: $pf-primary-color;
+    color: $pf-ink-body;
 }
 
 * {
@@ -40,16 +75,16 @@ html {
     }
 }
 
-// Visible only once focused, so keyboard users can jump the 17-link sidebar.
+// Visible only once focused, so keyboard users can jump the 17-link rail.
 .skip-link {
     position: absolute;
     left: -9999px;
     top: 0;
     z-index: 100;
-    padding: 0.75rem 1.25rem;
-    background-color: #ffffff;
-    color: $pf-primary-color;
-    font-weight: 700;
+    padding: var(--sp-3) var(--sp-4);
+    background-color: $pf-page-bg;
+    color: $pf-ink-strong;
+    font-weight: 600;
     text-decoration: none;
     outline: 2px solid $pf-focus-ring-color;
 
@@ -63,98 +98,268 @@ html {
     outline-offset: 2px;
 }
 
-main {
-    scroll-margin-top: 1rem;
+// ─── Shell ──────────────────────────────────────────────────────────────────
+// The document scrolls normally. An earlier 100vh shell nested three
+// independent scroll containers, which broke browser scroll restoration, Cmd+F
+// scroll-to-match, and #anchor deep links.
+
+.container {
+    display: grid;
+    // minmax(0, 1fr) rather than 1fr: a bare 1fr has an auto minimum, so one
+    // long unbreakable DOI would widen the column and overflow the page.
+    // 18rem, not 16rem: at body-size nav links the role line broke as
+    // "Researcher · Computer / Science".
+    grid-template-columns: 18rem minmax(0, 1fr);
+    gap: 0 var(--sp-5);
+    max-width: 82rem;
+    margin: 0 auto;
+    padding: 0 var(--sp-6) var(--sp-6);
 }
 
-.content {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+.rail {
+    position: sticky;
+    top: 0;
+    // Without this the grid item stretches to the full row height and sticky
+    // has no room to travel.
+    align-self: start;
     max-height: 100vh;
+    overflow-y: auto;
+    padding: var(--sp-6) var(--sp-4) var(--sp-6) 0;
+    border-right: 1px solid $pf-rule;
 
-    .header {
-        height: 122px;
-        padding: 3rem 3.5rem 3rem 4.5rem;
-
-        // Renders as the <h1> on the homepage and as a link back home
-        // elsewhere; both must keep the original <h2>'s optical weight.
-        .site-name {
-            display: inline-block;
-            margin: 0;
-            color: $pf-primary-color;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-decoration: none;
-        }
+    // Renders as the <h1> on the homepage and as a link back home elsewhere;
+    // both must keep the same optical weight.
+    .site-name {
+        display: inline-block;
+        margin: 0;
+        color: $pf-ink-strong;
+        font-size: var(--fs-lead);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        text-decoration: none;
     }
 
-    .container {
-        display: flex;
-        flex-direction: row;
-        height: 100%;
-        max-height: 100%;
-        overflow: hidden;
-        padding-bottom: 3.5rem;
-        width: 100%;
-
-        .navbar {
-            max-width: 16rem;
-            min-width: 16rem;
-            padding-left: 3.5rem;
-
-            height: 100%;
-            overflow: auto;
-        }
-
-        main {
-            display: flex;
-            flex-grow: 1;
-            height: 100%;
-            width: 100%;
-            padding-left: 2rem;
-        }
+    .site-role {
+        display: block;
+        margin-top: var(--sp-1);
+        color: $pf-ink-muted;
+        font-size: var(--fs-meta);
     }
 }
 
+main {
+    padding-top: var(--sp-6);
+    scroll-margin-top: var(--sp-3);
+    min-width: 0;
+}
+
+// Block, not flex. The page title and the section body are adjacent siblings,
+// so leaving them in normal flow lets h1's bottom margin collapse with the
+// first h2's top margin — the gap becomes the larger of the two instead of
+// their sum, and a section label sitting directly under the title needs no
+// special case. Thirteen pages used to set `display: flex` here, which
+// suppressed that collapse and doubled the gap.
 .section-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding-left: 2rem;
-    width: 100%;
-    overflow-x: hidden;
+    max-width: var(--measure-mono);
+}
 
-    .section-title {
-        max-height: 75px;
-        min-height: 75px;
+// ─── List rhythm ────────────────────────────────────────────────────────────
+// The gap between entries follows how dense an entry is, not which page it is
+// on. A single flat 2rem is what left volunteering with 22.7px of text sitting
+// in 28px of air.
 
-        h1 {
-            margin-top: 1rem;
-        }
+.section-items {
+    ul {
+        margin: 0;
+        // The UA default is 40px — nearly three characters at this base.
+        padding-left: var(--sp-4);
     }
 
-    .section-items {
-        height: 100%;
-        overflow: auto;
-        padding-right: 3rem;
+    li + li {
+        margin-top: var(--sp-3);
+    }
+
+    // An entry holding a title, a paragraph, or a hard break runs to more than
+    // one line, so it needs a gap wider than its own internal leading or
+    // consecutive entries read as one block. A single-line entry has no
+    // internal leading to beat and only needs enough room to separate.
+    // Either neighbour qualifying is enough, which keeps mixed lists even.
+    li:has(h3, p, br) + li,
+    li + li:has(h3, p, br) {
+        margin-top: var(--sp-4);
+    }
+
+    // An entry carrying its own sub-list is a block rather than a run of
+    // lines, so it needs the section step to clear its own bullets — at the
+    // entry step a role boundary was only 7px wider than the gaps between the
+    // bullets inside it, and the roles ran together.
+    li:has(> ul) + li,
+    li + li:has(> ul) {
+        margin-top: var(--sp-5);
+    }
+
+    // A nested bullet list belongs to the entry above it rather than standing
+    // apart from it, so it sits at the tight step.
+    li > ul {
+        margin-top: var(--sp-2);
     }
 }
 
-b {
-    font-weight: 800;
+// Home is the one page that lays a photo, a bio, and a contact column out side
+// by side. The mono measure cap folds the contact column underneath, so home
+// opts out and relies on the prose cap inside it instead.
+.homeLayout {
+    max-width: none;
 }
 
+// The command line above each page title. Decorative chrome — it restates the
+// <h1> and the nav's aria-current, so it is aria-hidden in the markup.
+.prompt {
+    // Tight, because the prompt belongs to the title beneath it rather than
+    // standing as its own block.
+    margin: 0 0 var(--sp-2);
+    color: $pf-ink-muted;
+    font-size: var(--fs-meta);
+
+    .sigil {
+        margin-right: var(--sp-1);
+    }
+}
+
+// ─── Type ───────────────────────────────────────────────────────────────────
+
+h1 {
+    margin: 0 0 var(--sp-5);
+    color: $pf-ink-strong;
+    font-size: var(--fs-title);
+    font-weight: 600;
+    line-height: var(--lh-tight);
+    letter-spacing: -0.025em;
+}
+
+// Section labels, not headlines: the page title is the only thing at display
+// size, and everything below it is a tracked rule-under label.
+h2 {
+    margin: var(--sp-5) 0 var(--sp-3);
+    padding-bottom: var(--sp-2);
+    border-bottom: 1px solid $pf-rule;
+    color: $pf-ink-muted;
+    font-size: var(--fs-meta);
+    // 400, not 500: only 400 and 600 are fetched, so a 500 here would silently
+    // resolve to 400 anyway. Uppercase and tracking carry the label.
+    font-weight: 400;
+    line-height: var(--lh-tight);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+// Item titles sit at body size and separate by weight and ink instead. Giving
+// them their own size bought nothing and cost a step in the scale.
 h3 {
-    margin-bottom: 0;
+    margin: 0 0 var(--sp-1);
+    color: $pf-ink-strong;
+    // Stated rather than inherited: on the experience page the entry wrapper
+    // carries a prose class, so an unpinned title picked up Sans there while
+    // every other page set the same thing in Mono.
+    font-family: $pf-primary-font;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    line-height: var(--lh-mono);
+}
+
+// The UA default is `1em`, which tracks font-size rather than the scale and so
+// lands at 14px — a value the scale does not contain.
+p {
+    margin: var(--sp-4) 0;
+}
+
+// A paragraph opening a section takes the label's gap rather than adding its
+// own on top of it.
+h2 + p {
+    margin-top: 0;
+}
+
+// Inside a list entry a paragraph is the entry's body copy, not a block
+// standing on its own, so it sits at the tight step.
+li p {
+    margin: var(--sp-2) 0 0;
+}
+
+b,
+strong {
+    color: $pf-ink-strong;
+    font-weight: 600;
+}
+
+// The UA default is `font-size: smaller`, a relative keyword — so the same
+// equal-contribution asterisk rendered at 11.67px beside an author name and
+// 10.21px inside metadata. Pinning it keeps the scale at four sizes and makes
+// the marker identical wherever it appears; `super` still raises it.
+sup {
+    font-size: var(--fs-meta);
+    vertical-align: super;
+    line-height: 0;
+}
+
+// Running prose. Everything else stays monospace, because a DOI, a path, and an
+// OpenReview ID are genuinely fixed-width data rather than decoration.
+.content-text,
+.research-content-text {
+    display: block;
+    max-width: var(--measure-prose);
+    font-family: $pf-secondary-font;
+    font-size: var(--fs-body);
+    line-height: var(--lh-prose);
+}
+
+// Metadata separates by colour and size rather than weight. Bolding it — which
+// is what the old two-grey palette forced — made every date compete with the
+// heading above it.
+.date-text,
+.date-country-text,
+.institute-text,
+.tags-text,
+.tools-text {
+    color: $pf-ink-muted;
+    // Pinned for the same reason as h3: metadata is fixed-width data on every
+    // page, and inheriting let the experience page render it as prose.
+    font-family: $pf-primary-font;
+    font-size: var(--fs-meta);
+    font-weight: 400;
 }
 
 .link {
     color: $pf-link-color;
-    font-weight: bold;
     text-decoration: none;
 
     &:hover {
         color: $pf-link-hover-color;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+}
+
+// ─── Responsive ─────────────────────────────────────────────────────────────
+// One breakpoint. Below it the rail becomes a normal-flow block and the nav
+// collapses into a native disclosure (see components/_navbar.scss).
+
+@media (max-width: 899px) {
+    .container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        padding: 0 var(--sp-4) var(--sp-6);
+    }
+
+    .rail {
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+        padding: var(--sp-5) 0 var(--sp-3);
+        border-right: 0;
+        border-bottom: 1px solid $pf-rule;
+    }
+
+    main {
+        padding-top: var(--sp-5);
     }
 }

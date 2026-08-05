@@ -1,18 +1,20 @@
 @use "../variables" as *;
 
+// With the nested scroll panes gone, this now styles the page scrollbar, where
+// the old 5px width was too thin to grab.
 ::-webkit-scrollbar {
     transition: none;
-    width: 5px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: $pf-scrollbar-track-bg;
+    background: $pf-surface-sunken;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: $pf-scrollbar-thumb-bg;
+    background: $pf-rule-strong;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: $pf-scrollbar-thumb-hover-bg;
+    background: $pf-ink-muted;
 }

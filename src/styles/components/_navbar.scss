@@ -1,25 +1,97 @@
 @use "../variables" as *;
 
+// The nav lives inside a <details> that is closed by default, which is the
+// correct state for mobile. Desktop forces it open with CSS only — see the
+// bottom of this file. No JavaScript is involved.
+.site-nav {
+    margin-top: var(--sp-5);
+
+    > summary {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: var(--sp-2) 0;
+        color: $pf-ink-strong;
+        font-size: var(--fs-body);
+        font-weight: 600;
+        cursor: pointer;
+        list-style: none;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+
+        &::after {
+            content: "+";
+            margin-left: var(--sp-2);
+            color: $pf-ink-muted;
+        }
+    }
+
+    &[open] > summary::after {
+        content: "−";
+    }
+}
+
 .navbar {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
 
     a {
-        color: $pf-sub-nav-link-color;
-        font-size: 1rem;
-        padding: 1rem;
+        position: relative;
+        // Primary navigation, so it sits at body size rather than metadata
+        // size — 12px links in the rail read as a footnote.
+        padding: var(--sp-2) 0 var(--sp-2) var(--sp-4);
+        color: $pf-ink-muted;
+        font-size: var(--fs-body);
         text-decoration: none;
-        width: 10rem;
 
         &:hover {
-            color: $pf-primary-color;
+            color: $pf-ink-strong;
         }
 
         &.active {
-            color: $pf-primary-color;
-            font-weight: 500;
+            color: $pf-ink-strong;
+            font-weight: 600;
+
+            // State is redundantly encoded in ink, weight, and aria-current, so
+            // the marker is reinforcement rather than the only signal.
+            &::before {
+                content: "––";
+                position: absolute;
+                left: 0;
+                color: $pf-ink-muted;
+                font-weight: 400;
+                letter-spacing: -0.08em;
+            }
+        }
+    }
+}
+
+@media (max-width: 899px) {
+    // Padding is already the same as desktop; this only grows the hit area to
+    // the 44px touch minimum.
+    .navbar a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+    }
+}
+
+@media (min-width: 900px) {
+    // Hiding the <summary> sits INSIDE the @supports guard deliberately: where
+    // ::details-content is unsupported, the summary stays visible and desktop
+    // users get a clickable "Menu" — one extra click, never unreachable
+    // navigation. Outside the guard it would hide the only control in exactly
+    // the browsers that need it.
+    @supports selector(::details-content) {
+        .site-nav > summary {
+            display: none;
+        }
+
+        .site-nav::details-content {
+            content-visibility: visible;
+            block-size: auto;
         }
     }
 }

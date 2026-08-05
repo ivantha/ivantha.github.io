@@ -1,42 +1,21 @@
+@use "../variables" as *;
+
 .peopleLayout {
-    display: flex;
-    flex-direction: column;
-
-    .people-subtitle {
+    // `.content-text` here holds a person's name, not running prose — the class
+    // is borrowed. Override the global prose rule back onto mono so a column of
+    // names doesn't set itself as paragraphs.
+    .people-wrapper .content-text {
+        max-width: none;
+        color: $pf-ink-strong;
+        font-family: $pf-primary-font;
+        font-size: var(--fs-body);
+        font-weight: 600;
+        line-height: var(--lh-mono);
     }
 
-    .people-divider {
-        height: 0.5rem;
-    }
-
-    .alt-people-wrapper {
-        line-height: 1.25;
-
-        .content-text {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0.4rem 0;
-
-            .institute-text {
-                font-size: 0.9rem;
-                font-weight: 400;
-            }
-        }
-    }
-
-    .people-wrapper {
-        line-height: 1.25;
-        margin-top: 2rem;
-
-        .content-text {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0.4rem 0;
-
-            .institute-text {
-                font-size: 0.9rem;
-                font-weight: 400;
-            }
-        }
+    // The affiliation entries are sentences that wrap, so they carry no <br>
+    // for the global rule to read them by. They still need the multi-line gap.
+    .alt-people-wrapper li + li {
+        margin-top: var(--sp-4);
     }
 }

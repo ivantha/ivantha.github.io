@@ -1,7 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
-import "@/styles/pages/workshops.scss"
 
 const items: CollectionEntry<"workshops">[] = await getCollection("workshops")
 ---
@@ -15,7 +14,7 @@ const items: CollectionEntry<"workshops">[] = await getCollection("workshops")
             <ul>
                 {
                     items.map((entry) => (
-                        <li class="workshops-wrapper">
+                        <li>
                             <span class="content-text">{entry.data.line}</span>
                         </li>
                     ))

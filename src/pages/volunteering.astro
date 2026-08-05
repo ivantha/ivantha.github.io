@@ -1,7 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
-import "@/styles/pages/volunteering.scss"
 
 const mentoring: CollectionEntry<"mentoring">[] = await getCollection("mentoring")
 const committees: CollectionEntry<"volunteering">[] = await getCollection("volunteering")
@@ -16,26 +15,25 @@ const committees: CollectionEntry<"volunteering">[] = await getCollection("volun
             {
                 mentoring.length > 0 && (
                     <div>
-                        <h2 class="research-subtitle">Mentoring</h2>
+                        <h2>Mentoring</h2>
                         <ul>
                             {mentoring.map((entry) => (
-                                <li class="volunteering-wrapper">
-                                    <h3>{entry.data.line}</h3>
+                                <li>
+                                    <span class="content-text">{entry.data.line}</span>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 )
             }
-            {mentoring.length > 0 && committees.length > 0 && <div class="volunteering-divider" />}
             {
                 committees.length > 0 && (
                     <div>
-                        <h2 class="volunteering-subtitle">Committee Positions</h2>
+                        <h2>Committee Positions</h2>
                         <ul>
                             {committees.map((entry) => (
-                                <li class="volunteering-wrapper">
-                                    <h3>{entry.data.line}</h3>
+                                <li>
+                                    <span class="content-text">{entry.data.line}</span>
                                 </li>
                             ))}
                         </ul>

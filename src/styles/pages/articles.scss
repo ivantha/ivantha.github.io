@@ -1,25 +1,39 @@
 @use "../variables" as *;
 
 .articlesLayout {
-    display: flex;
-    flex-direction: column;
-
-    .articles-wrapper {
-        margin-top: 2rem;
-    }
-
     ul {
         list-style: none;
+        padding-left: 0;
+    }
+
+    // An entry here is a 160px image card, not a run of text, so it takes the
+    // page step. Stating it on the entry keeps one declaration in charge —
+    // a margin on the card itself collapsed out of the item and raced the
+    // global rule for the larger value, and left the last card trailing it.
+    // `.section-items` is needed to outweigh that global rule, which carries a
+    // class of its own plus the :has() argument.
+    .section-items li + li {
+        margin-top: var(--sp-6);
     }
 
     .articles-card {
         display: flex;
-        margin-bottom: 3rem;
 
+        // The thumbnails are 600×600. Without a cap the <img> rendered at its
+        // intrinsic height inside a 160px-wide box, so each card was ~600px
+        // tall with the well's dark fill showing beside it.
         .img-container {
             display: flex;
+            flex: 0 0 160px;
+            align-self: flex-start;
             max-width: 160px;
             min-width: 100px;
+
+            .article-img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
 
             &.cors {
                 background-color: $pf-cors-bg;
@@ -32,26 +46,18 @@
 
         .card-content {
             align-self: center;
-            margin-left: 2rem;
+            margin-left: var(--sp-5);
+        }
+    }
+}
 
-            h3 {
-                margin-top: 0;
-            }
+@media (max-width: 899px) {
+    .articlesLayout .articles-card {
+        flex-direction: column;
 
-            .date-text {
-                font-size: 0.9rem;
-                font-weight: 700;
-            }
-
-            .tags-text {
-                font-size: 0.9rem;
-                font-weight: 700;
-                color: $pf-secondary-color;
-            }
-
-            .content-text {
-                font-size: 0.96rem;
-            }
+        .card-content {
+            margin-left: 0;
+            margin-top: var(--sp-4);
         }
     }
 }

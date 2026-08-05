@@ -28,7 +28,7 @@ const hasEqContribInPublished = published.some((p) =>
             {
                 published.length > 0 && (
                     <>
-                        <h2 class="publications-subtitle">Published Articles</h2>
+                        <h2>Published Articles</h2>
                         <ul>
                             {published.map((pub) => (
                                 <PublicationItem pub={pub} />
@@ -45,7 +45,7 @@ const hasEqContribInPublished = published.some((p) =>
             {
                 underReview.length > 0 && (
                     <>
-                        <h2 class="publications-subtitle">Articles Under Review</h2>
+                        <h2>Articles Under Review</h2>
                         <ul>
                             {underReview.map((pub) => (
                                 <PublicationItem pub={pub} />
@@ -57,7 +57,7 @@ const hasEqContribInPublished = published.some((p) =>
             {
                 preprints.length > 0 && (
                     <>
-                        <h2 class="publications-subtitle">Preprints</h2>
+                        <h2>Preprints</h2>
                         <ul>
                             {preprints.map((pub) => (
                                 <PublicationItem pub={pub} />

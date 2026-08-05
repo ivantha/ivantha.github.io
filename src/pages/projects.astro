@@ -2,7 +2,6 @@
 import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 import { isWebVisible, pickField } from "@/lib/variants"
-import "@/styles/pages/projects.scss"
 
 const all: CollectionEntry<"projects">[] = await getCollection("projects")
 const items = all.filter((entry) => isWebVisible(entry.data))
@@ -22,7 +21,7 @@ const items = all.filter((entry) => isWebVisible(entry.data))
                         const stack = pickField(item, "stack", "academic")
                         const description = pickField(item, "description", "academic") ?? item.description
                         return (
-                            <li class="projects-wrapper">
+                            <li>
                                 <h3>
                                     {item.url ? (
                                         <a class="link" href={item.url} target="_blank" rel="noopener noreferrer">
