@@ -36,7 +36,7 @@
 // ground still bleeds to the paper edge, but the text block is inset properly.
 #set page(
   paper: "a4",
-  margin: (x: margin-x, top: 14mm, bottom: 11mm),
+  margin: (x: margin-x, top: 10mm, bottom: 11mm),
   fill: ground,
   footer: page-number,
   footer-descent: 5mm,
@@ -80,11 +80,10 @@
 // -------- Page 1: identity + the whole of experience --------
 #render-header(personal)
 
-// 6pt, down from 10pt. The header block is the one place on page 1 where space
-// can be reclaimed without touching the rhythm of the entries below it: this gap
-// separates two things that are already separated by a rule and a change of
-// ground, so it was the most redundant 4pt on the page.
-#v(6pt)
+// The profile panel's change of ground already separates it from the header.
+// Keep only a small optical pause here; the longer summary uses the rest of
+// this formerly redundant gap without tightening the experience entries.
+#v(2pt)
 #render-profile(personal)
 
 // Professional first, research second. Not chronology — the two sections can't
