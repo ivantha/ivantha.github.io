@@ -3,7 +3,6 @@ import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 import EducationItem from "@/components/EducationItem.astro"
 import { isWebVisible } from "@/lib/variants"
-import "@/styles/pages/education.scss"
 
 const all: CollectionEntry<"education">[] = await getCollection("education")
 const items = all.filter((entry) => isWebVisible(entry.data))

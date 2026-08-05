@@ -18,7 +18,11 @@ const authors: Author[] = pub.authors ?? []
 
 <li>
     <p>
-        <strong>[{pub.venue_type}]</strong>{" "}
+        {
+            /* A label, not emphasis — so <span>, not <strong>. The literal
+            brackets go with it; the chip's border carries that job now. */
+        }
+        <span class="venue-tag">{pub.venue_type}</span>{" "}
         <TypstMd text={title} />
         {
             authors.length > 0 && (
@@ -40,8 +44,13 @@ const authors: Author[] = pub.authors ?? []
             venue && (
                 <>
                     <br />
-                    <em>{venue}</em>
-                    {pub.year && `, ${pub.year}`}
+                    {/* The comma rides inside the <em> on purpose. Astro renders
+                        the line break below as a space, so with the comma out
+                        here it lands before the comma ("venue , 2026") — and
+                        prettier reflows any one-line workaround. Year stays
+                        roman, as in the citation styles this mirrors. */}
+                    <em>{pub.year ? `${venue},` : venue}</em>
+                    {pub.year}
                 </>
             )
         }

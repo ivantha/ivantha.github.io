@@ -3,6 +3,7 @@ import { getEntry } from "astro:content"
 import "@/styles/components/layout.scss"
 import NavBar from "@/components/NavBar.astro"
 import type { ProfileEntry } from "@/lib/contact"
+import { commandFor } from "@/lib/prompt"
 
 interface Props {
     title?: string
@@ -19,9 +20,17 @@ const ogImageUrl = new URL("/og.png", Astro.site).href
 // own <h1>, so there it renders as a plain link back home instead.
 const isHome = Astro.url.pathname.replace(/\/$/, "") === ""
 
+const command = commandFor(Astro.url.pathname)
+
 const personal = await getEntry("personal", "main")
 const profileEntries: Record<string, ProfileEntry> = personal?.data.profile_entries ?? {}
 const sameAs = Object.values(profileEntries).map((profile) => profile.url)
+
+// The rail's role line comes from data/personal.yaml so it can never drift from
+// the Typst CVs, which read the same fields.
+const siteRole = [personal?.data.tagline_academic_role, personal?.data.tagline_academic_field]
+    .filter(Boolean)
+    .join(" · ")
 
 const personSchema = {
     "@context": "https://schema.org",
@@ -41,7 +50,7 @@ const personSchema = {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content={Astro.generator} />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#fbfaf7" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="canonical" href={canonicalUrl} />
@@ -49,7 +58,14 @@ const personSchema = {
         <link rel="alternate" type="application/rss+xml" title="Oshan Mudannayake — News" href="/rss.xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+        {
+            /* Real 600 cuts, not a synthesised bold off a single 400. The italic is
+            load-bearing too — publication venues are set in it. */
+        }
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
         <title>{fullTitle}</title>
         <meta name="description" content={description} />
         <meta property="og:title" content={fullTitle} />
@@ -80,8 +96,13 @@ const personSchema = {
     </head>
     <body>
         <a class="skip-link" href="#main">Skip to content</a>
-        <div class="content">
-            <header class="header">
+        <div class="container">
+            {
+                /* The name pins to the rail rather than scrolling away with a
+                banner. On a personal site the name is the brand, and the old
+                fixed 122px header cost that much vertical space on every page. */
+            }
+            <header class="rail">
                 {
                     isHome ? (
                         <h1 class="site-name">Oshan Mudannayake</h1>
@@ -91,13 +112,17 @@ const personSchema = {
                         </a>
                     )
                 }
-            </header>
-            <div class="container">
+                {siteRole && <span class="site-role">{siteRole}</span>}
                 <NavBar />
-                <main id="main">
-                    <slot />
-                </main>
-            </div>
+            </header>
+            <main id="main">
+                {
+                    /* Restates the <h1> and the nav's aria-current, so it is
+                    decorative to a screen reader rather than orientation. */
+                }
+                <p class="prompt" aria-hidden="true"><span class="sigil">$</span>{command}</p>
+                <slot />
+            </main>
         </div>
     </body>
 </html>

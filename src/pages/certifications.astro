@@ -2,7 +2,6 @@
 import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 import { isWebVisible, pickField } from "@/lib/variants"
-import "@/styles/pages/certifications.scss"
 
 type Cert = CollectionEntry<"certifications">["data"]
 
@@ -31,7 +30,7 @@ const professional = items.filter((entry) => !moocInstitutes.has(entry.data.inst
                                 const cert: Cert = entry.data
                                 const name = pickField(cert, "name", "academic") ?? cert.name
                                 return (
-                                    <li class="certification-wrapper">
+                                    <li>
                                         <h3>
                                             {cert.year} | {name}
                                         </h3>
@@ -71,17 +70,16 @@ const professional = items.filter((entry) => !moocInstitutes.has(entry.data.inst
                     </div>
                 )
             }
-            {moocs.length > 0 && professional.length > 0 && <div class="certification-divider" />}
             {
                 professional.length > 0 && (
                     <div>
-                        <h2 class="certification-subtitle">Professional Certifications</h2>
+                        <h2>Professional Certifications</h2>
                         <ul>
                             {professional.map((entry) => {
                                 const cert: Cert = entry.data
                                 const name = pickField(cert, "name", "academic") ?? cert.name
                                 return (
-                                    <li class="certification-wrapper">
+                                    <li>
                                         <h3>
                                             {cert.year} | {name}
                                         </h3>

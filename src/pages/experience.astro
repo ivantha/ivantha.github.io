@@ -3,7 +3,6 @@ import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 import ExperienceItem from "@/components/ExperienceItem.astro"
 import { isWebVisible } from "@/lib/variants"
-import "@/styles/pages/experience.scss"
 
 const all: CollectionEntry<"experience">[] = await getCollection("experience")
 const items = all.filter((entry) => isWebVisible(entry.data))
@@ -20,7 +19,7 @@ const professional = items.filter((entry) => entry.data.category === "profession
             {
                 research.length > 0 && (
                     <>
-                        <h2 class="experience-subtitle">Research Experience</h2>
+                        <h2>Research Experience</h2>
                         <ul>
                             {research.map((entry) => (
                                 <ExperienceItem item={entry.data} />
@@ -29,11 +28,10 @@ const professional = items.filter((entry) => entry.data.category === "profession
                     </>
                 )
             }
-            {research.length > 0 && professional.length > 0 && <div class="experience-divider" />}
             {
                 professional.length > 0 && (
                     <>
-                        <h2 class="experience-subtitle">Professional Experience</h2>
+                        <h2>Professional Experience</h2>
                         <ul>
                             {professional.map((entry) => (
                                 <ExperienceItem item={entry.data} />

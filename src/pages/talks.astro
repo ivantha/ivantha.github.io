@@ -1,7 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
-import "@/styles/pages/talks.scss"
 
 const TYPE_LABEL: Record<string, string> = {
     oral: "Oral Presentations",
@@ -25,28 +24,25 @@ const grouped = (["oral", "poster", "invited"] as const)
         </div>
         <div class="section-items">
             {
-                grouped.map((group, idx) => (
-                    <>
-                        {idx > 0 && <div class="talks-divider" />}
-                        <div>
-                            <h2 class="talks-subtitle">{TYPE_LABEL[group.type]}</h2>
-                            <ul>
-                                {group.items.map((entry) => (
-                                    <li class="talks-wrapper">
-                                        <h3>
-                                            {entry.data.date} | {entry.data.title}
-                                        </h3>
-                                        {entry.data.venue && (
-                                            <span class="content-text">
-                                                {entry.data.venue}
-                                                {entry.data.location && ` | ${entry.data.location}`}
-                                            </span>
-                                        )}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </>
+                grouped.map((group) => (
+                    <div>
+                        <h2>{TYPE_LABEL[group.type]}</h2>
+                        <ul>
+                            {group.items.map((entry) => (
+                                <li>
+                                    <h3>
+                                        {entry.data.date} | {entry.data.title}
+                                    </h3>
+                                    {entry.data.venue && (
+                                        <span class="content-text">
+                                            {entry.data.venue}
+                                            {entry.data.location && ` | ${entry.data.location}`}
+                                        </span>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 ))
             }
         </div>

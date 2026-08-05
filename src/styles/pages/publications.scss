@@ -1,23 +1,31 @@
+@use "../variables" as *;
+
 .publicationsLayout {
-    display: flex;
-    flex-direction: column;
-
-    .publications-subtitle {
-    }
-
-    .publications-divider {
-        height: 0.5rem;
-    }
-
+    // The chip is the item marker here, so a bullet beside it reads as two
+    // markers competing. Other list pages keep their bullets — they have no
+    // chip to collide with.
     ul {
+        list-style: none;
+        padding-left: 0;
         overflow-wrap: anywhere;
     }
 
-    li {
-        padding-bottom: 1rem;
+    li p {
+        margin: 0;
+        word-break: break-word;
+    }
 
-        p {
-            word-break: break-word;
-        }
+    // The chip replaces the literal [brackets] the venue type used to carry.
+    // Bracketed link text keeps its brackets, which is what now distinguishes a
+    // clickable reference from a label.
+    .venue-tag {
+        display: inline-block;
+        padding: 0 var(--sp-1);
+        border: 1px solid $pf-rule-strong;
+        border-radius: 2px;
+        color: $pf-ink-muted;
+        font-size: var(--fs-meta);
+        vertical-align: 1px;
+        white-space: nowrap;
     }
 }

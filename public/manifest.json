@@ -4,8 +4,8 @@
     "description": "Personal website of Oshan Mudannayake — AI Researcher and ML Engineer.",
     "start_url": "/",
     "display": "minimal-ui",
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
+    "background_color": "#fbfaf7",
+    "theme_color": "#fbfaf7",
     "icons": [
         {
             "src": "/icon.png",

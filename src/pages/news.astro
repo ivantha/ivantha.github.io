@@ -2,7 +2,6 @@
 import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 import NewsEntry from "@/components/NewsEntry.astro"
-import "@/styles/pages/news.scss"
 
 const allNews: CollectionEntry<"news">[] = await getCollection("news")
 ---
@@ -16,7 +15,7 @@ const allNews: CollectionEntry<"news">[] = await getCollection("news")
             <ul>
                 {
                     allNews.map((entry) => (
-                        <li class="news-wrapper">
+                        <li>
                             <NewsEntry entry={entry.data} />
                         </li>
                     ))

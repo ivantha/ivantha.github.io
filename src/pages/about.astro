@@ -1,7 +1,6 @@
 ---
 import { getEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
-import "@/styles/pages/about.scss"
 
 const personal = await getEntry("personal", "main")
 const aboutMe = personal?.data.about_me

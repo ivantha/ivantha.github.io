@@ -1,33 +1,45 @@
 // Fonts
-$pf-primary-font: "Roboto Mono", monospace;
-$pf-secondary-font: "Roboto", sans-serif;
+// Mono carries structure — nav, headings, dates, venues, DOIs, paths — because
+// those are genuinely fixed-width data. Sans carries running prose only; see
+// the `.content-text` rule in components/layout.scss.
+$pf-primary-font: "IBM Plex Mono", ui-monospace, monospace;
+$pf-secondary-font: "IBM Plex Sans", system-ui, sans-serif;
 
-// Links
-// Hover must read as *more* prominent than rest, so it darkens rather than
-// brightens. The old #f9a825 landed at 1.97:1 on white — hovering a link
-// actually made it harder to read.
-$pf-link-color: #1772d0;
-$pf-link-hover-color: #8a5a00;
-
-// Colors
+// Surface
 // The site has exactly one theme (see CLAUDE.md), so the page background is
 // pinned rather than inherited from the browser canvas. Keep in sync with the
-// `theme-color` meta tag and public/manifest.json.
-$pf-page-bg: #ffffff;
-$pf-primary-color: #424242;
-$pf-secondary-color: #616161;
+// `theme-color` meta tag in src/layouts/Layout.astro and public/manifest.json.
+$pf-page-bg: #fbfaf7;
+$pf-surface-sunken: #f2efe8;
+
+// Ink
+// Three steps, because two flat greys could not separate a heading from the
+// metadata under it — which is why every date and institute on the old site
+// had to bold itself to stand out. Ratios are measured against $pf-page-bg.
+$pf-ink-strong: #17191c; // 17.3:1 — headings, site name, item titles
+$pf-ink-body: #2f3136; //   12.4:1 — body copy
+$pf-ink-muted: #5c5a52; //   6.5:1 — metadata, inactive nav, prompt
+
+// Rules
+$pf-rule: #ddd8cc; // section underlines, rail edge
+$pf-rule-strong: #cfc9ba; // tag chip borders, scrollbar thumb
+
+// Links
+// Hover holds the link's hue and darkens it, so hovering reads as *more*
+// prominent. The old #8a5a00 was brown against a blue link; a hue jump reads as
+// a different kind of thing rather than a more prominent one.
+$pf-link-color: #1a5fb4; //        6.2:1
+$pf-link-hover-color: #0f3f7a; // 10.1:1
+
+// Accent — NON-TEXT ONLY, at any size.
+// 3.8:1 clears the 3:1 non-text floor and fails the 4.5:1 text floor, so this
+// may never carry a glyph. Active nav state is encoded in ink, weight, and
+// aria-current instead, so colour is never the sole signal.
+$pf-accent: #9a7d2e;
+
+// Article thumbnail wells — image chrome, not theme surface.
 $pf-cors-bg: #282d36;
-$pf-gsoc-bg: #e9ecef;
-
-// Scrollbar
-$pf-scrollbar-track-bg: #f1f1f1;
-$pf-scrollbar-thumb-bg: #b6b6b6;
-$pf-scrollbar-thumb-hover-bg: #555;
-
-// Navbar
-// Inactive nav links were #949494 — 3.03:1 on white, below the 4.5:1 AA floor.
-$pf-navbar-background-color: $pf-secondary-color;
-$pf-sub-nav-link-color: #6b6b6b;
+$pf-gsoc-bg: $pf-surface-sunken;
 
 // Focus
-$pf-focus-ring-color: #1772d0;
+$pf-focus-ring-color: $pf-link-color;

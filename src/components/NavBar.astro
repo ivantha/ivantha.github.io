@@ -22,20 +22,27 @@ const links: Array<{ href: string; label: string; external?: boolean }> = [
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/"
 ---
 
-<nav class="navbar" aria-label="Main">
-    {
-        links.map(({ href, label, external }) => {
-            const isActive = !external && (href === "/" ? currentPath === "/" : currentPath.startsWith(href))
-            const className = isActive ? "active" : undefined
-            return external ? (
-                <a href={href} target="_blank" rel="noopener noreferrer" class={className}>
-                    {label}
-                </a>
-            ) : (
-                <a href={href} class={className} aria-current={isActive ? "page" : undefined}>
-                    {label}
-                </a>
-            )
-        })
-    }
-</nav>
+{
+    /* Closed by default, which is the correct state for mobile; desktop forces it
+    open with CSS only (see components/_navbar.scss). No client-side JS. */
+}
+<details class="site-nav">
+    <summary>Menu</summary>
+    <nav class="navbar" aria-label="Main">
+        {
+            links.map(({ href, label, external }) => {
+                const isActive = !external && (href === "/" ? currentPath === "/" : currentPath.startsWith(href))
+                const className = isActive ? "active" : undefined
+                return external ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer" class={className}>
+                        {label}
+                    </a>
+                ) : (
+                    <a href={href} class={className} aria-current={isActive ? "page" : undefined}>
+                        {label}
+                    </a>
+                )
+            })
+        }
+    </nav>
+</details>
