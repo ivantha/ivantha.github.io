@@ -189,9 +189,23 @@
 // honest levers at that point are dropping an entry from `casual` in
 // data/experience.yaml or giving experience a second page.
 
-#let sp-part        = 5pt     // PAGE 2 ONLY: title → technology run → description,
-                              // in projects and open source. Clears col-leading
-                              // (3.84pt) by 30%, which is the parts rule above.
+#let sp-part        = 5pt     // PAGE 2 ONLY: the gap between the PARTS of an entry —
+                              // title → technology run → description in projects and
+                              // open source, and title → venue in publications. Clears
+                              // col-leading (3.84pt) by 30%, which is the parts rule
+                              // above.
+                              //
+                              // Publications carried their own constant (sp-venue, 2.8pt)
+                              // until this revision, on the argument that a venue is
+                              // metadata ON the title rather than a third part and should
+                              // therefore bind upward like page 1's technology run. That
+                              // reading is defensible in isolation and loses to a simpler
+                              // one: a venue occupies the same slot a project's technology
+                              // run does — the annotation set directly under a bold title
+                              // — and page 2 has exactly one column grid, so two different
+                              // distances under the same shape read as an inconsistency
+                              // rather than as a distinction. One value now, both shapes.
+                              //
                               // This used to serve page 1's role line as well. It
                               // can't any more: page 1 now has to seat nine roles in
                               // a fixed budget and wants 4pt there, which on page 2
@@ -220,19 +234,9 @@
                               // back at the old 2.8pt that sat the run in the
                               // descenders above it: 3pt at the tighter leading is
                               // the same optical gap 3.8pt bought at the looser one.
-#let sp-venue       = 2.8pt   // page 2: publication title → venue. Bound upward like
-                              // the page-1 stack (under col-leading), and held at the
-                              // old value because publications lives in the ONE
-                              // column with no spare height — see the budget note
-                              // below. A venue is metadata on the title above it, not
-                              // a third part, so this is the right grouping anyway
-                              // and not merely the affordable one.
-                              //
-                              // EDUCATION'S head lines (dates → degree → institute)
-                              // are the same shape and do NOT use this constant: they
-                              // set at col-leading exactly, which is the one value in
-                              // this block deliberately equal to something else. See
-                              // make-education for why.
+// EDUCATION's head lines (dates → degree → institute) look like the same shape
+// and get NO constant from this block: they set at col-leading exactly, which is
+// the one distance here deliberately equal to something else. See make-education.
 #let sp-bullet      = 5pt     // the largest pool on page 1 — fourteen of these —
                               // and the one the ninth role was mostly paid for
                               // out of. Still over page 1's leading (4.4pt) by
@@ -261,19 +265,20 @@
 // metadata.
 //
 // WHAT PAYS FOR IT. Measured slack from the last ink in each column to the
-// bottom of the text area (297mm − 20mm), re-measured after the education and
-// sp-section changes: ~95pt in column 1 (projects), ~85pt in column 3
-// (achievements, open source), ~31pt in column 2 (education, publications).
-// The two sections carrying the three-part shape are the two sitting in the
-// columns with room, so the sections that needed the space are the ones that
-// could afford it.
+// bottom of the text area (297mm − 20mm), re-measured after folding the venue
+// gap into sp-part: ~95pt in column 1 (projects), ~56pt in column 2 (education,
+// publications), ~127pt in column 3 (achievements, open source). The two
+// sections carrying the three-part shape are the two sitting in the columns with
+// room, so the sections that needed the space are the ones that could afford it.
 //
 // Column 2 is still the only one that can actually overflow, and it is the one
-// that just got RICHER: tightening education to col-leading returned ~18pt to
-// it, which is what let sp-section double without pushing publications off the
-// sheet. Re-measure before spending page-2 height again — the figures above
-// move whenever data/ does, and skills.yaml alone shifted them by ~6pt while
-// this block was being written.
+// this revision spent from: raising the publication venue gap to sp-part costs
+// 2.2pt per publication, 15.4pt over the seven that opt into `casual`. What
+// absorbed it is that the column had ~71pt rather than the ~31pt recorded above
+// — dropping the under-review manuscript from publications.yaml handed back
+// ~40pt, and nothing had re-measured since. Which is the standing warning here:
+// re-measure before spending page-2 height, because these figures move whenever
+// data/ does and they were all stale by 20pt or more when this line was written.
 #let sp-entry       = 6.5pt   // education and publications — the page-2 entries that
                               // have something INSIDE them. Their internal lines sit
                               // at col-leading or below, and this outranks that by at
@@ -783,7 +788,7 @@
         // Indented to the same column as the title, not to the year: the venue
         // belongs to the title above it, and hanging it under the year would
         // have put two different things in one column.
-        block(above: sp-venue, below: 0pt, inset: (left: year-indent),
+        block(above: sp-part, below: 0pt, inset: (left: year-indent),
           text(font: mono, size: fs-meta, fill: mute, venue))
       }
     })
