@@ -197,6 +197,12 @@
                               // below. A venue is metadata on the title above it, not
                               // a third part, so this is the right grouping anyway
                               // and not merely the affordable one.
+                              //
+                              // EDUCATION'S head lines (dates → degree → institute)
+                              // are the same shape and do NOT use this constant: they
+                              // set at col-leading exactly, which is the one value in
+                              // this block deliberately equal to something else. See
+                              // make-education for why.
 #let sp-bullet      = 6pt
 #let sp-job         = 11pt    // must read as clearly bigger than sp-bullet, or
                               // the boundary between two jobs is carried by the
@@ -211,19 +217,42 @@
 // sp-part needs more around it than one built from a title and a line of
 // metadata.
 //
-// WHAT PAYS FOR IT. Measured slack to the bottom margin, per column:
-// ~163pt in column 1 (projects), ~144pt in column 3 (achievements, open
-// source), ~18pt in column 2 (education, publications). The two sections
-// carrying the three-part shape are the two sitting in the columns with room,
-// so the sections that needed the space are the ones that could afford it.
-// Column 2 takes the smaller bump, keeps sp-venue where it was, and still lands
-// with ~5pt spare. Re-check these figures before spending page-2 height again;
-// column 2 is the only one that can actually overflow.
-#let sp-entry       = 6.5pt   // education, publications, certifications and
-                              // achievements. Absorbs the old sp-entry-tight
-                              // (4.6pt, "single-line entries"): a 0.4pt step is not
-                              // a distinction, and those entries wrap to two lines
-                              // often enough that the premise was wrong as well.
+// WHAT PAYS FOR IT. Measured slack from the last ink in each column to the
+// bottom of the text area (297mm − 20mm), re-measured after the education and
+// sp-section changes: ~95pt in column 1 (projects), ~85pt in column 3
+// (achievements, open source), ~31pt in column 2 (education, publications).
+// The two sections carrying the three-part shape are the two sitting in the
+// columns with room, so the sections that needed the space are the ones that
+// could afford it.
+//
+// Column 2 is still the only one that can actually overflow, and it is the one
+// that just got RICHER: tightening education to col-leading returned ~18pt to
+// it, which is what let sp-section double without pushing publications off the
+// sheet. Re-measure before spending page-2 height again — the figures above
+// move whenever data/ does, and skills.yaml alone shifted them by ~6pt while
+// this block was being written.
+#let sp-entry       = 6.5pt   // education and publications — the page-2 entries that
+                              // have something INSIDE them. Their internal lines sit
+                              // at col-leading or below, and this outranks that by at
+                              // least 69%.
+#let sp-entry-flat  = 5pt     // achievements and certifications — the year-led entries
+                              // with nothing inside them but the occasional wrap. The
+                              // only boundary this has to beat is col-leading, and at
+                              // sp-entry it beat it by 69%: five of the seven
+                              // achievements set on one line, and between them the
+                              // section read as a spaced list rather than as a list.
+                              // 30% over col-leading, the same clearance sp-part is
+                              // held to, and a 23% step under sp-entry.
+                              //
+                              // This is NOT the old sp-entry-tight returning. That was
+                              // 4.6pt against an sp-entry of 5pt — a 0.4pt step, too
+                              // small to register as anything but noise, which is why
+                              // it went. The note that removed it also observed that
+                              // these entries "wrap to two lines often enough"; they
+                              // do (two of the seven), and it does not bear on this.
+                              // A wrapped entry's internal boundary IS col-leading,
+                              // which 5pt still clears by 30%. The premise was never
+                              // "these never wrap" — it is "these have no parts".
 #let sp-entry-rich  = 9.5pt   // projects and open source — the three-part entries.
                               // 90% over sp-part, so the boundary BETWEEN entries
                               // clearly outranks the boundaries inside one. The old
@@ -232,7 +261,28 @@
                               // numbers were simply under the leading.
 #let sp-head-above  = 8pt
 #let sp-head-below  = 5pt
-#let sp-section     = 10pt
+#let sp-section     = 20pt    // between two page-2 SECTIONS — the gap that lands above
+                              // a labelled rule. It was 10pt against an sp-entry-rich
+                              // of 9.5pt: a 5% step, so the boundary between OPEN
+                              // SOURCE and what came before it was no larger than the
+                              // boundary between two open-source entries, and the
+                              // section rule was doing the work of the space alone.
+                              // 110% over sp-entry-rich now — the largest step in the
+                              // document, which is right, because it is the only
+                              // boundary on page 2 that separates two SUBJECTS rather
+                              // than two entries about one.
+                              //
+                              // Page 2 nests three levels — line, entry, section — so
+                              // the top one has to be unmistakable or the page reads
+                              // as one undifferentiated list. Costed at 4 boundaries
+                              // (see main.typ): ~3.5mm each off columns 2 and 3, which
+                              // the education tightening above more than paid for.
+                              //
+                              // NOTE this does not stack with sp-head-above. Both are
+                              // weak, so a section boundary is max(15, 8) = 15pt, not
+                              // 23pt. Raising sp-head-above below 15pt buys nothing;
+                              // above it, it silently becomes the value in force
+                              // everywhere and this constant stops meaning anything.
 #let sp-skill       = 5.5pt   // between skill rows. This was 4pt against a
                               // col-leading of 3.84pt — a 4% step, which fails
                               // the rhythm rule at the top of this block: a
@@ -564,17 +614,35 @@
   for (i, e) in items.enumerate() {
     block({
       text(font: mono, size: fs-meta, fill: body, dash-dates(e.dates_casual))
-      linebreak()
-      v(1.4pt)
-      text(size: fs-body, weight: 700, fill: bright,
-        e.at("degree_casual", default: ""))
-      linebreak()
-      v(1pt)
-      text(fill: signal, e.institute)
-      for line in e.at("extras_casual", default: ()) {
-        linebreak()
-        text(fill: mute, render-md(line))
-      }
+      // col-leading, and blocks rather than `linebreak()` + a nudge. These three
+      // lines are one entry in three registers (6.6pt mono dates, 8pt bold
+      // degree, 8pt institute), and the ONLY spacing that reads as "these belong
+      // together" is the document's own line rhythm — the same distance two lines
+      // of one sentence sit at. Anything under it (2.8pt was tried) crowds the
+      // 8pt degree into the descenders of the dates; anything over it, which is
+      // what `linebreak()` plus a 1–1.4pt nudge gave at 4.8–5.2pt, sets the three
+      // lines nearly as far apart as two whole entries and the entry reads as
+      // three.
+      //
+      // The nudge was the wrong lever either way: most of that gap is an 8pt
+      // ascender clearing a 6.6pt descender, which no `v()` shrinks. Only
+      // replacing the leading — an explicit `above` on a block — moves it, which
+      // is also why this can't just go back to bare linebreaks: it would work
+      // today and break the moment a size on any of these lines changes.
+      //
+      // The extras stay on linebreaks. They belong to the institute line the way
+      // a second line of a sentence belongs to the first, and at col-leading they
+      // are already exactly where this puts everything else.
+      block(above: col-leading, below: 0pt,
+        text(size: fs-body, weight: 700, fill: bright,
+          e.at("degree_casual", default: "")))
+      block(above: col-leading, below: 0pt, {
+        text(fill: signal, e.institute)
+        for line in e.at("extras_casual", default: ()) {
+          linebreak()
+          text(fill: mute, render-md(line))
+        }
+      })
     })
     if i + 1 < items.len() { v(sp-entry) }
   }
@@ -698,7 +766,7 @@
       text(fill: bright, render-md(field(c, "name", "casual")))
       text(fill: mute, " · " + c.institute)
     })
-    if i + 1 < items.len() { v(sp-entry) }
+    if i + 1 < items.len() { v(sp-entry-flat) }
   }
 }
 
@@ -720,7 +788,7 @@
         text(fill: body, [ (#render-md(place))])
       }
     })
-    if i + 1 < items.len() { v(sp-entry) }
+    if i + 1 < items.len() { v(sp-entry-flat) }
   }
 }
 
