@@ -9,23 +9,17 @@
 equal_contribution_note: "Equal contribution"
 
 items:
-  - venue_type: "Conference"
-    include_in: [casual]
-    year: 2026
-    authors:
-      - { name: "O. Mudannayake", self: true }
-    title: "Paired-Offset Reevaluation: A Diagnostic for Selection-Induced Optimism in Reinforcement-Learning Hyperparameter Search"
-    title_casual: "Paired-Offset Reevaluation: Selection-Bias Diagnostic for RL HPO"
-    venue_casual: "Under Review"
-
   - venue_type: "Workshop"
-    include_in: [casual]
+    include_in: [academic, casual]
     year: 2026
     authors:
       - { name: "O. Mudannayake", self: true }
-    title: "Affordable Reinforcement Learning Hyperparameter Rigor: A Paired-Offset Reevaluation Catalogue"
-    title_casual: "Affordable RL Hyperparameter Rigor: Paired-Offset Reevaluation"
-    venue_casual: "Under Review"
+    title: "Affordable Winner's-Curse Correction: Paired-Offset Reevaluation for Hyperparameter Search on a Single GPU"
+    title_casual: "Affordable Winner's-Curse Correction for Single-GPU Hyperparameter Search"
+    venue: "GlobalSouthAI Workshop @ IJCAI-ECAI 2026, Bremen, Germany (non-archival)"
+    venue_casual: "GlobalSouthAI @ IJCAI-ECAI 2026"
+    doi_url: "https://openreview.net/forum?id=P8J9cLsmNs"
+    doi_label: "OpenReview: P8J9cLsmNs"
 
   - venue_type: "Journal"
     include_in: [academic, casual]

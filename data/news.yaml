@@ -4,6 +4,9 @@
 #   [[person:KEY]]   → resolves via src/data/people.ts (renders namewithhonorifics linked)
 #   [LABEL](URL)     → standard markdown-style external link
 
+- date: "Jul 2026"
+  content: "My paper [Affordable Winner's-Curse Correction: Paired-Offset Reevaluation for Hyperparameter Search on a Single GPU](https://openreview.net/forum?id=P8J9cLsmNs) was accepted at the GlobalSouthAI workshop at IJCAI-ECAI 2026, held in Bremen, Germany."
+
 - date: "Sep 2025"
   content: "Our paper [On Privacy-Preserved Machine Learning Using Secure Multi-Party Computing: Techniques and Trends](https://doi.org/10.32604/cmc.2025.068875) was published in Computers, Materials & Continua (CMC)."
 
