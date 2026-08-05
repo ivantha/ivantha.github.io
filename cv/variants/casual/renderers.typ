@@ -700,8 +700,8 @@
 //
 // ~2mm of slack, so one more interest in personal.yaml will wrap it. If that
 // happens, grow the page-2 bottom margin in main.typ to match.
-#let personal-row(label, items) = grid(
-  columns: (14mm, 1fr),
+#let personal-row(label, items, label-width: 14mm) = grid(
+  columns: (label-width, 1fr),
   column-gutter: 2mm,
   align: (left + top, left + top),
   text(font: mono, size: fs-meta, weight: 700, fill: signal,
@@ -721,7 +721,7 @@
     columns: (1fr, auto),
     column-gutter: 3mm,
     align: (left + top, right + top),
-    personal-row("WHO_AM_I", personal.who_am_i),
+    personal-row("AFTER_HOURS", personal.who_am_i, label-width: 18mm),
     trailing,
   )
 })
