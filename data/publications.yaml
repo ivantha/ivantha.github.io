@@ -27,19 +27,6 @@ items:
     title_casual: "Affordable RL Hyperparameter Rigor: Paired-Offset Reevaluation"
     venue_casual: "Under Review"
 
-  - venue_type: "Manuscript"
-    include_in: [casual]
-    year: 2025
-    authors:
-      - { name: "O. Mudannayake", self: true }
-      - { name: "K. Senarathne" }
-      - { name: "S. Farook" }
-      - { name: "L. De Mel" }
-      - { name: "C. Jayanaka" }
-    title: "Leveraging Spatial and Temporal Data for Enhanced Wildfire Spread Prediction"
-    title_casual: "Spatio-Temporal Deep Learning for Wildfire Spread Prediction"
-    venue_casual: "Under Review"
-
   - venue_type: "Journal"
     include_in: [academic, casual]
     year: 2025
