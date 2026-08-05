@@ -529,7 +529,7 @@
   fill: signal, tracking: 0.12em, upper(title),
 )
 
-#let cv-section(title) = {
+#let cv-section(title, below: sp-head-below) = {
   v(sp-head-above, weak: true)
   block(width: 100%, breakable: false, grid(
     columns: (auto, 1fr),
@@ -538,7 +538,7 @@
     head-label(title),
     box(width: 100%, height: 0.5pt, fill: hair),
   ))
-  v(sp-head-below, weak: true)
+  v(below, weak: true)
 }
 
 // A page-1 row: metadata right-aligned in the gutter, content in the measure.
@@ -736,7 +736,9 @@
 // particular kind of work, and it costs page-1 height (see sp-section-p1).
 #let make-experience(items, title: "Experience") = {
   set text(size: fs-body)
-  cv-section(title)
+  // Experience entries carry dense role and metadata lines, so give their
+  // section labels a slightly clearer pause than the compact page-2 sections.
+  cv-section(title, below: sp-head-below + 2pt)
   for (i, item) in items.enumerate() {
     let bullets = bullets-for(item, "casual")
     gutter-row(
