@@ -2,32 +2,42 @@
 
 Source for [ivantha.com](https://ivantha.com) — a personal site that's
 also the single source of truth for my CV. The site is rendered with
-Gatsby; the CV (academic and casual variants) is rendered with Typst.
+Astro; the CV (academic and casual variants) is rendered with Typst.
 Both consume the YAML data in `data/`.
 
 ## Quickstart
 
 ```sh
 pnpm install
-pnpm develop          # http://localhost:8000
+pnpm dev              # http://localhost:4321
 ```
 
 To build everything (PDFs + site):
 
 ```sh
-pnpm build            # runs build:cv, then gatsby build
+pnpm build            # runs build:cv, then astro build
 ```
 
 To rebuild just the CVs:
 
 ```sh
-pnpm build:cv         # produces static/cv/{academic,casual}-cv.pdf
+pnpm build:cv         # produces public/cv/{academic,casual}-cv.pdf
 pnpm build:cv:academic
 pnpm build:cv:casual
 ```
 
 Requires `typst >= 0.13` for the CV build. The site itself needs Node
 22+ (24 recommended; see `.nvmrc`) and pnpm 10+.
+
+To regenerate the social-share card (`public/og.png`, 1200×630) after
+changing the name, tagline, or research interests:
+
+```sh
+pnpm build:og
+```
+
+This is deliberately *not* part of `pnpm build` — the card is committed,
+so the deploy doesn't need `sharp` to render text on CI.
 
 ## Editing CV content
 
@@ -66,7 +76,7 @@ role_casual: "Senior DSE"               # casual override
 
 **Linking certificates and papers.** Some YAML entries support an
 optional `pdf_url:` to link a local file (e.g. cert PDFs in
-`static/certificates/` or paper PDFs in `static/papers/`). Used by the
+`public/certificates/` or paper PDFs in `public/papers/`). Used by the
 website to render `[PDF]` / `[Certificate]` links; ignored by Typst.
 
 After any YAML edit, rerun `pnpm build:cv` (or `cd cv && just`) to
@@ -75,23 +85,28 @@ refresh the PDFs.
 ## Static layout
 
 ```
-static/
+public/
 ├── cv/                  # built academic-cv.pdf + casual-cv.pdf (gitignored)
 ├── papers/              # research paper PDFs
 ├── posters/             # research / talk posters
-└── certificates/        # course + competition certificate PDFs
+├── certificates/        # course + competition certificate PDFs
+├── og.png               # social-share card (pnpm build:og)
+└── robots.txt
 ```
+
+`sitemap-index.xml` and `rss.xml` are generated at build time by
+`@astrojs/sitemap` and `src/pages/rss.xml.ts` respectively.
 
 ## CI / deployment
 
-Pushing to `main` triggers `.github/workflows/gatsby.yml`, which:
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which:
 
 1. Sets up Node 24 and Typst 0.13.
 2. Runs `pnpm install --frozen-lockfile` and `pnpm run build` (which
-   chains `build:cv` → `gatsby build`).
-3. Uploads `public/` and deploys to GitHub Pages.
+   chains `build:cv` → `astro build`).
+3. Uploads `dist/` and deploys to GitHub Pages.
 
-The CNAME is in `static/CNAME` (`ivantha.com`).
+The CNAME is in `public/CNAME` (`ivantha.com`).
 
 ## Repository history
 

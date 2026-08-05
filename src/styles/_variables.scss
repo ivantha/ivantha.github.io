@@ -3,10 +3,17 @@ $pf-primary-font: "Roboto Mono", monospace;
 $pf-secondary-font: "Roboto", sans-serif;
 
 // Links
+// Hover must read as *more* prominent than rest, so it darkens rather than
+// brightens. The old #f9a825 landed at 1.97:1 on white — hovering a link
+// actually made it harder to read.
 $pf-link-color: #1772d0;
-$pf-link-hover-color: #f9a825;
+$pf-link-hover-color: #8a5a00;
 
 // Colors
+// The site has exactly one theme (see CLAUDE.md), so the page background is
+// pinned rather than inherited from the browser canvas. Keep in sync with the
+// `theme-color` meta tag and public/manifest.json.
+$pf-page-bg: #ffffff;
 $pf-primary-color: #424242;
 $pf-secondary-color: #616161;
 $pf-cors-bg: #282d36;
@@ -18,5 +25,9 @@ $pf-scrollbar-thumb-bg: #b6b6b6;
 $pf-scrollbar-thumb-hover-bg: #555;
 
 // Navbar
+// Inactive nav links were #949494 — 3.03:1 on white, below the 4.5:1 AA floor.
 $pf-navbar-background-color: $pf-secondary-color;
-$pf-sub-nav-link-color: #949494;
+$pf-sub-nav-link-color: #6b6b6b;
+
+// Focus
+$pf-focus-ring-color: #1772d0;

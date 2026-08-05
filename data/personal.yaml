@@ -35,13 +35,16 @@ profile_entries:
     url: "https://github.com/ivantha"
     label: "@ivantha"
     label_academic: "GitHub"
+    label_web: "ivantha"
   linkedin:
     url: "https://www.linkedin.com/in/ivantha/"
     label: "in/ivantha"
     label_academic: "LinkedIn"
+    label_web: "ivantha"
   twitter:
     url: "https://twitter.com/_ivantha"
     label: "@_ivantha"
+    label_web: "_ivantha"
   scholar:
     url: "https://scholar.google.com/citations?user=2FA0RngAAAAJ&hl=en"
     label: "Google Scholar"
@@ -51,10 +54,19 @@ profile_entries:
   medium:
     url: "https://ivantha.medium.com/"
     label: "Medium"
+  researchgate:
+    url: "https://www.researchgate.net/profile/Oshan-Mudannayake"
+    label: "ResearchGate"
+  arxiv:
+    url: "https://arxiv.org/search/cs?searchtype=author&query=Mudannayake%2C+O"
+    label: "arXiv"
 
 # Per-variant profile ordering (slugs from profile_entries above).
+# `profiles_web` drives the homepage contact block; researchgate and arxiv are
+# web-only, so they stay out of the two CV lists and never reach the PDFs.
 profiles_academic: [scholar, github, kaggle, medium, linkedin]
 profiles_casual:   [homepage, linkedin, github, twitter]
+profiles_web:      [scholar, kaggle, researchgate, arxiv, twitter, linkedin, github]
 
 # Casual-only sidebar content.
 about_me: >

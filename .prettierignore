@@ -5,6 +5,9 @@ dist/
 node_modules/
 public/
 
+# Local Claude Code config (not committed; see CLAUDE.md)
+.claude/
+
 # YAML data — author's preferred indentation; Typst CV reads these too
 data/
 
