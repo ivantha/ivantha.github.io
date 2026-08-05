@@ -9,7 +9,7 @@
   stack_academic: "Reinforcement Learning, JAX, Crafter/Craftax, DDQN, WandB, Python"
   description: "Seven-experiment MSc thesis line on prescription-over-search RL agents in open-world environments."
   description_casual: "Seven-experiment MSc thesis line on RL agents — prescribed and emergent foveation, sensory curricula on pixel DDQN, GA-optimized intrinsic rewards, joint reward-sensory coevolution, and a paired-offset diagnostic for selection-bias-resistant hyperparameter reevaluation."
-  description_academic: "MSc thesis line organised across four strands — prescribed foveation, emergent foveation, sensory curricula on pixel DDQN, and joint reward-sensory coevolution on Craftax — with a cross-cutting thread on selection-bias-resistant hyperparameter reevaluation (Paired-Offset Reevaluation). Two papers from the line are currently under review."
+  description_academic: "MSc thesis line organised across four strands — prescribed foveation, emergent foveation, sensory curricula on pixel DDQN, and joint reward-sensory coevolution on Craftax — with a cross-cutting thread on selection-bias-resistant hyperparameter reevaluation (Paired-Offset Reevaluation). One paper from the line was accepted at the GlobalSouthAI workshop at IJCAI-ECAI 2026."
 
 - id: pupila-vlm
   include_in: [academic]

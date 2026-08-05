@@ -47,13 +47,20 @@
   #render-publications(pubs-items, pubs-doc.equal_contribution_note)
 ]
 
-#r-section("Under Review")[
-  #render-preprints(under-review)
-]
+// Both lists render straight from data/ with no `include_in` filter, so either
+// can empty out. `r-section` always draws its header and rule, so guard here —
+// an empty list would otherwise strand a bare heading over blank space.
+#if under-review.len() > 0 {
+  r-section("Under Review")[
+    #render-preprints(under-review)
+  ]
+}
 
-#r-section("Preprints")[
-  #render-preprints(preprints)
-]
+#if preprints.len() > 0 {
+  r-section("Preprints")[
+    #render-preprints(preprints)
+  ]
+}
 
 #r-section("Professional Experience")[
   #render-experience(prof-exp)
