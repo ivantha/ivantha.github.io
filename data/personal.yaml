@@ -76,11 +76,10 @@ about_me: >
   research in reinforcement learning and computer vision.
 interests_casual: "Reinforcement Learning, Machine Learning, Artificial Intelligence, Game Theory, Computer Games, Computer Vision"
 who_am_i:
-  - "Avid reader"
-  - "Video gamer"
-  - "Loves traveling"
-  - "Likes food and cooking"
-  - "An otaku"
+  - "Reading"
+  - "Video games"
+  - "Learning to swim"
+  - "Cooking"
 
 # Academic-only header row.
 interests_academic: "Reinforcement Learning | Machine Learning | Artificial Intelligence | Game Theory | Computer Games | Computer Vision"
