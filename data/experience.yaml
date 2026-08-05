@@ -5,19 +5,18 @@
 # `bullets`       — both variants render these under the role; academic shows
 #                   each bullet's stack as a small muted sub-line.
 # `advisor`       — academic research rows show "· Advised by …"; casual omits.
-# `employment_type` — e.g. "Full-time", "Contract"; academic appends "(…)" to
-#                   the role; casual omits (role stays clean).
+# Employment arrangement (contract / full-time / part-time) is deliberately
+# not recorded or rendered anywhere.
 # Date canonicalized to user-reconciled values (see plan).
 
 - id: paradigmai-lead
   include_in: [academic, casual]
   category: professional
   role_academic: "Lead Machine Learning Engineer"
-  role_casual: "Lead ML Engineer (Contract)"
+  role_casual: "Lead ML Engineer"
   company: "ParadigmAI"
   location: "Colombo"
   dates: "Aug 2023 - Present"
-  employment_type: "Contract"
   bullets:
     - text: "Built an LLM-backed platform that predicts a respondent's survey answers from their prior response history."
       stack: "FastAPI, Python, React, TypeScript, LangChain, OpenAI, AWS"
@@ -44,7 +43,6 @@
   company: "Cohere For AI"
   location: "Sri Lanka"
   dates: "Mar 2023 - Apr 2024"
-  employment_type: "Part-time"
   advisor: "Sara Hooker"
   bullets:
     - text: "Built the web platform used to collect human annotations and contributed data for the Aya multilingual instruction-tuning dataset; published at ACL 2024."
@@ -57,7 +55,6 @@
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
   dates: "Nov 2021 - Aug 2023"
-  employment_type: "Full-time"
   bullets:
     - text: "Trained and deployed classification, regression, and clustering models driving product adoption and user-engagement metrics."
     - text: "Built internal analytics dashboards exposing model performance, A/B test outcomes, and business KPIs."
@@ -66,13 +63,11 @@
 - id: ucsc-research-assistant
   include_in: [academic, casual]
   category: research
-  role_academic: "Research Assistant"
-  role_casual: "Research Assistant (Contract)"
+  role: "Research Assistant"
   company: "University of Colombo School of Computing"
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
   dates: "May 2021 - Dec 2024"
-  employment_type: "Part-time"
   advisor: "Dr. Noel Fernando"
   bullets:
     - text: "Applied classical and deep time-series models to forecast long-horizon municipal solid-waste generation in Sri Lankan cities; published in IEEE Access."
@@ -85,7 +80,6 @@
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
   dates: "Apr 2021 - Oct 2021"
-  employment_type: "Full-time"
   bullets:
     - text: "Performed exploratory analysis on product-usage telemetry and built predictive models to surface adoption trends."
       text_casual: "Analyzed product-usage telemetry and built predictive models to surface adoption trends; scoped ML opportunities with product and engineering stakeholders."
@@ -95,13 +89,11 @@
 - id: score-lab-researcher
   include_in: [academic, casual]
   category: research
-  role_academic: "Researcher"
-  role_casual: "Researcher (Contract)"
+  role: "Researcher"
   company: "Sustainable Computing Research (SCoRe) Lab"
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
   dates: "Aug 2020 - Dec 2021"
-  employment_type: "Part-time"
   advisor: "Dr. Mohamed Nabeel"
   bullets:
     - text: "Developed an ML-based detector for malicious internet domains using lexical, registration, and DNS-resolution features."
@@ -114,7 +106,6 @@
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
   dates: "Mar 2020 - Mar 2021"
-  employment_type: "Full-time"
   bullets:
     - text: "Contributed to the WSO2 Identity Server on the product-development track, shipping new features into mainline releases."
       text_casual: "Shipped features into WSO2 Identity Server on the product-development track and served on the patch-services team triaging and backporting fixes across supported customer releases."
@@ -130,7 +121,6 @@
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
   dates: "Jul 2018 - Jan 2019"
-  employment_type: "Full-time"
   advisor: "Dr. Nalin Ranasinghe"
   bullets:
     - text: "Prototyped a privacy-preserving training layer over TensorFlow enabling model fitting on homomorphically encrypted tensors across a distributed worker network."
@@ -160,7 +150,6 @@
   company: "Language Matters"
   location: "Sri Lanka"
   dates: "Jan 2018 - Mar 2020"
-  employment_type: "Contract"
   advisor: "Dr. Leonie Solomons"
   bullets:
     - text: "Developed TessTA, a production OCR system for Sinhala: fine-tuned the Tesseract engine on a hand-curated Sinhala corpus and diagnosed and resolved script-specific failure modes (character decomposition, ligature segmentation, diacritic attachment) to lift recognition accuracy on low-resource Sinhala text."
@@ -173,7 +162,6 @@
   company: "Dreamteam IT Solutions"
   location: "Sri Lanka"
   dates: "Feb 2016 - Jan 2017"
-  employment_type: "Contract"
   advisor: "Dr. Gihan Kuruppu"
   bullets:
     - text: "Built an instrumented Smart Glove prototype (FSR-400 pressure array + Arduino) capturing hand pressure distribution and acceleration to model cricket batting grip dynamics."
@@ -190,7 +178,6 @@
   company: "Dreamteam IT Solutions"
   location: "Sri Lanka"
   dates: "Jan 2016 - Jun 2016"
-  employment_type: "Contract"
   bullets:
     - text: "Delivered Java preparation sessions for the Oracle Certified Java Programmer (OCJP, Java SE 6) certification, covering the full certification syllabus."
     - text: "Taught an introductory robotics course centered on line-following robots, covering sensor calibration, simple control loops, and microcontroller programming."

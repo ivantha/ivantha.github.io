@@ -38,16 +38,16 @@
   content: "I joined [[org:score]] to work on a research to find ways to match internet domain entities using ML techniques with [[person:mohammadnabeel]] @[[org:qcri]]."
 
 - date: "Mar 02, 2020"
-  content: "I joined [[org:wso2]] IAM team as a full-time Software Engineer."
+  content: "I joined [[org:wso2]] IAM team as a Software Engineer."
 
 - date: "Jul 01, 2018"
-  content: "I joined [[org:ucsc]] as a full-time Research Intern to work under the topic 'Machine Learning over Encrypted Data'. I will be supervised by [[person:nalinranasinghe]]."
+  content: "I joined [[org:ucsc]] as a Research Intern to work under the topic 'Machine Learning over Encrypted Data'. I will be supervised by [[person:nalinranasinghe]]."
 
 - date: "Apr 23, 2018"
   content: "I got selected for the GSoC 2018 under [[org:cernhsf]] | [[org:owncloud]] | [[org:aarnet]] to carry out the project [Petabyte-Scale Cloud Storage File Manager](https://summerofcode.withgoogle.com/archive/2018/projects/5334913901395968)."
 
 - date: "Jan 18, 2018"
-  content: "I started working part-time on developing an OCR solution for Sinhala language using Tesseract OCR Engine in collaboration with [[person:leoniesolomons]]."
+  content: "I started working on developing an OCR solution for Sinhala language using Tesseract OCR Engine in collaboration with [[person:leoniesolomons]]."
 
 - date: "Feb 05, 2016"
   content: "I joined the R&D team at [[org:dreamteam]] until I start my bachelors at [[org:ucsc]]."
