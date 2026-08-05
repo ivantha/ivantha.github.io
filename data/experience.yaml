@@ -37,15 +37,18 @@
       stack: "FastAPI, Python, Celery, OpenAI Codex, CloudFormation, LocalStack"
 
 - id: cohere-researcher
-  include_in: [academic]
+  include_in: [academic, casual]
   category: research
   role: "Community Researcher"
   company: "Cohere For AI"
-  location: "Sri Lanka"
+  location_academic: "Sri Lanka"
+  location_casual: "Remote"
   dates: "Mar 2023 - Apr 2024"
   advisor: "Sara Hooker"
   bullets:
     - text: "Built the web platform used to collect human annotations and contributed data for the Aya multilingual instruction-tuning dataset; published at ACL 2024."
+      text_casual: "Built the web platform used to collect multilingual human annotations for the Aya instruction-tuning dataset (ACL 2024) — SSO, annotation workflow, analytics, RTL support."
+      stack_casual: "Next.js, Nest.js, PostgreSQL, GCP"
 
 - id: wso2-senior-dse
   include_in: [academic, casual]
