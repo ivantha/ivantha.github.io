@@ -114,14 +114,72 @@ const personSchema = {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImageUrl} />
         <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
-        <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-9YY9CJLD5V"></script>
+        {
+            /* `arguments`, not a rest array — and this is not a style choice.
+            gtag.js decides whether a dataLayer entry is a command by testing
+            `Object.prototype.toString.call(entry) === "[object Arguments]"`. A
+            real Array fails that test and gets routed to a legacy branch that
+            reads entry[0] as a dotted method path and swallows the failure in a
+            bare catch. The previous `(...args) => push(args)` form therefore
+            dropped both commands silently, and since the "js" command is the only
+            thing that emits the gtm.js event the GA4 configuration tag fires on,
+            this property recorded nothing at all. Verified by A/B test against
+            the live property: the array form sends zero /g/collect beacons, this
+            form sends page_view.
+
+            The bootstrap stays synchronous — it is ~200 bytes and it *is* the
+            queue, so a command issued before gtag.js lands is buffered rather
+            than lost. Only the fetch is deferred: gtag.js is ~160 kB over the
+            wire against ~43 kB for this entire site, so it has no business
+            competing with first paint.
+
+            requestIdleCallback carries a timeout because a hidden tab may never
+            report idle; the setTimeout branch covers Safari, which had no
+            requestIdleCallback before 16.4.
+
+            No preconnect to googletagmanager.com — opening that connection early
+            is exactly the cost being deferred here. */
+        }
         <script is:inline>
             window.dataLayer = window.dataLayer || []
-            function gtag(...args) {
-                window.dataLayer.push(args)
+            // `arguments` is the contract with gtag.js, not a legacy style, and
+            // taking prefer-rest-params' advice here is what broke analytics
+            // before: a rest array is not an Arguments object, gtag.js
+            // type-checks for exactly that, and the mismatch fails silently.
+            // Do not "modernise" this line.
+            function gtag() {
+                // eslint-disable-next-line prefer-rest-params
+                window.dataLayer.push(arguments)
             }
             gtag("js", new Date())
             gtag("config", "G-9YY9CJLD5V")
+
+            const loadGtag = () => {
+                const tag = document.createElement("script")
+                tag.async = true
+                tag.src = "https://www.googletagmanager.com/gtag/js?id=G-9YY9CJLD5V"
+                document.head.appendChild(tag)
+            }
+
+            const scheduleGtag = () => {
+                if ("requestIdleCallback" in window) {
+                    window.requestIdleCallback(loadGtag, { timeout: 3000 })
+                } else {
+                    window.setTimeout(loadGtag, 2000)
+                }
+            }
+
+            // Wait for `load` before even asking for idle. Idle on its own is not
+            // enough: on a fast connection the browser reports idle while it is
+            // still fetching this page's own fonts and hero image, and gtag.js
+            // then competes with them for bandwidth — measured starting at 10 ms
+            // against a DOMContentLoaded of 34 ms. After `load` there is nothing
+            // left of ours for it to take priority from.
+            if (document.readyState === "complete") {
+                scheduleGtag()
+            } else {
+                window.addEventListener("load", scheduleGtag, { once: true })
+            }
         </script>
     </head>
     <body>
