@@ -18,6 +18,7 @@
         "build:cv:academic": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ public/cv/academic-cv.pdf",
         "build:cv:casual": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ public/cv/casual-cv.pdf",
         "build:og": "node scripts/build-og.mjs",
+        "build:icons": "node scripts/build-icons.mjs",
         "preview": "astro preview",
         "lint": "astro check && eslint . && prettier --check .",
         "format": "prettier --write ."
