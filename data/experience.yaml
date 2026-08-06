@@ -20,6 +20,19 @@
   bullets:
     - text: "Conducting research with KIXLAB, the human-computer interaction lab at KAIST."
 
+- id: colombo-hci-lab-research-assistant
+  include_in: [academic]
+  category: research
+  role: "Research Assistant"
+  company: "Colombo HCI Lab, University of Colombo School of Computing"
+  location_academic: "Sri Lanka"
+  location_casual: "Colombo"
+  dates: "Mar 2025 - Present"
+  advisor: "Dr. Dilrukshi Gamage"
+  bullets:
+    - text: "Co-authoring research on culturally-contextualised media-literacy interventions for AI-generated content in Global South settings."
+    - text: "Built the annotation interface and data-collection pipeline for a South Asian deepfake detection model, in an international collaboration spanning Sri Lanka, Nepal, Pakistan, and Switzerland."
+
 - id: paradigmai-lead
   include_in: [academic, casual]
   category: professional
