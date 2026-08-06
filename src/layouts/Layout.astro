@@ -56,15 +56,45 @@ const personSchema = {
         <link rel="canonical" href={canonicalUrl} />
         <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
         <link rel="alternate" type="application/rss+xml" title="Oshan Mudannayake — News" href="/rss.xml" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         {
-            /* Real 600 cuts, not a synthesised bold off a single 400. The italic is
-            load-bearing too — publication venues are set in it. */
+            /* The fonts are served from this origin now (src/styles/_fonts.scss),
+            so the two preconnects to Google went with them. Real 600 cuts, not a
+            synthesised bold off a single 400; the italic is load-bearing too —
+            publication venues are set in it.
+
+            These preloads exist because the @font-face blocks live in the
+            stylesheet Astro appends at the *end* of <head>, below everything
+            here. Without them the browser has to fetch that sheet, parse it, lay
+            out, discover a glyph needs a face, and only then start the font — one
+            round trip too many on a cold connection. A preload is picked up by
+            the preload scanner before any CSSOM exists, so the fonts arrive
+            alongside the stylesheet rather than behind it.
+
+            Only the two upright Mono cuts, 20 kB together. Mono is the default
+            body face and carries the rail, the nav, every h1 and every h3, so it
+            is needed above the fold on every page without exception. The Mono
+            italic and Sans (40 kB on its own, and absent from several pages
+            entirely) are left to font-display: swap — putting either ahead of the
+            stylesheet would delay the one resource that actually unblocks
+            rendering in order to fetch bytes a given page may never use.
+
+            `crossorigin` is not decoration. Fonts are fetched in CORS mode even
+            same-origin, and a preload without it does not match the later font
+            request: the file downloads twice and the preload becomes a net loss. */
         }
         <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;600&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            href="/fonts/ibm-plex-mono-latin-400-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/ibm-plex-mono-latin-600-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
         />
         <title>{fullTitle}</title>
         <meta name="description" content={description} />
