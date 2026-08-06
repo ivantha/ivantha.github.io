@@ -34,7 +34,16 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/"
                 const isActive = !external && (href === "/" ? currentPath === "/" : currentPath.startsWith(href))
                 const className = isActive ? "active" : undefined
                 return external ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer" class={className}>
+                    // `external` here means "opens in a new tab", not "another
+                    // origin" — the CV is a local PDF, so site-wide prefetch would
+                    // happily pull ~190 kB on hover. Opt it out explicitly.
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class={className}
+                        data-astro-prefetch="false"
+                    >
                         {label}
                     </a>
                 ) : (
