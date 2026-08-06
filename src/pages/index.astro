@@ -68,6 +68,11 @@ const bio: string[] = personal?.data.bio_web ?? []
             <div class="about-me">
                 <div class="profile-card">
                     <div class="img-container">
+                        {
+                            /* eager only says "do not lazy-load"; it still queues at
+                            default priority behind the nine contact icons below.
+                            This is the LCP element on the one page that has one. */
+                        }
                         <Image
                             src={oimImg}
                             alt="Oshan Mudannayake profile photo"
@@ -75,6 +80,7 @@ const bio: string[] = personal?.data.bio_web ?? []
                             height={540}
                             class="article-img"
                             loading="eager"
+                            fetchpriority="high"
                         />
                     </div>
                     <div class="profile-description">
