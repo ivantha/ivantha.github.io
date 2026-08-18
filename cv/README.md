@@ -13,7 +13,9 @@ fonts/             # shared font pool (Linux Libertine, IBM Plex Sans,
 variants/
   academic/        # serif, Linux Libertine, 6 pages. main.typ + renderers.typ
   casual/          # dark, IBM Plex Sans + JetBrains Mono, 2 pages.
-  ats/             # plain single column, 3 pages. Machine-readable, not pretty.
+  ats/             # plain single column, 3 pages. Machine-readable first,
+                   # but readable too — see the spacing ladder in its
+                   # renderers.typ.
 build/             # generated PDFs (gitignored)
 ```
 
@@ -140,4 +142,35 @@ the check still has teeth as well:
 
 ```sh
 python3 scripts/check-ats.py --expect-fail public/cv/casual-cv.pdf
+```
+
+The check also asserts that the page footer is glued to nothing on either side.
+That footer exists only because of those two assertions — the casual variant's
+prints flush against the next heading and extracts as `1 / 2PROJECTS`. If they
+ever fire, remove the footer rather than the assertion.
+
+### Two things not to do to this variant
+
+**Don't add tracking to the section labels.** It is the obvious way to smarten
+up bare uppercase headings, and `variants/casual/renderers.typ` does exactly
+that. Here it extracts as `E X P E R I E N C E`, and section labels are what a
+résumé parser segments a document on — so it would break the one thing the
+variant exists for. It would also *pass* `check-ats.py`, whose shredding
+heuristic only counts lowercase singletons.
+
+**Don't change one spacing constant on its own.** They are a monotone ladder
+(`sp-bind < lead-list < lead-body < sp-item < sp-entry < sp-section`), each
+written as the baseline-to-baseline distance it should produce, and the ordering
+is the whole point — the first cut of this variant had it inverted, with two
+separate bullets sitting closer together than two lines of one sentence. The
+reasoning and the per-constant instance counts are in `variants/ats/renderers.typ`.
+
+### Keeping it to three pages
+
+The document is budgeted to exactly three pages and has ~44pt of slack. Adding
+content can tip it to four, which is not a failure but is a regression worth
+noticing, so check after any `data/` change that lands in the casual CV:
+
+```sh
+pdfinfo public/cv/ats-cv.pdf | grep Pages
 ```

@@ -53,6 +53,15 @@ FORBIDDEN = [
     ("decorative underscore fused to the surname", re.compile(r"Mudannayake_")),
     ("page number fused to a section heading", re.compile(r"\d\s*/\s*\d[A-Z]{3,}")),
     ("unstripped #super markup", re.compile(r"#super")),
+    # The footer is the one piece of page furniture the ATS variant allows, and
+    # these two patterns are the whole reason it is allowed. A page footer is a
+    # KNOWN defect of the casual CV, whose "1 / 2" prints flush against the next
+    # page's first heading and extracts as the single token "2PROJECTS". So both
+    # sides are asserted: nothing may run into the name, and the page count may
+    # not run into whatever follows it. If either fires, the footer goes — not
+    # the assertion.
+    ("footer fused to preceding text", re.compile(r"\SOshan Mudannayake — Page")),
+    ("footer fused to following text", re.compile(r"Page \d+ of \d+\S")),
 ]
 
 
