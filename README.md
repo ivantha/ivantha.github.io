@@ -2,8 +2,8 @@
 
 Source for [ivantha.com](https://ivantha.com) — a personal site that's
 also the single source of truth for my CV. The site is rendered with
-Astro; the CV (academic and casual variants) is rendered with Typst.
-Both consume the YAML data in `data/`.
+Astro; the CV (academic, casual, and ATS variants) is rendered with
+Typst. All consume the YAML data in `data/`.
 
 ## Quickstart
 
@@ -21,10 +21,19 @@ pnpm build            # runs build:cv, then astro build
 To rebuild just the CVs:
 
 ```sh
-pnpm build:cv         # produces public/cv/{academic,casual}-cv.pdf
+pnpm build:cv         # produces public/cv/{academic,casual,ats}-cv.pdf + ats-cv.txt
 pnpm build:cv:academic
 pnpm build:cv:casual
+pnpm build:cv:ats
+pnpm check:cv:ats     # assert the ATS PDF survives text extraction
 ```
+
+The **ATS variant** is a deliberately plain single-column rendering of the
+casual CV, for job-application forms that machine-parse an upload. It ships
+alongside a plain-text twin (`ats-cv.txt`) for forms that ask you to paste
+instead. It is published at `/cv/ats-cv.pdf` but linked from nowhere — the
+casual CV remains the one the site shows. See `cv/README.md` for why it exists
+and how to verify it.
 
 Requires `typst >= 0.13` for the CV build. The site itself needs Node
 22+ (24 recommended; see `.nvmrc`) and pnpm 10+.
@@ -53,7 +62,7 @@ section you want to change:
 | `preprints.yaml`, `under-review.yaml` | preprints, under-review (academic CV only) |
 | `projects.yaml` | portfolio projects |
 | `research.yaml` | research projects (website only — see below) |
-| `skills.yaml` | technical skills (casual CV only) |
+| `skills.yaml` | technical skills (casual + ATS CVs) |
 | `awards.yaml` | achievements / honours |
 | `certifications.yaml` | course / specialization certs |
 | `talks.yaml`, `workshops.yaml` | talks (poster/oral/invited), workshops attended |
@@ -68,6 +77,10 @@ render in file order.
 **Variant filtering.** Each YAML entry may carry `include_in: [academic, casual]`
 to control which CV variant it appears in. Missing tag = visible
 everywhere; `include_in: []` (empty list) = hidden from both.
+
+There is no `ats` tag: that variant sets `variant = "casual"` and renders the
+casual CV's content through a different renderer, so anything tagged `casual`
+appears in the ATS outputs too.
 
 The website renders the union of academic + casual entries. To hide an
 entry from the website without changing the CVs, you'd need to add a
