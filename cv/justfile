@@ -1,7 +1,7 @@
 typst_flags := "--root .. --font-path fonts"
 out := "build"
 
-default: academic casual
+default: academic casual ats
 
 academic:
     mkdir -p {{out}}
@@ -11,11 +11,18 @@ casual:
     mkdir -p {{out}}
     typst compile {{typst_flags}} variants/casual/main.typ {{out}}/casual-cv.pdf
 
+ats:
+    mkdir -p {{out}}
+    typst compile {{typst_flags}} variants/ats/main.typ {{out}}/ats-cv.pdf
+
 watch-academic:
     typst watch {{typst_flags}} variants/academic/main.typ {{out}}/academic-cv.pdf
 
 watch-casual:
     typst watch {{typst_flags}} variants/casual/main.typ {{out}}/casual-cv.pdf
+
+watch-ats:
+    typst watch {{typst_flags}} variants/ats/main.typ {{out}}/ats-cv.pdf
 
 clean:
     rm -rf {{out}}
