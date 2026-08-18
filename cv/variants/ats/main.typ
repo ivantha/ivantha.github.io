@@ -40,10 +40,28 @@
   author: personal.first_name + " " + personal.last_name,
 )
 
-// No page fill, no footer, no page numbers. The casual variant's footer prints
-// "1 / 2" flush against the top of the next page's first heading, which
-// extracts as the single token "2PROJECTS".
-#set page(paper: "a4", margin: (x: 18mm, y: 16mm))
+// No page fill. The footer is the one piece of page furniture here, and it is
+// permitted only because it is TESTED: the casual variant's footer prints
+// "1 / 2" flush against the top of the next page's first heading and extracts
+// as the single token "2PROJECTS", so scripts/check-ats.py asserts this one is
+// glued to nothing on either side. See render-footer in renderers.typ.
+//
+// Margins stay at 18mm horizontally, which puts a full line at ~100 characters —
+// past the 45-75 range that reads comfortably, and the one typographic defect
+// this document keeps. Widening them is the obvious fix and it costs pages:
+// every millimetre forces wraps, and the three-page budget is hard. The three
+// pages win. If that budget is ever relaxed, this is the first thing to spend
+// it on.
+//
+// The vertical 15mm is 1mm tighter than the horizontal rhythm would suggest,
+// and it is not a design choice: it is the last 17pt (2mm x 3 pages) needed to
+// pull the Interests section back off a fourth page. Restoring 16mm means
+// finding 17pt in the ladder in renderers.typ first.
+#set page(
+  paper: "a4",
+  margin: (x: 18mm, y: 15mm),
+  footer: render-footer(personal),
+)
 
 // kerning: false is the load-bearing setting in this file after `variant`, and
 // it is set on measurement, not taste. Typst emits OpenType kern pairs as TJ
@@ -57,12 +75,12 @@
 //
 // hyphenate: false so no word is ever broken across a line by a soft hyphen —
 // a parser cannot tell that apart from a real one.
-#set text(font: body-font, size: fs-body, fill: black, hyphenate: false, kerning: false)
-// Loose enough that a wrapped bullet line reads as continuation rather than as
-// the next bullet. This is the one concession to human legibility in the file:
-// a recruiter does sometimes glance at the machine copy, and the document flows
-// freely, so vertical space costs nothing but page count.
-#set par(justify: false, leading: 0.7em, spacing: 0.7em)
+#set text(font: body-font, size: fs-body, fill: ink, hyphenate: false, kerning: false)
+
+// lead-body, not a literal: it is one rung of the spacing ladder documented in
+// renderers.typ, and setting it here independently is how that ladder stopped
+// being monotone in the first place.
+#set par(justify: false, leading: lead-body, spacing: sp-item)
 
 // Deliberately no `show link` rule and no link() calls anywhere: every URL in
 // this document is plain text. See display-url in renderers.typ.
