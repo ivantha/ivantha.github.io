@@ -20,6 +20,7 @@
   description: "Research prototype pairing an agent's written report with the provenance graph that produced it."
   description_casual: "Research prototype built during my visiting researcher position at KIXLAB (KAIST). An agent answers a question two ways at once: a written report on one side, the graph of steps that produced it on the other. Every figure in the report is validated against the computation that emitted it, so an unsupported number cannot reach the reader."
   description_academic: "Research prototype built at KIXLAB (KAIST) to probe when a graph-structured workflow representation helps a reader more than a plain written answer, and which of its properties does the work. A planner emits a typed DAG and computes nothing; a deterministic runtime executes it with a content-addressed cache and emits named scalar facts; a composer may cite only those facts. Attribution is validated before render, so an unsupported figure is structurally impossible."
+  url: "https://github.com/ivantha/workflow-editor"
   links:
     - label: "Report view"
       url: "/projects/workflow-editor/report-view.png"
