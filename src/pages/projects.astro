@@ -38,6 +38,24 @@ const items = all.filter((entry) => isWebVisible(entry.data))
                                     </>
                                 )}
                                 {description && <span class="content-text">{description}</span>}
+                                {item.links && item.links.length > 0 && (
+                                    <span class="tools-text">
+                                        Screenshots:{" "}
+                                        {item.links.map((link: { label: string; url: string }, i: number) => (
+                                            <>
+                                                {i > 0 && " · "}
+                                                <a
+                                                    class="link"
+                                                    href={link.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    {link.label}
+                                                </a>
+                                            </>
+                                        ))}
+                                    </span>
+                                )}
                             </li>
                         )
                     })

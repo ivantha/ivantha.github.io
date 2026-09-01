@@ -16,9 +16,14 @@
   company: "KIXLAB (KAIST Interaction Lab)"
   location_academic: "Republic of Korea (Remote)"
   location_casual: "Remote"
-  dates: "Aug 2026 - Present"
+  dates: "Jun 2026 - Aug 2026"
+  advisor: "Prof. Juho Kim"
   bullets:
-    - text: "Conducting research with KIXLAB, the human-computer interaction lab at KAIST."
+    - text: "Investigated when a graph-structured workflow representation helps a user more than a plain written answer, and which of its properties does the work."
+    - text: "Assembled a nineteen-paper related-work library and coded nine node-link systems against a common grid, finding that incremental re-execution depends on standing-dependency edges plus a cache rather than on graph structure as such, and that seven distinct edge meanings are conflated across the literature."
+      text_casual: "Assembled a nineteen-paper related-work library and coded nine node-link systems against a common grid, finding that incremental re-execution depends on standing-dependency edges plus a cache rather than on graph structure as such."
+    - text: "Built Workflow Editor, a dual-view research prototype pairing an agent's written report with the provenance graph that produced it, in which every figure is validated against the computation that emitted it before the report renders."
+      stack: "TypeScript, React, Express, Gemini, GCP Cloud Run"
 
 - id: colombo-hci-lab-research-assistant
   include_in: [academic]

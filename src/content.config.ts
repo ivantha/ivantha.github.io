@@ -130,6 +130,16 @@ const projects = defineCollection({
         description_academic: z.string().optional(),
         description_casual: z.string().optional(),
         url: z.string().optional(),
+        // Web-only: supporting links (screenshots, demos). The Typst CVs read
+        // projects.yaml directly and ignore this key.
+        links: z
+            .array(
+                z.object({
+                    label: z.string(),
+                    url: z.string(),
+                }),
+            )
+            .optional(),
     }),
 })
 

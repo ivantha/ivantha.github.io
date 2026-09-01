@@ -11,6 +11,23 @@
   description_casual: "Seven-experiment MSc thesis line on RL agents — prescribed and emergent foveation, sensory curricula on pixel DDQN, GA-optimized intrinsic rewards, joint reward-sensory coevolution, and a paired-offset diagnostic for selection-bias-resistant hyperparameter reevaluation."
   description_academic: "MSc thesis line organised across four strands — prescribed foveation, emergent foveation, sensory curricula on pixel DDQN, and joint reward-sensory coevolution on Craftax — with a cross-cutting thread on selection-bias-resistant hyperparameter reevaluation (Paired-Offset Reevaluation). One paper from the line was accepted at the GlobalSouthAI workshop at IJCAI-ECAI 2026."
 
+- id: workflow-editor
+  include_in: [academic, casual]
+  name_casual: "Workflow Editor — Report + Provenance Graph"
+  name_academic: "Workflow Editor: Dual-View Provenance for Agent-Generated Analyses"
+  stack_casual: "HCI | LLM Agents | Provenance | TypeScript | React | Gemini"
+  stack_academic: "HCI, LLM Agents, Provenance, TypeScript, React, Gemini"
+  description: "Research prototype pairing an agent's written report with the provenance graph that produced it."
+  description_casual: "Research prototype built during my visiting researcher position at KIXLAB (KAIST). An agent answers a question two ways at once: a written report on one side, the graph of steps that produced it on the other. Every figure in the report is validated against the computation that emitted it, so an unsupported number cannot reach the reader."
+  description_academic: "Research prototype built at KIXLAB (KAIST) to probe when a graph-structured workflow representation helps a reader more than a plain written answer, and which of its properties does the work. A planner emits a typed DAG and computes nothing; a deterministic runtime executes it with a content-addressed cache and emits named scalar facts; a composer may cite only those facts. Attribution is validated before render, so an unsupported figure is structurally impossible."
+  links:
+    - label: "Report view"
+      url: "/projects/workflow-editor/report-view.png"
+    - label: "Workflow graph"
+      url: "/projects/workflow-editor/workflow-graph.png"
+    - label: "Step inspected"
+      url: "/projects/workflow-editor/step-inspected.png"
+
 - id: pupila-vlm
   include_in: [academic]
   name_academic: "Pupila-VLM — Self-Distilling Small Vision-Language Models"
