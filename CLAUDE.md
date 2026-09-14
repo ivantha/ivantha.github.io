@@ -48,3 +48,18 @@ The only exceptions are when I explicitly ask for one:
 
 Absent one of those, don't switch branches, don't create branches, and don't
 create worktrees.
+
+## Unlisted pages
+
+`public/reclusive-raven/` holds two pages that are **not part of the academic site**: the home
+page and privacy policy that the Google OAuth consent screen for Oshan's personal tools links to
+(GCP project `reclusive-raven`, app "Flux"). Academic visitors must not be able to reach them, so:
+
+- They are static HTML in `public/`, which Astro copies untouched. That keeps them out of the nav
+  rail, the layout, and the sitemap. Don't convert them into `src/pages/` routes.
+- Each carries `<meta name="robots" content="noindex, nofollow">`.
+- Nothing on the site links to them. Don't add a link, and don't list the path in `robots.txt`,
+  which is public and would advertise it.
+
+They are orphans on purpose. Don't delete them as dead files: Google publishing for those tools
+depends on both URLs staying live.
