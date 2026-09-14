@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--
+            Deliberately unlisted. This is the home page Google's OAuth consent
+            screen links to for the Reclusive Raven tools, and it is kept apart
+            from the academic site: it lives in public/ so Astro copies it as-is,
+            which keeps it out of the nav rail and the sitemap, and noindex keeps
+            it out of search results. Nothing on the main site links here; keep
+            it that way, and don't list the path in robots.txt, which is public.
+        -->
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="color-scheme" content="light" />
+        <meta name="theme-color" content="#fbfaf7" />
+        <title>Reclusive Raven</title>
+        <link rel="icon" href="/favicon-32.png" sizes="32x32" />
+        <style>
+            @font-face {
+                font-family: "IBM Plex Mono";
+                src: url("/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+                font-weight: 400;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: "IBM Plex Mono";
+                src: url("/fonts/ibm-plex-mono-latin-600-normal.woff2") format("woff2");
+                font-weight: 600;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: "IBM Plex Sans";
+                src: url("/fonts/ibm-plex-sans-latin-wght-normal.woff2") format("woff2");
+                font-weight: 100 700;
+                font-display: swap;
+            }
+            html {
+                color-scheme: light;
+                background-color: #fbfaf7;
+            }
+            body {
+                max-width: 40rem;
+                margin: 0 auto;
+                padding: 4rem 1.25rem;
+                color: #2f3136;
+                font: 1rem/1.65 "IBM Plex Sans", system-ui, sans-serif;
+            }
+            h1,
+            h2,
+            .meta {
+                font-family: "IBM Plex Mono", ui-monospace, monospace;
+            }
+            h1,
+            h2 {
+                color: #17191c;
+                font-weight: 600;
+                line-height: 1.25;
+            }
+            h1 {
+                margin: 0 0 0.25rem;
+                font-size: 1.6rem;
+            }
+            h2 {
+                margin: 2.5rem 0 0.5rem;
+                padding-bottom: 0.35rem;
+                border-bottom: 1px solid #ddd8cc;
+                font-size: 1.05rem;
+            }
+            .meta {
+                margin: 0 0 2rem;
+                color: #5c5a52;
+                font-size: 0.85rem;
+            }
+            a {
+                color: #1a5fb4;
+            }
+            a:hover {
+                color: #0f3f7a;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Reclusive Raven</h1>
+        <p class="meta">personal tools · Oshan Mudannayake</p>
+
+        <p>
+            Reclusive Raven is the name I file my own tools under: small programs I write to run
+            errands for myself and, now and then, my family. They run on my computer, and nobody
+            else can sign up for them.
+        </p>
+
+        <h2>Flux</h2>
+        <p>
+            Flux keeps track of job alerts. Once the owner of a Gmail account connects it, Flux
+            reads the job-alert emails that arrive there, pulls out the listings, and checks them
+            against the filters that person has saved. The results go into a database on my
+            computer and, if they connect one, a Google Sheet of their own.
+        </p>
+
+        <h2>Access to a Google account</h2>
+        <p>
+            Connecting an account brings up Google's consent screen, which asks for two things.
+            Gmail access lets Flux read and label job alerts, and send the digests and job
+            applications the owner sets up. Sheets access lets it keep their connected spreadsheet
+            up to date. The <a href="/reclusive-raven/privacy/">privacy policy</a> explains what
+            happens to that data.
+        </p>
+    </body>
+</html>
