@@ -249,6 +249,11 @@ const volunteering = defineCollection({
     schema: stringListSchema,
 })
 
+const reviewing = defineCollection({
+    loader: () => loadYamlStringList("reviewing.yaml"),
+    schema: stringListSchema,
+})
+
 export const collections = {
     personal,
     publications,
@@ -264,4 +269,5 @@ export const collections = {
     workshops,
     mentoring,
     volunteering,
+    reviewing,
 }

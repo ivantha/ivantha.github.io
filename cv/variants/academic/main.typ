@@ -22,6 +22,7 @@
 #let open-source    = yaml("/data/open-source.yaml")
 #let skills         = yaml("/data/skills.yaml")
 #let volunteering   = yaml("/data/volunteering.yaml")
+#let reviewing      = yaml("/data/reviewing.yaml")
 
 #set page(paper: "a4", margin: (top: 0.55in, bottom: 0.55in, x: 0.65in), fill: c-bg)
 #set text(
@@ -88,6 +89,10 @@
 
 #r-section("Invited talks")[
   #render-talks(talks, "invited")
+]
+
+#r-section("Peer Review")[
+  #render-string-list(reviewing)
 ]
 
 #r-section("Workshops Attended")[

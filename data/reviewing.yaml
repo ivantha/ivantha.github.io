@@ -1,0 +1,11 @@
+# Peer-review service, rendered as the academic CV's "Peer Review" section and
+# the "Peer Review" block on /volunteering. One line per venue: journals first,
+# then workshops, each newest first. Reviewing the same venue again in a later
+# year appends the year to its line rather than adding a second one.
+#
+# The full record of assignments lives in the reviews/ index on Google Drive.
+- "Reviewer for Discover Artificial Intelligence (Springer), 2026"
+- "Reviewer for The Journal of Supercomputing (Springer), 2026"
+- "Reviewer for the GlobalSouthAI Workshop at NeurIPS, 2026"
+- "Reviewer for the GlobalSouthAI Workshop at IJCAI-ECAI, 2026"
+- "Reviewer for the GlobalSouthML Workshop at ICML, 2026"

@@ -2,16 +2,34 @@
 import { getCollection, type CollectionEntry } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 
+const reviewing: CollectionEntry<"reviewing">[] = await getCollection("reviewing")
 const mentoring: CollectionEntry<"mentoring">[] = await getCollection("mentoring")
 const committees: CollectionEntry<"volunteering">[] = await getCollection("volunteering")
 ---
 
-<Layout title="Volunteering | Oshan Mudannayake" description="Mentoring, judging, and committee volunteering history.">
+<Layout
+    title="Volunteering | Oshan Mudannayake"
+    description="Peer review, mentoring, judging, and committee volunteering history."
+>
     <div class="volunteeringLayout section-wrapper">
         <div class="section-title">
             <h1>Volunteering</h1>
         </div>
         <div class="section-items">
+            {
+                reviewing.length > 0 && (
+                    <div>
+                        <h2>Peer Review</h2>
+                        <ul>
+                            {reviewing.map((entry) => (
+                                <li>
+                                    <span class="content-text">{entry.data.line}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            }
             {
                 mentoring.length > 0 && (
                     <div>

@@ -264,7 +264,7 @@
   ]
 }
 
-// Simple string-list renderer (workshops, mentoring, volunteering).
+// Simple string-list renderer (workshops, reviewing, mentoring, volunteering).
 #let render-string-list(items) = {
   enum(
     numbering: "[1]",
