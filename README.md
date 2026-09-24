@@ -130,6 +130,8 @@ The CNAME is in `public/CNAME` (`ivantha.com`).
 
 ## Repository history
 
-The CV used to live in a separate local-only repo. It was merged into
-this repo via `git subtree add --prefix=cv ...` so all CV history is
-reachable. See `cv/README.md` for Typst-side details.
+The CV used to live in a separate local-only repo. It came in on
+2026-05-06 through `git subtree add --squash --prefix=cv`, so its own
+history is not here, only one commit holding its state at `f62e9db`.
+`main` was made linear on 2026-09-24, which turned that subtree merge
+into an ordinary commit. See `cv/README.md` for Typst-side details.

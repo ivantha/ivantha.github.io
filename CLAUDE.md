@@ -49,6 +49,33 @@ The only exceptions are when I explicitly ask for one:
 Absent one of those, don't switch branches, don't create branches, and don't
 create worktrees.
 
+### History and commits
+
+`main` keeps a strictly linear history. No merge commits, ever.
+
+- **Commit titles start with a lower-case letter**: imperative, one short
+  line, no `feat:`-style prefix. A body is optional; when the title doesn't
+  carry the why, add a blank line and two or three plain sentences wrapped
+  at 72 columns.
+- **Pull with rebase.** This clone sets `pull.rebase true` and
+  `merge.ff only`, so a stray merge commit can't happen locally. Like
+  `.claude/settings.json`, they aren't committed, so re-set them after a
+  fresh clone: `git config pull.rebase true && git config merge.ff only`.
+- **Landing a branch** (only when I asked for one): rebase it onto `main`,
+  then `git merge --ff-only`. On GitHub, **Rebase and merge** is the only
+  button; merge commits and squash are switched off, and merged PR branches
+  are deleted automatically.
+- **Clean up after every merge**: delete the branch locally and on GitHub,
+  remove its worktree, drop any stash. Between pieces of work only `main`
+  exists.
+- **Never force-push, rewrite or delete `main`.** A ruleset on GitHub blocks
+  deletion and force pushes and requires linear history, with no bypass,
+  not even for admins (since 2026-09-24).
+
+The history was rewritten once, on 2026-09-24, to flatten two merge commits
+and lower-case every title; trees, authors and dates were kept. A commit
+hash quoted from before that date points at the old history.
+
 ## Unlisted pages
 
 `public/reclusive-raven/` holds two pages that are **not part of the academic site**: the home
