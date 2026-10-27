@@ -73,6 +73,22 @@ const publications = defineCollection({
     }),
 })
 
+// Shared with the academic CV, which renders the same file.
+const inPreparation = defineCollection({
+    loader: () => loadYamlList("in-preparation.yaml"),
+    schema: z.object({
+        authors: z.array(
+            z.object({
+                name: z.string(),
+                self: z.boolean().optional(),
+                equal_contribution: z.boolean().optional(),
+            }),
+        ),
+        title: z.string(),
+        venue: z.string().optional(),
+    }),
+})
+
 const experience = defineCollection({
     loader: () => loadYamlList("experience.yaml"),
     schema: z.object({
@@ -257,6 +273,7 @@ const reviewing = defineCollection({
 export const collections = {
     personal,
     publications,
+    "in-preparation": inPreparation,
     experience,
     education,
     projects,

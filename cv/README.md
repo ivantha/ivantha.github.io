@@ -108,7 +108,7 @@ override automatically and cannot drift from the industry CV. Tag an entry
 | `certifications.yaml` | both | `name_casual` override for Oracle entry |
 | `awards.yaml`         | both | top-level map: `entries` + `awards_notes_academic` |
 | `publications.yaml`   | both | top-level map: `items` + `equal_contribution_note`; structured authors |
-| `preprints.yaml`      | academic | structured authors |
+| `preprints.yaml`      | academic | structured authors + optional `venue` and `doi_url`/`doi_label` link |
 | `under-review.yaml`   | academic | structured authors + optional `venue` annotation |
 | `in-preparation.yaml` | academic | same shape as `under-review.yaml`; drafts only, not plans |
 | `scholarships.yaml`   | academic | optional `footnote:` per entry |

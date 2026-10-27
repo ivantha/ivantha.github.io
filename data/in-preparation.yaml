@@ -1,10 +1,18 @@
 # Manuscripts in preparation, rendered as the academic CV's "Manuscripts in
-# Preparation" section. Same shape as under-review.yaml: structured `authors`
-# plus an optional `venue` annotation.
+# Preparation" section and the website's section of the same name. Same shape
+# as under-review.yaml: structured `authors` plus an optional `venue`
+# annotation.
 #
 # Only drafts that exist and are headed for submission belong here, not plans.
 # Once a manuscript is posted publicly it moves to preprints.yaml, and once it
-# is submitted it moves to under-review.yaml.
+# is submitted it moves to under-review.yaml (both also need an entry in
+# publications.yaml for the website).
 #
-# The academic CV suppresses the whole section while this list is empty.
-[]
+# Both the CV and the website suppress the section while this list is empty.
+- authors:
+    - { name: "O. Mudannayake", self: true }
+  title: "A Cross-Space Audit of Intrinsic Reward Search in Open-World Reinforcement Learning"
+
+- authors:
+    - { name: "O. Mudannayake", self: true }
+  title: "Pixel-Domain Sensory Curricula are Null in Mean; Privileged-Channel Withdrawal Shows Exploratory Between-Seed Variance Compression on Craftax Double DQN"

@@ -210,7 +210,8 @@
   }
 }
 
-// Preprints: same author formatting, optional venue annotation, no DOI.
+// Preprints: same author formatting, optional venue annotation and optional
+// link (an arXiv `doi_url` + `doi_label`, as in publications.yaml).
 #let render-preprints(items) = {
   enum(
     numbering: "[1]",
@@ -218,11 +219,11 @@
     body-indent: 0.6em,
     ..items.map(p => {
       let venue = p.at("venue", default: none)
-      if venue != none [
-        #render-authors(p.authors), "#p.title", #venue.
-      ] else [
-        #render-authors(p.authors), "#p.title".
-      ]
+      let url = p.at("doi_url", default: none)
+      // Single-line content blocks: a line break before `]` would put a
+      // space ahead of the punctuation that follows.
+      let cite = if venue != none [#render-authors(p.authors), "#p.title", #venue] else [#render-authors(p.authors), "#p.title"]
+      if url != none [#cite, #link(url)[\[#p.doi_label\]].] else [#cite.]
     }),
   )
 }

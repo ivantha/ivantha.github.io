@@ -5,8 +5,10 @@ import TypstMd from "@/components/TypstMd.astro"
 type Pub = CollectionEntry<"publications">["data"]["items"][number]
 type Author = Pub["authors"][number]
 
+// `year` is optional so manuscripts in preparation, which have none, render
+// through the same item.
 interface Props {
-    pub: Pub
+    pub: Omit<Pub, "year"> & { year?: number }
 }
 
 const { pub } = Astro.props
