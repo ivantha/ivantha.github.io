@@ -4,6 +4,9 @@
 #   [[person:KEY]]   → resolves via src/data/people.ts (renders namewithhonorifics linked)
 #   [LABEL](URL)     → standard markdown-style external link
 
+- date: "Oct 2026"
+  content: "I attended the [Google Summer of Code 2026 Mentor Summit](https://sites.google.com/view/2026-mentor-summit) in Munich, Germany, representing [[org:c2si]] as a GSoC mentor. Google fully funded my attendance."
+
 - date: "Aug 2026"
   content: "I concluded my visiting research position at [[org:kixlab]]. The main output is [Workflow Editor](/projects), a prototype that pairs an agent's written report with the provenance graph behind it, so every figure stays traceable to the computation that produced it."
 

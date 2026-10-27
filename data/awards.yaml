@@ -17,6 +17,11 @@ awards_notes_academic:
     text: "Program Team Lead of CloudHack 17 hackathon"
 
 entries:
+  - year: 2026
+    event: "Google Summer of Code Mentor Summit, Munich, Germany"
+    place_casual: "_C2SI_ mentor, fully funded by Google"
+    include_in: [casual]
+
   - year: 2019
     event: "HackZurich, Switzerland"
     place_casual: "Got selected out of 5000+ hackers"

@@ -35,6 +35,11 @@ export const orgs: Record<string, Org> = {
         shortname: "SCoRe Lab",
         url: "https://scorelab.org/",
     },
+    c2si: {
+        fullname: "Ceylon Computer Science Institute",
+        shortname: "C2SI",
+        url: "https://c2si.org/",
+    },
     qcri: {
         fullname: "Qatar Computing Research Institute",
         shortname: "QCRI",
