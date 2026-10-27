@@ -9,6 +9,24 @@
 # not recorded or rendered anywhere.
 # Date canonicalized to user-reconciled values (see plan).
 
+# Dated from the September build, not the 2024 prototypes: almost all of
+# Distari was written in Sep-Oct 2026.
+- id: distari-cofounder
+  include_in: [academic, casual]
+  category: professional
+  role: "Co-Founder"
+  company: "Distari"
+  location_academic: "Sri Lanka"
+  location_casual: "Colombo"
+  dates: "Sep 2026 - Present"
+  bullets:
+    - text: "Built and launched Distari with co-founder Sumedhe Dissanayake: a research-paper library that parses academic PDFs, summarises each into a structured brief, and links papers through their references. Launched publicly as v1.0 in Oct. 2026 at distari.com."
+    - text: "Designed and built most of the platform: a Go API and background worker on PostgreSQL with pgvector, a React web app, a Flutter app for desktop and mobile, a browser capture extension, and Terraform-managed infrastructure on GCP Cloud Run."
+      stack: "Go, PostgreSQL, pgvector, React, TypeScript, Flutter, Terraform, GCP"
+      include_in: [casual]
+    - text: "Set up credit-based billing through Paddle as merchant of record, with separate dev and production environments and tagged releases."
+      include_in: [casual]
+
 - id: iit-fyp-supervisor
   include_in: [academic]
   category: professional
