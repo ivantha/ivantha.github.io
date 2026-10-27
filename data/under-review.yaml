@@ -16,3 +16,11 @@
     - { name: "Y. R. Shrestha" }
   title: "One Quarter of the World, Underserved: Deepfake Detection for South Asia"
   venue: "under review at ACM Computing Surveys"
+
+- authors:
+    - { name: "D. Sewwandi" }
+    - { name: "D. Gamage" }
+    - { name: "O. Mudannayake", self: true }
+    - { name: "Y.-C. Lee" }
+  title: "Deepfake.help: Designing Cultural Context Aware Media Literacy Intervention for AI Generated Content for Global South"
+  venue: "under review at Proceedings of the ACM on Human-Computer Interaction (CSCW)"
