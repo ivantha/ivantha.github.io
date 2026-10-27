@@ -90,3 +90,15 @@ page and privacy policy that the Google OAuth consent screen for Oshan's persona
 
 They are orphans on purpose. Don't delete them as dead files: Google publishing for those tools
 depends on both URLs staying live.
+
+## External profiles
+
+ORCID, Google Scholar, GitHub, LinkedIn and ResearchGate mirror `data/` by hand, so a CV change
+leaves them stale until someone updates them too. Their current state, how to edit each and the
+traps live in Oshan's knowledge base at `user/online_profiles.md`. Two rules from there:
+
+- **Never notify or post to the LinkedIn network.** Keep the notify switch off, click Skip on
+  the share prompt, and restore the custom headline after adding a position, since LinkedIn
+  overwrites it.
+- **Ask before adding research on ResearchGate**: it shows new items in followers' feeds with
+  no opt-out.
