@@ -1,0 +1,10 @@
+# Manuscripts in preparation, rendered as the academic CV's "Manuscripts in
+# Preparation" section. Same shape as under-review.yaml: structured `authors`
+# plus an optional `venue` annotation.
+#
+# Only drafts that exist and are headed for submission belong here, not plans.
+# Once a manuscript is posted publicly it moves to preprints.yaml, and once it
+# is submitted it moves to under-review.yaml.
+#
+# The academic CV suppresses the whole section while this list is empty.
+[]

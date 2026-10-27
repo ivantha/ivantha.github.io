@@ -15,6 +15,7 @@
 #let pubs-items     = pubs-doc.items.filter(p => variant in p.at("include_in", default: (variant,)))
 #let preprints      = yaml("/data/preprints.yaml")
 #let under-review   = yaml("/data/under-review.yaml")
+#let in-preparation = yaml("/data/in-preparation.yaml")
 #let scholarships   = yaml("/data/scholarships.yaml")
 #let talks          = yaml("/data/talks.yaml")
 #let workshops      = yaml("/data/workshops.yaml")
@@ -48,7 +49,7 @@
   #render-publications(pubs-items, pubs-doc.equal_contribution_note)
 ]
 
-// Both lists render straight from data/ with no `include_in` filter, so either
+// These lists render straight from data/ with no `include_in` filter, so any
 // can empty out. `r-section` always draws its header and rule, so guard here —
 // an empty list would otherwise strand a bare heading over blank space.
 #if under-review.len() > 0 {
@@ -60,6 +61,12 @@
 #if preprints.len() > 0 {
   r-section("Preprints")[
     #render-preprints(preprints)
+  ]
+}
+
+#if in-preparation.len() > 0 {
+  r-section("Manuscripts in Preparation")[
+    #render-preprints(in-preparation)
   ]
 }
 

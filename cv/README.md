@@ -110,6 +110,7 @@ override automatically and cannot drift from the industry CV. Tag an entry
 | `publications.yaml`   | both | top-level map: `items` + `equal_contribution_note`; structured authors |
 | `preprints.yaml`      | academic | structured authors |
 | `under-review.yaml`   | academic | structured authors + optional `venue` annotation |
+| `in-preparation.yaml` | academic | same shape as `under-review.yaml`; drafts only, not plans |
 | `scholarships.yaml`   | academic | optional `footnote:` per entry |
 | `talks.yaml`          | academic | `type: poster\|oral\|invited` buckets |
 | `workshops.yaml`      | academic | plain strings |

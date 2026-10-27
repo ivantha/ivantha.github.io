@@ -59,7 +59,7 @@ section you want to change:
 | `education.yaml` | degrees |
 | `experience.yaml` | jobs (split research / professional) |
 | `publications.yaml` | published + under-review papers |
-| `preprints.yaml`, `under-review.yaml` | preprints, under-review (academic CV only) |
+| `preprints.yaml`, `under-review.yaml`, `in-preparation.yaml` | preprints, under-review, in preparation (academic CV only) |
 | `projects.yaml` | portfolio projects |
 | `research.yaml` | research projects (website only — see below) |
 | `skills.yaml` | technical skills (casual + ATS CVs) |
