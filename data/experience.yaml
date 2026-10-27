@@ -9,6 +9,16 @@
 # not recorded or rendered anywhere.
 # Date canonicalized to user-reconciled values (see plan).
 
+- id: iit-fyp-supervisor
+  include_in: [academic]
+  category: professional
+  role: "Final-Year Project Supervisor"
+  company: "Informatics Institute of Technology (IIT), in affiliation with the University of Westminster"
+  location: "Sri Lanka"
+  dates: "Jun 2026 - Present"
+  bullets:
+    - text: "Supervising seven undergraduate final-year projects across the Computer Science and Software Engineering programmes, from research gap and proposal through implementation, evaluation, and thesis."
+
 - id: kixlab-visiting-researcher
   include_in: [academic, casual]
   category: research
@@ -26,7 +36,7 @@
       stack: "TypeScript, React, Express, Gemini, GCP Cloud Run"
 
 - id: colombo-hci-lab-research-assistant
-  include_in: [academic]
+  include_in: [academic, casual]
   category: research
   role: "Research Assistant"
   company: "Colombo HCI Lab, University of Colombo School of Computing"
@@ -35,8 +45,15 @@
   dates: "Mar 2025 - Present"
   advisor: "Dr. Dilrukshi Gamage"
   bullets:
-    - text: "Co-authoring research on culturally-contextualised media-literacy interventions for AI-generated content in Global South settings."
+    - text: "Leading the second phase of a South Asian deepfake detection project (since Sep. 2026), with a team of three researchers collecting regional deepfake data and building detection models on it."
+    - text: "Built deeptrace-bench, an open benchmark harness that runs video and audio deepfake detectors on South Asian datasets under one evaluation setup and reports results per demographic and language group."
+      stack: "Python, uv, DVC"
+      include_in: [academic]
+    - text: "Co-authored a survey of deepfake detection for South Asia, under review at ACM Computing Surveys."
+      include_in: [academic]
     - text: "Built the annotation interface and data-collection pipeline for a South Asian deepfake detection model, in an international collaboration spanning Sri Lanka, Nepal, Pakistan, and Switzerland."
+    - text: "Co-authoring research on culturally-contextualised media-literacy interventions for AI-generated content in Global South settings."
+      include_in: [academic]
 
 - id: paradigmai-lead
   include_in: [academic, casual]

@@ -7,14 +7,23 @@
 - date: "Oct 2026"
   content: "I attended the [Google Summer of Code 2026 Mentor Summit](https://sites.google.com/view/2026-mentor-summit) in Munich, Germany, representing [[org:c2si]] as a GSoC mentor. Google fully funded my attendance."
 
+- date: "Sep 2026"
+  content: "I started leading the second phase of the deepfake detection project at the Colombo HCI Lab, collecting South Asian deepfake data and building detection models on it. Our phase 1 survey of deepfake detection for South Asia is now under review at ACM Computing Surveys."
+
 - date: "Aug 2026"
   content: "I concluded my visiting research position at [[org:kixlab]]. The main output is [Workflow Editor](/projects), a prototype that pairs an agent's written report with the provenance graph behind it, so every figure stays traceable to the computation that produced it."
+
+- date: "Jul 2026"
+  content: "I submitted my M.Sc thesis at [[org:uom]], \"From Sensors to Perception: Prescription over Search in Open-World Reinforcement Learning Agents\", supervised by Dr. Thanuja D. Ambegoda."
 
 - date: "Jul 2026"
   content: "My paper [Affordable Winner's-Curse Correction: Paired-Offset Reevaluation for Hyperparameter Search on a Single GPU](https://openreview.net/forum?id=P8J9cLsmNs) was accepted at the GlobalSouthAI workshop at IJCAI-ECAI 2026, held in Bremen, Germany."
 
 - date: "Jun 2026"
   content: "I joined [[org:kixlab]] as a Visiting Researcher."
+
+- date: "Jun 2026"
+  content: "I started supervising undergraduate final-year projects at the Informatics Institute of Technology (IIT), seven students across its Computer Science and Software Engineering programmes."
 
 - date: "Sep 2025"
   content: "Our paper [On Privacy-Preserved Machine Learning Using Secure Multi-Party Computing: Techniques and Trends](https://doi.org/10.32604/cmc.2025.068875) was published in Computers, Materials & Continua (CMC)."

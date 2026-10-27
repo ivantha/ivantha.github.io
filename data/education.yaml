@@ -5,16 +5,18 @@
 - id: uom-msc
   include_in: [academic, casual]
   institute: "University of Moratuwa"
-  institute_academic_prefix: "[Reading]"
+  institute_academic_prefix: "[Defense pending]"
   degree_academic: "M.Sc in Data Science & AI"
   degree_casual:   "MSc in Data Science & AI"
   dates: "Jan. 2023 - Dec. 2026"
   dates_casual: "2023 - 2026 (expected)"
   extras_academic:
-    - "Current GPA: 4.02/4.2"
+    - "GPA: 4.02/4.2"
+    - 'Thesis: _"From Sensors to Perception: Prescription over Search in Open-World Reinforcement Learning Agents"_ (submitted Jul. 2026)'
     - "Master's thesis advisor: Dr. Thanuja D. Ambegoda"
   extras_casual:
     - "GPA: 4.02/4.2"
+    - "Thesis submitted Jul. 2026; defense pending"
     - "Thesis advisor: Dr. Thanuja D. Ambegoda"
 
 - id: ucsc-bsc

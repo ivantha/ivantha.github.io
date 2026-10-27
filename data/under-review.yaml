@@ -2,7 +2,17 @@
 # section. Same shape as preprints.yaml: structured `authors` plus an optional
 # `venue` annotation.
 #
-# Deliberately empty. The academic CV suppresses the whole section (header and
-# rule included) while this list has no entries, so re-adding an item here is
-# all it takes to bring the section back.
-[]
+# The academic CV suppresses the whole section (header and rule included)
+# while this list is empty, so an empty list is fine once everything here has
+# a decision.
+- authors:
+    - { name: "D. Sewwandi" }
+    - { name: "I. Malahat" }
+    - { name: "I. Nanayakkara" }
+    - { name: "S. Kuikel" }
+    - { name: "O. Mudannayake", self: true }
+    - { name: "D. Gamage" }
+    - { name: "S. Herath" }
+    - { name: "Y. R. Shrestha" }
+  title: "One Quarter of the World, Underserved: Deepfake Detection for South Asia"
+  venue: "under review at ACM Computing Surveys"

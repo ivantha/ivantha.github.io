@@ -14,20 +14,29 @@
   status: ongoing
   title: "Deepfake Detection in South Asia"
   tags: "Deepfake Detection | Machine Learning | South Asia"
-  description: "Working with Dr. Dilrukshi Gamage on deepfake detection for the South Asian region."
+  description: >-
+    Deepfake detection for the South Asian region with Dr. Dilrukshi Gamage at
+    the Colombo HCI Lab. Since Sep. 2026 I lead the second phase, which
+    collects South Asian deepfake data and builds detection models on it. Our
+    phase 1 survey is under review at ACM Computing Surveys.
   dates: "2025 - Present"
   links:
     Project: "https://sites.google.com/view/south-asia-deepfake-detection/"
+    Benchmark: "https://github.com/Colombo-HCI-Lab/deeptrace-bench"
 
 - id: rl-hyperparameter-rigor
   status: ongoing
   title: "Reinforcement Learning Hyperparameter Rigor — Paired-Offset Reevaluation"
   tags: "RL | HPO | Selection Bias | Diagnostics"
   description: >-
-    Investigating selection-induced optimism in RL hyperparameter search and
-    proposing a paired-offset reevaluation diagnostic. Two manuscripts under
-    review.
+    Investigating selection-induced optimism (the winner's curse) in RL
+    hyperparameter search and proposing paired-offset reevaluation, which
+    re-scores each search winner on held-out seeds. Part of my M.Sc thesis;
+    the method paper was accepted at the GlobalSouthAI workshop at IJCAI-ECAI
+    2026.
   dates: "2025 - Present"
+  links:
+    Paper: "https://openreview.net/forum?id=P8J9cLsmNs"
 
 - id: smpc-privacy-survey
   status: completed
