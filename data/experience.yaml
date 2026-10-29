@@ -136,7 +136,7 @@
   location_academic: "Sri Lanka"
   location_casual: "Colombo"
   dates: "May 2021 - Dec 2024"
-  advisor: "Dr. Noel Fernando"
+  advisor: "Prof. Noel Fernando"
   bullets:
     - text: "Applied classical and deep time-series models to forecast long-horizon municipal solid-waste generation in Sri Lankan cities; published in IEEE Access."
 

@@ -44,8 +44,8 @@ export const people: Record<string, Person> = {
     },
     noelfernando: {
         name: "Noel Fernando",
-        namewithhonorifics: "Dr. Noel Fernando",
-        position: "Senior Lecturer | University of Colombo",
+        namewithhonorifics: "Prof. Noel Fernando",
+        position: "Professor | University of Colombo",
         link: "https://ucsc.cmb.ac.lk/profile/nas/",
         web: "https://ucsc.cmb.ac.lk/profile/nas/",
         researchgate: "https://www.researchgate.net/profile/Noel-Fernando",
