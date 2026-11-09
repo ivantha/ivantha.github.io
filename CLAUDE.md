@@ -23,9 +23,9 @@ lands on it at roughly 1.5:1. So the baseline in
 `theme-color` meta tag in `src/layouts/Layout.astro` and with
 `public/manifest.json`.
 
-## Git workflow
+## Repository history
 
-The global rule applies (knowledge base `workflows/linear_history.md`). The history was rewritten once, on 2026-09-24, to flatten two merge commits
+The history was rewritten once, on 2026-09-24, to flatten two merge commits
 and lower-case every title; a commit hash quoted from before that date points
 at the old history.
 
