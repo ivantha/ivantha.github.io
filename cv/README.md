@@ -26,6 +26,7 @@ just            # build all three (default)
 just academic   # academic CV only
 just casual     # casual CV only
 just ats        # ATS CV only
+just casual-no-contact  # casual CV with no contact details or links (Upwork)
 just watch-academic
 just watch-casual
 just watch-ats

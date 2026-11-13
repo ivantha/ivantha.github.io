@@ -26,6 +26,7 @@ pnpm build:cv:academic
 pnpm build:cv:casual
 pnpm build:cv:ats
 pnpm check:cv:ats     # assert the ATS PDF survives text extraction
+pnpm build:cv:no-contact  # cv/build/casual-cv-no-contact.pdf, for Upwork
 ```
 
 The **ATS variant** is a deliberately plain single-column rendering of the
@@ -34,6 +35,12 @@ alongside a plain-text twin (`ats-cv.txt`) for forms that ask you to paste
 instead. It is published at `/cv/ats-cv.pdf` but linked from nowhere — the
 casual CV remains the one the site shows. See `cv/README.md` for why it exists
 and how to verify it.
+
+The **no-contact copy** is the casual CV built with `--input contact=false`: the
+header keeps only the location (no email, phone, site or profile links) and
+every link sets as plain text, because Upwork forbids off-platform contact
+details in proposal attachments. It goes to the gitignored `cv/build/`, never
+`public/`, so it is not deployed; rebuild it when the CV changes.
 
 Requires `typst >= 0.13` for the CV build. The site itself needs Node
 22+ (24 recommended; see `.nvmrc`) and pnpm 10+.

@@ -18,6 +18,7 @@
         "build:cv:academic": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/academic/main.typ public/cv/academic-cv.pdf",
         "build:cv:casual": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/casual/main.typ public/cv/casual-cv.pdf",
         "build:cv:ats": "mkdir -p public/cv && typst compile --root . --font-path cv/fonts cv/variants/ats/main.typ public/cv/ats-cv.pdf && node scripts/build-ats-txt.mjs",
+        "build:cv:no-contact": "mkdir -p cv/build && typst compile --root . --font-path cv/fonts --input contact=false cv/variants/casual/main.typ cv/build/casual-cv-no-contact.pdf",
         "check:cv:ats": "python3 scripts/check-ats.py public/cv/ats-cv.pdf",
         "build:og": "node scripts/build-og.mjs",
         "build:icons": "node scripts/build-icons.mjs",

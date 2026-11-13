@@ -480,18 +480,24 @@
   text(font: mono, size: size, fill: fill, items.join(sep))
 }
 
+// `--input contact=false` builds the copy for marketplaces such as Upwork, which
+// forbid off-platform contact details in attachments, links to personal sites
+// included: the header keeps only the location, and every link sets as plain
+// text. The default build is unchanged.
+#let show-contact = sys.inputs.at("contact", default: "true") != "false"
+
 // Links get an explicit rule; the page-level `show link` rule is a no-op, so
 // without this a DOI-linked title is indistinguishable from an unlinked one.
 // The stroke is `separator`, not `hair`: this underline's whole job is to be
 // perceived, and `hair` (1.9:1, and 1.5:1 when this was written) is the one
 // value in the palette that guarantees it isn't — which left the comment above
 // describing an affordance the code did not actually provide.
-#let ext-link(url, body) = link(url, underline(
+#let ext-link(url, body) = if not show-contact { body } else { link(url, underline(
   body,
   stroke: 0.4pt + separator,
   offset: 1.6pt,
   evade: true,
-))
+)) }
 
 // ----- Section headers -------------------------------------------------------
 // ONE form, both pages. Page 1 used to hang its label in the 30mm metadata
@@ -614,7 +620,9 @@
   // give it a column of its own instead of the tail of a line.
   let email = personal.emails.at(0).address
   let tel = personal.phone.replace(" ", "").replace("(", "").replace(")", "")
-  grid(
+  if not show-contact {
+    text(font: mono, size: fs-meta, fill: mute, personal.location)
+  } else { grid(
     columns: (1fr, auto),
     column-gutter: 6mm,
     align: (left + horizon, right + horizon),
@@ -666,7 +674,7 @@
       text(font: mono, size: fs-body, weight: 700, fill: signal,
         personal.homepage.label)
     }),
-  )
+  ) }
 }
 
 // The one lifted surface in the document, so the summary reads before anything

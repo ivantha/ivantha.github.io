@@ -15,6 +15,11 @@ ats:
     mkdir -p {{out}}
     typst compile {{typst_flags}} variants/ats/main.typ {{out}}/ats-cv.pdf
 
+# The casual CV with no contact details or links, for Upwork attachments. Not in the default set.
+casual-no-contact:
+    mkdir -p {{out}}
+    typst compile {{typst_flags}} --input contact=false variants/casual/main.typ {{out}}/casual-cv-no-contact.pdf
+
 watch-academic:
     typst watch {{typst_flags}} variants/academic/main.typ {{out}}/academic-cv.pdf
 
